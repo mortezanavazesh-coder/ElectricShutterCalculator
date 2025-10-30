@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">کرکره برقی</string>
+    <string name="main_title">محاسبه قیمت کرکره برقی</string>
+    <string name="base_price_title">مدیریت قیمت‌های پایه</string>
+    <string name="roll_diameter_title">محاسبه قطر رول</string>
+    <string name="calculate">محاسبه</string>
+    <string name="save">ذخیره</string>
+    <string name="back">بازگشت</string>
+</resources>
