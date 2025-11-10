@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#121212">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="گزارش نهایی کرکره برقی"
+            android:textColor="#00FFAA"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!-- اطلاعات تیغه -->
+        <TextView
+            android:id="@+id/textSlatInfo"
+            android:text="تیغه: ..."
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:layout_marginBottom="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!-- اطلاعات موتور -->
+        <TextView
+            android:id="@+id/textMotorInfo"
+            android:text="موتور: ..."
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:layout_marginBottom="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!-- اطلاعات شفت -->
+        <TextView
+            android:id="@+id/textShaftInfo"
+            android:text="شفت: ..."
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:layout_marginBottom="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!-- اطلاعات قوطی -->
+        <TextView
+            android:id="@+id/textBoxInfo"
+            android:text="قوطی: ..."
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:layout_marginBottom="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!-- هزینه نصب -->
+        <TextView
+            android:id="@+id/textInstallInfo"
+            android:text="نصب: ..."
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:layout_marginBottom="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!-- هزینه جوشکاری -->
+        <TextView
+            android:id="@+id/textWeldingInfo"
+            android:text="جوشکاری: ..."
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:layout_marginBottom="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!-- هزینه حمل -->
+        <TextView
+            android:id="@+id/textTransportInfo"
+            android:text="حمل: ..."
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:layout_marginBottom="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <!-- قیمت نهایی -->
+        <TextView
+            android:id="@+id/textTotalInfo"
+            android:text="قیمت نهایی: ..."
+            android:textColor="#00FFAA"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</ScrollView>
