@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="12dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textSlatInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="مشتری: "
+            android:textStyle="bold"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textMotorInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ابعاد: "
+            android:paddingTop="6dp" />
+
+        <TextView
+            android:id="@+id/textShaftInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ریز محاسبات:"
+            android:paddingTop="6dp" />
+
+        <TextView
+            android:id="@+id/textBoxInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="قوطی:"
+            android:paddingTop="6dp" />
+
+        <TextView
+            android:id="@+id/textInstallInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="نصاب:"
+            android:paddingTop="6dp" />
+
+        <TextView
+            android:id="@+id/textWeldingInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="جوشکاری:"
+            android:paddingTop="6dp" />
+
+        <TextView
+            android:id="@+id/textTransportInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="حمل:"
+            android:paddingTop="6dp" />
+
+        <TextView
+            android:id="@+id/textTotalInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="قیمت نهایی:"
+            android:textStyle="bold"
+            android:paddingTop="12dp"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/buttonDeleteReport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="حذف گزارش"
+            android:layout_marginTop="16dp"/>
+    </LinearLayout>
+</ScrollView>
