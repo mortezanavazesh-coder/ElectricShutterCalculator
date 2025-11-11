@@ -95,6 +95,7 @@ class MainActivity : AppCompatActivity() {
         setupSpinners()
         setupButtons()
 
+        // observe and populate base prices / extras
         vm.basePrices.observe(this) { bp ->
             spinnerBlade.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, bp.blades).apply { setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item) }
             spinnerMotor.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, bp.motors).apply { setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item) }
@@ -159,6 +160,7 @@ class MainActivity : AppCompatActivity() {
         buttonReports = findViewById(R.id.buttonReports)
         buttonSaveReport = findViewById(R.id.buttonSaveReport)
 
+        // thousand separators for editable numeric fields
         inputInstallPriceBase.addTextChangedListener(ThousandSeparatorTextWatcher(inputInstallPriceBase))
         inputWeldingPrice.addTextChangedListener(ThousandSeparatorTextWatcher(inputWeldingPrice))
         inputTransportPrice.addTextChangedListener(ThousandSeparatorTextWatcher(inputTransportPrice))
@@ -174,16 +176,15 @@ class MainActivity : AppCompatActivity() {
         inputHeightCm.addTextChangedListener(watcher)
         inputWidthCm.addTextChangedListener(watcher)
 
-        // validate install base: keep previous valid value if parse fails
+        // keep last valid install base
         inputInstallPriceBase.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
             override fun afterTextChanged(s: Editable?) {
                 val vStr = s?.toString()?.replace(",", "")?.trim().orEmpty()
                 val f = vStr.toFloatOrNull()
-                if (f != null) {
-                    previousInstallBase = f
-                } else {
+                if (f != null) previousInstallBase = f
+                else {
                     inputInstallPriceBase.post {
                         inputInstallPriceBase.setText(FormatUtils.formatTomanPlain(previousInstallBase))
                         inputInstallPriceBase.setSelection(inputInstallPriceBase.text.length)
@@ -200,9 +201,7 @@ class MainActivity : AppCompatActivity() {
                 if (v <= 0f) {
                     if (s?.toString()?.isNotBlank() == true) {
                         Toast.makeText(this@MainActivity, "نرخ نصب باید بزرگتر از صفر باشد", Toast.LENGTH_SHORT).show()
-                        inputInstallPriceBase.post {
-                            inputInstallPriceBase.setText(FormatUtils.formatTomanPlain(previousInstallBase))
-                        }
+                        inputInstallPriceBase.post { inputInstallPriceBase.setText(FormatUtils.formatTomanPlain(previousInstallBase)) }
                     }
                     return
                 }
@@ -421,7 +420,7 @@ class MainActivity : AppCompatActivity() {
         return "${nf.format(v)} تومان"
     }
 
-    // New: central recalc/display function (was missing)
+    // central recalc/display function
     private fun recalcAllAndDisplay() {
         val heightCm = max(0.0, parseDoubleSafe(inputHeightCm.text.toString()))
         val widthCm = max(0.0, parseDoubleSafe(inputWidthCm.text.toString()))
