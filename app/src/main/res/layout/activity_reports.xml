@@ -1,39 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:padding="16dp"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:id="@+id/rootReports"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
 
-    <LinearLayout
-        android:orientation="horizontal"
+    <!-- عنوان گزارش جدید -->
+    <EditText
+        android:id="@+id/etReportTitle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:hint="عنوان گزارش"
+        android:inputType="text"
+        android:padding="8dp"
+        android:background="@android:drawable/edit_text" />
 
-        <EditText
-            android:id="@+id/etReportTitle"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:hint="عنوان گزارش" />
+    <!-- دکمه افزودن گزارش -->
+    <Button
+        android:id="@+id/btnAddReport"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="افزودن گزارش"
+        android:layout_marginTop="8dp" />
 
-        <Button
-            android:id="@+id/btnAddReport"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="افزودن" />
-    </LinearLayout>
-
+    <!-- متن خالی بودن لیست -->
     <TextView
         android:id="@+id/emptyReports"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="هیچ گزارشی وجود ندارد"
-        android:visibility="gone"
+        android:text="هیچ گزارشی موجود نیست"
         android:gravity="center"
-        android:padding="12dp"/>
+        android:visibility="gone"
+        android:textColor="@android:color/darker_gray"
+        android:layout_marginTop="12dp" />
 
+    <!-- لیست گزارش‌ها -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvReports"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        android:scrollbars="vertical"
+        android:layout_marginTop="8dp" />
+
 </LinearLayout>
