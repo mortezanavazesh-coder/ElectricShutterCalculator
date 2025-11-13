@@ -26,11 +26,14 @@ class MainViewModel : ViewModel() {
         val blades = PrefsHelper.getSortedOptionList(context, "تیغه")
         val motors = PrefsHelper.getSortedOptionList(context, "موتور")
         val shafts = PrefsHelper.getSortedOptionList(context, "شفت")
-        val boxes = PrefsHelper.getSortedOptionList(context, "قوطی")
-        val installBase = PrefsHelper.getFloat(context, "install_base")
-        val weldingBase = PrefsHelper.getFloat(context, "welding_base")
+        val boxes  = PrefsHelper.getSortedOptionList(context, "قوطی")
+
+        val installBase   = PrefsHelper.getFloat(context, "install_base")
+        val weldingBase   = PrefsHelper.getFloat(context, "welding_base")
         val transportBase = PrefsHelper.getFloat(context, "transport_base")
-        val extras = PrefsHelper.getAllExtraOptions(context) // Map<String, Float>
+
+        // نکته: نام کتگوری اضافات باید با کلیدهایی که ذخیره می‌کنی همخوان باشد (مثلاً "اضافات_نام")
+        val extras = PrefsHelper.getAllExtraOptions(context, "اضافات")
 
         _basePrices.postValue(
             BasePrices(
