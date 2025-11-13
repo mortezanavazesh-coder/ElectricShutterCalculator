@@ -29,7 +29,6 @@ class ReportActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_reports)
 
-        // مقداردهی viewها
         rvReports = findViewById(R.id.rvReports)
         btnAddReport = findViewById(R.id.btnAddReport)
         etReportTitle = findViewById(R.id.etReportTitle)
@@ -37,7 +36,6 @@ class ReportActivity : AppCompatActivity() {
 
         rvReports.layoutManager = LinearLayoutManager(this)
 
-        // آداپتر با قابلیت حذف گزارش
         adapter = ReportsAdapter(emptyList()) { title ->
             AlertDialog.Builder(this)
                 .setTitle("حذف گزارش")
@@ -46,7 +44,6 @@ class ReportActivity : AppCompatActivity() {
                     CoroutineScope(Dispatchers.Main).launch {
                         withContext(Dispatchers.IO) {
                             PrefsHelper.removeOption(this@ReportActivity, "گزارش", title)
-                            PrefsHelper.saveMetaTimestamp(this@ReportActivity, "گزارش", title, 0L)
                         }
                         refreshList()
                     }
@@ -56,7 +53,6 @@ class ReportActivity : AppCompatActivity() {
         }
         rvReports.adapter = adapter
 
-        // افزودن گزارش جدید
         btnAddReport.setOnClickListener {
             val title = etReportTitle.text.toString().trim()
             if (title.isEmpty()) {
@@ -75,7 +71,6 @@ class ReportActivity : AppCompatActivity() {
 
                 withContext(Dispatchers.IO) {
                     PrefsHelper.addOption(this@ReportActivity, "گزارش", title, 0f)
-                    PrefsHelper.saveMetaTimestamp(this@ReportActivity, "گزارش", title, System.currentTimeMillis())
                 }
 
                 etReportTitle.text.clear()
@@ -86,7 +81,6 @@ class ReportActivity : AppCompatActivity() {
         refreshList()
     }
 
-    // به‌روزرسانی لیست گزارش‌ها
     private fun refreshList() {
         CoroutineScope(Dispatchers.Main).launch {
             val list = withContext(Dispatchers.IO) {
@@ -94,7 +88,6 @@ class ReportActivity : AppCompatActivity() {
             }
             adapter.update(list)
             emptyReports.visibility = if (list.isEmpty()) View.VISIBLE else View.GONE
-            rvReports.post { rvReports.requestLayout() }
         }
     }
 }
