@@ -14,11 +14,7 @@ object FormatUtils {
     }
 
     fun formatToman(value: Float): String {
-        return try {
-            dfNoFraction.format(value.toLong()) + " تومان"
-        } catch (e: Exception) {
-            "${value} تومان"
-        }
+        return try { dfNoFraction.format(value.toLong()) + " تومان" } catch (e: Exception) { "${value} تومان" }
     }
 
     fun formatTomanPlain(value: Float): String {
