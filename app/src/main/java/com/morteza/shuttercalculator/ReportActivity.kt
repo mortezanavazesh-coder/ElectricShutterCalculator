@@ -22,7 +22,6 @@ class ReportActivity : AppCompatActivity() {
     private lateinit var btnAddReport: Button
     private lateinit var etReportTitle: EditText
     private lateinit var emptyReports: TextView
-
     private lateinit var adapter: ReportsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,22 +34,20 @@ class ReportActivity : AppCompatActivity() {
         emptyReports = findViewById(R.id.emptyReports)
 
         rvReports.layoutManager = LinearLayoutManager(this)
-
-        adapter = ReportsAdapter(emptyList()) { title ->
+        adapter = ReportsAdapter(emptyList(), onDelete = { title ->
             AlertDialog.Builder(this)
                 .setTitle("حذف گزارش")
                 .setMessage("آیا از حذف \"$title\" مطمئن هستید؟")
-                .setPositiveButton("حذف") { _, _ ->
-                    CoroutineScope(Dispatchers.Main).launch {
-                        withContext(Dispatchers.IO) {
-                            PrefsHelper.removeOption(this@ReportActivity, "گزارش", title)
-                        }
-                        refreshList()
+                .setPositiveButton("حذف") { dialog, _ ->
+                    CoroutineScope(Dispatchers.IO).launch {
+                        PrefsHelper.removeOption(this@ReportActivity, "گزارش", title)
+                        withContext(Dispatchers.Main) { refreshList() }
                     }
+                    dialog.dismiss()
                 }
                 .setNegativeButton("انصراف", null)
                 .show()
-        }
+        })
         rvReports.adapter = adapter
 
         btnAddReport.setOnClickListener {
@@ -59,22 +56,19 @@ class ReportActivity : AppCompatActivity() {
                 Toast.makeText(this, "عنوان گزارش را وارد کنید", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-
-            CoroutineScope(Dispatchers.Main).launch {
-                val exists = withContext(Dispatchers.IO) {
-                    PrefsHelper.optionExists(this@ReportActivity, "گزارش", title)
+            CoroutineScope(Dispatchers.IO).launch {
+                val exists = PrefsHelper.optionExists(this@ReportActivity, "گزارش", title)
+                withContext(Dispatchers.Main) {
+                    if (exists) {
+                        Toast.makeText(this@ReportActivity, "این عنوان قبلاً وجود دارد", Toast.LENGTH_SHORT).show()
+                    } else {
+                        PrefsHelper.addOption(this@ReportActivity, "گزارش", title, 0f)
+                        PrefsHelper.saveMetaTimestamp(this@ReportActivity, "گزارش", title, System.currentTimeMillis())
+                        etReportTitle.setText("")
+                        refreshList()
+                        Toast.makeText(this@ReportActivity, "گزارش ذخیره شد", Toast.LENGTH_SHORT).show()
+                    }
                 }
-                if (exists) {
-                    Toast.makeText(this@ReportActivity, "این عنوان قبلاً وجود دارد", Toast.LENGTH_SHORT).show()
-                    return@launch
-                }
-
-                withContext(Dispatchers.IO) {
-                    PrefsHelper.addOption(this@ReportActivity, "گزارش", title, 0f)
-                }
-
-                etReportTitle.text.clear()
-                refreshList()
             }
         }
 
@@ -82,12 +76,12 @@ class ReportActivity : AppCompatActivity() {
     }
 
     private fun refreshList() {
-        CoroutineScope(Dispatchers.Main).launch {
-            val list = withContext(Dispatchers.IO) {
-                PrefsHelper.getSortedOptionList(this@ReportActivity, "گزارش")
+        CoroutineScope(Dispatchers.IO).launch {
+            val list = PrefsHelper.getSortedOptionList(this@ReportActivity, "گزارش")
+            withContext(Dispatchers.Main) {
+                adapter.update(list)
+                emptyReports.visibility = if (list.isEmpty()) View.VISIBLE else View.GONE
             }
-            adapter.update(list)
-            emptyReports.visibility = if (list.isEmpty()) View.VISIBLE else View.GONE
         }
     }
 }
