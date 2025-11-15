@@ -8,10 +8,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.morteza.shuttercalculator.utils.FormatUtils
 
-/**
- * items: List<Pair<title, price>>
- * Callbacks: title-only callbacks. Category را Activity می‌داند و نیازی به ارسال آن نیست.
- */
 class BasePriceAdapter(
     private var items: List<Pair<String, Float>>,
     private val onDelete: (String) -> Unit,
@@ -43,8 +39,8 @@ class BasePriceAdapter(
 
     override fun getItemCount(): Int = items.size
 
-    fun update(list: List<Pair<String, Float>>) {
-        this.items = list
+    fun update(newItems: List<Pair<String, Float>>) {
+        this.items = newItems
         notifyDataSetChanged()
     }
 }
