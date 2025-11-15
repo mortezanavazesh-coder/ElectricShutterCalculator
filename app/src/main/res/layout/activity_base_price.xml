@@ -1,212 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:fillViewport="true"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootBasePrice"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="12dp">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/spinnerCategory"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:spinnerMode="dropdown" />
 
-        <TextView
-            android:text="لیست تیغه‌ها"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvItems"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingTop="8dp"
+        android:clipToPadding="false" />
 
-        <Button
-            android:id="@+id/buttonAddSlat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="افزودن تیغه" />
+    <Button
+        android:id="@+id/btnAddItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="افزودن کالا"
+        android:layout_marginTop="8dp" />
 
-        <TextView
-            android:id="@+id/emptySlats"
-            android:text="تیغه‌ای موجود نیست"
-            android:visibility="gone"
-            android:textColor="#777777"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvSlats"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:nestedScrollingEnabled="false" />
-
-        <TextView
-            android:text="لیست موتورها"
-            android:textStyle="bold"
-            android:layout_marginTop="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <Button
-            android:id="@+id/buttonAddMotor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="افزودن موتور" />
-
-        <TextView
-            android:id="@+id/emptyMotors"
-            android:text="موتوری موجود نیست"
-            android:visibility="gone"
-            android:textColor="#777777"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvMotors"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:nestedScrollingEnabled="false" />
-
-        <TextView
-            android:text="لیست شفت‌ها"
-            android:textStyle="bold"
-            android:layout_marginTop="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <Button
-            android:id="@+id/buttonAddShaft"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="افزودن شفت" />
-
-        <TextView
-            android:id="@+id/emptyShafts"
-            android:text="شفتی موجود نیست"
-            android:visibility="gone"
-            android:textColor="#777777"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvShafts"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:nestedScrollingEnabled="false" />
-
-        <TextView
-            android:text="لیست قوطی‌ها"
-            android:textStyle="bold"
-            android:layout_marginTop="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <Button
-            android:id="@+id/buttonAddBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="افزودن قوطی" />
-
-        <TextView
-            android:id="@+id/emptyBoxes"
-            android:text="قوطی‌ای موجود نیست"
-            android:visibility="gone"
-            android:textColor="#777777"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvBoxes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:nestedScrollingEnabled="false" />
-
-        <TextView
-            android:text="گزینه‌های اضافی"
-            android:textStyle="bold"
-            android:layout_marginTop="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <Button
-            android:id="@+id/buttonAddExtra"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="افزودن گزینه" />
-
-        <TextView
-            android:id="@+id/emptyExtras"
-            android:text="گزینه‌ای موجود نیست"
-            android:visibility="gone"
-            android:textColor="#777777"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvExtras"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:nestedScrollingEnabled="false" />
-
-        <TextView
-            android:id="@+id/labelInstall"
-            android:text="هزینه نصب (تومان)"
-            android:textStyle="bold"
-            android:layout_marginTop="12dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <EditText
-            android:id="@+id/inputInstallBase"
-            android:hint="مثال: 1,200,000"
-            android:inputType="number"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/labelWelding"
-            android:text="هزینه جوشکاری (تومان)"
-            android:textStyle="bold"
-            android:layout_marginTop="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <EditText
-            android:id="@+id/inputWeldingBase"
-            android:hint="مثال: 300,000"
-            android:inputType="number"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/labelTransport"
-            android:text="کرایه / هزینه حمل (تومان)"
-            android:textStyle="bold"
-            android:layout_marginTop="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <EditText
-            android:id="@+id/inputTransportBase"
-            android:hint="مثال: 50,000"
-            android:inputType="number"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <Button
-            android:id="@+id/buttonSaveAll"
-            android:text="ذخیره تمام قیمت‌ها"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp" />
-
-        <Button
-            android:id="@+id/buttonBack"
-            android:text="بازگشت"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp" />
-
-    </LinearLayout>
-</androidx.core.widget.NestedScrollView>
+</LinearLayout>
