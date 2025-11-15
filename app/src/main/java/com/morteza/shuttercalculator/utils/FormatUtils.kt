@@ -6,7 +6,10 @@ import java.util.Locale
 
 object FormatUtils {
     private val dfNoFraction by lazy {
-        val symbols = DecimalFormatSymbols(Locale.US).apply { groupingSeparator = ','; decimalSeparator = '.' }
+        val symbols = DecimalFormatSymbols(Locale.US).apply {
+            groupingSeparator = ','
+            decimalSeparator = '.'
+        }
         DecimalFormat("#,###", symbols)
     }
 
