@@ -18,6 +18,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kotlin.math.max
+import com.morteza.shuttercalculator.BasePriceActivity
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -432,3 +434,4 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
+
