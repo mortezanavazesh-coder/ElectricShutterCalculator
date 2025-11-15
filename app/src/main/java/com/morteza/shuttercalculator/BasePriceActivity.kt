@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
  * callbacks: onDelete(category, title), onRename(category, title), onEdit(category, title)
  * category را BasePriceActivity هنگام ساخت آداپتر می‌دهد (یا در bind استفاده می‌کند).
  */
-class BasePriceAdapter(
+class BasePriceActivity : AppCompatActivity(
     private var items: List<Pair<String, Float>>,
     private val onDelete: (String, String) -> Unit,
     private val onRename: (String, String) -> Unit,
@@ -50,4 +50,5 @@ class BasePriceAdapter(
         notifyDataSetChanged()
     }
 }
+
 
