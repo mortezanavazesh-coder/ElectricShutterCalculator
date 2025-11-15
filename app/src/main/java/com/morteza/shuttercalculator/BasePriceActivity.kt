@@ -29,39 +29,34 @@ class BasePriceActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_base_price)
 
-        // bind views — مطمئن شو idها در activity_base_price.xml وجود دارند
         spinnerCategory = findViewById(R.id.spinnerCategory)
         rvItems = findViewById(R.id.rvItems)
         btnAddItem = findViewById(R.id.btnAddItem)
 
-        // دسته‌ها — در صورت نیاز نام‌ها را متناسب با پروژه تغییر بده
         categories = listOf("تیغه", "موتور", "شفت", "قوطی", "اضافات")
 
         spinnerCategory.adapter = android.widget.ArrayAdapter(
             this,
             android.R.layout.simple_spinner_item,
             categories
-        ).apply {
-            setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        }
+        ).apply { setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item) }
 
         rvItems.layoutManager = LinearLayoutManager(this)
 
-        // adapter با امضای title-only callbacks تا پیاده‌سازی ساده و کم‌خطا باشد
         adapter = BasePriceAdapter(
             items = emptyList(),
-            onDelete = { title ->
+            onDelete = { title: String ->
                 val cat = spinnerCategory.selectedItem?.toString() ?: categories.first()
                 CoroutineScope(Dispatchers.IO).launch {
                     PrefsHelper.removeOption(this@BasePriceActivity, cat, title)
                     withContext(Dispatchers.Main) { refreshList() }
                 }
             },
-            onRename = { title ->
+            onRename = { title: String ->
                 val cat = spinnerCategory.selectedItem?.toString() ?: categories.first()
                 showRenameDialog(cat, title)
             },
-            onEdit = { title ->
+            onEdit = { title: String ->
                 val cat = spinnerCategory.selectedItem?.toString() ?: categories.first()
                 showEditPriceDialog(cat, title)
             }
@@ -83,31 +78,22 @@ class BasePriceActivity : AppCompatActivity() {
     private fun refreshList() {
         val category = spinnerCategory.selectedItem?.toString() ?: categories.first()
         CoroutineScope(Dispatchers.IO).launch {
-            val list = try {
-                PrefsHelper.getSortedOptionList(this@BasePriceActivity, category)
-            } catch (e: Exception) {
-                emptyList<String>()
-            }
+            val list = try { PrefsHelper.getSortedOptionList(this@BasePriceActivity, category) } catch (e: Exception) { emptyList() }
             val items = list.map { title ->
                 val key = "${category}_$title"
                 val price = PrefsHelper.getFloat(this@BasePriceActivity, key, 0f)
                 Pair(title, price)
             }
-            withContext(Dispatchers.Main) {
-                adapter.update(items)
-            }
+            withContext(Dispatchers.Main) { adapter.update(items) }
         }
     }
 
     private fun showAddItemDialog() {
         val inflater = LayoutInflater.from(this)
-        val view = try {
-            inflater.inflate(R.layout.dialog_add_item, null)
-        } catch (e: Exception) {
+        val view = try { inflater.inflate(R.layout.dialog_add_item, null) } catch (e: Exception) {
             Toast.makeText(this, "layout dialog_add_item موجود نیست", Toast.LENGTH_SHORT).show()
             return
         }
-
         val etTitle = view.findViewById<EditText>(R.id.etItemTitle)
         val etPrice = view.findViewById<EditText>(R.id.etItemPrice)
         etPrice.addTextChangedListener(ThousandSeparatorTextWatcher(etPrice))
@@ -146,17 +132,13 @@ class BasePriceActivity : AppCompatActivity() {
 
     private fun showEditPriceDialog(category: String, title: String) {
         val inflater = LayoutInflater.from(this)
-        val view = try {
-            inflater.inflate(R.layout.dialog_add_item, null)
-        } catch (e: Exception) {
+        val view = try { inflater.inflate(R.layout.dialog_add_item, null) } catch (e: Exception) {
             Toast.makeText(this, "layout dialog_add_item موجود نیست", Toast.LENGTH_SHORT).show()
             return
         }
-
         val etTitle = view.findViewById<EditText>(R.id.etItemTitle)
         val etPrice = view.findViewById<EditText>(R.id.etItemPrice)
-        etTitle.setText(title)
-        etTitle.isEnabled = false
+        etTitle.setText(title); etTitle.isEnabled = false
         etPrice.addTextChangedListener(ThousandSeparatorTextWatcher(etPrice))
 
         val existing = PrefsHelper.getFloat(this, "${category}_$title", 0f)
@@ -187,8 +169,7 @@ class BasePriceActivity : AppCompatActivity() {
 
     private fun showRenameDialog(category: String, oldTitle: String) {
         val edit = EditText(this)
-        edit.setText(oldTitle)
-        edit.hint = "عنوان جدید"
+        edit.setText(oldTitle); edit.hint = "عنوان جدید"
 
         AlertDialog.Builder(this)
             .setTitle("تغییر نام")
@@ -206,7 +187,7 @@ class BasePriceActivity : AppCompatActivity() {
                             Toast.makeText(this@BasePriceActivity, "نام تغییر کرد", Toast.LENGTH_SHORT).show()
                             refreshList()
                         } else {
-                            Toast.makeText(this@BasePriceActivity, "تغییر نام ممکن نیست (عنوان جدید ممکن است وجود داشته باشد)", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@BasePriceActivity, "تغییر نام ممکن نیست", Toast.LENGTH_SHORT).show()
                         }
                     }
                 }
