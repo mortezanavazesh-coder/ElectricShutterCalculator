@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import androidx.appcompat.app.AppCompatActivity
 
 /**
  * items: List<Pair<title, price>>
@@ -49,3 +50,4 @@ class BasePriceAdapter(
         notifyDataSetChanged()
     }
 }
+
