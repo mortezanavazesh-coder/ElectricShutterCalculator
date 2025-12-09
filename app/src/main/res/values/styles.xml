@@ -1,13 +1,6 @@
 <resources>
 
-    <!-- تم کلی اپ -->
-    <style name="AppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
-        <item name="colorPrimary">#121212</item>
-        <item name="colorPrimaryDark">#000000</item>
-        <item name="colorAccent">#00FFAA</item>
-        <item name="android:textColor">#FFFFFF</item>
-        <item name="android:windowBackground">#121212</item>
-    </style>
+  
 
     <!-- استایل عنوان‌های بخش‌ها -->
     <style name="SectionTitle">
@@ -27,3 +20,4 @@
     </style>
 
 </resources>
+
