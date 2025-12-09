@@ -9,17 +9,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ElectricShutterCalculator">
 
+        <!-- صفحه محاسبه قطر رول -->
         <activity android:name=".RollCalculatorActivity" android:exported="true" />
-        <activity android:name=".BasePriceActivity" android:exported="true" />
-        <activity android:name=".MainActivity" android:exported="true">
-		<activity android:name=".RollDiameterActivity"
-          android:exported="false"
-          android:label="صفحه قطر رول"/>
 
+        <!-- صفحه قیمت پایه -->
+        <activity android:name=".BasePriceActivity" android:exported="true" />
+
+        <!-- صفحه قطر رول (اضافی) -->
+        <activity
+            android:name=".RollDiameterActivity"
+            android:exported="false"
+            android:label="صفحه قطر رول" />
+
+        <!-- اکتیویتی اصلی -->
+        <activity android:name=".MainActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 </manifest>
