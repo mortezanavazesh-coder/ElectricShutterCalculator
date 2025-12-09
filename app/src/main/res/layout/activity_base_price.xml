@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fillViewport="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -16,8 +17,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
-            android:cardElevation="4dp"
-            android:cardCornerRadius="8dp">
+            app:cardElevation="4dp"
+            app:cardCornerRadius="8dp">
 
             <LinearLayout
                 android:orientation="vertical"
@@ -60,8 +61,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
-            android:cardElevation="4dp"
-            android:cardCornerRadius="8dp">
+            app:cardElevation="4dp"
+            app:cardCornerRadius="8dp">
 
             <LinearLayout
                 android:orientation="vertical"
@@ -104,8 +105,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
-            android:cardElevation="4dp"
-            android:cardCornerRadius="8dp">
+            app:cardElevation="4dp"
+            app:cardCornerRadius="8dp">
 
             <LinearLayout
                 android:orientation="vertical"
@@ -148,8 +149,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
-            android:cardElevation="4dp"
-            android:cardCornerRadius="8dp">
+            app:cardElevation="4dp"
+            app:cardCornerRadius="8dp">
 
             <LinearLayout
                 android:orientation="vertical"
@@ -192,8 +193,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
-            android:cardElevation="4dp"
-            android:cardCornerRadius="8dp">
+            app:cardElevation="4dp"
+            app:cardCornerRadius="8dp">
 
             <LinearLayout
                 android:orientation="vertical"
@@ -235,8 +236,8 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:cardElevation="4dp"
-            android:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            app:cardCornerRadius="8dp"
             android:layout_marginBottom="88dp">
 
             <LinearLayout
@@ -253,63 +254,4 @@
                     android:layout_height="wrap_content" />
 
                 <TextView
-                    android:text="نرخ نصب (تومان به ازای هر متر مربع)"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp" />
-
-                <EditText
-                    android:id="@+id/inputInstallBase"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="numberDecimal" />
-
-                <TextView
-                    android:text="جوشکاری (تومان)"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp" />
-
-                <EditText
-                    android:id="@+id/inputWeldingBase"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="numberDecimal" />
-
-                <TextView
-                    android:text="کرایه حمل (تومان)"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp" />
-
-                <EditText
-                    android:id="@+id/inputTransportBase"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="numberDecimal" />
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="end"
-                    android:layout_marginTop="16dp">
-
-                    <Button
-                        android:id="@+id/buttonSaveAll"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="ذخیرهٔ همه" />
-
-                    <Button
-                        android:id="@+id/buttonBack"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="بازگشت"
-                        android:layout_marginStart="12dp" />
-                </LinearLayout>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-    </LinearLayout>
-</androidx.core.widget.NestedScrollView>
+                    android:text="ن
