@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:cardElevation="2dp"
+    android:cardCornerRadius="6dp"
+    android:foreground="?attr/selectableItemBackground">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:gravity="center_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- نام کالا -->
+        <TextView
+            android:id="@+id/tvItemTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="نام کالا"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#212121" />
+
+        <!-- قیمت کالا -->
+        <TextView
+            android:id="@+id/tvItemPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="0"
+            android:textSize="14sp"
+            android:textColor="#1565C0"
+            android:gravity="end" />
+
+        <!-- دکمه تغییر نام -->
+        <ImageButton
+            android:id="@+id/btnRenameItem"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_edit"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="تغییر نام" />
+
+        <!-- دکمه ویرایش قیمت -->
+        <ImageButton
+            android:id="@+id/btnEditItem"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_price"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="ویرایش قیمت" />
+
+        <!-- دکمه حذف -->
+        <ImageButton
+            android:id="@+id/btnDeleteItem"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_delete"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="حذف" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

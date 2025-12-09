@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- رنگ‌های اصلی اپ -->
+    <color name="colorPrimary">#1565C0</color>          <!-- آبی اصلی -->
+    <color name="colorPrimaryVariant">#0D47A1</color>   <!-- آبی تیره‌تر -->
+    <color name="colorOnPrimary">#FFFFFF</color>        <!-- متن روی آبی -->
+
+    <!-- رنگ‌های ثانویه -->
+    <color name="colorSecondary">#FF9800</color>        <!-- نارنجی -->
+    <color name="colorOnSecondary">#000000</color>      <!-- متن روی نارنجی -->
+
+    <!-- رنگ پس‌زمینه -->
+    <color name="colorBackgroundLight">#F5F5F5</color>  <!-- خاکستری روشن -->
+    <color name="colorCardBackground">#FFFFFF</color>   <!-- سفید برای کارت‌ها -->
+
+    <!-- رنگ متن‌ها -->
+    <color name="colorTextPrimary">#212121</color>      <!-- مشکی اصلی -->
+    <color name="colorTextSecondary">#757575</color>    <!-- خاکستری متن فرعی -->
+
+    <!-- رنگ هشدار/خطا -->
+    <color name="colorError">#D32F2F</color>            <!-- قرمز -->
+    <color name="colorSuccess">#388E3C</color>          <!-- سبز موفقیت -->
+</resources>

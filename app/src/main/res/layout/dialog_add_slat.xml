@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!-- نام تیغه -->
+    <EditText
+        android:id="@+id/etSlatTitle"
+        android:hint="نام تیغه"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <!-- قیمت تیغه -->
+    <EditText
+        android:id="@+id/etSlatPrice"
+        android:hint="قیمت (تومان)"
+        android:inputType="numberDecimal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <!-- پهنای تیغه -->
+    <EditText
+        android:id="@+id/etSlatWidth"
+        android:hint="پهنای تیغه (cm)"
+        android:inputType="numberDecimal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <!-- ضخامت تیغه -->
+    <EditText
+        android:id="@+id/etSlatThickness"
+        android:hint="ضخامت تیغه (cm)"
+        android:inputType="numberDecimal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

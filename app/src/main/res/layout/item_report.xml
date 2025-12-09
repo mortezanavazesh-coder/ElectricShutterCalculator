@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    android:cardElevation="4dp"
+    android:cardCornerRadius="8dp"
+    android:foreground="?attr/selectableItemBackground">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- نام مشتری -->
+        <TextView
+            android:id="@+id/tvCustomerName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="نام مشتری"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@color/colorPrimary"/>
+
+        <!-- تاریخ گزارش -->
+        <TextView
+            android:id="@+id/tvReportDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="تاریخ: 1404/09/18"
+            android:textSize="12sp"
+            android:textColor="@color/colorTextSecondary"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- خلاصه موارد -->
+        <TextView
+            android:id="@+id/tvSummaryBlade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="تیغه: مدل A | قیمت: 2,000,000 تومان"/>
+
+        <TextView
+            android:id="@+id/tvSummaryMotor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="موتور: مدل X | قیمت: 3,500,000 تومان"/>
+
+        <TextView
+            android:id="@+id/tvSummaryTotal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="قیمت نهایی: 12,000,000 تومان"
+            android:textStyle="bold"
+            android:textColor="@color/colorSuccess"
+            android:layout_marginTop="6dp"/>
+
+        <!-- دکمه حذف -->
+        <ImageButton
+            android:id="@+id/btnDeleteReport"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_delete"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="حذف گزارش"
+            android:layout_gravity="end"
+            android:tint="@color/colorError"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/colorBackgroundLight">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView android:id="@+id/tvCustomerName"
+            android:text="نام مشتری: -" android:textStyle="bold"
+            android:textSize="18sp" android:layout_marginBottom="8dp"/>
+
+        <TextView android:id="@+id/tvReportDate"
+            android:text="تاریخ: -" android:layout_marginBottom="12dp"/>
+
+        <TextView android:id="@+id/tvHeight" android:text="ارتفاع: -"/>
+        <TextView android:id="@+id/tvWidth" android:text="عرض: -"/>
+        <TextView android:id="@+id/tvArea" android:text="مساحت: -"
+            android:layout_marginBottom="12dp"/>
+
+        <TextView android:id="@+id/tvBlade" android:text="تیغه: -"/>
+        <TextView android:id="@+id/tvMotor" android:text="موتور: -"/>
+        <TextView android:id="@+id/tvShaft" android:text="شفت: -"/>
+        <TextView android:id="@+id/tvBox" android:text="قوطی: -"
+            android:layout_marginBottom="12dp"/>
+
+        <TextView android:id="@+id/tvInstall" android:text="نصب: -"/>
+        <TextView android:id="@+id/tvWelding" android:text="جوشکاری: -"/>
+        <TextView android:id="@+id/tvTransport" android:text="کرایه حمل: -"/>
+        <TextView android:id="@+id/tvExtras" android:text="گزینه‌های اضافی: -"
+            android:layout_marginBottom="12dp"/>
+
+        <TextView android:id="@+id/tvTotal"
+            android:text="قیمت نهایی: -" android:textStyle="bold"
+            android:textSize="20sp" android:textColor="@color/colorSuccess"/>
+    </LinearLayout>
+</ScrollView>
