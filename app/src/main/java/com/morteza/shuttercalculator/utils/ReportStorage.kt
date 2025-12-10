@@ -1,62 +1,64 @@
 package com.morteza.shuttercalculator.utils
 
 import android.content.Context
+import android.content.SharedPreferences
+import android.util.Log
 import com.google.gson.Gson
-import com.google.gson.JsonSyntaxException
-import com.google.gson.reflect.TypeToken
 import com.morteza.shuttercalculator.ReportModel
 
 object ReportStorage {
 
-    private const val PREFS_NAME = "reports_prefs"
-    private const val KEY_REPORTS = "reports_list"
+    private const val PREFS_NAME = "reports"
+    private const val TAG = "ReportStorage"
 
-    private val gson = Gson()
+    private fun getPrefs(context: Context): SharedPreferences =
+        context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
-    // ذخیره یا به‌روزرسانی یک گزارش (upsert بر اساس id)
-    fun saveReport(context: Context, report: ReportModel) {
-        val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-        val reports = loadReports(context).toMutableList()
-
-        val index = reports.indexOfFirst { it.id == report.id }
-        if (index >= 0) {
-            reports[index] = report
-        } else {
-            reports.add(report)
-        }
-
-        prefs.edit().putString(KEY_REPORTS, gson.toJson(reports)).apply()
-    }
-
-    // بارگذاری همه گزارش‌ها (ایمن در برابر نال و JSON خراب)
-    fun loadReports(context: Context): List<ReportModel> {
-        val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-        val json = prefs.getString(KEY_REPORTS, null) ?: return emptyList()
-        return try {
-            val type = object : TypeToken<List<ReportModel>>() {}.type
-            gson.fromJson<List<ReportModel>>(json, type) ?: emptyList()
-        } catch (e: JsonSyntaxException) {
-            // در صورت خراب بودن JSON، پاک‌سازی نرم و بازگشت لیست خالی
-            emptyList()
-        }
-    }
-
-    // حذف یک گزارش بر اساس id (ایمن‌تر از remove با برابری آبجکت)
-    fun deleteReport(context: Context, report: ReportModel) {
-        val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-        val reports = loadReports(context).toMutableList()
-        val removed = reports.removeAll { it.id == report.id }
-        if (removed) {
-            prefs.edit().putString(KEY_REPORTS, gson.toJson(reports)).apply()
-        }
-    }
-
-    // پاک کردن همه گزارش‌ها
-    fun clearAllReports(context: Context) {
-        val prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-        prefs.edit().remove(KEY_REPORTS).apply()
-    }
-
-    // ایجاد یک id جدید پیشنهادی (اختیاری برای استفاده هنگام ساخت ReportModel)
     fun generateId(): Long = System.currentTimeMillis()
+
+    fun saveReport(context: Context, report: ReportModel) {
+        try {
+            val prefs = getPrefs(context)
+            val editor = prefs.edit()
+            val key = "report_${report.id}"
+            editor.putString(key, Gson().toJson(report))
+            editor.apply()
+        } catch (e: Exception) {
+            Log.e(TAG, "saveReport failed", e)
+        }
+    }
+
+    fun loadReports(context: Context): List<ReportModel> {
+        val prefs = getPrefs(context)
+        val gson = Gson()
+        val list = mutableListOf<ReportModel>()
+        for ((_, value) in prefs.all) {
+            if (value is String) {
+                try {
+                    val report = gson.fromJson(value, ReportModel::class.java)
+                    list.add(report)
+                } catch (e: Exception) {
+                    Log.w(TAG, "skip invalid report", e)
+                }
+            }
+        }
+        return list.sortedByDescending { it.id }
+    }
+
+    fun deleteReport(context: Context, report: ReportModel) {
+        try {
+            val prefs = getPrefs(context)
+            prefs.edit().remove("report_${report.id}").apply()
+        } catch (e: Exception) {
+            Log.e(TAG, "deleteReport failed", e)
+        }
+    }
+
+    fun clearAll(context: Context) {
+        try {
+            getPrefs(context).edit().clear().apply()
+        } catch (e: Exception) {
+            Log.e(TAG, "clearAll failed", e)
+        }
+    }
 }
