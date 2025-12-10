@@ -284,58 +284,53 @@
         </LinearLayout>
     </ScrollView>
 
-    <!-- نوار دکمه‌های پایین (دو ستون برابر + دو دکمه تمام‌عرض) -->
+    <!-- نوار دکمه‌های پایین یکپارچه -->
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="12dp"
-        android:layout_gravity="bottom"
-        android:background="@android:color/white"
-        android:elevation="4dp">
-
-        <!-- دکمه‌های با وزن برابر -->
-        <Button
-            android:id="@+id/buttonSaveReport"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="ذخیره گزارش"
-            android:layout_marginEnd="8dp"/>
-
-        <Button
-            android:id="@+id/buttonBasePrice"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="صفحه قیمت پایه"/>
-
-    </LinearLayout>
-
-    <!-- نوار دکمه‌های پایین دوم (تمام عرض هر کدام در یک خط جدا) -->
-    <LinearLayout
+        android:id="@+id/bottomBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="12dp"
         android:layout_gravity="bottom"
-        android:layout_marginTop="64dp"
         android:background="@android:color/white"
         android:elevation="4dp">
 
+        <!-- ردیف دکمه‌های با وزن برابر -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonSaveReport"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="ذخیره گزارش"
+                android:layout_marginEnd="8dp"/>
+
+            <Button
+                android:id="@+id/buttonBasePrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="صفحه قیمت پایه"/>
+        </LinearLayout>
+
+        <!-- دکمه‌های تمام‌عرض مطابق کد -->
         <Button
-            android:id="@+id/buttonGoToReports"
+            android:id="@+id/buttonReports"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="صفحه گزارشات"
+            android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"/>
 
         <Button
-            android:id="@+id/buttonGoToRollCalculator"
+            android:id="@+id/buttonRollDiameter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="صفحه قطر رول"/>
-
     </LinearLayout>
 
 </FrameLayout>
