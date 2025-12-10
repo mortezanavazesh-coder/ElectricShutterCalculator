@@ -1,3 +1,7 @@
+package com.morteza.shuttercalculator
+
+import java.io.Serializable
+
 data class ReportModel(
     val id: Long,
     val customerName: String,
