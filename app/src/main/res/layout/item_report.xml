@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="4dp">
+    android:layout_marginBottom="12dp"
+    android:cardElevation="4dp"
+    android:cardCornerRadius="8dp"
+    android:foreground="?attr/selectableItemBackground">
 
     <LinearLayout
         android:orientation="vertical"
@@ -13,79 +13,57 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!-- عنوان گزارش -->
+        <!-- نام مشتری -->
         <TextView
-            android:id="@+id/textReportTitle"
+            android:id="@+id/tvCustomerName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="عنوان گزارش"
+            android:text="نام مشتری"
             android:textStyle="bold"
             android:textSize="16sp"
-            android:layout_marginBottom="8dp" />
+            android:textColor="@color/colorPrimary"/>
 
         <!-- تاریخ گزارش -->
         <TextView
-            android:id="@+id/textReportDate"
+            android:id="@+id/tvReportDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="تاریخ: 1404/09/20"
-            android:textColor="#777777"
-            android:layout_marginBottom="8dp" />
+            android:text="تاریخ: 1404/09/18"
+            android:textSize="12sp"
+            android:textColor="@color/colorTextSecondary"
+            android:layout_marginBottom="8dp"/>
 
-        <!-- قیمت گزارش -->
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_price"
-                android:contentDescription="قیمت" />
-
-            <TextView
-                android:id="@+id/textReportPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="قیمت کل: 0 تومان"
-                android:layout_marginStart="8dp" />
-        </LinearLayout>
-
-        <!-- توضیحات -->
+        <!-- خلاصه موارد -->
         <TextView
-            android:id="@+id/textReportDescription"
+            android:id="@+id/tvSummaryBlade"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="توضیحات گزارش..."
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="12dp" />
+            android:text="تیغه: مدل A | قیمت: 2,000,000 تومان"/>
 
-        <!-- دکمه‌های عملیات -->
-        <LinearLayout
-            android:orientation="horizontal"
+        <TextView
+            android:id="@+id/tvSummaryMotor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="end">
+            android:text="موتور: مدل X | قیمت: 3,500,000 تومان"/>
 
-            <ImageButton
-                android:id="@+id/buttonEditReport"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_edit"
-                android:contentDescription="ویرایش گزارش"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:layout_marginEnd="8dp" />
+        <TextView
+            android:id="@+id/tvSummaryTotal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="قیمت نهایی: 12,000,000 تومان"
+            android:textStyle="bold"
+            android:textColor="@color/colorSuccess"
+            android:layout_marginTop="6dp"/>
 
-            <ImageButton
-                android:id="@+id/buttonDeleteReport"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_delete"
-                android:contentDescription="حذف گزارش"
-                android:background="?attr/selectableItemBackgroundBorderless" />
-        </LinearLayout>
-
+        <!-- دکمه حذف -->
+        <ImageButton
+            android:id="@+id/btnDeleteReport"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_delete"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="حذف گزارش"
+            android:layout_gravity="end"
+            android:tint="@color/colorError"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
