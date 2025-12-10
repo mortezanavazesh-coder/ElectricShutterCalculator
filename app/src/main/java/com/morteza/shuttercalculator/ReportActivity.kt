@@ -10,11 +10,11 @@ import com.morteza.shuttercalculator.utils.ReportStorage
 class ReportActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var adapter: ReportAdapter
+    private lateinit var adapter: ReportAdapte
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_reports)
+        setContentView(R.layout.activity_report)
 
         recyclerView = findViewById(R.id.recyclerReports)
         recyclerView.layoutManager = LinearLayoutManager(this)
