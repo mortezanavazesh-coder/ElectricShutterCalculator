@@ -10,7 +10,7 @@ import com.morteza.shuttercalculator.utils.ReportStorage
 class ReportActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var adapter: ReportAdapte
+    private lateinit var adapter: ReportAdapter   // اصلاح شد
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
