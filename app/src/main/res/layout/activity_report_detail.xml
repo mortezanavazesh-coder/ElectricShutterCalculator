@@ -17,6 +17,7 @@
             android:text="نام مشتری"
             android:textStyle="bold"
             android:textSize="18sp"
+            android:textColor="#212121"
             android:layout_marginBottom="8dp"/>
 
         <!-- تاریخ گزارش -->
@@ -26,7 +27,15 @@
             android:layout_height="wrap_content"
             android:text="تاریخ"
             android:textSize="16sp"
-            android:layout_marginBottom="8dp"/>
+            android:textColor="#757575"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#DDDDDD"
+            android:layout_marginBottom="12dp"/>
 
         <!-- ابعاد -->
         <TextView
@@ -43,13 +52,19 @@
             android:text="عرض"
             android:layout_marginBottom="8dp"/>
 
-        <!-- مساحت -->
         <TextView
             android:id="@+id/tvArea"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="مساحت"
-            android:layout_marginBottom="8dp"/>
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#DDDDDD"
+            android:layout_marginBottom="12dp"/>
 
         <!-- اجزای کرکره -->
         <TextView
@@ -78,7 +93,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="قوطی"
-            android:layout_marginBottom="8dp"/>
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#DDDDDD"
+            android:layout_marginBottom="12dp"/>
 
         <!-- هزینه‌ها -->
         <TextView
@@ -100,7 +122,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="کرایه حمل"
-            android:layout_marginBottom="8dp"/>
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#DDDDDD"
+            android:layout_marginBottom="12dp"/>
 
         <!-- اضافات -->
         <TextView
@@ -108,7 +137,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="اضافات"
-            android:layout_marginBottom="8dp"/>
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#DDDDDD"
+            android:layout_marginBottom="12dp"/>
 
         <!-- جمع کل -->
         <TextView
