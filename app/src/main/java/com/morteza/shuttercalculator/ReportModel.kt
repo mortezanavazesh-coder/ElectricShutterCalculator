@@ -1,20 +1,17 @@
-package com.morteza.shuttercalculator
-
-// مدل داده گزارش
 data class ReportModel(
-    val id: Long,                // شناسه یکتا
-    val customerName: String,    // نام مشتری
-    val date: String,            // تاریخ گزارش
-    val height: Float,           // ارتفاع کرکره (cm)
-    val width: Float,            // عرض کرکره (cm)
-    val area: String,            // مساحت محاسبه‌شده (نمایش متنی)
-    val blade: String,           // تیغه انتخابی
-    val motor: String,           // موتور انتخابی
-    val shaft: String,           // شفت انتخابی
-    val box: String,             // قوطی انتخابی یا محاسبه نشده
-    val install: String,         // هزینه نصب محاسبه‌شده
-    val welding: String,         // هزینه جوشکاری
-    val transport: String,       // هزینه حمل
-    val extras: String,          // گزینه‌های اضافی
-    val total: String            // جمع کل
-)
+    val id: Long,
+    val customerName: String,
+    val date: String,
+    val height: Float,
+    val width: Float,
+    val area: String,
+    val blade: String,
+    val motor: String,
+    val shaft: String,
+    val box: String,
+    val install: String,
+    val welding: String,
+    val transport: String,
+    val extras: String,
+    val total: String
+) : Serializable
