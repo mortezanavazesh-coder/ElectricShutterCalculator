@@ -9,29 +9,36 @@ import com.morteza.shuttercalculator.utils.ReportStorage
 
 class ReportActivity : AppCompatActivity() {
 
-    private lateinit var rvReports: RecyclerView
+    private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: ReportAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_report)
+        setContentView(R.layout.activity_reports)
 
-        rvReports = findViewById(R.id.rvReports)
-        rvReports.layoutManager = LinearLayoutManager(this)
+        recyclerView = findViewById(R.id.recyclerReports)
+        recyclerView.layoutManager = LinearLayoutManager(this)
 
         val reports = ReportStorage.loadReports(this)
-        adapter = ReportAdapter(reports,
+
+        adapter = ReportAdapter(
+            reports,
             onDelete = { report ->
                 ReportStorage.deleteReport(this, report)
-                adapter.updateData(ReportStorage.loadReports(this))
+                refreshReports()
                 Toast.makeText(this, "گزارش حذف شد", Toast.LENGTH_SHORT).show()
             },
             onClick = { report ->
-                // باز کردن صفحه جزئیات کامل گزارش
                 val intent = ReportDetailActivity.newIntent(this, report)
                 startActivity(intent)
             }
         )
-        rvReports.adapter = adapter
+
+        recyclerView.adapter = adapter
+    }
+
+    private fun refreshReports() {
+        val reports = ReportStorage.loadReports(this)
+        adapter.update(reports)
     }
 }
