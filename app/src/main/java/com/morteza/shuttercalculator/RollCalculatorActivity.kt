@@ -19,7 +19,6 @@ class RollCalculatorActivity : AppCompatActivity() {
         val buttonCalculate = findViewById<Button>(R.id.buttonCalculateRoll)
 
         val textTotalBlades = findViewById<TextView>(R.id.textTotalBlades)
-        val textFirstRoundBlades = findViewById<TextView>(R.id.textFirstRoundBlades)
         val textFullRounds = findViewById<TextView>(R.id.textFullRounds)
         val textPartialRound = findViewById<TextView>(R.id.textPartialRound)
         val textRemainingBlades = findViewById<TextView>(R.id.textRemainingBlades)
