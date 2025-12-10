@@ -224,6 +224,30 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupButtons() {
+	// ذخیره گزارش
+         findViewById<Button>(R.id.buttonSaveReport).setOnClickListener {
+             val report = ReportModel(
+                 id = ReportStorage.generateId(),
+                 customerName = "مشتری ناشناس", // می‌تونی بعداً ورودی نام مشتری بذاری
+                 date = FormatUtils.getTodayDate(),
+                 height = FormatUtils.parseTomanInput(inputHeightCm.text.toString()),
+                 width = FormatUtils.parseTomanInput(inputWidthCm.text.toString()),
+                 area = textAreaM2.text.toString(),
+                 blade = spinnerBlade.selectedItem?.toString() ?: "-",
+                 motor = spinnerMotor.selectedItem?.toString() ?: "-",
+                 shaft = spinnerShaft.selectedItem?.toString() ?: "-",
+                 box = if (checkboxBoxEnabled.isChecked) spinnerBox.selectedItem?.toString() ?: "-" else "محاسبه نشده",
+                 install = textInstallComputed.text.toString(),
+                 welding = inputWeldingPrice.text.toString(),
+                 transport = inputTransportPrice.text.toString(),
+                 extras = textBreakExtras.text.toString(),
+                 total = textTotal.text.toString()
+              )
+
+             ReportStorage.saveReport(this, report)
+             Toast.makeText(this, "گزارش ذخیره شد ✅", Toast.LENGTH_SHORT).show()
+          }
+
         // قیمت پایه
         buttonBasePrice.setOnClickListener {
             startActivity(Intent(this, BasePriceActivity::class.java))
