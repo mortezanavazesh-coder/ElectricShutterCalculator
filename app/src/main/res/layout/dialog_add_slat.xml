@@ -1,38 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:padding="16dp"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <!-- نام تیغه -->
     <EditText
         android:id="@+id/etSlatTitle"
-        android:hint="نام تیغه"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:hint="عنوان تیغه" />
 
-    <!-- قیمت تیغه -->
     <EditText
         android:id="@+id/etSlatPrice"
-        android:hint="قیمت (تومان)"
-        android:inputType="numberDecimal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:hint="قیمت تیغه"
+        android:inputType="numberDecimal"
+        android:layout_marginTop="8dp" />
 
-    <!-- پهنای تیغه -->
     <EditText
         android:id="@+id/etSlatWidth"
-        android:hint="پهنای تیغه (cm)"
-        android:inputType="numberDecimal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:hint="عرض تیغه (mm)"
+        android:inputType="numberDecimal"
+        android:layout_marginTop="8dp" />
 
-    <!-- ضخامت تیغه -->
     <EditText
         android:id="@+id/etSlatThickness"
-        android:hint="ضخامت تیغه (cm)"
-        android:inputType="numberDecimal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:hint="ضخامت تیغه (mm)"
+        android:inputType="numberDecimal"
+        android:layout_marginTop="8dp" />
 </LinearLayout>
