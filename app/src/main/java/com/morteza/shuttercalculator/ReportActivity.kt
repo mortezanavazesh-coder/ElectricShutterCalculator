@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.morteza.shuttercalculator.utils.ReportStorage
+import com.morteza.shuttercalculator.ReportModel
+
 
 class ReportActivity : AppCompatActivity() {
 
@@ -42,3 +44,4 @@ class ReportActivity : AppCompatActivity() {
         adapter.update(reports)
     }
 }
+
