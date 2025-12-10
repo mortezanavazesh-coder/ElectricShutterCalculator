@@ -1,7 +1,19 @@
 <resources>
+    <!-- رنگ‌های اصلی -->
     <color name="colorPrimary">#1565C0</color>
+    <color name="colorPrimaryVariant">#0D47A1</color>
     <color name="colorSecondary">#FF9800</color>
+    <color name="colorSecondaryVariant">#F57C00</color>
+
+    <!-- رنگ‌های پس‌زمینه و سطح -->
     <color name="colorBackground">#FAFAFA</color>
     <color name="colorSurface">#FFFFFF</color>
+
+    <!-- رنگ خطا -->
     <color name="colorError">#B00020</color>
+
+    <!-- رنگ‌های اضافی مورد نیاز -->
+    <color name="black">#000000</color>
+    <color name="gray">#757575</color>
+    <color name="teal_700">#00796B</color>
 </resources>
