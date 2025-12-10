@@ -9,7 +9,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.morteza.shuttercalculator.utils.FormatUtils
 import com.morteza.shuttercalculator.utils.PrefsHelper
+import com.morteza.shuttercalculator.utils.ThousandSeparatorTextWatcher
 import kotlinx.coroutines.*
 
 class BasePriceActivity : AppCompatActivity() {
@@ -63,6 +65,11 @@ class BasePriceActivity : AppCompatActivity() {
         buttonSaveAll = findViewById(R.id.buttonSaveAll)
         buttonBack = findViewById(R.id.buttonBack)
 
+        // TextWatcher برای فرمت هزارگان
+        inputInstallBase.addTextChangedListener(ThousandSeparatorTextWatcher(inputInstallBase))
+        inputWeldingBase.addTextChangedListener(ThousandSeparatorTextWatcher(inputWeldingBase))
+        inputTransportBase.addTextChangedListener(ThousandSeparatorTextWatcher(inputTransportBase))
+
         // setup adapters
         adapterSlats = createAdapter("تیغه")
         adapterMotors = createAdapter("موتور")
@@ -92,10 +99,16 @@ class BasePriceActivity : AppCompatActivity() {
         buttonSaveAll.setOnClickListener { saveCosts() }
         buttonBack.setOnClickListener { finish() }
 
-        // preload saved base costs
-        inputInstallBase.setText(PrefsHelper.getFloat(this, "base_install").let { if (it == 0f) "" else it.toString() })
-        inputWeldingBase.setText(PrefsHelper.getFloat(this, "base_welding").let { if (it == 0f) "" else it.toString() })
-        inputTransportBase.setText(PrefsHelper.getFloat(this, "base_transport").let { if (it == 0f) "" else it.toString() })
+        // preload saved base costs (کلیدها هماهنگ با MainActivity)
+        inputInstallBase.setText(
+            PrefsHelper.getFloat(this, "install_base").let { if (it == 0f) "" else FormatUtils.formatTomanPlain(it) }
+        )
+        inputWeldingBase.setText(
+            PrefsHelper.getFloat(this, "welding_base").let { if (it == 0f) "" else FormatUtils.formatTomanPlain(it) }
+        )
+        inputTransportBase.setText(
+            PrefsHelper.getFloat(this, "transport_base").let { if (it == 0f) "" else FormatUtils.formatTomanPlain(it) }
+        )
 
         refreshAll()
     }
@@ -107,7 +120,6 @@ class BasePriceActivity : AppCompatActivity() {
                 uiScope.launch {
                     withContext(Dispatchers.IO) {
                         PrefsHelper.removeOption(this@BasePriceActivity, category, title)
-                        // حذف قیمت ذخیره‌شده آیتم
                         PrefsHelper.removeKey(this@BasePriceActivity, "${category}_price_$title")
                     }
                     refreshCategory(category)
@@ -159,7 +171,7 @@ class BasePriceActivity : AppCompatActivity() {
             .setView(view)
             .setPositiveButton("افزودن") { dialog, _ ->
                 val title = etTitle.text.toString().trim()
-                val price = etPrice.text.toString().toFloatOrNull() ?: 0f
+                val price = FormatUtils.parseTomanInput(etPrice.text.toString())
                 val width = etWidth.text.toString().toFloatOrNull() ?: 0f
                 val thickness = etThickness.text.toString().toFloatOrNull() ?: 0f
 
@@ -189,7 +201,7 @@ class BasePriceActivity : AppCompatActivity() {
             .setView(view)
             .setPositiveButton("افزودن") { dialog, _ ->
                 val title = etTitle.text.toString().trim()
-                val price = etPrice.text.toString().toFloatOrNull() ?: 0f
+                val price = FormatUtils.parseTomanInput(etPrice.text.toString())
                 val diameter = etDiameter.text.toString().toFloatOrNull() ?: 0f
 
                 if (title.isEmpty() || price <= 0f || diameter <= 0f) {
@@ -217,7 +229,7 @@ class BasePriceActivity : AppCompatActivity() {
             .setView(view)
             .setPositiveButton("افزودن") { dialog, _ ->
                 val title = etTitle.text.toString().trim()
-                val price = etPrice.text.toString().toFloatOrNull() ?: 0f
+                val price = FormatUtils.parseTomanInput(etPrice.text.toString())
 
                 if (title.isEmpty() || price <= 0f) {
                     Toast.makeText(this, "عنوان و قیمت معتبر وارد کنید", Toast.LENGTH_SHORT).show()
@@ -234,13 +246,18 @@ class BasePriceActivity : AppCompatActivity() {
 
     // ------------------ ذخیره هزینه‌های پایه ------------------
     private fun saveCosts() {
-        val install = inputInstallBase.text.toString().toFloatOrNull() ?: 0f
-        val welding = inputWeldingBase.text.toString().toFloatOrNull() ?: 0f
-        val transport = inputTransportBase.text.toString().toFloatOrNull() ?: 0f
+        val install = FormatUtils.parseTomanInput(inputInstallBase.text.toString())
+        val welding = FormatUtils.parseTomanInput(inputWeldingBase.text.toString())
+        val transport = FormatUtils.parseTomanInput(inputTransportBase.text.toString())
 
-        PrefsHelper.putFloat(this, "base_install", install)
-        PrefsHelper.putFloat(this, "base_welding", welding)
-        PrefsHelper.putFloat(this, "base_transport", transport)
+        if (install <= 0f) {
+            Toast.makeText(this, "نرخ نصب باید بزرگتر از صفر باشد", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        PrefsHelper.putFloat(this, "install_base", install)
+        PrefsHelper.putFloat(this, "welding_base", welding)
+        PrefsHelper.putFloat(this, "transport_base", transport)
 
         Toast.makeText(this, "هزینه‌های پایه ذخیره شد", Toast.LENGTH_SHORT).show()
     }
@@ -281,13 +298,14 @@ class BasePriceActivity : AppCompatActivity() {
         val input = EditText(this)
         val key = "${category}_price_$title"
         val current = PrefsHelper.getFloat(this, key)
-        if (current > 0f) input.setText(current.toString())
+        if (current > 0f) input.setText(FormatUtils.formatTomanPlain(current))
+        input.addTextChangedListener(ThousandSeparatorTextWatcher(input))
 
         AlertDialog.Builder(this)
             .setTitle("ویرایش قیمت $category")
             .setView(input)
             .setPositiveButton("ذخیره") { dialog, _ ->
-                val value = input.text.toString().toFloatOrNull() ?: 0f
+                val value = FormatUtils.parseTomanInput(input.text.toString())
                 if (value <= 0f) {
                     Toast.makeText(this, "قیمت معتبر وارد کنید", Toast.LENGTH_SHORT).show()
                     return@setPositiveButton
