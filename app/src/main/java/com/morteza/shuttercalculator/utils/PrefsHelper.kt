@@ -30,6 +30,11 @@ object PrefsHelper {
         }
     }
 
+    // متد عمومی برای ذخیره‌سازی (همان putFloat که در BasePriceActivity استفاده می‌شود)
+    fun putFloat(context: Context, key: String, value: Float) {
+        saveFloat(context, key, value)
+    }
+
     // ------------------ Boolean helpers ------------------
     fun saveBool(context: Context, key: String, value: Boolean) {
         try {
@@ -49,7 +54,6 @@ object PrefsHelper {
     }
 
     // ------------------ Option management ------------------
-    // قیمت آیتم‌ها
     fun addOption(context: Context, category: String, name: String, price: Float) {
         try {
             val key = "${category}_price_$name"
@@ -64,6 +68,15 @@ object PrefsHelper {
             getPrefs(context).edit().remove("${category}_price_$name").apply()
         } catch (e: Exception) {
             Log.e(TAG, "removeOption failed for $category/$name", e)
+        }
+    }
+
+    // متد عمومی برای حذف کلید (همان removeKey که در BasePriceActivity استفاده می‌شود)
+    fun removeKey(context: Context, key: String) {
+        try {
+            getPrefs(context).edit().remove(key).apply()
+        } catch (e: Exception) {
+            Log.e(TAG, "removeKey failed for $key", e)
         }
     }
 
