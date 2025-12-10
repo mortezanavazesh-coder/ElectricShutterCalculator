@@ -6,6 +6,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.TextView
 import java.io.Serializable
+import com.morteza.shuttercalculator.ReportModel
+
 
 class ReportDetailActivity : AppCompatActivity() {
 
@@ -42,3 +44,4 @@ class ReportDetailActivity : AppCompatActivity() {
         }
     }
 }
+
