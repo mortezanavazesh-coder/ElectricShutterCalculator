@@ -1,28 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:padding="16dp"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <!-- نام کالا -->
     <EditText
         android:id="@+id/etItemTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="نام کالا"
-        android:inputType="textCapWords"
-        android:textColor="#212121"
-        android:textSize="14sp"
-        android:layout_marginBottom="12dp"/>
+        android:hint="عنوان" />
 
-    <!-- قیمت کالا -->
     <EditText
         android:id="@+id/etItemPrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="قیمت (تومان)"
-        android:inputType="number"
-        android:textColor="#212121"
-        android:textSize="14sp"/>
+        android:hint="قیمت"
+        android:inputType="numberDecimal"
+        android:layout_marginTop="8dp" />
 </LinearLayout>
