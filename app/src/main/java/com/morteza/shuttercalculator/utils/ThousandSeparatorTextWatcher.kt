@@ -9,14 +9,16 @@ import java.text.DecimalFormatSymbols
 import java.util.Locale
 
 /**
- * ساده و آگاه از چرخه حیات ویو: از WeakReference استفاده می‌کند تا نشت حافظه نداشته باشیم.
- * فرمت‌شدن هزارگان برای نمایش؛ هنگام ذخیره همیشه متن را با FormatUtils.parseTomanInput بخوان.
+ * TextWatcher برای فرمت هزارگان روی EditText
+ * از WeakReference استفاده می‌کند تا نشت حافظه نداشته باشیم.
+ * برای ذخیره همیشه متن را با FormatUtils.parseTomanInput بخوان.
  */
 class ThousandSeparatorTextWatcher(editText: EditText) : TextWatcher {
 
     private val editRef: WeakReference<EditText> = WeakReference(editText)
     private var current = ""
 
+    // جداکننده هزار با کاما (US) یا فارسی (IR)
     private val df = DecimalFormat("#,###", DecimalFormatSymbols(Locale.US))
 
     override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -27,14 +29,12 @@ class ThousandSeparatorTextWatcher(editText: EditText) : TextWatcher {
         val str = s?.toString() ?: ""
         if (str == current) return
 
-        // remove listener to avoid recursion
         edit.removeTextChangedListener(this)
 
-        // clean input (remove non-digits)
+        // حذف فاصله و جداکننده‌های قبلی
         val cleaned = str.replace("\\s".toRegex(), "")
             .replace(",", "")
             .replace("٬", "")
-            .replace(".", "")
 
         if (cleaned.isEmpty()) {
             current = ""
@@ -49,10 +49,8 @@ class ThousandSeparatorTextWatcher(editText: EditText) : TextWatcher {
             val formatted = df.format(value)
             current = formatted
             edit.setText(formatted)
-            // move cursor to end
-            edit.setSelection(formatted.length)
+            edit.setSelection(formatted.length) // مکان‌نما آخر متن
         } catch (e: Exception) {
-            // fallback: set raw
             current = cleaned
             edit.setText(cleaned)
             edit.setSelection(cleaned.length)
