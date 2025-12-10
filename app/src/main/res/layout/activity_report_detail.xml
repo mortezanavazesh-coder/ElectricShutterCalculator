@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="12dp">
@@ -7,154 +8,165 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:spacing="12dp">
 
-        <!-- نام مشتری -->
-        <TextView
-            android:id="@+id/tvCustomerName"
+        <!-- کارت اطلاعات مشتری -->
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="نام مشتری"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:textColor="#212121"
-            android:layout_marginBottom="8dp"/>
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            android:layout_marginBottom="12dp">
 
-        <!-- تاریخ گزارش -->
-        <TextView
-            android:id="@+id/tvReportDate"
+            <LinearLayout
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvCustomerName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="نام مشتری"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/tvReportDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="تاریخ"
+                    android:textSize="16sp"
+                    android:textColor="@color/gray"
+                    android:layout_marginTop="4dp"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- کارت ابعاد -->
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="تاریخ"
-            android:textSize="16sp"
-            android:textColor="#757575"
-            android:layout_marginBottom="12dp"/>
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            android:layout_marginBottom="12dp">
 
-        <!-- Divider -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#DDDDDD"
-            android:layout_marginBottom="12dp"/>
+            <LinearLayout
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <!-- ابعاد -->
-        <TextView
-            android:id="@+id/tvHeight"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="ارتفاع"
-            android:layout_marginBottom="4dp"/>
+                <TextView
+                    android:id="@+id/tvHeight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="ارتفاع"
+                    android:textSize="14sp"/>
 
-        <TextView
-            android:id="@+id/tvWidth"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="عرض"
-            android:layout_marginBottom="8dp"/>
+                <TextView
+                    android:id="@+id/tvWidth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="عرض"
+                    android:textSize="14sp"
+                    android:layout_marginTop="4dp"/>
 
-        <TextView
-            android:id="@+id/tvArea"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="مساحت"
-            android:layout_marginBottom="12dp"/>
+                <TextView
+                    android:id="@+id/tvArea"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="مساحت"
+                    android:textSize="14sp"
+                    android:layout_marginTop="4dp"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
-        <!-- Divider -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#DDDDDD"
-            android:layout_marginBottom="12dp"/>
-
-        <!-- اجزای کرکره -->
-        <TextView
-            android:id="@+id/tvBlade"
+        <!-- کارت اجزا -->
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="تیغه"
-            android:layout_marginBottom="4dp"/>
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            android:layout_marginBottom="12dp">
 
-        <TextView
-            android:id="@+id/tvMotor"
+            <LinearLayout
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView android:id="@+id/tvBlade" android:text="تیغه" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+                <TextView android:id="@+id/tvMotor" android:text="موتور" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp"/>
+                <TextView android:id="@+id/tvShaft" android:text="شفت" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp"/>
+                <TextView android:id="@+id/tvBox" android:text="قوطی" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- کارت هزینه‌ها -->
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="موتور"
-            android:layout_marginBottom="4dp"/>
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            android:layout_marginBottom="12dp">
 
-        <TextView
-            android:id="@+id/tvShaft"
+            <LinearLayout
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView android:id="@+id/tvInstall" android:text="نصب" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+                <TextView android:id="@+id/tvWelding" android:text="جوشکاری" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp"/>
+                <TextView android:id="@+id/tvTransport" android:text="کرایه حمل" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- کارت اضافات -->
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="شفت"
-            android:layout_marginBottom="4dp"/>
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            android:layout_marginBottom="12dp">
 
-        <TextView
-            android:id="@+id/tvBox"
+            <LinearLayout
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView android:id="@+id/tvExtras" android:text="اضافات" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- کارت جمع کل -->
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="قوطی"
-            android:layout_marginBottom="12dp"/>
+            app:cardCornerRadius="8dp"
+            app:cardElevation="6dp"
+            android:layout_marginBottom="12dp">
 
-        <!-- Divider -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#DDDDDD"
-            android:layout_marginBottom="12dp"/>
+            <LinearLayout
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <!-- هزینه‌ها -->
-        <TextView
-            android:id="@+id/tvInstall"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="نصب"
-            android:layout_marginBottom="4dp"/>
+                <TextView
+                    android:id="@+id/tvTotal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="جمع کل"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:textColor="@color/teal_700"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
-        <TextView
-            android:id="@+id/tvWelding"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="جوشکاری"
-            android:layout_marginBottom="4dp"/>
-
-        <TextView
-            android:id="@+id/tvTransport"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="کرایه حمل"
-            android:layout_marginBottom="12dp"/>
-
-        <!-- Divider -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#DDDDDD"
-            android:layout_marginBottom="12dp"/>
-
-        <!-- اضافات -->
-        <TextView
-            android:id="@+id/tvExtras"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="اضافات"
-            android:layout_marginBottom="12dp"/>
-
-        <!-- Divider -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#DDDDDD"
-            android:layout_marginBottom="12dp"/>
-
-        <!-- جمع کل -->
-        <TextView
-            android:id="@+id/tvTotal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="جمع کل"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:textColor="#1565C0"
-            android:layout_marginTop="12dp"/>
     </LinearLayout>
 </ScrollView>
