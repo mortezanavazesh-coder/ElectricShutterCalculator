@@ -1,27 +1,27 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- تم اصلی اپ -->
-    <style name="Theme.ElectricShutterCalculator" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- رنگ‌های اصلی -->
+    <!-- تم اصلی اپلیکیشن -->
+    <style name="Theme.ElectricShutterCalculator" parent="Theme.Material3.Light.NoActionBar">
+        <!-- رنگ‌ها -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
-        <item name="colorOnPrimary">@color/colorOnPrimary</item>
-
-        <!-- رنگ‌های ثانویه -->
         <item name="colorSecondary">@color/colorSecondary</item>
-        <item name="colorOnSecondary">@color/colorOnSecondary</item>
+        <item name="colorSecondaryVariant">@color/colorSecondaryVariant</item>
 
-        <!-- رنگ پس‌زمینه -->
-        <item name="android:colorBackground">@color/colorBackgroundLight</item>
-
-        <!-- رنگ متن‌ها -->
-        <item name="android:textColorPrimary">@color/colorTextPrimary</item>
-        <item name="android:textColorSecondary">@color/colorTextSecondary</item>
-
-        <!-- رنگ هشدار و موفقیت -->
+        <!-- پس‌زمینه و سطح -->
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="colorSurface">@color/colorSurface</item>
         <item name="colorError">@color/colorError</item>
-        <item name="colorSurface">@color/colorCardBackground</item>
+
+        <!-- متن روی رنگ‌ها -->
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+        <item name="colorOnSecondary">@color/colorOnSecondary</item>
+        <item name="colorOnBackground">@color/colorOnBackground</item>
+        <item name="colorOnSurface">@color/colorOnSurface</item>
+        <item name="colorOnError">@color/colorOnError</item>
+
+        <!-- فونت پیش‌فرض -->
+        <item name="android:fontFamily">@font/iran_yekan</item>
     </style>
 
 </resources>
-
