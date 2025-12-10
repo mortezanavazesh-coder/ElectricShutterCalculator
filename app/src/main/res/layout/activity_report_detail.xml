@@ -2,40 +2,123 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    android:background="@color/colorBackgroundLight">
+    android:padding="12dp">
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView android:id="@+id/tvCustomerName"
-            android:text="نام مشتری: -" android:textStyle="bold"
-            android:textSize="18sp" android:layout_marginBottom="8dp"/>
+        <!-- نام مشتری -->
+        <TextView
+            android:id="@+id/tvCustomerName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="نام مشتری"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginBottom="8dp"/>
 
-        <TextView android:id="@+id/tvReportDate"
-            android:text="تاریخ: -" android:layout_marginBottom="12dp"/>
+        <!-- تاریخ گزارش -->
+        <TextView
+            android:id="@+id/tvReportDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="تاریخ"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp"/>
 
-        <TextView android:id="@+id/tvHeight" android:text="ارتفاع: -"/>
-        <TextView android:id="@+id/tvWidth" android:text="عرض: -"/>
-        <TextView android:id="@+id/tvArea" android:text="مساحت: -"
-            android:layout_marginBottom="12dp"/>
+        <!-- ابعاد -->
+        <TextView
+            android:id="@+id/tvHeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ارتفاع"
+            android:layout_marginBottom="4dp"/>
 
-        <TextView android:id="@+id/tvBlade" android:text="تیغه: -"/>
-        <TextView android:id="@+id/tvMotor" android:text="موتور: -"/>
-        <TextView android:id="@+id/tvShaft" android:text="شفت: -"/>
-        <TextView android:id="@+id/tvBox" android:text="قوطی: -"
-            android:layout_marginBottom="12dp"/>
+        <TextView
+            android:id="@+id/tvWidth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="عرض"
+            android:layout_marginBottom="8dp"/>
 
-        <TextView android:id="@+id/tvInstall" android:text="نصب: -"/>
-        <TextView android:id="@+id/tvWelding" android:text="جوشکاری: -"/>
-        <TextView android:id="@+id/tvTransport" android:text="کرایه حمل: -"/>
-        <TextView android:id="@+id/tvExtras" android:text="گزینه‌های اضافی: -"
-            android:layout_marginBottom="12dp"/>
+        <!-- مساحت -->
+        <TextView
+            android:id="@+id/tvArea"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="مساحت"
+            android:layout_marginBottom="8dp"/>
 
-        <TextView android:id="@+id/tvTotal"
-            android:text="قیمت نهایی: -" android:textStyle="bold"
-            android:textSize="20sp" android:textColor="@color/colorSuccess"/>
+        <!-- اجزای کرکره -->
+        <TextView
+            android:id="@+id/tvBlade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="تیغه"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:id="@+id/tvMotor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="موتور"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:id="@+id/tvShaft"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="شفت"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:id="@+id/tvBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="قوطی"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- هزینه‌ها -->
+        <TextView
+            android:id="@+id/tvInstall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="نصب"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:id="@+id/tvWelding"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="جوشکاری"
+            android:layout_marginBottom="4dp"/>
+
+        <TextView
+            android:id="@+id/tvTransport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="کرایه حمل"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- اضافات -->
+        <TextView
+            android:id="@+id/tvExtras"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="اضافات"
+            android:layout_marginBottom="8dp"/>
+
+        <!-- جمع کل -->
+        <TextView
+            android:id="@+id/tvTotal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="جمع کل"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:textColor="#1565C0"
+            android:layout_marginTop="12dp"/>
     </LinearLayout>
 </ScrollView>
