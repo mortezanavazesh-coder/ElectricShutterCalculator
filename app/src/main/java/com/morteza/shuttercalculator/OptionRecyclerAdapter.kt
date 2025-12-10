@@ -6,60 +6,39 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.morteza.shuttercalculator.utils.FormatUtils
-import com.morteza.shuttercalculator.utils.PrefsHelper
 
 class OptionRecyclerAdapter(
-    private val category: String,
-    private var items: MutableList<String>,
-    private val onEdit: (name: String) -> Unit,
-    private val onDeleteRequest: (name: String, onConfirmed: () -> Unit) -> Unit
+    private var options: List<Pair<String, Float>>,
+    private val onEdit: (String) -> Unit,
+    private val onDelete: (String) -> Unit
 ) : RecyclerView.Adapter<OptionRecyclerAdapter.VH>() {
 
-    inner class VH(view: View) : RecyclerView.ViewHolder(view) {
-        val textName: TextView = view.findViewById(R.id.textOptionName)
-        val buttonEdit: ImageButton = view.findViewById(R.id.buttonEditOption)
-        val buttonDelete: ImageButton = view.findViewById(R.id.buttonDeleteOption)
-        val textPrice: TextView = view.findViewById(R.id.textOptionPrice)
+    class VH(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val tvName: TextView = itemView.findViewById(R.id.textOptionName)
+        val tvPrice: TextView = itemView.findViewById(R.id.textOptionPrice)
+        val btnEdit: ImageButton = itemView.findViewById(R.id.buttonEditOption)
+        val btnDelete: ImageButton = itemView.findViewById(R.id.buttonDeleteOption)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
-        val v = LayoutInflater.from(parent.context).inflate(R.layout.item_option, parent, false)
-        return VH(v)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_option, parent, false)
+        return VH(view)
     }
 
     override fun onBindViewHolder(holder: VH, position: Int) {
-        val name = items[position]
-        holder.textName.text = name
-        val price = PrefsHelper.getFloat(holder.itemView.context, "${category}_price_$name")
-        holder.textPrice.text = FormatUtils.formatToman(price)
+        val (name, price) = options[position]
+        holder.tvName.text = name
+        holder.tvPrice.text = price.toString()
 
-        holder.buttonEdit.setOnClickListener {
-            onEdit(name)
-        }
-
-        holder.buttonDelete.setOnClickListener {
-            onDeleteRequest(name) {
-                val pos = holder.bindingAdapterPosition
-                if (pos != RecyclerView.NO_POSITION) {
-                    removeAt(pos)
-                }
-            }
-        }
+        holder.btnEdit.setOnClickListener { onEdit(name) }
+        holder.btnDelete.setOnClickListener { onDelete(name) }
     }
 
-    override fun getItemCount(): Int = items.size
+    override fun getItemCount(): Int = options.size
 
-    fun updateItems(newItems: List<String>) {
-        items.clear()
-        items.addAll(newItems)
+    fun update(newOptions: List<Pair<String, Float>>) {
+        options = newOptions
         notifyDataSetChanged()
-    }
-
-    fun removeAt(pos: Int) {
-        if (pos in 0 until items.size) {
-            items.removeAt(pos)
-            notifyItemRemoved(pos)
-        }
     }
 }
