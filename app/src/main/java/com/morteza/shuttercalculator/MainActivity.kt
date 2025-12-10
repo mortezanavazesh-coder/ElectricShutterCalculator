@@ -12,6 +12,7 @@ import com.morteza.shuttercalculator.utils.FormatUtils
 import com.morteza.shuttercalculator.utils.PrefsHelper
 import com.morteza.shuttercalculator.utils.ThousandSeparatorTextWatcher
 import kotlin.math.max
+import com.morteza.shuttercalculator.utils.ReportStorage
 
 class MainActivity : AppCompatActivity() {
 
@@ -356,3 +357,4 @@ class MainActivity : AppCompatActivity() {
         textTotal.text = "قیمت نهایی: ${FormatUtils.formatToman(total.toFloat())}"
     }
 }
+
