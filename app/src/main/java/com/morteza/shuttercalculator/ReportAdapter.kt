@@ -1,38 +1,44 @@
+package com.morteza.shuttercalculator
+
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageButton
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+
 class ReportAdapter(
     private var reports: List<ReportModel>,
     private val onDelete: (ReportModel) -> Unit,
     private val onClick: (ReportModel) -> Unit
-) : RecyclerView.Adapter<ReportAdapter.ReportViewHolder>() {
+) : RecyclerView.Adapter<ReportAdapter.VH>() {
 
-    inner class ReportViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        val tvCustomerName: TextView = view.findViewById(R.id.tvCustomerName)
-        val tvReportDate: TextView = view.findViewById(R.id.tvReportDate)
-        val tvSummaryBlade: TextView = view.findViewById(R.id.tvSummaryBlade)
-        val tvSummaryMotor: TextView = view.findViewById(R.id.tvSummaryMotor)
-        val tvSummaryTotal: TextView = view.findViewById(R.id.tvSummaryTotal)
-        val btnDelete: ImageButton = view.findViewById(R.id.btnDeleteReport)
+    class VH(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val tvTitle: TextView = itemView.findViewById(R.id.textReportTitle)
+        val tvDate: TextView = itemView.findViewById(R.id.textReportDate)
+        val tvPrice: TextView = itemView.findViewById(R.id.textReportPrice)
+        val btnDelete: ImageButton = itemView.findViewById(R.id.buttonDeleteReport)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReportViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_report, parent, false)
-        return ReportViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_report, parent, false)
+        return VH(view)
     }
 
-    override fun onBindViewHolder(holder: ReportViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: VH, position: Int) {
         val report = reports[position]
-        holder.tvCustomerName.text = report.customerName
-        holder.tvReportDate.text = "تاریخ: ${report.date}"
-        holder.tvSummaryBlade.text = report.blade
-        holder.tvSummaryMotor.text = report.motor
-        holder.tvSummaryTotal.text = report.total
+        holder.tvTitle.text = report.customerName
+        holder.tvDate.text = report.date
+        holder.tvPrice.text = "جمع کل: ${report.total}"
 
-        holder.view.setOnClickListener { onClick(report) }
+        holder.itemView.setOnClickListener { onClick(report) }
         holder.btnDelete.setOnClickListener { onDelete(report) }
     }
 
     override fun getItemCount(): Int = reports.size
 
-    fun updateData(newReports: List<ReportModel>) {
+    fun update(newReports: List<ReportModel>) {
         reports = newReports
         notifyDataSetChanged()
     }
