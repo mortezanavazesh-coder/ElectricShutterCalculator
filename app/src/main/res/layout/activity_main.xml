@@ -12,13 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!-- کارت قیمت نهایی -->
+        <!-- کارت ابعاد -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardElevation="4dp"
+            android:layout_marginBottom="12dp"
             app:cardCornerRadius="8dp"
-            android:layout_marginBottom="12dp">
+            app:cardElevation="4dp">
 
             <LinearLayout
                 android:orientation="vertical"
@@ -26,70 +26,106 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView
-                    android:text="قیمت نهایی"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-                <TextView
-                    android:id="@+id/textTotal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="قیمت نهایی: -"
-                    android:textSize="18sp"/>
+                <TextView android:text="ابعاد کرکره" android:textStyle="bold" android:textSize="16sp"/>
+                <TextView android:text="ارتفاع (cm)"/>
+                <EditText android:id="@+id/inputHeightCm" android:layout_width="match_parent" android:inputType="numberDecimal"/>
+                <TextView android:text="عرض (cm)" android:paddingTop="6dp"/>
+                <EditText android:id="@+id/inputWidthCm" android:layout_width="match_parent" android:inputType="numberDecimal"/>
+                <TextView android:id="@+id/textAreaM2" android:text="مساحت: 0.000 متر مربع" android:paddingTop="6dp"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- دکمه‌ها به عنوان بخشی از اسکرول -->
-        <LinearLayout
-            android:id="@+id/bottomBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="12dp">
-
-            <!-- ردیف دکمه‌های با اندازه برابر -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/buttonSaveReport"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:text="ذخیره گزارش"
-                    android:layout_marginEnd="8dp"
-                    style="@style/PrimaryButton"/>
-
-                <Button
-                    android:id="@+id/buttonBasePrice"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:text="صفحه قیمت پایه"
-                    style="@style/PrimaryButton"/>
+        <!-- کارت تیغه -->
+        <androidx.cardview.widget.CardView ... >
+            <LinearLayout ... >
+                <TextView android:text="انتخاب تیغه" android:textStyle="bold"/>
+                <Spinner android:id="@+id/spinnerBlade"/>
+                <TextView android:id="@+id/textBladeLine" android:text="تیغه — قیمت پایه: - | قیمت کل: -"/>
             </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-            <!-- دکمه‌های تمام‌عرض -->
-            <Button
-                android:id="@+id/buttonReports"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:text="صفحه گزارشات"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                style="@style/PrimaryButton"/>
+        <!-- کارت موتور -->
+        <androidx.cardview.widget.CardView ... >
+            <LinearLayout ... >
+                <TextView android:text="انتخاب موتور" android:textStyle="bold"/>
+                <Spinner android:id="@+id/spinnerMotor"/>
+                <TextView android:id="@+id/textMotorLine" android:text="موتور — قیمت: -"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-            <Button
-                android:id="@+id/buttonRollDiameter"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:text="صفحه قطر رول"
-                style="@style/PrimaryButton"/>
+        <!-- کارت شفت -->
+        <androidx.cardview.widget.CardView ... >
+            <LinearLayout ... >
+                <TextView android:text="انتخاب شفت" android:textStyle="bold"/>
+                <Spinner android:id="@+id/spinnerShaft"/>
+                <TextView android:id="@+id/textShaftLine" android:text="شفت — قیمت پایه: - | قیمت کل: -"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- کارت قوطی -->
+        <androidx.cardview.widget.CardView ... >
+            <LinearLayout ... >
+                <TextView android:text="انتخاب قوطی" android:textStyle="bold"/>
+                <CheckBox android:id="@+id/checkboxBoxEnabled" android:text="محاسبه قوطی"/>
+                <Spinner android:id="@+id/spinnerBox"/>
+                <TextView android:id="@+id/textBoxLine" android:text="قوطی — محاسبه نشده"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- کارت هزینه‌ها -->
+        <androidx.cardview.widget.CardView ... >
+            <LinearLayout ... >
+                <TextView android:text="هزینه‌های پایه" android:textStyle="bold"/>
+                <TextView android:text="نرخ نصب"/>
+                <EditText android:id="@+id/inputInstallPrice" android:inputType="numberDecimal"/>
+                <TextView android:text="هزینه نصب محاسبه شده"/>
+                <TextView android:id="@+id/textInstallComputed" android:text="0 تومان"/>
+                <TextView android:text="قیمت جوشکاری"/>
+                <EditText android:id="@+id/inputWeldingPrice" android:inputType="numberDecimal"/>
+                <TextView android:text="کرایه حمل"/>
+                <EditText android:id="@+id/inputTransportPrice" android:inputType="numberDecimal"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- کارت گزینه‌های اضافی -->
+        <androidx.cardview.widget.CardView ... >
+            <LinearLayout ... >
+                <TextView android:text="گزینه‌های اضافی" android:textStyle="bold"/>
+                <LinearLayout android:id="@+id/extrasContainer" android:orientation="vertical"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- کارت ریز محاسبات -->
+        <androidx.cardview.widget.CardView ... >
+            <LinearLayout ... >
+                <TextView android:text="ریز محاسبات" android:textStyle="bold"/>
+                <TextView android:id="@+id/textBreakBlade" android:text="جمع تیغه: -"/>
+                <TextView android:id="@+id/textBreakMotor" android:text="موتور: -"/>
+                <TextView android:id="@+id/textBreakShaft" android:text="جمع شفت: -"/>
+                <TextView android:id="@+id/textBreakBox" android:text="جمع قوطی: -"/>
+                <TextView android:id="@+id/textBreakInstall" android:text="نصب: -"/>
+                <TextView android:id="@+id/textBreakWelding" android:text="جوشکاری: -"/>
+                <TextView android:id="@+id/textBreakTransport" android:text="کرایه حمل: -"/>
+                <TextView android:id="@+id/textBreakExtras" android:text="گزینه‌های اضافی: -"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- کارت قیمت نهایی -->
+        <androidx.cardview.widget.CardView ... >
+            <LinearLayout ... >
+                <TextView android:text="قیمت نهایی" android:textStyle="bold"/>
+                <TextView android:id="@+id/textTotal" android:text="قیمت نهایی: -" android:textSize="18sp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- دکمه‌ها -->
+        <LinearLayout android:id="@+id/bottomBar" android:orientation="vertical">
+            <LinearLayout android:orientation="horizontal">
+                <Button android:id="@+id/buttonSaveReport" android:text="ذخیره گزارش"/>
+                <Button android:id="@+id/buttonBasePrice" android:text="صفحه قیمت پایه"/>
+            </LinearLayout>
+            <Button android:id="@+id/buttonReports" android:text="صفحه گزارشات"/>
+            <Button android:id="@+id/buttonRollDiameter" android:text="صفحه قطر رول"/>
         </LinearLayout>
 
     </LinearLayout>
