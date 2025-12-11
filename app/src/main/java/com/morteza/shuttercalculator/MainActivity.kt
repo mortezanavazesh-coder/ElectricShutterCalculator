@@ -15,45 +15,42 @@ import kotlin.math.max
 
 class MainActivity : AppCompatActivity() {
 
-    // ViewModel
     private lateinit var vm: MainViewModel
 
-    // inputs (dimensions)
+    // ورودی‌ها
     private lateinit var inputHeightCm: EditText
     private lateinit var inputWidthCm: EditText
 
-    // derived displays
+    // نمایش‌ها
     private lateinit var textAreaM2: TextView
 
-    // blade
+    // تیغه
     private lateinit var spinnerBlade: Spinner
     private lateinit var textBladeLine: TextView
 
-    // motor
+    // موتور
     private lateinit var spinnerMotor: Spinner
     private lateinit var textMotorLine: TextView
 
-    // shaft
+    // شفت
     private lateinit var spinnerShaft: Spinner
     private lateinit var textShaftLine: TextView
 
-    // box (قوطی)
+    // قوطی
     private lateinit var checkboxBoxEnabled: CheckBox
     private lateinit var spinnerBox: Spinner
     private lateinit var textBoxLine: TextView
 
-    // editable base cost fields
+    // هزینه‌ها
     private lateinit var inputInstallPrice: EditText
     private lateinit var inputWeldingPrice: EditText
     private lateinit var inputTransportPrice: EditText
-
-    // computed install (non-editable)
     private lateinit var textInstallComputed: TextView
 
-    // extras (checkboxes container)
+    // گزینه‌های اضافی
     private lateinit var extrasContainer: LinearLayout
 
-    // breakdown views
+    // ریز محاسبات
     private lateinit var textBreakBlade: TextView
     private lateinit var textBreakMotor: TextView
     private lateinit var textBreakShaft: TextView
@@ -63,16 +60,16 @@ class MainActivity : AppCompatActivity() {
     private lateinit var textBreakTransport: TextView
     private lateinit var textBreakExtras: TextView
 
-    // final total
+    // جمع کل
     private lateinit var textTotal: TextView
 
-    // buttons
+    // دکمه‌ها
     private lateinit var buttonSaveReport: Button
     private lateinit var buttonBasePrice: Button
     private lateinit var buttonRollDiameter: Button
     private lateinit var buttonReports: Button
 
-    // keep previous valid install base
+    // نگهداری آخرین نرخ نصب معتبر
     private var previousInstallBase: Float = 0f
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -86,7 +83,6 @@ class MainActivity : AppCompatActivity() {
         setupSpinners()
         setupButtons()
 
-        // observe base prices and populate UI
         vm.basePrices.observe(this) { bp ->
             spinnerBlade.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, bp.blades)
                 .apply { setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item) }
@@ -154,7 +150,6 @@ class MainActivity : AppCompatActivity() {
         buttonRollDiameter = findViewById(R.id.buttonRollDiameter)
         buttonReports = findViewById(R.id.buttonReports)
 
-        // format helpers for editable numeric fields
         inputInstallPrice.addTextChangedListener(ThousandSeparatorTextWatcher(inputInstallPrice))
         inputWeldingPrice.addTextChangedListener(ThousandSeparatorTextWatcher(inputWeldingPrice))
         inputTransportPrice.addTextChangedListener(ThousandSeparatorTextWatcher(inputTransportPrice))
@@ -170,7 +165,7 @@ class MainActivity : AppCompatActivity() {
         inputHeightCm.addTextChangedListener(watcher)
         inputWidthCm.addTextChangedListener(watcher)
 
-        // install base editing with validation and persistence
+        // اعتبارسنجی و ذخیره نرخ نصب
         inputInstallPrice.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 val v = FormatUtils.parseTomanInput(s?.toString())
@@ -284,31 +279,31 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun recalcAllAndDisplay() {
-        // dimensions
+        // ابعاد
         val heightCm = max(0.0, parseDoubleSafe(inputHeightCm.text.toString()))
         val widthCm = max(0.0, parseDoubleSafe(inputWidthCm.text.toString()))
         val areaM2 = (widthCm * heightCm) / 10000.0
         textAreaM2.text = String.format("مساحت: %.3f متر مربع", areaM2)
 
-        // blade
+        // تیغه
         val bladeName = spinnerBlade.selectedItem as? String
         val bladeBase = if (bladeName != null) PrefsHelper.getFloat(this, "تیغه_price_$bladeName") else 0f
         val bladeComputed = areaM2 * bladeBase
         textBladeLine.text = "تیغه — قیمت پایه: ${FormatUtils.formatToman(bladeBase)}  |  قیمت کل: ${FormatUtils.formatToman(bladeComputed.toFloat())}"
 
-        // motor
+        // موتور
         val motorName = spinnerMotor.selectedItem as? String
         val motorBase = if (motorName != null) PrefsHelper.getFloat(this, "موتور_price_$motorName") else 0f
         textMotorLine.text = "موتور — قیمت: ${FormatUtils.formatToman(motorBase)}"
 
-        // shaft
+        // شفت
         val shaftName = spinnerShaft.selectedItem as? String
         val shaftBase = if (shaftName != null) PrefsHelper.getFloat(this, "شفت_price_$shaftName") else 0f
         val widthM = widthCm / 100.0
         val shaftComputed = shaftBase * widthM
         textShaftLine.text = "شفت — قیمت پایه: ${FormatUtils.formatToman(shaftBase)}  |  قیمت کل: ${FormatUtils.formatToman(shaftComputed.toFloat())}"
 
-        // box
+        // قوطی
         val boxComputedValue = if (checkboxBoxEnabled.isChecked) {
             val boxName = spinnerBox.selectedItem as? String
             val boxBase = if (boxName != null) PrefsHelper.getFloat(this, "قوطی_price_$boxName") else 0f
@@ -322,7 +317,7 @@ class MainActivity : AppCompatActivity() {
             0.0
         }
 
-        // install / welding / transport
+        // نصب / جوشکاری / حمل
         val installRate = FormatUtils.parseTomanInput(inputInstallPrice.text.toString()).toDouble()
         val installComputed = when {
             areaM2 == 0.0 -> installRate
@@ -335,7 +330,7 @@ class MainActivity : AppCompatActivity() {
         val weldingComputed = FormatUtils.parseTomanInput(inputWeldingPrice.text.toString()).toDouble()
         val transportComputed = FormatUtils.parseTomanInput(inputTransportPrice.text.toString()).toDouble()
 
-        // extras total
+        // مجموع گزینه‌های اضافی
         val extras = PrefsHelper.getAllExtraOptions(this)
         var extrasTotal = 0.0
         for ((name, priceF) in extras) {
@@ -343,7 +338,7 @@ class MainActivity : AppCompatActivity() {
             if (enabled) extrasTotal += priceF.toDouble()
         }
 
-        // breakdown display
+        // نمایش ریزمحاسبات
         textBreakBlade.text = "جمع تیغه: ${FormatUtils.formatToman(bladeComputed.toFloat())}"
         textBreakMotor.text = "موتور: ${FormatUtils.formatToman(motorBase)}"
         textBreakShaft.text = "جمع شفت: ${FormatUtils.formatToman(shaftComputed.toFloat())}"
