@@ -29,8 +29,6 @@
             android:exported="false"
             android:label="صفحه قطر رول" />
 			
-			<activity android:name=".TestThemeActivity" android:exported="true" />
-
-
     </application>
 </manifest>
+
