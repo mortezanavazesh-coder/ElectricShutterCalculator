@@ -12,9 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!-- کارت‌ها (ابعاد، تیغه، موتور، شفت، قوطی، هزینه‌ها، گزینه‌های اضافی، ریز محاسبات) -->
-        <!-- همگی مثل نسخه‌ی قبلی باقی می‌مانند -->
-
         <!-- کارت قیمت نهایی -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -51,8 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="12dp"
-            android:elevation="4dp">
+            android:padding="12dp">
 
             <!-- ردیف دکمه‌های با اندازه برابر -->
             <LinearLayout
@@ -63,33 +59,37 @@
                 <Button
                     android:id="@+id/buttonSaveReport"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="48dp"
                     android:layout_weight="1"
                     android:text="ذخیره گزارش"
-                    android:layout_marginEnd="8dp"/>
+                    android:layout_marginEnd="8dp"
+                    style="@style/PrimaryButton"/>
 
                 <Button
                     android:id="@+id/buttonBasePrice"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="48dp"
                     android:layout_weight="1"
-                    android:text="صفحه قیمت پایه"/>
+                    android:text="صفحه قیمت پایه"
+                    style="@style/PrimaryButton"/>
             </LinearLayout>
 
             <!-- دکمه‌های تمام‌عرض -->
             <Button
                 android:id="@+id/buttonReports"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:text="صفحه گزارشات"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"/>
+                android:layout_marginBottom="8dp"
+                style="@style/PrimaryButton"/>
 
             <Button
                 android:id="@+id/buttonRollDiameter"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="صفحه قطر رول"/>
+                android:layout_height="48dp"
+                android:text="صفحه قطر رول"
+                style="@style/PrimaryButton"/>
         </LinearLayout>
 
     </LinearLayout>
