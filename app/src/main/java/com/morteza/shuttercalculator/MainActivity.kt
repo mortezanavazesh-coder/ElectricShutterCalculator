@@ -4,15 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.morteza.shuttercalculator.utils.FormatUtils
 import com.morteza.shuttercalculator.utils.PrefsHelper
 import com.morteza.shuttercalculator.utils.ThousandSeparatorTextWatcher
-import kotlin.math.max
 import com.morteza.shuttercalculator.utils.ReportStorage
+import kotlin.math.max
 
 class MainActivity : AppCompatActivity() {
 
@@ -44,7 +43,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var textBoxLine: TextView
 
     // editable base cost fields
-    private lateinit var inputInstallPriceBase: EditText
+    private lateinit var inputInstallPrice: EditText
     private lateinit var inputWeldingPrice: EditText
     private lateinit var inputTransportPrice: EditText
 
@@ -68,6 +67,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var textTotal: TextView
 
     // buttons
+    private lateinit var buttonSaveReport: Button
     private lateinit var buttonBasePrice: Button
     private lateinit var buttonRollDiameter: Button
     private lateinit var buttonReports: Button
@@ -97,7 +97,7 @@ class MainActivity : AppCompatActivity() {
             spinnerBox.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, bp.boxes)
                 .apply { setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item) }
 
-            inputInstallPriceBase.setText(FormatUtils.formatTomanPlain(bp.installBase))
+            inputInstallPrice.setText(FormatUtils.formatTomanPlain(bp.installBase))
             inputWeldingPrice.setText(FormatUtils.formatTomanPlain(bp.weldingBase))
             inputTransportPrice.setText(FormatUtils.formatTomanPlain(bp.transportBase))
 
@@ -131,7 +131,7 @@ class MainActivity : AppCompatActivity() {
         spinnerBox = findViewById(R.id.spinnerBox)
         textBoxLine = findViewById(R.id.textBoxLine)
 
-        inputInstallPriceBase = findViewById(R.id.inputInstallPrice)
+        inputInstallPrice = findViewById(R.id.inputInstallPrice)
         inputWeldingPrice = findViewById(R.id.inputWeldingPrice)
         inputTransportPrice = findViewById(R.id.inputTransportPrice)
         textInstallComputed = findViewById(R.id.textInstallComputed)
@@ -149,12 +149,13 @@ class MainActivity : AppCompatActivity() {
 
         textTotal = findViewById(R.id.textTotal)
 
+        buttonSaveReport = findViewById(R.id.buttonSaveReport)
         buttonBasePrice = findViewById(R.id.buttonBasePrice)
         buttonRollDiameter = findViewById(R.id.buttonRollDiameter)
         buttonReports = findViewById(R.id.buttonReports)
 
         // format helpers for editable numeric fields
-        inputInstallPriceBase.addTextChangedListener(ThousandSeparatorTextWatcher(inputInstallPriceBase))
+        inputInstallPrice.addTextChangedListener(ThousandSeparatorTextWatcher(inputInstallPrice))
         inputWeldingPrice.addTextChangedListener(ThousandSeparatorTextWatcher(inputWeldingPrice))
         inputTransportPrice.addTextChangedListener(ThousandSeparatorTextWatcher(inputTransportPrice))
     }
@@ -170,13 +171,13 @@ class MainActivity : AppCompatActivity() {
         inputWidthCm.addTextChangedListener(watcher)
 
         // install base editing with validation and persistence
-        inputInstallPriceBase.addTextChangedListener(object : TextWatcher {
+        inputInstallPrice.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 val v = FormatUtils.parseTomanInput(s?.toString())
                 if (v <= 0f) {
                     Toast.makeText(this@MainActivity, "نرخ نصب باید بزرگتر از صفر باشد", Toast.LENGTH_SHORT).show()
-                    inputInstallPriceBase.post {
-                        inputInstallPriceBase.setText(FormatUtils.formatTomanPlain(previousInstallBase))
+                    inputInstallPrice.post {
+                        inputInstallPrice.setText(FormatUtils.formatTomanPlain(previousInstallBase))
                     }
                     return
                 }
@@ -211,7 +212,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupSpinners() {
         val listener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+            override fun onItemSelected(parent: AdapterView<*>?, view: android.view.View?, position: Int, id: Long) {
                 recalcAllAndDisplay()
             }
             override fun onNothingSelected(parent: AdapterView<*>?) {}
@@ -225,29 +226,28 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupButtons() {
-	// ذخیره گزارش
-         findViewById<Button>(R.id.buttonSaveReport).setOnClickListener {
-             val report = ReportModel(
-                 id = ReportStorage.generateId(),
-                 customerName = "مشتری ناشناس", // می‌تونی بعداً ورودی نام مشتری بذاری
-                 date = FormatUtils.getTodayDate(),
-                 height = FormatUtils.parseTomanInput(inputHeightCm.text.toString()),
-                 width = FormatUtils.parseTomanInput(inputWidthCm.text.toString()),
-                 area = textAreaM2.text.toString(),
-                 blade = spinnerBlade.selectedItem?.toString() ?: "-",
-                 motor = spinnerMotor.selectedItem?.toString() ?: "-",
-                 shaft = spinnerShaft.selectedItem?.toString() ?: "-",
-                 box = if (checkboxBoxEnabled.isChecked) spinnerBox.selectedItem?.toString() ?: "-" else "محاسبه نشده",
-                 install = textInstallComputed.text.toString(),
-                 welding = inputWeldingPrice.text.toString(),
-                 transport = inputTransportPrice.text.toString(),
-                 extras = textBreakExtras.text.toString(),
-                 total = textTotal.text.toString()
-              )
-
-             ReportStorage.saveReport(this, report)
-             Toast.makeText(this, "گزارش ذخیره شد ✅", Toast.LENGTH_SHORT).show()
-          }
+        // ذخیره گزارش
+        buttonSaveReport.setOnClickListener {
+            val report = ReportModel(
+                id = ReportStorage.generateId(),
+                customerName = "مشتری ناشناس",
+                date = FormatUtils.getTodayDate(),
+                height = FormatUtils.parseTomanInput(inputHeightCm.text.toString()),
+                width = FormatUtils.parseTomanInput(inputWidthCm.text.toString()),
+                area = textAreaM2.text.toString(),
+                blade = spinnerBlade.selectedItem?.toString() ?: "-",
+                motor = spinnerMotor.selectedItem?.toString() ?: "-",
+                shaft = spinnerShaft.selectedItem?.toString() ?: "-",
+                box = if (checkboxBoxEnabled.isChecked) spinnerBox.selectedItem?.toString() ?: "-" else "محاسبه نشده",
+                install = textInstallComputed.text.toString(),
+                welding = inputWeldingPrice.text.toString(),
+                transport = inputTransportPrice.text.toString(),
+                extras = textBreakExtras.text.toString(),
+                total = textTotal.text.toString()
+            )
+            ReportStorage.saveReport(this, report)
+            Toast.makeText(this, "گزارش ذخیره شد ✅", Toast.LENGTH_SHORT).show()
+        }
 
         // قیمت پایه
         buttonBasePrice.setOnClickListener {
@@ -323,7 +323,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         // install / welding / transport
-        val installRate = FormatUtils.parseTomanInput(inputInstallPriceBase.text.toString()).toDouble()
+        val installRate = FormatUtils.parseTomanInput(inputInstallPrice.text.toString()).toDouble()
         val installComputed = when {
             areaM2 == 0.0 -> installRate
             areaM2 in 2.0..10.0 -> installRate * 10.0
