@@ -1,0 +1,21 @@
+package com.morteza.shuttercalculator
+
+import java.io.Serializable
+
+data class ReportModel(
+    val id: Long,
+    val customerName: String,
+    val date: String,
+    val height: Float,
+    val width: Float,
+    val area: String,
+    val blade: String,
+    val motor: String,
+    val shaft: String,
+    val box: String,
+    val install: String,
+    val welding: String,
+    val transport: String,
+    val extras: String,
+    val total: String
+) : Serializable

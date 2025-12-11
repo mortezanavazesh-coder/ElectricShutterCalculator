@@ -1,0 +1,20 @@
+<resources>
+    <!-- رنگ‌های اصلی -->
+    <color name="colorPrimary">#90CAF9</color> <!-- آبی روشن -->
+    <color name="colorPrimaryVariant">#42A5F5</color>
+    <color name="colorSecondary">#FFB74D</color> <!-- نارنجی ملایم -->
+    <color name="colorSecondaryVariant">#F57C00</color>
+
+    <!-- پس‌زمینه و سطح -->
+    <color name="colorBackground">#121212</color> <!-- پس‌زمینه اصلی -->
+    <color name="colorSurface">#1E1E1E</color> <!-- سطح کارت‌ها و دیالوگ‌ها -->
+
+    <!-- رنگ خطا -->
+    <color name="colorError">#CF6679</color>
+
+    <!-- رنگ‌های مکمل -->
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="gray">#B0BEC5</color>
+    <color name="teal_700">#80CBC4</color>
+</resources>
