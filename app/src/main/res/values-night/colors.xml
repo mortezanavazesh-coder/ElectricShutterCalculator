@@ -1,9 +1,0 @@
-<resources>
-    <color name="colorPrimary">#90CAF9</color>
-    <color name="colorSecondary">#FFB74D</color>
-    <color name="colorBackground">#121212</color>
-    <color name="colorSurface">#1E1E1E</color>
-    <color name="colorError">#CF6679</color>
-    <color name="black">#000000</color>
-</resources>
-
