@@ -1,13 +1,16 @@
 <resources>
 
-    <!-- استایل کلی اپ -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <!-- رنگ‌های اصلی -->
-        <item name="colorPrimary">#2196F3</item>
-        <item name="colorPrimaryVariant">#1976D2</item>
+    <!-- تم کلی اپ -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.NoActionBar">
+        <!-- رنگ‌های اصلی (دارک) -->
+        <item name="colorPrimary">#212121</item>
+        <item name="colorPrimaryVariant">#424242</item>
         <item name="colorOnPrimary">#FFFFFF</item>
-        <item name="colorSecondary">#FF9800</item>
+        <item name="colorSecondary">#FFB74D</item>
         <item name="colorOnSecondary">#000000</item>
+
+        <!-- رنگ پس‌زمینه کلی -->
+        <item name="android:windowBackground">#121212</item>
     </style>
 
     <!-- استایل کارت -->
@@ -20,7 +23,7 @@
 
     <!-- استایل دکمه اصلی -->
     <style name="PrimaryButton">
-        <item name="android:backgroundTint">#2196F3</item>
+        <item name="android:backgroundTint">#424242</item>
         <item name="android:textColor">#FFFFFF</item>
         <item name="android:textStyle">bold</item>
     </style>
