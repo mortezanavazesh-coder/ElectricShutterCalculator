@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class ReportAdapter(
-    private var reports: List<ReportModel>,
+    private var reports: MutableList<ReportModel>,
     private val onDeleteClick: ((ReportModel) -> Unit)? = null,
     private val onItemClick: ((ReportModel) -> Unit)? = null
 ) : RecyclerView.Adapter<ReportAdapter.ReportViewHolder>() {
@@ -32,12 +32,10 @@ class ReportAdapter(
         holder.textDate.text = "تاریخ: ${report.date}"
         holder.textPrice.text = "جمع کل: ${report.total}"
 
-        // کلیک روی آیتم
         holder.itemView.setOnClickListener {
             onItemClick?.invoke(report)
         }
 
-        // کلیک روی دکمه حذف
         holder.buttonDelete.setOnClickListener {
             onDeleteClick?.invoke(report)
         }
@@ -46,7 +44,8 @@ class ReportAdapter(
     override fun getItemCount(): Int = reports.size
 
     fun updateReports(newReports: List<ReportModel>) {
-        reports = newReports
+        reports.clear()
+        reports.addAll(newReports)
         notifyDataSetChanged()
     }
 }
