@@ -1,15 +1,20 @@
 <resources>
     <!-- رنگ‌های اصلی اپ (تم دارک ثابت) -->
-    <color name="colorBackground">#121212</color> <!-- پس‌زمینه کلی -->
-    <color name="colorSurface">#1E1E1E</color>    <!-- سطح کارت‌ها و ویوها -->
-    <color name="colorPrimary">#1565C0</color>    <!-- رنگ اصلی (مثلاً دکمه‌ها) -->
-    <color name="colorAccent">#64B5F6</color>     <!-- رنگ تأکیدی -->
+    <color name="colorPrimary">#1565C0</color>          <!-- آبی اصلی -->
+    <color name="colorPrimaryVariant">#0D47A1</color>   <!-- آبی تیره‌تر -->
+    <color name="colorSecondary">#64B5F6</color>        <!-- آبی روشن برای تأکید -->
 
-    <!-- رنگ متن‌ها -->
-    <color name="colorOnSurface">#FFFFFF</color>          <!-- متن اصلی سفید -->
-    <color name="colorOnSurfaceSecondary">#B0B0B0</color> <!-- متن ثانویه خاکستری روشن -->
+    <!-- رنگ‌های عمومی -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
 
-    <!-- رنگ‌های اضافی -->
-    <color name="colorError">#CF6679</color>       <!-- رنگ خطا -->
-    <color name="colorSuccess">#4CAF50</color>     <!-- رنگ موفقیت -->
+    <!-- رنگ‌های سطح و متن -->
+    <color name="colorBackground">#121212</color>
+    <color name="colorSurface">#1E1E1E</color>
+    <color name="colorOnSurface">#FFFFFF</color>
+    <color name="colorOnSurfaceSecondary">#B0B0B0</color>
+
+    <!-- رنگ‌های وضعیت -->
+    <color name="colorError">#CF6679</color>
+    <color name="colorSuccess">#4CAF50</color>
 </resources>
