@@ -165,14 +165,18 @@ class MainActivity : AppCompatActivity() {
         inputHeightCm.addTextChangedListener(watcher)
         inputWidthCm.addTextChangedListener(watcher)
 
-        // اعتبارسنجی و ذخیره نرخ نصب
+        // اعتبارسنجی نرخ نصب
         inputInstallPrice.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 val v = FormatUtils.parseTomanInput(s?.toString())
                 if (v <= 0f) {
                     Toast.makeText(this@MainActivity, "نرخ نصب باید بزرگتر از صفر باشد", Toast.LENGTH_SHORT).show()
-                    inputInstallPrice.post {
-                        inputInstallPrice.setText(FormatUtils.formatTomanPlain(previousInstallBase))
+                    val desired = FormatUtils.formatTomanPlain(previousInstallBase)
+                    if (inputInstallPrice.text.toString() != desired) {
+                        inputInstallPrice.post {
+                            inputInstallPrice.setText(desired)
+                            inputInstallPrice.setSelection(desired.length)
+                        }
                     }
                     return
                 }
@@ -280,45 +284,61 @@ class MainActivity : AppCompatActivity() {
 
     private fun recalcAllAndDisplay() {
         // ابعاد
-        val heightCm = max(0.0, parseDoubleSafe(inputHeightCm.text.toString()))
-        val widthCm = max(0.0, parseDoubleSafe(inputWidthCm.text.toString()))
+        val heightCm = max(0.0, parseDoubleSafe(inputHeightCm.text?.toString()))
+        val widthCm = max(0.0, parseDoubleSafe(inputWidthCm.text?.toString()))
         val areaM2 = (widthCm * heightCm) / 10000.0
         textAreaM2.text = String.format("مساحت: %.3f متر مربع", areaM2)
 
         // تیغه
-        val bladeName = spinnerBlade.selectedItem as? String
-        val bladeBase = if (bladeName != null) PrefsHelper.getFloat(this, "تیغه_price_$bladeName") else 0f
-        val bladeComputed = areaM2 * bladeBase
-        textBladeLine.text = "تیغه — قیمت پایه: ${FormatUtils.formatToman(bladeBase)}  |  قیمت کل: ${FormatUtils.formatToman(bladeComputed.toFloat())}"
+        var bladeComputed = 0.0
+        var bladeBase = 0f
+        if (spinnerBlade.adapter != null && spinnerBlade.adapter.count > 0) {
+            val bladeName = spinnerBlade.selectedItem as? String
+            bladeBase = if (bladeName != null) PrefsHelper.getFloat(this, "تیغه_price_$bladeName", 0f) else 0f
+            bladeComputed = areaM2 * bladeBase
+            textBladeLine.text = "تیغه — قیمت پایه: ${FormatUtils.formatToman(bladeBase)}  |  قیمت کل: ${FormatUtils.formatToman(bladeComputed.toFloat())}"
+        } else {
+            textBladeLine.text = "تیغه — داده‌ای موجود نیست"
+        }
 
         // موتور
-        val motorName = spinnerMotor.selectedItem as? String
-        val motorBase = if (motorName != null) PrefsHelper.getFloat(this, "موتور_price_$motorName") else 0f
-        textMotorLine.text = "موتور — قیمت: ${FormatUtils.formatToman(motorBase)}"
+        var motorBase = 0f
+        if (spinnerMotor.adapter != null && spinnerMotor.adapter.count > 0) {
+            val motorName = spinnerMotor.selectedItem as? String
+            motorBase = if (motorName != null) PrefsHelper.getFloat(this, "موتور_price_$motorName", 0f) else 0f
+            textMotorLine.text = "موتور — قیمت: ${FormatUtils.formatToman(motorBase)}"
+        } else {
+            textMotorLine.text = "موتور — داده‌ای موجود نیست"
+        }
 
         // شفت
-        val shaftName = spinnerShaft.selectedItem as? String
-        val shaftBase = if (shaftName != null) PrefsHelper.getFloat(this, "شفت_price_$shaftName") else 0f
-        val widthM = widthCm / 100.0
-        val shaftComputed = shaftBase * widthM
-        textShaftLine.text = "شفت — قیمت پایه: ${FormatUtils.formatToman(shaftBase)}  |  قیمت کل: ${FormatUtils.formatToman(shaftComputed.toFloat())}"
+        var shaftComputed = 0.0
+        var shaftBase = 0f
+        if (spinnerShaft.adapter != null && spinnerShaft.adapter.count > 0) {
+            val shaftName = spinnerShaft.selectedItem as? String
+            shaftBase = if (shaftName != null) PrefsHelper.getFloat(this, "شفت_price_$shaftName", 0f) else 0f
+            val widthM = widthCm / 100.0
+            shaftComputed = shaftBase * widthM
+            textShaftLine.text = "شفت — قیمت پایه: ${FormatUtils.formatToman(shaftBase)}  |  قیمت کل: ${FormatUtils.formatToman(shaftComputed.toFloat())}"
+        } else {
+            textShaftLine.text = "شفت — داده‌ای موجود نیست"
+        }
 
         // قوطی
-        val boxComputedValue = if (checkboxBoxEnabled.isChecked) {
+        var boxComputedValue = 0.0
+        if (checkboxBoxEnabled.isChecked && spinnerBox.adapter != null && spinnerBox.adapter.count > 0) {
             val boxName = spinnerBox.selectedItem as? String
-            val boxBase = if (boxName != null) PrefsHelper.getFloat(this, "قوطی_price_$boxName") else 0f
+            val boxBase = if (boxName != null) PrefsHelper.getFloat(this, "قوطی_price_$boxName", 0f) else 0f
             val effectiveHeight = max(0.0, heightCm - 30.0)
             val units = (effectiveHeight * 2.0) / 100.0
-            val computed = units * boxBase
-            textBoxLine.text = "قوطی — قیمت پایه: ${FormatUtils.formatToman(boxBase)}  |  قیمت کل: ${FormatUtils.formatToman(computed.toFloat())}"
-            computed
+            boxComputedValue = units * boxBase
+            textBoxLine.text = "قوطی — قیمت پایه: ${FormatUtils.formatToman(boxBase)}  |  قیمت کل: ${FormatUtils.formatToman(boxComputedValue.toFloat())}"
         } else {
             textBoxLine.text = "قوطی — محاسبه نشده"
-            0.0
         }
 
         // نصب / جوشکاری / حمل
-        val installRate = FormatUtils.parseTomanInput(inputInstallPrice.text.toString()).toDouble()
+        val installRate = FormatUtils.parseTomanInput(inputInstallPrice.text?.toString()).toDouble()
         val installComputed = when {
             areaM2 == 0.0 -> installRate
             areaM2 in 2.0..10.0 -> installRate * 10.0
@@ -327,8 +347,8 @@ class MainActivity : AppCompatActivity() {
         }
         textInstallComputed.text = FormatUtils.formatToman(installComputed.toFloat())
 
-        val weldingComputed = FormatUtils.parseTomanInput(inputWeldingPrice.text.toString()).toDouble()
-        val transportComputed = FormatUtils.parseTomanInput(inputTransportPrice.text.toString()).toDouble()
+        val weldingComputed = FormatUtils.parseTomanInput(inputWeldingPrice.text?.toString()).toDouble()
+        val transportComputed = FormatUtils.parseTomanInput(inputTransportPrice.text?.toString()).toDouble()
 
         // مجموع گزینه‌های اضافی
         val extras = PrefsHelper.getAllExtraOptions(this)
