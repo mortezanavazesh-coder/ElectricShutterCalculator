@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -21,6 +22,12 @@ class BasePriceActivity : AppCompatActivity() {
     private lateinit var rvShafts: RecyclerView
     private lateinit var rvBoxes: RecyclerView
     private lateinit var rvExtras: RecyclerView
+
+    private lateinit var emptySlats: TextView
+    private lateinit var emptyMotors: TextView
+    private lateinit var emptyShafts: TextView
+    private lateinit var emptyBoxes: TextView
+    private lateinit var emptyExtras: TextView
 
     private lateinit var buttonAddSlat: View
     private lateinit var buttonAddMotor: View
@@ -46,12 +53,26 @@ class BasePriceActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_base_price)
 
-        // bind views
+        bindViews()
+        setupListsAndAdapters()
+        setupActions()
+        preloadBaseCosts()
+
+        refreshAll()
+    }
+
+    private fun bindViews() {
         rvSlats = findViewById(R.id.rvSlats)
         rvMotors = findViewById(R.id.rvMotors)
         rvShafts = findViewById(R.id.rvShafts)
         rvBoxes = findViewById(R.id.rvBoxes)
         rvExtras = findViewById(R.id.rvExtras)
+
+        emptySlats = findViewById(R.id.emptySlats)
+        emptyMotors = findViewById(R.id.emptyMotors)
+        emptyShafts = findViewById(R.id.emptyShafts)
+        emptyBoxes = findViewById(R.id.emptyBoxes)
+        emptyExtras = findViewById(R.id.emptyExtras)
 
         buttonAddSlat = findViewById(R.id.buttonAddSlat)
         buttonAddMotor = findViewById(R.id.buttonAddMotor)
@@ -65,12 +86,12 @@ class BasePriceActivity : AppCompatActivity() {
         buttonSaveAll = findViewById(R.id.buttonSaveAll)
         buttonBack = findViewById(R.id.buttonBack)
 
-        // TextWatcher برای فرمت هزارگان
         inputInstallBase.addTextChangedListener(ThousandSeparatorTextWatcher(inputInstallBase))
         inputWeldingBase.addTextChangedListener(ThousandSeparatorTextWatcher(inputWeldingBase))
         inputTransportBase.addTextChangedListener(ThousandSeparatorTextWatcher(inputTransportBase))
+    }
 
-        // setup adapters
+    private fun setupListsAndAdapters() {
         adapterSlats = createAdapter("تیغه")
         adapterMotors = createAdapter("موتور")
         adapterShafts = createAdapter("شفت")
@@ -88,8 +109,9 @@ class BasePriceActivity : AppCompatActivity() {
         rvShafts.adapter = adapterShafts
         rvBoxes.adapter = adapterBoxes
         rvExtras.adapter = adapterExtras
+    }
 
-        // add buttons
+    private fun setupActions() {
         buttonAddSlat.setOnClickListener { showAddSlatDialog() }
         buttonAddMotor.setOnClickListener { showAddItemDialog("موتور") }
         buttonAddShaft.setOnClickListener { showAddShaftDialog() }
@@ -98,8 +120,9 @@ class BasePriceActivity : AppCompatActivity() {
 
         buttonSaveAll.setOnClickListener { saveCosts() }
         buttonBack.setOnClickListener { finish() }
+    }
 
-        // preload saved base costs
+    private fun preloadBaseCosts() {
         inputInstallBase.setText(
             PrefsHelper.getFloat(this, "install_base").let { if (it == 0f) "" else FormatUtils.formatTomanPlain(it) }
         )
@@ -109,8 +132,6 @@ class BasePriceActivity : AppCompatActivity() {
         inputTransportBase.setText(
             PrefsHelper.getFloat(this, "transport_base").let { if (it == 0f) "" else FormatUtils.formatTomanPlain(it) }
         )
-
-        refreshAll()
     }
 
     private fun createAdapter(category: String): BasePriceAdapter {
@@ -123,6 +144,7 @@ class BasePriceActivity : AppCompatActivity() {
                         PrefsHelper.removeKey(this@BasePriceActivity, "${category}_price_$title")
                     }
                     refreshCategory(category)
+                    Toast.makeText(this@BasePriceActivity, "$category حذف شد ✅", Toast.LENGTH_SHORT).show()
                 }
             },
             onRename = { title -> showRenameDialog(category, title) },
@@ -145,15 +167,30 @@ class BasePriceActivity : AppCompatActivity() {
                 list.map { title ->
                     val key = "${category}_price_$title"
                     val price = PrefsHelper.getFloat(this@BasePriceActivity, key, 0f)
-                    Pair(title, price)
+                    title to price
                 }
             }
             when (category) {
-                "تیغه" -> adapterSlats.update(items)
-                "موتور" -> adapterMotors.update(items)
-                "شفت" -> adapterShafts.update(items)
-                "قوطی" -> adapterBoxes.update(items)
-                "اضافات" -> adapterExtras.update(items)
+                "تیغه" -> {
+                    adapterSlats.update(items)
+                    emptySlats.visibility = if (items.isEmpty()) View.VISIBLE else View.GONE
+                }
+                "موتور" -> {
+                    adapterMotors.update(items)
+                    emptyMotors.visibility = if (items.isEmpty()) View.VISIBLE else View.GONE
+                }
+                "شفت" -> {
+                    adapterShafts.update(items)
+                    emptyShafts.visibility = if (items.isEmpty()) View.VISIBLE else View.GONE
+                }
+                "قوطی" -> {
+                    adapterBoxes.update(items)
+                    emptyBoxes.visibility = if (items.isEmpty()) View.VISIBLE else View.GONE
+                }
+                "اضافات" -> {
+                    adapterExtras.update(items)
+                    emptyExtras.visibility = if (items.isEmpty()) View.VISIBLE else View.GONE
+                }
             }
         }
     }
@@ -165,6 +202,8 @@ class BasePriceActivity : AppCompatActivity() {
         val etPrice = view.findViewById<EditText>(R.id.etSlatPrice)
         val etWidth = view.findViewById<EditText>(R.id.etSlatWidth)
         val etThickness = view.findViewById<EditText>(R.id.etSlatThickness)
+
+        etPrice.addTextChangedListener(ThousandSeparatorTextWatcher(etPrice))
 
         AlertDialog.Builder(this)
             .setTitle("افزودن تیغه")
@@ -197,7 +236,138 @@ class BasePriceActivity : AppCompatActivity() {
         val etPrice = view.findViewById<EditText>(R.id.etShaftPrice)
         val etDiameter = view.findViewById<EditText>(R.id.etShaftDiameter)
 
+        etPrice.addTextChangedListener(ThousandSeparatorTextWatcher(etPrice))
+
         AlertDialog.Builder(this)
             .setTitle("افزودن شفت")
             .setView(view)
-            .
+            .setPositiveButton("افزودن") { dialog, _ ->
+                val title = etTitle.text.toString().trim()
+                val price = FormatUtils.parseTomanInput(etPrice.text.toString())
+                val diameter = etDiameter.text.toString().toFloatOrNull() ?: 0f
+
+                if (title.isEmpty() || price <= 0f || diameter <= 0f) {
+                    Toast.makeText(this, "اطلاعات معتبر وارد کنید", Toast.LENGTH_SHORT).show()
+                    return@setPositiveButton
+                }
+
+                PrefsHelper.addOption(this, "شفت", title, price)
+                PrefsHelper.saveShaftSpecs(this, title, diameter)
+                refreshCategory("شفت")
+                Toast.makeText(this, "شفت اضافه شد ✅", Toast.LENGTH_SHORT).show()
+                dialog.dismiss()
+            }
+            .setNegativeButton("لغو", null)
+            .show()
+    }
+
+    // ------------------ افزودن آیتم‌های دیگر ------------------
+    private fun showAddItemDialog(category: String) {
+        val view = LayoutInflater.from(this).inflate(R.layout.dialog_add_item, null)
+        val etTitle = view.findViewById<EditText>(R.id.etItemTitle)
+        val etPrice = view.findViewById<EditText>(R.id.etItemPrice)
+
+        etPrice.addTextChangedListener(ThousandSeparatorTextWatcher(etPrice))
+
+        AlertDialog.Builder(this)
+            .setTitle("افزودن $category")
+            .setView(view)
+            .setPositiveButton("افزودن") { dialog, _ ->
+                val title = etTitle.text.toString().trim()
+                val price = FormatUtils.parseTomanInput(etPrice.text.toString())
+
+                if (title.isEmpty() || price <= 0f) {
+                    Toast.makeText(this, "عنوان و قیمت معتبر وارد کنید", Toast.LENGTH_SHORT).show()
+                    return@setPositiveButton
+                }
+
+                PrefsHelper.addOption(this, category, title, price)
+                refreshCategory(category)
+                Toast.makeText(this, "$category اضافه شد ✅", Toast.LENGTH_SHORT).show()
+                dialog.dismiss()
+            }
+            .setNegativeButton("لغو", null)
+            .show()
+    }
+
+    // ------------------ ذخیره هزینه‌های پایه ------------------
+    private fun saveCosts() {
+        val install = FormatUtils.parseTomanInput(inputInstallBase.text.toString())
+        val welding = FormatUtils.parseTomanInput(inputWeldingBase.text.toString())
+        val transport = FormatUtils.parseTomanInput(inputTransportBase.text.toString())
+
+        if (install <= 0f) {
+            Toast.makeText(this, "نرخ نصب باید بزرگتر از صفر باشد", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        PrefsHelper.putFloat(this, "install_base", install)
+        PrefsHelper.putFloat(this, "welding_base", welding)
+        PrefsHelper.putFloat(this, "transport_base", transport)
+
+        Toast.makeText(this, "هزینه‌های پایه ذخیره شد ✅", Toast.LENGTH_SHORT).show()
+    }
+
+    // ------------------ تغییر نام آیتم ------------------
+    private fun showRenameDialog(category: String, oldTitle: String) {
+        val input = EditText(this)
+        input.setText(oldTitle)
+
+        AlertDialog.Builder(this)
+            .setTitle("تغییر نام $category")
+            .setView(input)
+            .setPositiveButton("ذخیره") { dialog, _ ->
+                val newTitle = input.text.toString().trim()
+                if (newTitle.isEmpty()) {
+                    Toast.makeText(this, "نام معتبر وارد کنید", Toast.LENGTH_SHORT).show()
+                    return@setPositiveButton
+                }
+                uiScope.launch {
+                    withContext(Dispatchers.IO) {
+                        PrefsHelper.renameOption(this@BasePriceActivity, category, oldTitle, newTitle)
+                        val oldKey = "${category}_price_$oldTitle"
+                        val newKey = "${category}_price_$newTitle"
+                        val price = PrefsHelper.getFloat(this@BasePriceActivity, oldKey, 0f)
+                        PrefsHelper.putFloat(this@BasePriceActivity, newKey, price)
+                        PrefsHelper.removeKey(this@BasePriceActivity, oldKey)
+                    }
+                    refreshCategory(category)
+                    Toast.makeText(this@BasePriceActivity, "نام $category تغییر کرد ✅", Toast.LENGTH_SHORT).show()
+                    dialog.dismiss()
+                }
+            }
+            .setNegativeButton("لغو", null)
+            .show()
+    }
+
+    // ------------------ ویرایش قیمت آیتم ------------------
+    private fun showEditPriceDialog(category: String, title: String) {
+        val input = EditText(this)
+        val key = "${category}_price_$title"
+        val current = PrefsHelper.getFloat(this, key, 0f)
+        if (current > 0f) input.setText(FormatUtils.formatTomanPlain(current))
+        input.addTextChangedListener(ThousandSeparatorTextWatcher(input))
+
+        AlertDialog.Builder(this)
+            .setTitle("ویرایش قیمت $category")
+            .setView(input)
+            .setPositiveButton("ذخیره") { dialog, _ ->
+                val value = FormatUtils.parseTomanInput(input.text.toString())
+                if (value <= 0f) {
+                    Toast.makeText(this, "قیمت معتبر وارد کنید", Toast.LENGTH_SHORT).show()
+                    return@setPositiveButton
+                }
+                PrefsHelper.putFloat(this, key, value)
+                refreshCategory(category)
+                Toast.makeText(this, "قیمت $category بروزرسانی شد ✅", Toast.LENGTH_SHORT).show()
+                dialog.dismiss()
+            }
+            .setNegativeButton("لغو", null)
+            .show()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        uiScope.cancel()
+    }
+}
