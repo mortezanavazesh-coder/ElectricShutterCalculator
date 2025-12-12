@@ -8,11 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.morteza.shuttercalculator.utils.ReportStorage
 import com.morteza.shuttercalculator.ReportModel
 
-
 class ReportActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var adapter: ReportAdapter   // اصلاح شد
+    private lateinit var adapter: ReportAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,13 +23,13 @@ class ReportActivity : AppCompatActivity() {
         val reports = ReportStorage.loadReports(this)
 
         adapter = ReportAdapter(
-            reports,
-            onDelete = { report ->
+            reports.toMutableList(),
+            onDeleteClick = { report ->
                 ReportStorage.deleteReport(this, report)
                 refreshReports()
                 Toast.makeText(this, "گزارش حذف شد", Toast.LENGTH_SHORT).show()
             },
-            onClick = { report ->
+            onItemClick = { report ->
                 val intent = ReportDetailActivity.newIntent(this, report)
                 startActivity(intent)
             }
@@ -41,6 +40,6 @@ class ReportActivity : AppCompatActivity() {
 
     private fun refreshReports() {
         val reports = ReportStorage.loadReports(this)
-        adapter.update(reports)
+        adapter.updateReports(reports)
     }
 }
