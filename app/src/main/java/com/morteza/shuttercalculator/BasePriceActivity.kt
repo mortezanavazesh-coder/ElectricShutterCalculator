@@ -99,7 +99,7 @@ class BasePriceActivity : AppCompatActivity() {
         buttonSaveAll.setOnClickListener { saveCosts() }
         buttonBack.setOnClickListener { finish() }
 
-        // preload saved base costs (کلیدها هماهنگ با MainActivity)
+        // preload saved base costs
         inputInstallBase.setText(
             PrefsHelper.getFloat(this, "install_base").let { if (it == 0f) "" else FormatUtils.formatTomanPlain(it) }
         )
@@ -141,10 +141,10 @@ class BasePriceActivity : AppCompatActivity() {
     private fun refreshCategory(category: String) {
         uiScope.launch {
             val items = withContext(Dispatchers.IO) {
-                val list = PrefsHelper.getSortedOptionList(this@BasePriceActivity, category)
+                val list = PrefsHelper.getSortedOptionList(this@BasePriceActivity, category) ?: emptyList()
                 list.map { title ->
                     val key = "${category}_price_$title"
-                    val price = PrefsHelper.getFloat(this@BasePriceActivity, key)
+                    val price = PrefsHelper.getFloat(this@BasePriceActivity, key, 0f)
                     Pair(title, price)
                 }
             }
@@ -183,6 +183,7 @@ class BasePriceActivity : AppCompatActivity() {
                 PrefsHelper.addOption(this, "تیغه", title, price)
                 PrefsHelper.saveSlatSpecs(this, title, width, thickness)
                 refreshCategory("تیغه")
+                Toast.makeText(this, "تیغه اضافه شد ✅", Toast.LENGTH_SHORT).show()
                 dialog.dismiss()
             }
             .setNegativeButton("لغو", null)
@@ -199,127 +200,4 @@ class BasePriceActivity : AppCompatActivity() {
         AlertDialog.Builder(this)
             .setTitle("افزودن شفت")
             .setView(view)
-            .setPositiveButton("افزودن") { dialog, _ ->
-                val title = etTitle.text.toString().trim()
-                val price = FormatUtils.parseTomanInput(etPrice.text.toString())
-                val diameter = etDiameter.text.toString().toFloatOrNull() ?: 0f
-
-                if (title.isEmpty() || price <= 0f || diameter <= 0f) {
-                    Toast.makeText(this, "اطلاعات معتبر وارد کنید", Toast.LENGTH_SHORT).show()
-                    return@setPositiveButton
-                }
-
-                PrefsHelper.addOption(this, "شفت", title, price)
-                PrefsHelper.saveShaftSpecs(this, title, diameter)
-                refreshCategory("شفت")
-                dialog.dismiss()
-            }
-            .setNegativeButton("لغو", null)
-            .show()
-    }
-
-    // ------------------ افزودن آیتم‌های دیگر ------------------
-    private fun showAddItemDialog(category: String) {
-        val view = LayoutInflater.from(this).inflate(R.layout.dialog_add_item, null)
-        val etTitle = view.findViewById<EditText>(R.id.etItemTitle)
-        val etPrice = view.findViewById<EditText>(R.id.etItemPrice)
-
-        AlertDialog.Builder(this)
-            .setTitle("افزودن $category")
-            .setView(view)
-            .setPositiveButton("افزودن") { dialog, _ ->
-                val title = etTitle.text.toString().trim()
-                val price = FormatUtils.parseTomanInput(etPrice.text.toString())
-
-                if (title.isEmpty() || price <= 0f) {
-                    Toast.makeText(this, "عنوان و قیمت معتبر وارد کنید", Toast.LENGTH_SHORT).show()
-                    return@setPositiveButton
-                }
-
-                PrefsHelper.addOption(this, category, title, price)
-                refreshCategory(category)
-                dialog.dismiss()
-            }
-            .setNegativeButton("لغو", null)
-            .show()
-    }
-
-    // ------------------ ذخیره هزینه‌های پایه ------------------
-    private fun saveCosts() {
-        val install = FormatUtils.parseTomanInput(inputInstallBase.text.toString())
-        val welding = FormatUtils.parseTomanInput(inputWeldingBase.text.toString())
-        val transport = FormatUtils.parseTomanInput(inputTransportBase.text.toString())
-
-        if (install <= 0f) {
-            Toast.makeText(this, "نرخ نصب باید بزرگتر از صفر باشد", Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        PrefsHelper.putFloat(this, "install_base", install)
-        PrefsHelper.putFloat(this, "welding_base", welding)
-        PrefsHelper.putFloat(this, "transport_base", transport)
-
-        Toast.makeText(this, "هزینه‌های پایه ذخیره شد", Toast.LENGTH_SHORT).show()
-    }
-
-    // ------------------ تغییر نام آیتم ------------------
-    private fun showRenameDialog(category: String, oldTitle: String) {
-        val input = EditText(this)
-        input.setText(oldTitle)
-        AlertDialog.Builder(this)
-            .setTitle("تغییر نام $category")
-            .setView(input)
-            .setPositiveButton("ذخیره") { dialog, _ ->
-                val newTitle = input.text.toString().trim()
-                if (newTitle.isEmpty()) {
-                    Toast.makeText(this, "نام معتبر وارد کنید", Toast.LENGTH_SHORT).show()
-                    return@setPositiveButton
-                }
-                uiScope.launch {
-                    withContext(Dispatchers.IO) {
-                        PrefsHelper.renameOption(this@BasePriceActivity, category, oldTitle, newTitle)
-                        // انتقال قیمت ذخیره‌شده از کلید قدیمی به جدید
-                        val oldKey = "${category}_price_$oldTitle"
-                        val newKey = "${category}_price_$newTitle"
-                        val price = PrefsHelper.getFloat(this@BasePriceActivity, oldKey)
-                        PrefsHelper.putFloat(this@BasePriceActivity, newKey, price)
-                        PrefsHelper.removeKey(this@BasePriceActivity, oldKey)
-                    }
-                    refreshCategory(category)
-                    dialog.dismiss()
-                }
-            }
-            .setNegativeButton("لغو", null)
-            .show()
-    }
-
-    // ------------------ ویرایش قیمت آیتم ------------------
-    private fun showEditPriceDialog(category: String, title: String) {
-        val input = EditText(this)
-        val key = "${category}_price_$title"
-        val current = PrefsHelper.getFloat(this, key)
-        if (current > 0f) input.setText(FormatUtils.formatTomanPlain(current))
-        input.addTextChangedListener(ThousandSeparatorTextWatcher(input))
-
-        AlertDialog.Builder(this)
-            .setTitle("ویرایش قیمت $category")
-            .setView(input)
-            .setPositiveButton("ذخیره") { dialog, _ ->
-                val value = FormatUtils.parseTomanInput(input.text.toString())
-                if (value <= 0f) {
-                    Toast.makeText(this, "قیمت معتبر وارد کنید", Toast.LENGTH_SHORT).show()
-                    return@setPositiveButton
-                }
-                PrefsHelper.putFloat(this, key, value)
-                refreshCategory(category)
-                dialog.dismiss()
-            }
-            .setNegativeButton("لغو", null)
-            .show()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        uiScope.cancel()
-    }
-}
+            .
