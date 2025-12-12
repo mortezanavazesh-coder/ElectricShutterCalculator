@@ -25,8 +25,8 @@ class RollCalculatorActivity : AppCompatActivity() {
         val textRollDiameter = findViewById<TextView>(R.id.textRollDiameter)
 
         // گرفتن لیست تیغه‌ها و شفت‌ها از PrefsHelper
-        val blades = PrefsHelper.getSortedOptionList(this, "تیغه")
-        val shafts = PrefsHelper.getSortedOptionList(this, "شفت")
+        val blades = PrefsHelper.getSortedOptionList(this, "تیغه") ?: emptyList()
+        val shafts = PrefsHelper.getSortedOptionList(this, "شفت") ?: emptyList()
 
         spinnerBlade.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, blades)
         spinnerShaft.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, shafts)
@@ -38,6 +38,13 @@ class RollCalculatorActivity : AppCompatActivity() {
         buttonCalculate.setOnClickListener {
             val height = inputHeight.text.toString().toDoubleOrNull() ?: 0.0
 
+            // بررسی خالی بودن لیست‌ها
+            if (spinnerBlade.adapter == null || spinnerBlade.adapter.count == 0 ||
+                spinnerShaft.adapter == null || spinnerShaft.adapter.count == 0) {
+                Toast.makeText(this, "ابتدا تیغه و شفت را تعریف کنید", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             // استخراج داده تیغه
             val bladeSelected = spinnerBlade.selectedItem?.toString() ?: ""
             val bladeWidth = PrefsHelper.getSlatWidth(this, bladeSelected).toDouble()
@@ -47,6 +54,7 @@ class RollCalculatorActivity : AppCompatActivity() {
             val shaftSelected = spinnerShaft.selectedItem?.toString() ?: ""
             val shaftDiameter = PrefsHelper.getShaftDiameter(this, shaftSelected).toDouble()
 
+            // اعتبارسنجی ورودی‌ها
             if (bladeWidth <= 0 || bladeThickness <= 0 || shaftDiameter <= 0 || height <= 0) {
                 Toast.makeText(this, "اطلاعات معتبر وارد کنید", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
