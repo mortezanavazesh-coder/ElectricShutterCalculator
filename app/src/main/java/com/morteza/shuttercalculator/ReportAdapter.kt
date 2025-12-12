@@ -3,44 +3,42 @@ package com.morteza.shuttercalculator
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.morteza.shuttercalculator.ReportModel
-
 
 class ReportAdapter(
     private var reports: List<ReportModel>,
-    private val onDelete: (ReportModel) -> Unit,
-    private val onClick: (ReportModel) -> Unit
-) : RecyclerView.Adapter<ReportAdapter.VH>() {
+    private val onItemClick: ((ReportModel) -> Unit)? = null
+) : RecyclerView.Adapter<ReportAdapter.ReportViewHolder>() {
 
-    class VH(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val tvTitle: TextView = itemView.findViewById(R.id.textReportTitle)
-        val tvDate: TextView = itemView.findViewById(R.id.textReportDate)
-        val tvPrice: TextView = itemView.findViewById(R.id.textReportPrice)
-        val btnDelete: ImageButton = itemView.findViewById(R.id.buttonDeleteReport)
+    class ReportViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val textCustomer: TextView = itemView.findViewById(R.id.textCustomer)
+        val textDate: TextView = itemView.findViewById(R.id.textDate)
+        val textTotal: TextView = itemView.findViewById(R.id.textTotal)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReportViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_report, parent, false)
-        return VH(view)
+        return ReportViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: VH, position: Int) {
+    override fun onBindViewHolder(holder: ReportViewHolder, position: Int) {
         val report = reports[position]
-        holder.tvTitle.text = report.customerName
-        holder.tvDate.text = report.date
-        holder.tvPrice.text = "جمع کل: ${report.total}"
+        holder.textCustomer.text = "مشتری: ${report.customerName}"
+        holder.textDate.text = "تاریخ: ${report.date}"
+        holder.textTotal.text = "جمع کل: ${report.total}"
 
-        holder.itemView.setOnClickListener { onClick(report) }
-        holder.btnDelete.setOnClickListener { onDelete(report) }
+        // کلیک روی آیتم
+        holder.itemView.setOnClickListener {
+            onItemClick?.invoke(report)
+        }
     }
 
     override fun getItemCount(): Int = reports.size
 
-    fun update(newReports: List<ReportModel>) {
+    // بروزرسانی لیست گزارش‌ها
+    fun updateReports(newReports: List<ReportModel>) {
         reports = newReports
         notifyDataSetChanged()
     }
