@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- تم روشن -->
+    <!-- تم تاریک -->
     <style name="Theme.ElectricShutterCalculator" parent="Theme.AppCompat.DayNight.NoActionBar">
         <!-- رنگ‌های اصلی -->
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -8,10 +8,12 @@
         <item name="colorAccent">@color/colorSecondary</item>
 
         <!-- پس‌زمینه -->
-        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="android:colorBackground">@color/black</item>
+        <item name="colorSurface">@color/gray</item>
 
         <!-- رنگ خطا -->
         <item name="colorError">@color/colorError</item>
     </style>
 
 </resources>
+
