@@ -21,16 +21,16 @@ object PrefsHelper {
         }
     }
 
-    fun getFloat(context: Context, key: String): Float {
+    // حالا می‌تونی defaultValue هم پاس بدی
+    fun getFloat(context: Context, key: String, defaultValue: Float = 0f): Float {
         return try {
-            getPrefs(context).getFloat(key, 0f)
+            getPrefs(context).getFloat(key, defaultValue)
         } catch (e: Exception) {
             Log.e(TAG, "getFloat failed for $key", e)
-            0f
+            defaultValue
         }
     }
 
-    // متد عمومی برای ذخیره‌سازی (همان putFloat که در BasePriceActivity استفاده می‌شود)
     fun putFloat(context: Context, key: String, value: Float) {
         saveFloat(context, key, value)
     }
@@ -71,7 +71,6 @@ object PrefsHelper {
         }
     }
 
-    // متد عمومی برای حذف کلید (همان removeKey که در BasePriceActivity استفاده می‌شود)
     fun removeKey(context: Context, key: String) {
         try {
             getPrefs(context).edit().remove(key).apply()
