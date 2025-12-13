@@ -2,12 +2,11 @@ package com.morteza.shuttercalculator
 
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.TextView
 import java.io.Serializable
-import com.morteza.shuttercalculator.ReportModel
-
 
 class ReportDetailActivity : AppCompatActivity() {
 
@@ -16,7 +15,7 @@ class ReportDetailActivity : AppCompatActivity() {
 
         fun newIntent(context: Context, report: ReportModel): Intent {
             return Intent(context, ReportDetailActivity::class.java).apply {
-                putExtra(EXTRA_REPORT, report as Serializable) // مشخص کردن Serializable
+                putExtra(EXTRA_REPORT, report as Serializable)
             }
         }
     }
@@ -41,6 +40,19 @@ class ReportDetailActivity : AppCompatActivity() {
             findViewById<TextView>(R.id.tvTransport).text = "کرایه حمل: ${it.transport}"
             findViewById<TextView>(R.id.tvExtras).text = "اضافات: ${it.extras}"
             findViewById<TextView>(R.id.tvTotal).text = "جمع کل: ${it.total}"
+
+            // شماره مشتری (اختیاری)
+            val tvPhone = findViewById<TextView>(R.id.tvCustomerPhone)
+            if (!it.customerPhone.isNullOrEmpty()) {
+                tvPhone.text = "شماره: ${it.customerPhone}"
+                tvPhone.setOnClickListener { _ ->
+                    val intent = Intent(Intent.ACTION_DIAL)
+                    intent.data = Uri.parse("tel:${it.customerPhone}")
+                    startActivity(intent)
+                }
+            } else {
+                tvPhone.text = "شماره: ثبت نشده"
+            }
         }
     }
 }
