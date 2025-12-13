@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    app:cardElevation="2dp"
-    app:cardCornerRadius="6dp">
+    app:cardCornerRadius="12dp"
+    app:cardElevation="6dp"
+    app:strokeColor="@color/teal_700"
+    app:strokeWidth="1dp">
 
     <LinearLayout
         android:orientation="vertical"
@@ -20,8 +22,8 @@
             android:layout_height="wrap_content"
             android:text="نام مشتری"
             android:textStyle="bold"
-            android:textSize="16sp"
-            android:textColor="#212121" />
+            android:textSize="18sp"
+            android:textColor="@color/black" />
 
         <!-- تاریخ گزارش -->
         <TextView
@@ -30,7 +32,7 @@
             android:layout_height="wrap_content"
             android:text="تاریخ"
             android:textSize="14sp"
-            android:textColor="#757575"
+            android:textColor="@color/gray"
             android:layout_marginTop="4dp" />
 
         <!-- جمع کل -->
@@ -38,20 +40,22 @@
             android:id="@+id/textReportPrice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="جمع کل: 0"
-            android:textSize="14sp"
-            android:textColor="#1565C0"
-            android:layout_marginTop="4dp" />
+            android:text="جمع کل: 0 تومان"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:textColor="@color/teal_700"
+            android:layout_marginTop="6dp" />
 
         <!-- دکمه حذف -->
         <ImageButton
             android:id="@+id/buttonDeleteReport"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_gravity="end"
             android:src="@drawable/ic_delete"
+            android:tint="@color/red"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="حذف گزارش"
             android:layout_marginTop="8dp" />
     </LinearLayout>
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>
