@@ -4,7 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.LayoutInflater
 import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.morteza.shuttercalculator.utils.FormatUtils
@@ -20,7 +22,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var vm: MainViewModel
 
     // ورودی‌ها
-    private lateinit var inputCustomerName: EditText
     private lateinit var inputHeightCm: EditText
     private lateinit var inputWidthCm: EditText
 
@@ -113,8 +114,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun bindViews() {
-        // اتصال ویوها
-        inputCustomerName = findViewById(R.id.inputCustomerName)
         inputHeightCm = findViewById(R.id.inputHeightCm)
         inputWidthCm = findViewById(R.id.inputWidthCm)
         textAreaM2 = findViewById(R.id.textAreaM2)
@@ -155,40 +154,57 @@ class MainActivity : AppCompatActivity() {
         buttonRollDiameter = findViewById(R.id.buttonRollDiameter)
         buttonReports = findViewById(R.id.buttonReports)
 
-        // جداکننده هزارگان برای ورودی‌های پول
         inputInstallPrice.addTextChangedListener(ThousandSeparatorTextWatcher(inputInstallPrice))
         inputWeldingPrice.addTextChangedListener(ThousandSeparatorTextWatcher(inputWeldingPrice))
         inputTransportPrice.addTextChangedListener(ThousandSeparatorTextWatcher(inputTransportPrice))
     }
 
     private fun setupButtons() {
-        // ذخیره گزارش با نام مشتری و تاریخ رشته‌ای
         buttonSaveReport.setOnClickListener {
-            val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
-            val today = sdf.format(Date())
+            val view = LayoutInflater.from(this).inflate(R.layout.dialog_save_report, null)
+            val etName = view.findViewById<EditText>(R.id.etCustomerName)
+            val etPhone = view.findViewById<EditText>(R.id.etCustomerPhone)
 
-            val report = ReportModel(
-                id = ReportStorage.generateId(),
-                customerName = inputCustomerName.text.toString().ifBlank { "مشتری ناشناس" },
-                date = today, // تاریخ به صورت رشته ذخیره می‌شود
-                height = inputHeightCm.text.toString().toFloatOrNull() ?: 0f,
-                width = inputWidthCm.text.toString().toFloatOrNull() ?: 0f,
-                area = extractAreaFloat(textAreaM2.text.toString()),
-                blade = spinnerBlade.selectedItem?.toString() ?: "-",
-                motor = spinnerMotor.selectedItem?.toString() ?: "-",
-                shaft = spinnerShaft.selectedItem?.toString() ?: "-",
-                box = if (checkboxBoxEnabled.isChecked) spinnerBox.selectedItem?.toString() ?: "-" else "محاسبه نشده",
-                install = FormatUtils.parseTomanInput(textInstallComputed.text.toString()),
-                welding = FormatUtils.parseTomanInput(inputWeldingPrice.text.toString()),
-                transport = FormatUtils.parseTomanInput(inputTransportPrice.text.toString()),
-                extras = extractExtrasFloat(textBreakExtras.text.toString()),
-                total = FormatUtils.parseTomanInput(textTotal.text.toString())
-            )
-            ReportStorage.saveReport(this, report)
-            Toast.makeText(this, "گزارش ذخیره شد ✅", Toast.LENGTH_SHORT).show()
+            AlertDialog.Builder(this)
+                .setTitle("ذخیره گزارش")
+                .setView(view)
+                .setPositiveButton("ذخیره") { dialog, _ ->
+                    val name = etName.text.toString().trim()
+                    val phone = etPhone.text.toString().trim()
+
+                    if (name.isEmpty()) {
+                        Toast.makeText(this, "نام مشتری الزامی است", Toast.LENGTH_SHORT).show()
+                        return@setPositiveButton
+                    }
+
+                    val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
+                    val today = sdf.format(Date())
+
+                    val report = ReportModel(
+                        id = ReportStorage.generateId(),
+                        customerName = name,
+                        customerPhone = phone, // شماره موبایل اختیاری
+                        date = today,
+                        height = inputHeightCm.text.toString().toFloatOrNull() ?: 0f,
+                        width = inputWidthCm.text.toString().toFloatOrNull() ?: 0f,
+                        area = extractAreaFloat(textAreaM2.text.toString()),
+                        blade = spinnerBlade.selectedItem?.toString() ?: "-",
+                        motor = spinnerMotor.selectedItem?.toString() ?: "-",
+                        shaft = spinnerShaft.selectedItem?.toString() ?: "-",
+                        box = if (checkboxBoxEnabled.isChecked) spinnerBox.selectedItem?.toString() ?: "-" else "محاسبه نشده",
+                        install = FormatUtils.parseTomanInput(textInstallComputed.text.toString()),
+                        welding = FormatUtils.parseTomanInput(inputWeldingPrice.text.toString()),
+                        transport = FormatUtils.parseTomanInput(inputTransportPrice.text.toString()),
+                        extras = extractExtrasFloat(textBreakExtras.text.toString()),
+                        total = FormatUtils.parseTomanInput(textTotal.text.toString())
+                    )
+                    ReportStorage.saveReport(this, report)
+                    Toast.makeText(this, "گزارش ذخیره شد ✅", Toast.LENGTH_SHORT).show()
+                    dialog.dismiss()
+                }
+                .setNegativeButton("لغو", null)
+                .show()
         }
-
-        // ناوبری
         buttonBasePrice.setOnClickListener {
             startActivity(Intent(this, BasePriceActivity::class.java))
         }
@@ -395,3 +411,4 @@ class MainActivity : AppCompatActivity() {
         return FormatUtils.parseTomanInput(extrasText)
     }
 }
+
