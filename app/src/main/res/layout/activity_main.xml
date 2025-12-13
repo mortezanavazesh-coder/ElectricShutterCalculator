@@ -11,6 +11,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <!-- نام مشتری -->
+        <LinearLayout
+            style="@style/CardStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="نام مشتری"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:id="@+id/inputCustomerName"
+                android:hint="نام مشتری را وارد کنید"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
         <!-- ابعاد -->
         <LinearLayout
             style="@style/CardStyle"
@@ -175,7 +194,6 @@
             <EditText
                 android:id="@+id/inputInstallPrice"
                 android:inputType="numberDecimal"
-                android:text="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
@@ -314,41 +332,40 @@
         </LinearLayout>
 
         <!-- دکمه‌ها -->
-       <LinearLayout
-           android:id="@+id/bottomBar"
-           android:orientation="vertical"
-           android:padding="12dp"
-           android:layout_width="match_parent"
-          android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/bottomBar"
+            android:orientation="vertical"
+            android:padding="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-       <Button
-        android:id="@+id/buttonSaveReport"
-        android:text="ذخیره گزارش"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginBottom="8dp"/>
+            <Button
+                android:id="@+id/buttonSaveReport"
+                android:text="ذخیره گزارش"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="8dp"/>
 
-      <Button
-        android:id="@+id/buttonBasePrice"
-        android:text="صفحه قیمت پایه"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginBottom="8dp"/>
+            <Button
+                android:id="@+id/buttonBasePrice"
+                android:text="صفحه قیمت پایه"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="8dp"/>
 
-     <Button
-        android:id="@+id/buttonReports"
-        android:text="صفحه گزارشات"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginBottom="8dp"/>
+            <Button
+                android:id="@+id/buttonReports"
+                android:text="صفحه گزارشات"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="8dp"/>
 
-      <Button
-        android:id="@+id/buttonRollDiameter"
-        android:text="صفحه قطر رول"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"/>
-    </LinearLayout>
+            <Button
+                android:id="@+id/buttonRollDiameter"
+                android:text="صفحه قطر رول"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"/>
+        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>
-
