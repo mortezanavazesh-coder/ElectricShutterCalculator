@@ -52,13 +52,6 @@
                     android:id="@+id/spinnerShaft"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
-
-                <Button
-                    android:id="@+id/buttonBackToMain"
-                    android:text="بازگشت به صفحه اصلی"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -125,6 +118,14 @@
                 <Button
                     android:id="@+id/buttonCalculateRoll"
                     android:text="محاسبه قطر رول"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"/>
+
+                <!-- دکمه بازگشت به پایین منتقل شد -->
+                <Button
+                    android:id="@+id/buttonBackToMain"
+                    android:text="بازگشت به صفحه اصلی"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"/>
