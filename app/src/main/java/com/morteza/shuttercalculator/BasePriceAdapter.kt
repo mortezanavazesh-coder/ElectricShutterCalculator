@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.morteza.shuttercalculator.utils.FormatUtils
 
 class BasePriceAdapter(
     private var items: List<Pair<String, Float>>,
@@ -30,9 +31,14 @@ class BasePriceAdapter(
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         val (title, price) = items[position]
-        holder.tvTitle.text = title
-        holder.tvPrice.text = price.toString()
 
+        // نمایش نام گزینه
+        holder.tvTitle.text = title
+
+        // ✅ نمایش قیمت با فرمت تومان و جداکننده هزارگان
+        holder.tvPrice.text = FormatUtils.formatToman(price)
+
+        // رویدادها
         holder.btnRename.setOnClickListener { onRename(title) }
         holder.btnEdit.setOnClickListener { onEdit(title) }
         holder.btnDelete.setOnClickListener { onDelete(title) }
