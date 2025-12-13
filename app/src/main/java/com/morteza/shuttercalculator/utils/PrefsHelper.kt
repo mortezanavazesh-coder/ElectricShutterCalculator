@@ -21,7 +21,6 @@ object PrefsHelper {
         }
     }
 
-    // حالا می‌تونی defaultValue هم پاس بدی
     fun getFloat(context: Context, key: String, defaultValue: Float = 0f): Float {
         return try {
             getPrefs(context).getFloat(key, defaultValue)
@@ -49,6 +48,16 @@ object PrefsHelper {
             getPrefs(context).getBoolean(key, false)
         } catch (e: Exception) {
             Log.e(TAG, "getBool failed for $key", e)
+            false
+        }
+    }
+
+    // 🔹 متد جدید برای بررسی وجود کلید
+    fun containsKey(context: Context, key: String): Boolean {
+        return try {
+            getPrefs(context).contains(key)
+        } catch (e: Exception) {
+            Log.e(TAG, "containsKey failed for $key", e)
             false
         }
     }
@@ -148,7 +157,7 @@ object PrefsHelper {
 
     // ------------------ Extras helpers ------------------
     fun getAllExtraOptions(context: Context): Map<String, Float> {
-        val persian = getOptionMap(context, "اضافی")
+        val persian = getOptionMap(context, "اضافات")
         if (persian.isNotEmpty()) return persian
         val english = getOptionMap(context, "extra")
         return english
