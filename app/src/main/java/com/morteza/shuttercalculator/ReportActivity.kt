@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.morteza.shuttercalculator.utils.ReportStorage
-import com.morteza.shuttercalculator.ReportModel
 
 class ReportActivity : AppCompatActivity() {
 
@@ -25,7 +24,6 @@ class ReportActivity : AppCompatActivity() {
 
         btnBack = findViewById(R.id.buttonBackToMain)
         btnBack.setOnClickListener {
-            // بازگشت به صفحه اصلی
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
@@ -41,7 +39,8 @@ class ReportActivity : AppCompatActivity() {
                 Toast.makeText(this, "گزارش حذف شد", Toast.LENGTH_SHORT).show()
             },
             onItemClick = { report ->
-                val intent = ReportDetailActivity.newIntent(this, report)
+                val intent = Intent(this, ReportDetailActivity::class.java)
+                intent.putExtra("report", report) // پاس دادن مدل به صورت Serializable
                 startActivity(intent)
             }
         )
