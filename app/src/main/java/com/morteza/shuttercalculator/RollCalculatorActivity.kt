@@ -72,6 +72,7 @@ class RollCalculatorActivity : AppCompatActivity() {
 
             var fullRounds = 0
             var partialRound = 0.0
+            var lastRemainingBlades = 0.0   // تیغه‌های ناقص دور آخر
 
             while (remainingBlades > 0) {
                 val currentCircumference = rollDiameter * Math.PI
@@ -84,6 +85,7 @@ class RollCalculatorActivity : AppCompatActivity() {
                 } else {
                     partialRound = remainingBlades / bladesPerRound
                     rollDiameter += (2 * bladeThickness * partialRound)
+                    lastRemainingBlades = remainingBlades   // ذخیره تیغه‌های ناقص دور آخر
                     remainingBlades = 0.0
                 }
             }
@@ -92,7 +94,7 @@ class RollCalculatorActivity : AppCompatActivity() {
             textTotalBlades.text = "تعداد تیغه: %.2f".format(totalBlades)
             textFullRounds.text = "تعداد دور کامل: $fullRounds"
             textPartialRound.text = "دور ناقص: %.2f".format(partialRound)
-            textRemainingBlades.text = "تیغه‌های باقی‌مانده: %.2f".format(remainingBlades)
+            textRemainingBlades.text = "تیغه‌های ناقص دور آخر: %.2f".format(lastRemainingBlades)
             textRollDiameter.text = "قطر رول نهایی: %.2f cm".format(rollDiameter)
         }
     }
