@@ -5,33 +5,38 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <!-- عنوان تیغه -->
     <EditText
         android:id="@+id/etSlatTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="عنوان تیغه" />
+        android:hint="عنوان تیغه"
+        android:inputType="textCapSentences" />
 
+    <!-- قیمت تیغه (تومان) -->
     <EditText
         android:id="@+id/etSlatPrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="قیمت تیغه"
+        android:hint="قیمت تیغه (تومان)"
         android:inputType="numberDecimal"
         android:layout_marginTop="8dp" />
 
+    <!-- عرض تیغه (سانتی‌متر) -->
     <EditText
         android:id="@+id/etSlatWidth"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="عرض تیغه (mm)"
+        android:hint="عرض تیغه (سانتی‌متر)"
         android:inputType="numberDecimal"
         android:layout_marginTop="8dp" />
 
+    <!-- ضخامت تیغه (سانتی‌متر) -->
     <EditText
         android:id="@+id/etSlatThickness"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="ضخامت تیغه (mm)"
+        android:hint="ضخامت تیغه (سانتی‌متر)"
         android:inputType="numberDecimal"
         android:layout_marginTop="8dp" />
 </LinearLayout>
