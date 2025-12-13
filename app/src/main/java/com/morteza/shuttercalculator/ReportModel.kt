@@ -1,5 +1,7 @@
 package com.morteza.shuttercalculator
 
+import java.io.Serializable
+
 data class ReportModel(
     val id: String,              // شناسه یکتا گزارش
     val customerName: String,    // نام مشتری
@@ -17,4 +19,4 @@ data class ReportModel(
     val transport: Float,        // هزینه حمل
     val extras: Float,           // هزینه گزینه‌های اضافی
     val total: Float             // جمع کل
-)
+) : Serializable   // ← اضافه شد تا بتوان در Intent پاس داد
