@@ -15,8 +15,10 @@
     <color name="colorSurface">#1E1E1E</color>
     <color name="colorOnSurface">#FFFFFF</color>
     <color name="colorOnSurfaceSecondary">#B0B0B0</color>
+    <color name="blue">#2196F3</color>
 
     <!-- رنگ‌های وضعیت -->
     <color name="colorError">#CF6679</color>
     <color name="colorSuccess">#4CAF50</color>
 </resources>
+
