@@ -197,7 +197,7 @@ class BasePriceActivity : AppCompatActivity() {
         }
     }
 
-       // ------------------ افزودن تیغه ------------------
+    // ------------------ افزودن تیغه ------------------
     private fun showAddSlatDialog() {
         val view = LayoutInflater.from(this).inflate(R.layout.dialog_add_slat, null)
         val etTitle = view.findViewById<EditText>(R.id.etSlatTitle)
@@ -221,7 +221,6 @@ class BasePriceActivity : AppCompatActivity() {
                     return@setPositiveButton
                 }
 
-                // ذخیره با واحد سانتی‌متر
                 PrefsHelper.addOption(this, "تیغه", title, price)
                 PrefsHelper.saveSlatSpecs(this, title, widthCm, thicknessCm)
                 refreshCategory("تیغه")
@@ -254,7 +253,6 @@ class BasePriceActivity : AppCompatActivity() {
                     return@setPositiveButton
                 }
 
-                // ذخیره با واحد سانتی‌متر
                 PrefsHelper.addOption(this, "شفت", title, price)
                 PrefsHelper.saveShaftSpecs(this, title, diameterCm)
                 refreshCategory("شفت")
@@ -287,7 +285,6 @@ class BasePriceActivity : AppCompatActivity() {
 
                 PrefsHelper.addOption(this, category, title, price)
                 if (category == "اضافات") {
-                    // پیش‌فرض فعال باشد تا در صفحه اصلی دیده شود
                     PrefsHelper.saveBool(this, "extra_enabled_$title", true)
                 }
 
@@ -335,14 +332,12 @@ class BasePriceActivity : AppCompatActivity() {
                     withContext(Dispatchers.IO) {
                         PrefsHelper.renameOption(this@BasePriceActivity, category, oldTitle, newTitle)
 
-                        // انتقال قیمت
                         val oldKey = "${category}_price_$oldTitle"
                         val newKey = "${category}_price_$newTitle"
                         val price = PrefsHelper.getFloat(this@BasePriceActivity, oldKey, 0f)
                         PrefsHelper.putFloat(this@BasePriceActivity, newKey, price)
                         PrefsHelper.removeKey(this@BasePriceActivity, oldKey)
 
-                        // انتقال وضعیت فعال بودن برای اضافات
                         if (category == "اضافات") {
                             val oldEnabledKey = "extra_enabled_$oldTitle"
                             val newEnabledKey = "extra_enabled_$newTitle"
@@ -401,3 +396,4 @@ class BasePriceActivity : AppCompatActivity() {
         super.onDestroy()
         uiScope.cancel()
     }
+}
