@@ -197,13 +197,13 @@ class BasePriceActivity : AppCompatActivity() {
         }
     }
 
-    // ------------------ افزودن تیغه ------------------
+       // ------------------ افزودن تیغه ------------------
     private fun showAddSlatDialog() {
         val view = LayoutInflater.from(this).inflate(R.layout.dialog_add_slat, null)
         val etTitle = view.findViewById<EditText>(R.id.etSlatTitle)
         val etPrice = view.findViewById<EditText>(R.id.etSlatPrice)
-        val etWidth = view.findViewById<EditText>(R.id.etSlatWidth)
-        val etThickness = view.findViewById<EditText>(R.id.etSlatThickness)
+        val etWidth = view.findViewById<EditText>(R.id.etSlatWidth)         // واحد: سانتی‌متر
+        val etThickness = view.findViewById<EditText>(R.id.etSlatThickness) // واحد: سانتی‌متر
 
         etPrice.addTextChangedListener(ThousandSeparatorTextWatcher(etPrice))
 
@@ -213,16 +213,17 @@ class BasePriceActivity : AppCompatActivity() {
             .setPositiveButton("افزودن") { dialog, _ ->
                 val title = etTitle.text.toString().trim()
                 val price = FormatUtils.parseTomanInput(etPrice.text.toString())
-                val width = etWidth.text.toString().toFloatOrNull() ?: 0f
-                val thickness = etThickness.text.toString().toFloatOrNull() ?: 0f
+                val widthCm = etWidth.text.toString().toFloatOrNull() ?: 0f
+                val thicknessCm = etThickness.text.toString().toFloatOrNull() ?: 0f
 
-                if (title.isEmpty() || price <= 0f || width <= 0f || thickness <= 0f) {
+                if (title.isEmpty() || price <= 0f || widthCm <= 0f || thicknessCm <= 0f) {
                     Toast.makeText(this, "اطلاعات معتبر وارد کنید", Toast.LENGTH_SHORT).show()
                     return@setPositiveButton
                 }
 
+                // ذخیره با واحد سانتی‌متر
                 PrefsHelper.addOption(this, "تیغه", title, price)
-                PrefsHelper.saveSlatSpecs(this, title, width, thickness)
+                PrefsHelper.saveSlatSpecs(this, title, widthCm, thicknessCm)
                 refreshCategory("تیغه")
                 Toast.makeText(this, "تیغه اضافه شد ✅", Toast.LENGTH_SHORT).show()
                 dialog.dismiss()
@@ -236,7 +237,7 @@ class BasePriceActivity : AppCompatActivity() {
         val view = LayoutInflater.from(this).inflate(R.layout.dialog_add_shaft, null)
         val etTitle = view.findViewById<EditText>(R.id.etShaftTitle)
         val etPrice = view.findViewById<EditText>(R.id.etShaftPrice)
-        val etDiameter = view.findViewById<EditText>(R.id.etShaftDiameter)
+        val etDiameter = view.findViewById<EditText>(R.id.etShaftDiameter) // واحد: سانتی‌متر
 
         etPrice.addTextChangedListener(ThousandSeparatorTextWatcher(etPrice))
 
@@ -246,15 +247,16 @@ class BasePriceActivity : AppCompatActivity() {
             .setPositiveButton("افزودن") { dialog, _ ->
                 val title = etTitle.text.toString().trim()
                 val price = FormatUtils.parseTomanInput(etPrice.text.toString())
-                val diameter = etDiameter.text.toString().toFloatOrNull() ?: 0f
+                val diameterCm = etDiameter.text.toString().toFloatOrNull() ?: 0f
 
-                if (title.isEmpty() || price <= 0f || diameter <= 0f) {
+                if (title.isEmpty() || price <= 0f || diameterCm <= 0f) {
                     Toast.makeText(this, "اطلاعات معتبر وارد کنید", Toast.LENGTH_SHORT).show()
                     return@setPositiveButton
                 }
 
+                // ذخیره با واحد سانتی‌متر
                 PrefsHelper.addOption(this, "شفت", title, price)
-                PrefsHelper.saveShaftSpecs(this, title, diameter)
+                PrefsHelper.saveShaftSpecs(this, title, diameterCm)
                 refreshCategory("شفت")
                 Toast.makeText(this, "شفت اضافه شد ✅", Toast.LENGTH_SHORT).show()
                 dialog.dismiss()
@@ -384,13 +386,11 @@ class BasePriceActivity : AppCompatActivity() {
             .show()
     }
 
-    // ------------------ افزودن کامل لیست‌ها ------------------
+    // ------------------ پیش‌فرض فعال‌سازی اضافات ------------------
     private fun refreshCategoryExtrasEnabledDefault() {
-        // در صورت نیاز می‌توان این متد را برای تنظیم پیش‌فرض‌ها صدا زد
         uiScope.launch(Dispatchers.IO) {
             val list = PrefsHelper.getSortedOptionList(this@BasePriceActivity, "اضافات") ?: emptyList()
             for (title in list) {
-                // اگر کلید وضعیت وجود ندارد، پیش‌فرض فعال شود
                 val exists = PrefsHelper.containsKey(this@BasePriceActivity, "extra_enabled_$title")
                 if (!exists) PrefsHelper.saveBool(this@BasePriceActivity, "extra_enabled_$title", true)
             }
@@ -401,4 +401,3 @@ class BasePriceActivity : AppCompatActivity() {
         super.onDestroy()
         uiScope.cancel()
     }
-}
