@@ -197,7 +197,7 @@ class BasePriceActivity : AppCompatActivity() {
         }
     }
 
-    // ------------------ افزودن تیغه ------------------
+       // ------------------ افزودن تیغه ------------------
     private fun showAddSlatDialog() {
         val view = LayoutInflater.from(this).inflate(R.layout.dialog_add_slat, null)
         val etTitle = view.findViewById<EditText>(R.id.etSlatTitle)
@@ -216,13 +216,16 @@ class BasePriceActivity : AppCompatActivity() {
                 val widthCm = etWidth.text.toString().toFloatOrNull() ?: 0f
                 val thicknessCm = etThickness.text.toString().toFloatOrNull() ?: 0f
 
-                if (title.isEmpty() || price <= 0f || widthCm <= 0f || thicknessCm <= 0f) {
+                if (title.isEmpty() || price < 0f || widthCm <= 0f || thicknessCm <= 0f) {
                     Toast.makeText(this, "اطلاعات معتبر وارد کنید", Toast.LENGTH_SHORT).show()
                     return@setPositiveButton
                 }
 
+                // ذخیره با واحد سانتی‌متر + ذخیره قیمت پایه کنار عنوان
                 PrefsHelper.addOption(this, "تیغه", title, price)
+                PrefsHelper.putFloat(this, "تیغه_price_$title", price)
                 PrefsHelper.saveSlatSpecs(this, title, widthCm, thicknessCm)
+
                 refreshCategory("تیغه")
                 Toast.makeText(this, "تیغه اضافه شد ✅", Toast.LENGTH_SHORT).show()
                 dialog.dismiss()
@@ -248,13 +251,15 @@ class BasePriceActivity : AppCompatActivity() {
                 val price = FormatUtils.parseTomanInput(etPrice.text.toString())
                 val diameterCm = etDiameter.text.toString().toFloatOrNull() ?: 0f
 
-                if (title.isEmpty() || price <= 0f || diameterCm <= 0f) {
+                if (title.isEmpty() || price < 0f || diameterCm <= 0f) {
                     Toast.makeText(this, "اطلاعات معتبر وارد کنید", Toast.LENGTH_SHORT).show()
                     return@setPositiveButton
                 }
 
                 PrefsHelper.addOption(this, "شفت", title, price)
+                PrefsHelper.putFloat(this, "شفت_price_$title", price)
                 PrefsHelper.saveShaftSpecs(this, title, diameterCm)
+
                 refreshCategory("شفت")
                 Toast.makeText(this, "شفت اضافه شد ✅", Toast.LENGTH_SHORT).show()
                 dialog.dismiss()
@@ -278,13 +283,16 @@ class BasePriceActivity : AppCompatActivity() {
                 val title = etTitle.text.toString().trim()
                 val price = FormatUtils.parseTomanInput(etPrice.text.toString())
 
-                if (title.isEmpty() || price <= 0f) {
+                if (title.isEmpty() || price < 0f) {
                     Toast.makeText(this, "عنوان و قیمت معتبر وارد کنید", Toast.LENGTH_SHORT).show()
                     return@setPositiveButton
                 }
 
                 PrefsHelper.addOption(this, category, title, price)
+                PrefsHelper.putFloat(this, "${category}_price_$title", price)
+
                 if (category == "اضافات") {
+                    // پیش‌فرض فعال باشد تا در صفحه اصلی دیده شود
                     PrefsHelper.saveBool(this, "extra_enabled_$title", true)
                 }
 
@@ -302,11 +310,7 @@ class BasePriceActivity : AppCompatActivity() {
         val welding = FormatUtils.parseTomanInput(inputWeldingBase.text.toString())
         val transport = FormatUtils.parseTomanInput(inputTransportBase.text.toString())
 
-        if (install <= 0f) {
-            Toast.makeText(this, "نرخ نصب باید بزرگتر از صفر باشد", Toast.LENGTH_SHORT).show()
-            return
-        }
-
+        // ذخیره حتی اگر صفر باشند؛ ارور نمی‌دهیم تا مقدار ذخیره‌شده صفحه اصلی معتبر بماند
         PrefsHelper.putFloat(this, "install_base", install)
         PrefsHelper.putFloat(this, "welding_base", welding)
         PrefsHelper.putFloat(this, "transport_base", transport)
@@ -332,12 +336,14 @@ class BasePriceActivity : AppCompatActivity() {
                     withContext(Dispatchers.IO) {
                         PrefsHelper.renameOption(this@BasePriceActivity, category, oldTitle, newTitle)
 
+                        // انتقال قیمت پایه
                         val oldKey = "${category}_price_$oldTitle"
                         val newKey = "${category}_price_$newTitle"
                         val price = PrefsHelper.getFloat(this@BasePriceActivity, oldKey, 0f)
                         PrefsHelper.putFloat(this@BasePriceActivity, newKey, price)
                         PrefsHelper.removeKey(this@BasePriceActivity, oldKey)
 
+                        // انتقال وضعیت فعال بودن برای اضافات
                         if (category == "اضافات") {
                             val oldEnabledKey = "extra_enabled_$oldTitle"
                             val newEnabledKey = "extra_enabled_$newTitle"
@@ -368,7 +374,7 @@ class BasePriceActivity : AppCompatActivity() {
             .setView(input)
             .setPositiveButton("ذخیره") { dialog, _ ->
                 val value = FormatUtils.parseTomanInput(input.text.toString())
-                if (value <= 0f) {
+                if (value < 0f) {
                     Toast.makeText(this, "قیمت معتبر وارد کنید", Toast.LENGTH_SHORT).show()
                     return@setPositiveButton
                 }
