@@ -1,6 +1,8 @@
 package com.morteza.shuttercalculator
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,6 +14,7 @@ class ReportActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: ReportAdapter
+    private lateinit var btnBack: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,6 +22,14 @@ class ReportActivity : AppCompatActivity() {
 
         recyclerView = findViewById(R.id.recyclerReports)
         recyclerView.layoutManager = LinearLayoutManager(this)
+
+        btnBack = findViewById(R.id.buttonBackToMain)
+        btnBack.setOnClickListener {
+            // بازگشت به صفحه اصلی
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         val reports = ReportStorage.loadReports(this)
 
