@@ -161,50 +161,51 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupButtons() {
         buttonSaveReport.setOnClickListener {
-            val view = LayoutInflater.from(this).inflate(R.layout.dialog_save_report, null)
-            val etName = view.findViewById<EditText>(R.id.etCustomerName)
-            val etPhone = view.findViewById<EditText>(R.id.etCustomerPhone)
+    val view = LayoutInflater.from(this).inflate(R.layout.dialog_save_report, null)
+    val etName = view.findViewById<EditText>(R.id.etCustomerName)
+    val etPhone = view.findViewById<EditText>(R.id.etCustomerPhone)
 
-            AlertDialog.Builder(this)
-                .setTitle("ذخیره گزارش")
-                .setView(view)
-                .setPositiveButton("ذخیره") { dialog, _ ->
-                    val name = etName.text.toString().trim()
-                    val phone = etPhone.text.toString().trim()
+    AlertDialog.Builder(this)
+        .setTitle("ذخیره گزارش")
+        .setView(view)
+        .setPositiveButton("ذخیره") { dialog, _ ->
+            val name = etName.text.toString().trim()
+            val phone = etPhone.text.toString().trim()
 
-                    if (name.isEmpty()) {
-                        Toast.makeText(this, "نام مشتری الزامی است", Toast.LENGTH_SHORT).show()
-                        return@setPositiveButton
-                    }
+            if (name.isEmpty()) {
+                Toast.makeText(this, "نام مشتری الزامی است", Toast.LENGTH_SHORT).show()
+                return@setPositiveButton
+            }
 
-                    val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
-                    val today = sdf.format(Date())
+            val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
+            val today = sdf.format(Date())
 
-                    val report = ReportModel(
-                        id = ReportStorage.generateId(),
-                        customerName = name,
-                        customerPhone = phone, // شماره موبایل اختیاری
-                        date = today,
-                        height = inputHeightCm.text.toString().toFloatOrNull() ?: 0f,
-                        width = inputWidthCm.text.toString().toFloatOrNull() ?: 0f,
-                        area = extractAreaFloat(textAreaM2.text.toString()),
-                        blade = spinnerBlade.selectedItem?.toString() ?: "-",
-                        motor = spinnerMotor.selectedItem?.toString() ?: "-",
-                        shaft = spinnerShaft.selectedItem?.toString() ?: "-",
-                        box = if (checkboxBoxEnabled.isChecked) spinnerBox.selectedItem?.toString() ?: "-" else "محاسبه نشده",
-                        install = FormatUtils.parseTomanInput(textInstallComputed.text.toString()),
-                        welding = FormatUtils.parseTomanInput(inputWeldingPrice.text.toString()),
-                        transport = FormatUtils.parseTomanInput(inputTransportPrice.text.toString()),
-                        extras = extractExtrasFloat(textBreakExtras.text.toString()),
-                        total = FormatUtils.parseTomanInput(textTotal.text.toString())
-                    )
-                    ReportStorage.saveReport(this, report)
-                    Toast.makeText(this, "گزارش ذخیره شد ✅", Toast.LENGTH_SHORT).show()
-                    dialog.dismiss()
-                }
-                .setNegativeButton("لغو", null)
-                .show()
+            val report = ReportModel(
+                id = ReportStorage.generateId().toString(), // ← تبدیل Long به String
+                customerName = name,
+                customerPhone = phone, // شماره موبایل اختیاری
+                date = today,
+                height = inputHeightCm.text.toString().toFloatOrNull() ?: 0f,
+                width = inputWidthCm.text.toString().toFloatOrNull() ?: 0f,
+                area = extractAreaFloat(textAreaM2.text.toString()),
+                blade = spinnerBlade.selectedItem?.toString() ?: "-",
+                motor = spinnerMotor.selectedItem?.toString() ?: "-",
+                shaft = spinnerShaft.selectedItem?.toString() ?: "-",
+                box = if (checkboxBoxEnabled.isChecked) spinnerBox.selectedItem?.toString() ?: "-" else "محاسبه نشده",
+                install = FormatUtils.parseTomanInput(textInstallComputed.text.toString()),
+                welding = FormatUtils.parseTomanInput(inputWeldingPrice.text.toString()),
+                transport = FormatUtils.parseTomanInput(inputTransportPrice.text.toString()),
+                extras = extractExtrasFloat(textBreakExtras.text.toString()),
+                total = FormatUtils.parseTomanInput(textTotal.text.toString())
+            )
+            ReportStorage.saveReport(this, report)
+            Toast.makeText(this, "گزارش ذخیره شد ✅", Toast.LENGTH_SHORT).show()
+            dialog.dismiss()
         }
+        .setNegativeButton("لغو", null)
+        .show()
+}
+
         buttonBasePrice.setOnClickListener {
             startActivity(Intent(this, BasePriceActivity::class.java))
         }
@@ -411,4 +412,5 @@ class MainActivity : AppCompatActivity() {
         return FormatUtils.parseTomanInput(extrasText)
     }
 }
+
 
