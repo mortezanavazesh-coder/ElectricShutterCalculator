@@ -25,6 +25,12 @@
         <!-- صفحه گزارش‌ها -->
         <activity android:name=".ReportActivity" android:exported="true" />
 
+        <activity
+         android:name=".ReportDetailActivity"
+         android:exported="false"
+         android:label="جزئیات گزارش"/>
+
     </application>
 </manifest>
+
 
