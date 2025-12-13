@@ -5,25 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <!-- عنوان شفت -->
     <EditText
         android:id="@+id/etShaftTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="عنوان شفت" />
+        android:hint="عنوان شفت"
+        android:inputType="textCapSentences" />
 
+    <!-- قیمت شفت (تومان) -->
     <EditText
         android:id="@+id/etShaftPrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="قیمت شفت"
+        android:hint="قیمت شفت (تومان)"
         android:inputType="numberDecimal"
         android:layout_marginTop="8dp" />
 
+    <!-- قطر شفت (سانتی‌متر) -->
     <EditText
         android:id="@+id/etShaftDiameter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="قطر شفت (mm)"
+        android:hint="قطر شفت (سانتی‌متر)"
         android:inputType="numberDecimal"
         android:layout_marginTop="8dp" />
 </LinearLayout>
