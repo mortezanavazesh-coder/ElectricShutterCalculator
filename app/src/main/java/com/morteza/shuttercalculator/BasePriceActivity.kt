@@ -57,7 +57,6 @@ class BasePriceActivity : AppCompatActivity() {
         setupListsAndAdapters()
         setupActions()
         preloadBaseCosts()
-
         refreshAll()
     }
 
@@ -142,6 +141,9 @@ class BasePriceActivity : AppCompatActivity() {
                     withContext(Dispatchers.IO) {
                         PrefsHelper.removeOption(this@BasePriceActivity, category, title)
                         PrefsHelper.removeKey(this@BasePriceActivity, "${category}_price_$title")
+                        if (category == "اضافات") {
+                            PrefsHelper.removeKey(this@BasePriceActivity, "extra_enabled_$title")
+                        }
                     }
                     refreshCategory(category)
                     Toast.makeText(this@BasePriceActivity, "$category حذف شد ✅", Toast.LENGTH_SHORT).show()
@@ -261,7 +263,7 @@ class BasePriceActivity : AppCompatActivity() {
             .show()
     }
 
-    // ------------------ افزودن آیتم‌های دیگر ------------------
+    // ------------------ افزودن آیتم‌های عمومی (موتور، قوطی، اضافات) ------------------
     private fun showAddItemDialog(category: String) {
         val view = LayoutInflater.from(this).inflate(R.layout.dialog_add_item, null)
         val etTitle = view.findViewById<EditText>(R.id.etItemTitle)
@@ -282,6 +284,11 @@ class BasePriceActivity : AppCompatActivity() {
                 }
 
                 PrefsHelper.addOption(this, category, title, price)
+                if (category == "اضافات") {
+                    // پیش‌فرض فعال باشد تا در صفحه اصلی دیده شود
+                    PrefsHelper.saveBool(this, "extra_enabled_$title", true)
+                }
+
                 refreshCategory(category)
                 Toast.makeText(this, "$category اضافه شد ✅", Toast.LENGTH_SHORT).show()
                 dialog.dismiss()
@@ -325,11 +332,22 @@ class BasePriceActivity : AppCompatActivity() {
                 uiScope.launch {
                     withContext(Dispatchers.IO) {
                         PrefsHelper.renameOption(this@BasePriceActivity, category, oldTitle, newTitle)
+
+                        // انتقال قیمت
                         val oldKey = "${category}_price_$oldTitle"
                         val newKey = "${category}_price_$newTitle"
                         val price = PrefsHelper.getFloat(this@BasePriceActivity, oldKey, 0f)
                         PrefsHelper.putFloat(this@BasePriceActivity, newKey, price)
                         PrefsHelper.removeKey(this@BasePriceActivity, oldKey)
+
+                        // انتقال وضعیت فعال بودن برای اضافات
+                        if (category == "اضافات") {
+                            val oldEnabledKey = "extra_enabled_$oldTitle"
+                            val newEnabledKey = "extra_enabled_$newTitle"
+                            val enabled = PrefsHelper.getBool(this@BasePriceActivity, oldEnabledKey)
+                            PrefsHelper.saveBool(this@BasePriceActivity, newEnabledKey, enabled)
+                            PrefsHelper.removeKey(this@BasePriceActivity, oldEnabledKey)
+                        }
                     }
                     refreshCategory(category)
                     Toast.makeText(this@BasePriceActivity, "نام $category تغییر کرد ✅", Toast.LENGTH_SHORT).show()
@@ -364,6 +382,19 @@ class BasePriceActivity : AppCompatActivity() {
             }
             .setNegativeButton("لغو", null)
             .show()
+    }
+
+    // ------------------ افزودن کامل لیست‌ها ------------------
+    private fun refreshCategoryExtrasEnabledDefault() {
+        // در صورت نیاز می‌توان این متد را برای تنظیم پیش‌فرض‌ها صدا زد
+        uiScope.launch(Dispatchers.IO) {
+            val list = PrefsHelper.getSortedOptionList(this@BasePriceActivity, "اضافات") ?: emptyList()
+            for (title in list) {
+                // اگر کلید وضعیت وجود ندارد، پیش‌فرض فعال شود
+                val exists = PrefsHelper.containsKey(this@BasePriceActivity, "extra_enabled_$title")
+                if (!exists) PrefsHelper.saveBool(this@BasePriceActivity, "extra_enabled_$title", true)
+            }
+        }
     }
 
     override fun onDestroy() {
