@@ -6,17 +6,20 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.morteza.shuttercalculator.utils.FormatUtils
 
 class OptionAdapter(
     private var options: List<Pair<String, Float>>,
-    private val onEdit: (String) -> Unit,
+    private val onRename: (String) -> Unit,
+    private val onEditPrice: (String) -> Unit,
     private val onDelete: (String) -> Unit
 ) : RecyclerView.Adapter<OptionAdapter.VH>() {
 
     class VH(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tvName: TextView = itemView.findViewById(R.id.textOptionName)
         val tvPrice: TextView = itemView.findViewById(R.id.textOptionPrice)
-        val btnEdit: ImageButton = itemView.findViewById(R.id.buttonEditOption)
+        val btnRename: ImageButton = itemView.findViewById(R.id.buttonRenameOption)
+        val btnEditPrice: ImageButton = itemView.findViewById(R.id.buttonEditPriceOption)
         val btnDelete: ImageButton = itemView.findViewById(R.id.buttonDeleteOption)
     }
 
@@ -28,10 +31,16 @@ class OptionAdapter(
 
     override fun onBindViewHolder(holder: VH, position: Int) {
         val (name, price) = options[position]
-        holder.tvName.text = name
-        holder.tvPrice.text = price.toString()
 
-        holder.btnEdit.setOnClickListener { onEdit(name) }
+        // نمایش نام
+        holder.tvName.text = name
+
+        // ✅ نمایش قیمت با فرمت تومان
+        holder.tvPrice.text = FormatUtils.formatToman(price)
+
+        // رویدادها
+        holder.btnRename.setOnClickListener { onRename(name) }
+        holder.btnEditPrice.setOnClickListener { onEditPrice(name) }
         holder.btnDelete.setOnClickListener { onDelete(name) }
     }
 
