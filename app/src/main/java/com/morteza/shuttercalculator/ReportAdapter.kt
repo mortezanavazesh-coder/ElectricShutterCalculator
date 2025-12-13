@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.morteza.shuttercalculator.utils.FormatUtils
 
 class ReportAdapter(
     private var reports: MutableList<ReportModel>,
@@ -30,7 +31,9 @@ class ReportAdapter(
         val report = reports[position]
         holder.textTitle.text = report.customerName
         holder.textDate.text = "تاریخ: ${report.date}"
-        holder.textPrice.text = "جمع کل: ${report.total}"
+
+        // ✅ نمایش قیمت با فرمت درست
+        holder.textPrice.text = "جمع کل: ${FormatUtils.formatToman(report.total)}"
 
         holder.itemView.setOnClickListener {
             onItemClick?.invoke(report)
