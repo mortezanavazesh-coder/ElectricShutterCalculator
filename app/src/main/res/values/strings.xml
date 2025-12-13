@@ -1,10 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- نام اپلیکیشن -->
     <string name="app_name">Electric Shutter Calculator</string>
+
+    <!-- متن‌های عمومی -->
     <string name="hello_world">سلام دنیا!</string>
     <string name="action_settings">تنظیمات</string>
     <string name="back">بازگشت</string>
     <string name="done">تأیید</string>
     <string name="menu">منو</string>
     <string name="notification">اعلان‌ها</string>
+
+    <!-- دکمه‌ها و صفحات -->
+    <string name="save_report">ذخیره گزارش</string>
+    <string name="base_price_page">صفحه قیمت پایه</string>
+    <string name="reports_page">صفحه گزارشات</string>
+    <string name="roll_diameter_page">صفحه قطر رول</string>
+
+    <!-- ReportDetailActivity -->
+    <string name="report_detail_title">جزئیات گزارش</string>
+    <string name="customer_name">نام مشتری</string>
+    <string name="report_date">تاریخ</string>
+    <string name="height">ارتفاع</string>
+    <string name="width">عرض</string>
+    <string name="area">مساحت</string>
+    <string name="blade">تیغه</string>
+    <string name="motor">موتور</string>
+    <string name="shaft">شفت</string>
+    <string name="box">قوطی</string>
+    <string name="install">نصب</string>
+    <string name="welding">جوشکاری</string>
+    <string name="transport">کرایه حمل</string>
+    <string name="extras">اضافات</string>
+    <string name="total">جمع کل</string>
 </resources>
