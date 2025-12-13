@@ -22,20 +22,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView android:text="ارتفاع (cm)" />
+                <TextView
+                    android:text="ارتفاع (cm)"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
                 <EditText
                     android:id="@+id/inputHeight"
                     android:inputType="numberDecimal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-                <TextView android:text="انتخاب تیغه" />
+                <TextView
+                    android:text="انتخاب تیغه"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
                 <Spinner
                     android:id="@+id/spinnerBlade"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-                <TextView android:text="انتخاب شفت" />
+                <TextView
+                    android:text="انتخاب شفت"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
                 <Spinner
                     android:id="@+id/spinnerShaft"
                     android:layout_width="match_parent"
@@ -63,10 +75,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView android:id="@+id/textTotalBlades" android:text="تعداد تیغه: -" />
-                <TextView android:id="@+id/textFullRounds" android:text="تعداد دور کامل: -" />
-                <TextView android:id="@+id/textPartialRound" android:text="دور ناقص: -" />
-                <TextView android:id="@+id/textRemainingBlades" android:text="تیغه‌های باقی‌مانده: -" />
+                <TextView
+                    android:id="@+id/textTotalBlades"
+                    android:text="تعداد تیغه: -"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/textFullRounds"
+                    android:text="تعداد دور کامل: -"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/textPartialRound"
+                    android:text="دور ناقص: -"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/textRemainingBlades"
+                    android:text="تیغه‌های باقی‌مانده: -"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
@@ -87,7 +118,9 @@
                     android:text="قطر رول: - cm"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:textColor="@android:color/holo_green_dark"/>
+                    android:textColor="@android:color/holo_green_dark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
                 <Button
                     android:id="@+id/buttonCalculateRoll"
