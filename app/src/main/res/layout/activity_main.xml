@@ -11,25 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!-- نام مشتری -->
-        <LinearLayout
-            style="@style/CardStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:text="نام مشتری"
-                android:textStyle="bold"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <EditText
-                android:id="@+id/inputCustomerName"
-                android:hint="نام مشتری را وارد کنید"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-
+       
         <!-- ابعاد -->
         <LinearLayout
             style="@style/CardStyle"
@@ -369,3 +351,4 @@
 
     </LinearLayout>
 </ScrollView>
+
