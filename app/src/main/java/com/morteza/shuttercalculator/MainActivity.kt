@@ -9,38 +9,51 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.morteza.shuttercalculator.utils.FormatUtils
 import com.morteza.shuttercalculator.utils.PrefsHelper
-import com.morteza.shuttercalculator.utils.ThousandSeparatorTextWatcher
 import com.morteza.shuttercalculator.utils.ReportStorage
+import com.morteza.shuttercalculator.utils.ThousandSeparatorTextWatcher
+import java.text.SimpleDateFormat
+import java.util.*
 import kotlin.math.max
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var vm: MainViewModel
 
+    // ورودی‌ها
+    private lateinit var inputCustomerName: EditText
     private lateinit var inputHeightCm: EditText
     private lateinit var inputWidthCm: EditText
+
+    // نمایش‌ها
     private lateinit var textAreaM2: TextView
 
+    // تیغه
     private lateinit var spinnerBlade: Spinner
     private lateinit var textBladeLine: TextView
 
+    // موتور
     private lateinit var spinnerMotor: Spinner
     private lateinit var textMotorLine: TextView
 
+    // شفت
     private lateinit var spinnerShaft: Spinner
     private lateinit var textShaftLine: TextView
 
+    // قوطی
     private lateinit var checkboxBoxEnabled: CheckBox
     private lateinit var spinnerBox: Spinner
     private lateinit var textBoxLine: TextView
 
+    // هزینه‌ها
     private lateinit var inputInstallPrice: EditText
     private lateinit var inputWeldingPrice: EditText
     private lateinit var inputTransportPrice: EditText
     private lateinit var textInstallComputed: TextView
 
+    // گزینه‌های اضافی
     private lateinit var extrasContainer: LinearLayout
 
+    // ریز محاسبات
     private lateinit var textBreakBlade: TextView
     private lateinit var textBreakMotor: TextView
     private lateinit var textBreakShaft: TextView
@@ -50,13 +63,16 @@ class MainActivity : AppCompatActivity() {
     private lateinit var textBreakTransport: TextView
     private lateinit var textBreakExtras: TextView
 
+    // جمع کل
     private lateinit var textTotal: TextView
 
+    // دکمه‌ها
     private lateinit var buttonSaveReport: Button
     private lateinit var buttonBasePrice: Button
     private lateinit var buttonRollDiameter: Button
     private lateinit var buttonReports: Button
 
+    // نگهداری آخرین نرخ نصب معتبر
     private var previousInstallBase: Float = 0f
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -97,6 +113,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun bindViews() {
+        // اتصال ویوها
+        inputCustomerName = findViewById(R.id.inputCustomerName)
         inputHeightCm = findViewById(R.id.inputHeightCm)
         inputWidthCm = findViewById(R.id.inputWidthCm)
         textAreaM2 = findViewById(R.id.textAreaM2)
@@ -137,17 +155,22 @@ class MainActivity : AppCompatActivity() {
         buttonRollDiameter = findViewById(R.id.buttonRollDiameter)
         buttonReports = findViewById(R.id.buttonReports)
 
+        // جداکننده هزارگان برای ورودی‌های پول
         inputInstallPrice.addTextChangedListener(ThousandSeparatorTextWatcher(inputInstallPrice))
         inputWeldingPrice.addTextChangedListener(ThousandSeparatorTextWatcher(inputWeldingPrice))
         inputTransportPrice.addTextChangedListener(ThousandSeparatorTextWatcher(inputTransportPrice))
     }
 
     private fun setupButtons() {
+        // ذخیره گزارش با نام مشتری و تاریخ رشته‌ای
         buttonSaveReport.setOnClickListener {
+            val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
+            val today = sdf.format(Date())
+
             val report = ReportModel(
                 id = ReportStorage.generateId(),
-                customerName = "مشتری ناشناس",
-                date = System.currentTimeMillis(),
+                customerName = inputCustomerName.text.toString().ifBlank { "مشتری ناشناس" },
+                date = today, // تاریخ به صورت رشته ذخیره می‌شود
                 height = inputHeightCm.text.toString().toFloatOrNull() ?: 0f,
                 width = inputWidthCm.text.toString().toFloatOrNull() ?: 0f,
                 area = extractAreaFloat(textAreaM2.text.toString()),
@@ -165,6 +188,7 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "گزارش ذخیره شد ✅", Toast.LENGTH_SHORT).show()
         }
 
+        // ناوبری
         buttonBasePrice.setOnClickListener {
             startActivity(Intent(this, BasePriceActivity::class.java))
         }
@@ -187,6 +211,7 @@ class MainActivity : AppCompatActivity() {
         inputHeightCm.addTextChangedListener(watcher)
         inputWidthCm.addTextChangedListener(watcher)
 
+        // اعتبارسنجی نرخ نصب و ذخیره
         inputInstallPrice.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 val v = FormatUtils.parseTomanInput(s?.toString())
@@ -266,11 +291,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun recalcAllAndDisplay() {
+        // ابعاد و مساحت
         val heightCm = max(0.0, parseDoubleSafe(inputHeightCm.text?.toString()))
         val widthCm = max(0.0, parseDoubleSafe(inputWidthCm.text?.toString()))
         val areaM2 = (widthCm * heightCm) / 10000.0
         textAreaM2.text = String.format("مساحت: %.3f متر مربع", areaM2)
 
+        // تیغه
         var bladeComputed = 0.0
         var bladeBase = 0f
         if (spinnerBlade.adapter != null && spinnerBlade.adapter.count > 0) {
@@ -282,6 +309,7 @@ class MainActivity : AppCompatActivity() {
             textBladeLine.text = "تیغه — داده‌ای موجود نیست"
         }
 
+        // موتور
         var motorBase = 0f
         if (spinnerMotor.adapter != null && spinnerMotor.adapter.count > 0) {
             val motorName = spinnerMotor.selectedItem as? String
@@ -291,6 +319,7 @@ class MainActivity : AppCompatActivity() {
             textMotorLine.text = "موتور — داده‌ای موجود نیست"
         }
 
+        // شفت
         var shaftComputed = 0.0
         var shaftBase = 0f
         if (spinnerShaft.adapter != null && spinnerShaft.adapter.count > 0) {
@@ -303,30 +332,33 @@ class MainActivity : AppCompatActivity() {
             textShaftLine.text = "شفت — داده‌ای موجود نیست"
         }
 
+        // قوطی
         var boxComputedValue = 0.0
         if (checkboxBoxEnabled.isChecked && spinnerBox.adapter != null && spinnerBox.adapter.count > 0) {
             val boxName = spinnerBox.selectedItem as? String
             val boxBase = if (boxName != null) PrefsHelper.getFloat(this, "قوطی_price_$boxName", 0f) else 0f
-            val effectiveHeight = max(0.0, heightCm - 30.0)
-            val units = (effectiveHeight * 2.0) / 100.0
+            val effectiveHeight = max(0.0, heightCm - 30.0) // کم کردن فضای آزاد
+            val units = (effectiveHeight * 2.0) / 100.0      // دو خط عمودی به متر
             boxComputedValue = units * boxBase
             textBoxLine.text = "قوطی — قیمت پایه: ${FormatUtils.formatToman(boxBase)}  |  قیمت کل: ${FormatUtils.formatToman(boxComputedValue.toFloat())}"
         } else {
             textBoxLine.text = "قوطی — محاسبه نشده"
         }
 
+        // نصب / جوشکاری / حمل
         val installRate = FormatUtils.parseTomanInput(inputInstallPrice.text?.toString()).toDouble()
         val installComputed = when {
-            areaM2 == 0.0 -> installRate
-            areaM2 in 2.0..10.0 -> installRate * 10.0
-            areaM2 > 10.0 -> installRate * areaM2
-            else -> installRate * 10.0
+            areaM2 == 0.0 -> installRate                      // اگر مساحت نامعتبر است، همان نرخ پایه
+            areaM2 in 2.0..10.0 -> installRate * 10.0         // برای بازه 2 تا 10
+            areaM2 > 10.0 -> installRate * areaM2             // تناسبی با مساحت
+            else -> installRate * 10.0                        // برای 0 < area < 2
         }
         textInstallComputed.text = FormatUtils.formatToman(installComputed.toFloat())
 
         val weldingComputed = FormatUtils.parseTomanInput(inputWeldingPrice.text?.toString()).toDouble()
         val transportComputed = FormatUtils.parseTomanInput(inputTransportPrice.text?.toString()).toDouble()
 
+        // مجموع گزینه‌های اضافی
         val extras = PrefsHelper.getAllExtraOptions(this)
         var extrasTotal = 0.0
         for ((name, priceF) in extras) {
@@ -334,6 +366,7 @@ class MainActivity : AppCompatActivity() {
             if (enabled) extrasTotal += priceF.toDouble()
         }
 
+        // نمایش ریزمحاسبات
         textBreakBlade.text = "جمع تیغه: ${FormatUtils.formatToman(bladeComputed.toFloat())}"
         textBreakMotor.text = "موتور: ${FormatUtils.formatToman(motorBase)}"
         textBreakShaft.text = "جمع شفت: ${FormatUtils.formatToman(shaftComputed.toFloat())}"
@@ -343,11 +376,13 @@ class MainActivity : AppCompatActivity() {
         textBreakTransport.text = "کرایه حمل: ${FormatUtils.formatToman(transportComputed.toFloat())}"
         textBreakExtras.text = "گزینه‌های اضافی: ${FormatUtils.formatToman(extrasTotal.toFloat())}"
 
+        // جمع کل
         val total = bladeComputed + motorBase + shaftComputed + boxComputedValue + installComputed + weldingComputed + transportComputed + extrasTotal
         textTotal.text = "قیمت نهایی: ${FormatUtils.formatToman(total.toFloat())}"
     }
 
     private fun extractAreaFloat(areaText: String): Float {
+        // ورودی مثل: "مساحت: 2.345 متر مربع"
         return areaText
             .replace("مساحت:", "")
             .replace("متر مربع", "")
@@ -356,6 +391,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun extractExtrasFloat(extrasText: String): Float {
+        // ورودی مثل: "گزینه‌های اضافی: 120,000 تومان"
         return FormatUtils.parseTomanInput(extrasText)
     }
 }
