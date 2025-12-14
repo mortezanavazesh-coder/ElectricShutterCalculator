@@ -15,14 +15,14 @@
         android:textColor="@color/colorOnSurfaceSecondary"
         android:gravity="center"
         android:visibility="gone"
-        android:layout_marginBottom="8dp"/>
+        android:layout_marginBottom="12dp"
+        android:textSize="16sp"/>
 
     <!-- لیست گزارش‌ها -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerReports"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="match_parent"
         android:clipToPadding="false"
         android:paddingBottom="16dp"/>
 
@@ -32,5 +32,5 @@
         android:text="بازگشت به صفحه اصلی"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"/>
+        android:layout_marginTop="16dp"/>
 </LinearLayout>
