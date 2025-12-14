@@ -32,7 +32,7 @@ android {
 repositories {
     google()
     mavenCentral()
-    maven { url 'https://jitpack.io' }   // ✅ اضافه کردن JitPack
+    maven { url 'https://jitpack.io' }   // ✅ لازم برای PersianDate
 }
 
 dependencies {
@@ -47,8 +47,8 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.2'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2'
 
-    // PersianDate
-    implementation 'com.github.samanzamani:PersianDate:0.8'
+    // PersianDate (نسخه درست)
+    implementation 'com.github.samanzamani:PersianDate:1.0'
 
     // Room
     implementation 'androidx.room:room-runtime:2.6.1'
