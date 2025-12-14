@@ -13,8 +13,7 @@ import com.morteza.shuttercalculator.utils.FormatUtils
 import com.morteza.shuttercalculator.utils.PrefsHelper
 import com.morteza.shuttercalculator.utils.ReportStorage
 import com.morteza.shuttercalculator.utils.ThousandSeparatorTextWatcher
-import java.text.SimpleDateFormat
-import java.util.*
+import saman.zamani.persiandate.PersianDate
 import kotlin.math.max
 
 class MainActivity : AppCompatActivity() {
@@ -161,50 +160,151 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupButtons() {
         buttonSaveReport.setOnClickListener {
-    val view = LayoutInflater.from(this).inflate(R.layout.dialog_save_report, null)
-    val etName = view.findViewById<EditText>(R.id.etCustomerName)
-    val etPhone = view.findViewById<EditText>(R.id.etCustomerPhone)
+            val view = LayoutInflater.from(this).inflate(R.layout.dialog_save_report, null)
+            val etName = view.findViewById<EditText>(R.id.etCustomerName)
+            val etPhone = view.findViewById<EditText>(R.id.etCustomerPhone)
 
-    AlertDialog.Builder(this)
-        .setTitle("ذخیره گزارش")
-        .setView(view)
-        .setPositiveButton("ذخیره") { dialog, _ ->
-            val name = etName.text.toString().trim()
-            val phone = etPhone.text.toString().trim()
+            AlertDialog.Builder(this)
+                .setTitle("ذخیره گزارش")
+                .setView(view)
+                .setPositiveButton("ذخیره") { dialog, _ ->
+                    val name = etName.text.toString().trim()
+                    val phone = etPhone.text.toString().trim()
 
-            if (name.isEmpty()) {
-                Toast.makeText(this, "نام مشتری الزامی است", Toast.LENGTH_SHORT).show()
-                return@setPositiveButton
-            }
+                    if (name.isEmpty()) {
+                        Toast.makeText(this, "نام مشتری الزامی است", Toast.LENGTH_SHORT).show()
+                        return@setPositiveButton
+                    }
 
-            val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
-            val today = sdf.format(Date())
+                    // تاریخ شمسی
+                    val persianDate = PersianDate()
+                    val today = persianDate.toString() // خروجی مثل ۱۴۰۴/۰۹/۲۳
 
-            val report = ReportModel(
-                id = ReportStorage.generateId().toString(), // ← تبدیل Long به String
-                customerName = name,
-                customerPhone = phone, // شماره موبایل اختیاری
-                date = today,
-                height = inputHeightCm.text.toString().toFloatOrNull() ?: 0f,
-                width = inputWidthCm.text.toString().toFloatOrNull() ?: 0f,
-                area = extractAreaFloat(textAreaM2.text.toString()),
-                blade = spinnerBlade.selectedItem?.toString() ?: "-",
-                motor = spinnerMotor.selectedItem?.toString() ?: "-",
-                shaft = spinnerShaft.selectedItem?.toString() ?: "-",
-                box = if (checkboxBoxEnabled.isChecked) spinnerBox.selectedItem?.toString() ?: "-" else "محاسبه نشده",
-                install = FormatUtils.parseTomanInput(textInstallComputed.text.toString()),
-                welding = FormatUtils.parseTomanInput(inputWeldingPrice.text.toString()),
-                transport = FormatUtils.parseTomanInput(inputTransportPrice.text.toString()),
-                extras = extractExtrasFloat(textBreakExtras.text.toString()),
-                total = FormatUtils.parseTomanInput(textTotal.text.toString())
-            )
-            ReportStorage.saveReport(this, report)
-            Toast.makeText(this, "گزارش ذخیره شد ✅", Toast.LENGTH_SHORT).show()
-            dialog.dismiss()
+                    // ابعاد
+                    val height = inputHeightCm.text.toString().toFloatOrNull() ?: 0f
+                    val width = inputWidthCm.text.toString().toFloatOrNull() ?: 0f
+                    val area = (height * width) / 10000f
+                    textAreaM2.text = String.format("مساحت: %.3f متر مربع", area)
+
+                    // تیغه
+                    val bladeName = spinnerBlade.selectedItem?.toString() ?: "-"
+                    val bladeBase = PrefsHelper.getFloat(this, "تیغه_price_$bladeName", 0f)
+                    val bladeTotal = area * bladeBase
+                    textBladeLine.text = "تیغه — قیمت پایه: ${FormatUtils.formatToman(bladeBase)}  |  قیمت کل: ${FormatUtils.formatToman(bladeTotal)}"
+
+                    // موتور
+                    val motorName = spinnerMotor.selectedItem?.toString() ?: "-"
+                    val motorBase = PrefsHelper.getFloat(this, "موتور_price_$motorName", 0f)
+                    val motorTotal = motorBase
+                    textMotorLine.text = "موتور — قیمت: ${FormatUtils.formatToman(motorBase)}"
+
+                    // شفت
+                    val shaftName = spinnerShaft.selectedItem?.toString() ?: "-"
+                    val shaftBase = PrefsHelper.getFloat(this, "شفت_price_$shaftName", 0f)
+                    val shaftTotal = shaftBase * (width / 100f)
+                    textShaftLine.text = "شفت — قیمت پایه: ${FormatUtils.formatToman(shaftBase)}  |  قیمت کل: ${FormatUtils.formatToman(shaftTotal)}"
+
+                    // قوطی
+                    val boxName = if (checkboxBoxEnabled.isChecked) spinnerBox.selectedItem?.toString() ?: "-" else "محاسبه نشده"
+                    val boxBase = if (checkboxBoxEnabled.isChecked) PrefsHelper.getFloat(this, "قوطی_price_$boxName", 0f) else 0f
+                    val effectiveHeight = if (height > 30f) height - 30f else 0f
+                    val boxTotal = if (checkboxBoxEnabled.isChecked) ((effectiveHeight * 2f) / 100f) * boxBase else 0f
+                    textBoxLine.text = if (checkboxBoxEnabled.isChecked) {
+                        "قوطی — قیمت پایه: ${FormatUtils.formatToman(boxBase)}  |  قیمت کل: ${FormatUtils.formatToman(boxTotal)}"
+                    } else {
+                        "قوطی — محاسبه نشده"
+                    }
+
+                    // هزینه‌های پایه
+                    val installBase = FormatUtils.parseTomanInput(inputInstallPrice.text.toString())
+                    val weldingBase = FormatUtils.parseTomanInput(inputWeldingPrice.text.toString())
+                    val transportBase = FormatUtils.parseTomanInput(inputTransportPrice.text.toString())
+
+                    // نصب محاسبه‌شده
+                    val installTotal = when {
+                        area == 0f -> installBase
+                        area in 2f..10f -> installBase * 10f
+                        area > 10f -> installBase * area
+                        else -> installBase * 10f
+                    }
+                    textInstallComputed.text = FormatUtils.formatToman(installTotal)
+
+                    // جوشکاری و حمل (همان پایه، چون ورودی‌ها مستقیم‌اند)
+                    val weldingTotal = weldingBase
+                    val transportTotal = transportBase
+
+                    // گزینه‌های اضافی انتخاب‌شده
+                    val extrasSelected = mutableListOf<ExtraOption>()
+                    val extras = PrefsHelper.getAllExtraOptions(this)
+                    var extrasTotal = 0f
+                    for ((exName, priceF) in extras) {
+                        val enabled = PrefsHelper.getBool(this, "extra_enabled_$exName")
+                        if (enabled) {
+                            extrasSelected.add(ExtraOption(exName, priceF))
+                            extrasTotal += priceF
+                        }
+                    }
+                    textBreakExtras.text = "گزینه‌های اضافی: ${FormatUtils.formatToman(extrasTotal)}"
+
+                    // ریز محاسبات برای نمایش
+                    textBreakBlade.text = "جمع تیغه: ${FormatUtils.formatToman(bladeTotal)}"
+                    textBreakMotor.text = "موتور: ${FormatUtils.formatToman(motorTotal)}"
+                    textBreakShaft.text = "جمع شفت: ${FormatUtils.formatToman(shaftTotal)}"
+                    textBreakBox.text = "جمع قوطی: ${FormatUtils.formatToman(boxTotal)}"
+                    textBreakInstall.text = "نصب: ${FormatUtils.formatToman(installTotal)}"
+                    textBreakWelding.text = "جوشکاری: ${FormatUtils.formatToman(weldingTotal)}"
+                    textBreakTransport.text = "کرایه حمل: ${FormatUtils.formatToman(transportTotal)}"
+
+                    // جمع کل
+                    val total = bladeTotal + motorTotal + shaftTotal + boxTotal +
+                            installTotal + weldingTotal + transportTotal + extrasTotal
+                    if (total <= 0f) {
+                        Toast.makeText(this, "جمع کل نامعتبر است، لطفاً ابتدا محاسبه را انجام دهید", Toast.LENGTH_SHORT).show()
+                        return@setPositiveButton
+                    }
+                    textTotal.text = "قیمت نهایی: ${FormatUtils.formatToman(total)}"
+
+                    // ساخت گزارش کامل مطابق ReportModel جدید
+                    val report = ReportModel(
+                        id = ReportStorage.generateId().toString(),
+                        customerName = name,
+                        customerPhone = phone,
+                        date = today,
+
+                        bladeName = bladeName,
+                        bladeBasePrice = bladeBase,
+                        motorName = motorName,
+                        motorBasePrice = motorBase,
+                        shaftName = shaftName,
+                        shaftBasePrice = shaftBase,
+                        boxName = boxName,
+                        boxBasePrice = boxBase,
+
+                        installBasePrice = installBase,
+                        weldingBasePrice = weldingBase,
+                        transportBasePrice = transportBase,
+
+                        extrasSelected = extrasSelected,
+
+                        bladeTotal = bladeTotal,
+                        motorTotal = motorTotal,
+                        shaftTotal = shaftTotal,
+                        boxTotal = boxTotal,
+                        installTotal = installTotal,
+                        weldingTotal = weldingTotal,
+                        transportTotal = transportTotal,
+                        extrasTotal = extrasTotal,
+
+                        total = total
+                    )
+
+                    ReportStorage.saveReport(this, report)
+                    Toast.makeText(this, "گزارش ذخیره شد ✅", Toast.LENGTH_SHORT).show()
+                    dialog.dismiss()
+                }
+                .setNegativeButton("لغو", null)
+                .show()
         }
-        .setNegativeButton("لغو", null)
-        .show()
-}
 
         buttonBasePrice.setOnClickListener {
             startActivity(Intent(this, BasePriceActivity::class.java))
@@ -365,10 +465,10 @@ class MainActivity : AppCompatActivity() {
         // نصب / جوشکاری / حمل
         val installRate = FormatUtils.parseTomanInput(inputInstallPrice.text?.toString()).toDouble()
         val installComputed = when {
-            areaM2 == 0.0 -> installRate                      // اگر مساحت نامعتبر است، همان نرخ پایه
-            areaM2 in 2.0..10.0 -> installRate * 10.0         // برای بازه 2 تا 10
-            areaM2 > 10.0 -> installRate * areaM2             // تناسبی با مساحت
-            else -> installRate * 10.0                        // برای 0 < area < 2
+            areaM2 == 0.0 -> installRate
+            areaM2 in 2.0..10.0 -> installRate * 10.0
+            areaM2 > 10.0 -> installRate * areaM2
+            else -> installRate * 10.0
         }
         textInstallComputed.text = FormatUtils.formatToman(installComputed.toFloat())
 
@@ -397,20 +497,4 @@ class MainActivity : AppCompatActivity() {
         val total = bladeComputed + motorBase + shaftComputed + boxComputedValue + installComputed + weldingComputed + transportComputed + extrasTotal
         textTotal.text = "قیمت نهایی: ${FormatUtils.formatToman(total.toFloat())}"
     }
-
-    private fun extractAreaFloat(areaText: String): Float {
-        // ورودی مثل: "مساحت: 2.345 متر مربع"
-        return areaText
-            .replace("مساحت:", "")
-            .replace("متر مربع", "")
-            .trim()
-            .toFloatOrNull() ?: 0f
-    }
-
-    private fun extractExtrasFloat(extrasText: String): Float {
-        // ورودی مثل: "گزینه‌های اضافی: 120,000 تومان"
-        return FormatUtils.parseTomanInput(extrasText)
-    }
 }
-
-
