@@ -2,54 +2,45 @@ package com.morteza.shuttercalculator
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
+import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.morteza.shuttercalculator.utils.ReportStorage
 
 class ReportActivity : AppCompatActivity() {
 
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var adapter: ReportAdapter
-    private lateinit var btnBack: Button
+    private lateinit var listViewReports: ListView
+    private lateinit var adapter: ReportListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_report)
 
-        recyclerView = findViewById(R.id.recyclerReports)
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        listViewReports = findViewById(R.id.listViewReports)
 
-        btnBack = findViewById(R.id.buttonBackToMain)
-        btnBack.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish()
+        val reports = ReportStorage.loadReports(this)
+
+        if (reports.isEmpty()) {
+            Toast.makeText(this, "هیچ گزارشی ذخیره نشده است", Toast.LENGTH_SHORT).show()
         }
 
-        val reports = ReportStorage.loadReports(this)
+        adapter = ReportListAdapter(this, reports)
+        listViewReports.adapter = adapter
 
-        adapter = ReportAdapter(
-            reports.toMutableList(),
-            onDeleteClick = { report ->
-                ReportStorage.deleteReport(this, report)
-                refreshReports()
-                Toast.makeText(this, "گزارش حذف شد", Toast.LENGTH_SHORT).show()
-            },
-            onItemClick = { report ->
-                val intent = Intent(this, ReportDetailActivity::class.java)
-                intent.putExtra("report", report) // پاس دادن مدل به صورت Serializable
-                startActivity(intent)
-            }
-        )
+        listViewReports.setOnItemClickListener { _, _, position, _ ->
+            val report = reports[position]
+            val intent = Intent(this, ReportDetailActivity::class.java)
+            intent.putExtra("report", report)
+            startActivity(intent)
+        }
 
-        recyclerView.adapter = adapter
-    }
-
-    private fun refreshReports() {
-        val reports = ReportStorage.loadReports(this)
-        adapter.updateReports(reports)
+        listViewReports.setOnItemLongClickListener { _, _, position, _ ->
+            val report = reports[position]
+            ReportStorage.deleteReport(this, report)
+            Toast.makeText(this, "گزارش حذف شد", Toast.LENGTH_SHORT).show()
+            adapter.remove(report)
+            adapter.notifyDataSetChanged()
+            true
+        }
     }
 }
