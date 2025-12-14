@@ -15,6 +15,9 @@ import com.morteza.shuttercalculator.utils.ReportStorage
 import com.morteza.shuttercalculator.utils.ThousandSeparatorTextWatcher
 import saman.zamani.persiandate.PersianDate
 import kotlin.math.max
+import saman.zamani.persiandate.PersianDate
+import saman.zamani.persiandate.PersianDateFormat
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -498,3 +501,4 @@ class MainActivity : AppCompatActivity() {
         textTotal.text = "قیمت نهایی: ${FormatUtils.formatToman(total.toFloat())}"
     }
 }
+
