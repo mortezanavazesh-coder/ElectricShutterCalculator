@@ -5,7 +5,7 @@ import java.io.Serializable
 // گزینه‌های اضافی انتخاب‌شده
 data class ExtraOption(
     val name: String,        // نام گزینه
-    val basePrice: Float     // قیمت پایه گزینه
+    val basePrice: Long      // قیمت پایه گزینه
 ) : Serializable
 
 // مدل گزارش کامل
@@ -17,32 +17,32 @@ data class ReportModel(
 
     // قطعات انتخابی + قیمت پایه
     val bladeName: String,
-    val bladeBasePrice: Float,
+    val bladeBasePrice: Long,
     val motorName: String,
-    val motorBasePrice: Float,
+    val motorBasePrice: Long,
     val shaftName: String,
-    val shaftBasePrice: Float,
+    val shaftBasePrice: Long,
     val boxName: String,
-    val boxBasePrice: Float,
+    val boxBasePrice: Long,
 
     // قیمت پایه هزینه‌ها
-    val installBasePrice: Float,
-    val weldingBasePrice: Float,
-    val transportBasePrice: Float,
+    val installBasePrice: Long,
+    val weldingBasePrice: Long,
+    val transportBasePrice: Long,
 
     // گزینه‌های اضافی انتخاب‌شده
     val extrasSelected: List<ExtraOption>,
 
     // ریز محاسبات
-    val bladeTotal: Float,
-    val motorTotal: Float,
-    val shaftTotal: Float,
-    val boxTotal: Float,
-    val installTotal: Float,
-    val weldingTotal: Float,
-    val transportTotal: Float,
-    val extrasTotal: Float,
+    val bladeTotal: Long,
+    val motorTotal: Long,
+    val shaftTotal: Long,
+    val boxTotal: Long,
+    val installTotal: Long,
+    val weldingTotal: Long,
+    val transportTotal: Long,
+    val extrasTotal: Long,
 
     // جمع کل
-    val total: Float
+    val total: Long
 ) : Serializable
