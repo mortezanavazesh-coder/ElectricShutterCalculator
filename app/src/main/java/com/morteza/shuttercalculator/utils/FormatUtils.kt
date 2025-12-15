@@ -12,10 +12,19 @@ object FormatUtils {
         maximumFractionDigits = 0
     }
 
+    // فرمت کردن عدد Long به تومان با جداکننده هزار
+    fun formatToman(value: Long): String {
+        return try {
+            "${tomanFormat.format(value)} تومان"
+        } catch (e: Exception) {
+            "0 تومان"
+        }
+    }
+
     // فرمت کردن عدد Float به تومان با جداکننده هزار
     fun formatToman(value: Float): String {
         return try {
-            "${tomanFormat.format(value)} تومان"
+            "${tomanFormat.format(value.toLong())} تومان"
         } catch (e: Exception) {
             "0 تومان"
         }
@@ -24,16 +33,25 @@ object FormatUtils {
     // فرمت کردن عدد Double به تومان با جداکننده هزار
     fun formatToman(value: Double): String {
         return try {
-            "${tomanFormat.format(value)} تومان"
+            "${tomanFormat.format(value.toLong())} تومان"
         } catch (e: Exception) {
             "0 تومان"
+        }
+    }
+
+    // فرمت کردن عدد Long بدون متن "تومان"
+    fun formatTomanPlain(value: Long): String {
+        return try {
+            tomanFormat.format(value)
+        } catch (e: Exception) {
+            "0"
         }
     }
 
     // فرمت کردن عدد Float بدون متن "تومان"
     fun formatTomanPlain(value: Float): String {
         return try {
-            tomanFormat.format(value)
+            tomanFormat.format(value.toLong())
         } catch (e: Exception) {
             "0"
         }
@@ -42,19 +60,19 @@ object FormatUtils {
     // فرمت کردن عدد Double بدون متن "تومان"
     fun formatTomanPlain(value: Double): String {
         return try {
-            tomanFormat.format(value)
+            tomanFormat.format(value.toLong())
         } catch (e: Exception) {
             "0"
         }
     }
 
-    // پارس کردن ورودی کاربر (مثلاً "12,500") به Float
-    fun parseTomanInput(input: String?): Float {
-        if (input.isNullOrBlank()) return 0f
+    // پارس کردن ورودی کاربر (مثلاً "12,500") به Long
+    fun parseTomanInput(input: String?): Long {
+        if (input.isNullOrBlank()) return 0L
         return try {
-            input.replace(",", "").toFloat()
+            input.replace(",", "").toLong()
         } catch (e: Exception) {
-            0f
+            0L
         }
     }
 
