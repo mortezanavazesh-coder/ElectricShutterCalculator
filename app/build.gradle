@@ -47,8 +47,8 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.2'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2'
 
-    // PersianDate (نسخه درست)
-    implementation 'com.github.samanzamani:PersianDate:1.0'
+    // PersianDate (نسخه درست روی JitPack)
+    implementation 'com.github.samanzamani:PersianDate:1.7.1'
 
     // Room
     implementation 'androidx.room:room-runtime:2.6.1'
