@@ -13,17 +13,13 @@ class ReportDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_report_detail)
 
-        val report = intent.getSerializableExtra("report") as? ReportModel
-            ?: return
+        val report = intent.getSerializableExtra("report") as? ReportModel ?: return
 
         // اطلاعات مشتری
-        val tvCustomerName = findViewById<TextView>(R.id.tvCustomerName)
+        findViewById<TextView>(R.id.tvCustomerName).text = "نام مشتری: ${report.customerName}"
+        findViewById<TextView>(R.id.tvDate).text = "تاریخ: ${report.date}"
+
         val tvCustomerPhone = findViewById<TextView>(R.id.tvCustomerPhone)
-        val tvDate = findViewById<TextView>(R.id.tvDate)
-
-        tvCustomerName.text = "نام مشتری: ${report.customerName}"
-        tvDate.text = "تاریخ: ${report.date}"
-
         if (!report.customerPhone.isNullOrEmpty()) {
             tvCustomerPhone.text = "شماره: ${report.customerPhone}"
             tvCustomerPhone.setOnClickListener {
@@ -34,29 +30,39 @@ class ReportDetailActivity : AppCompatActivity() {
             tvCustomerPhone.text = "شماره: ثبت نشده"
         }
 
+        // ابعاد کرکره
+        findViewById<TextView>(R.id.tvHeight).text = "ارتفاع کرکره: ${report.height} سانتی‌متر"
+        findViewById<TextView>(R.id.tvWidth).text = "عرض کرکره: ${report.width} سانتی‌متر"
+        findViewById<TextView>(R.id.tvArea).text = "مساحت: ${String.format("%.3f", report.area)} متر مربع"
+
         // مشخصات کرکره
         findViewById<TextView>(R.id.tvBlade).text =
-            "تیغه: ${report.bladeName} (قیمت پایه: ${FormatUtils.formatToman(report.bladeBasePrice)}) → جمع: ${FormatUtils.formatToman(report.bladeTotal)}"
+            "تیغه: ${report.bladeName}\nقیمت پایه: ${FormatUtils.formatToman(report.bladeBasePrice)}\nجمع: ${FormatUtils.formatToman(report.bladeTotal)}"
+
         findViewById<TextView>(R.id.tvMotor).text =
-            "موتور: ${report.motorName} (قیمت پایه: ${FormatUtils.formatToman(report.motorBasePrice)}) → جمع: ${FormatUtils.formatToman(report.motorTotal)}"
+            "موتور: ${report.motorName}\nقیمت پایه: ${FormatUtils.formatToman(report.motorBasePrice)}\nجمع: ${FormatUtils.formatToman(report.motorTotal)}"
+
         findViewById<TextView>(R.id.tvShaft).text =
-            "شفت: ${report.shaftName} (قیمت پایه: ${FormatUtils.formatToman(report.shaftBasePrice)}) → جمع: ${FormatUtils.formatToman(report.shaftTotal)}"
+            "شفت: ${report.shaftName}\nقیمت پایه: ${FormatUtils.formatToman(report.shaftBasePrice)}\nجمع: ${FormatUtils.formatToman(report.shaftTotal)}"
+
         findViewById<TextView>(R.id.tvBox).text =
-            "قوطی: ${report.boxName} (قیمت پایه: ${FormatUtils.formatToman(report.boxBasePrice)}) → جمع: ${FormatUtils.formatToman(report.boxTotal)}"
+            "قوطی: ${report.boxName}\nقیمت پایه: ${FormatUtils.formatToman(report.boxBasePrice)}\nجمع: ${FormatUtils.formatToman(report.boxTotal)}"
 
         // هزینه‌های پایه
         findViewById<TextView>(R.id.tvInstall).text =
-            "نصب: قیمت پایه ${FormatUtils.formatToman(report.installBasePrice)} → جمع: ${FormatUtils.formatToman(report.installTotal)}"
+            "نصب\nقیمت پایه: ${FormatUtils.formatToman(report.installBasePrice)}\nجمع: ${FormatUtils.formatToman(report.installTotal)}"
+
         findViewById<TextView>(R.id.tvWelding).text =
-            "جوشکاری: قیمت پایه ${FormatUtils.formatToman(report.weldingBasePrice)} → جمع: ${FormatUtils.formatToman(report.weldingTotal)}"
+            "جوشکاری\nقیمت پایه: ${FormatUtils.formatToman(report.weldingBasePrice)}\nجمع: ${FormatUtils.formatToman(report.weldingTotal)}"
+
         findViewById<TextView>(R.id.tvTransport).text =
-            "کرایه حمل: قیمت پایه ${FormatUtils.formatToman(report.transportBasePrice)} → جمع: ${FormatUtils.formatToman(report.transportTotal)}"
+            "کرایه حمل\nقیمت پایه: ${FormatUtils.formatToman(report.transportBasePrice)}\nجمع: ${FormatUtils.formatToman(report.transportTotal)}"
 
         // گزینه‌های اضافی
         val tvExtras = findViewById<TextView>(R.id.tvExtras)
         if (report.extrasSelected.isNotEmpty()) {
             val extrasText = report.extrasSelected.joinToString("\n") {
-                "${it.name} (قیمت پایه: ${FormatUtils.formatToman(it.basePrice)})"
+                "${it.name} — ${FormatUtils.formatToman(it.basePrice)}"
             }
             tvExtras.text = "گزینه‌های اضافی:\n$extrasText\nجمع: ${FormatUtils.formatToman(report.extrasTotal)}"
         } else {
