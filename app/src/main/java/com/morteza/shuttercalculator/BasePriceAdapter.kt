@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.morteza.shuttercalculator.utils.FormatUtils
 
 class BasePriceAdapter(
-    private var items: List<Pair<String, Float>>,
+    private var items: List<Pair<String, Long>>,
     private val onDelete: (title: String) -> Unit,
     private val onRename: (title: String) -> Unit,
     private val onEdit: (title: String) -> Unit
@@ -35,7 +35,7 @@ class BasePriceAdapter(
         // نمایش نام گزینه
         holder.tvTitle.text = title
 
-        // ✅ نمایش قیمت با فرمت تومان و جداکننده هزارگان
+        // ✅ نمایش قیمت با فرمت تومان و جداکننده هزارگان (Long)
         holder.tvPrice.text = FormatUtils.formatToman(price)
 
         // رویدادها
@@ -46,7 +46,7 @@ class BasePriceAdapter(
 
     override fun getItemCount(): Int = items.size
 
-    fun update(newItems: List<Pair<String, Float>>) {
+    fun update(newItems: List<Pair<String, Long>>) {
         items = newItems
         notifyDataSetChanged()
     }
