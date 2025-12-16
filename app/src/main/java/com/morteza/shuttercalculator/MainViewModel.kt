@@ -12,10 +12,10 @@ data class BasePrices(
     val motors: List<String> = emptyList(),
     val shafts: List<String> = emptyList(),
     val boxes: List<String> = emptyList(),
-    val installBase: Float = 0f,
-    val weldingBase: Float = 0f,
-    val transportBase: Float = 0f,
-    val extras: Map<String, Float> = emptyMap()
+    val installBase: Long = 0L,
+    val weldingBase: Long = 0L,
+    val transportBase: Long = 0L,
+    val extras: Map<String, Float> = emptyMap() // اضافات می‌تواند Float بماند
 )
 
 class MainViewModel : ViewModel() {
@@ -30,9 +30,9 @@ class MainViewModel : ViewModel() {
         val shafts = PrefsHelper.getSortedOptionList(context, "شفت")
         val boxes = PrefsHelper.getSortedOptionList(context, "قوطی")
 
-        val installBase = PrefsHelper.getFloat(context, "install_base")
-        val weldingBase = PrefsHelper.getFloat(context, "welding_base")
-        val transportBase = PrefsHelper.getFloat(context, "transport_base")
+        val installBase = PrefsHelper.getLong(context, "install_base", 0L)
+        val weldingBase = PrefsHelper.getLong(context, "welding_base", 0L)
+        val transportBase = PrefsHelper.getLong(context, "transport_base", 0L)
 
         val extras = PrefsHelper.getAllExtraOptions(context)
 
