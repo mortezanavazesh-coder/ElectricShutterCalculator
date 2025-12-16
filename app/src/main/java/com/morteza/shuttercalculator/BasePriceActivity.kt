@@ -292,7 +292,6 @@ class BasePriceActivity : AppCompatActivity() {
                 PrefsHelper.putLong(this, "${category}_price_$title", priceLong)
 
                 if (category == "اضافات") {
-                    // پیش‌فرض فعال باشد تا در صفحه اصلی دیده شود
                     PrefsHelper.saveBool(this, "extra_enabled_$title", true)
                 }
 
@@ -310,7 +309,6 @@ class BasePriceActivity : AppCompatActivity() {
         val welding = FormatUtils.parseTomanInput(inputWeldingBase.text.toString())
         val transport = FormatUtils.parseTomanInput(inputTransportBase.text.toString())
 
-        // ذخیره حتی اگر صفر باشند؛ ارور نمی‌دهیم تا مقدار ذخیره‌شده صفحه اصلی معتبر بماند
         PrefsHelper.putLong(this, "install_base", install)
         PrefsHelper.putLong(this, "welding_base", welding)
         PrefsHelper.putLong(this, "transport_base", transport)
@@ -336,14 +334,12 @@ class BasePriceActivity : AppCompatActivity() {
                     withContext(Dispatchers.IO) {
                         PrefsHelper.renameOption(this@BasePriceActivity, category, oldTitle, newTitle)
 
-                        // انتقال قیمت پایه (Long)
                         val oldKey = "${category}_price_$oldTitle"
                         val newKey = "${category}_price_$newTitle"
                         val price = PrefsHelper.getLong(this@BasePriceActivity, oldKey, 0L)
                         PrefsHelper.putLong(this@BasePriceActivity, newKey, price)
                         PrefsHelper.removeKey(this@BasePriceActivity, oldKey)
 
-                        // انتقال وضعیت فعال بودن برای اضافات
                         if (category == "اضافات") {
                             val oldEnabledKey = "extra_enabled_$oldTitle"
                             val newEnabledKey = "extra_enabled_$newTitle"
@@ -387,20 +383,8 @@ class BasePriceActivity : AppCompatActivity() {
             .show()
     }
 
-    // ------------------ پیش‌فرض فعال‌سازی اضافات ------------------
-    private fun refreshCategoryExtrasEnabledDefault() {
-        uiScope.launch(Dispatchers.IO) {
-            val list = PrefsHelper.getSortedOptionList(this@BasePriceActivity, "اضافات") ?: emptyList()
-            for (title in list) {
-                val exists = PrefsHelper.containsKey(this@BasePriceActivity, "extra_enabled_$title")
-                if (!exists) PrefsHelper.saveBool(this@BasePriceActivity, "extra_enabled_$title", true)
-            }
-        }
-    }
-
     override fun onDestroy() {
         super.onDestroy()
         uiScope.cancel()
     }
 }
-
