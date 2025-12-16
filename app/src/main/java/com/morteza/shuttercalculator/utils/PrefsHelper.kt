@@ -203,7 +203,7 @@ object PrefsHelper {
                 Log.w(TAG, "renameOption: old key not found $oldKey")
                 return
             }
-            // سعی کن مقدار را با Long بخوانی؛ اگر نبود از Float استفاده کن
+            // تلاش برای خواندن Long؛ اگر نبود، از Float بخوان
             val valueLong = prefs.getLong(oldKey, Long.MIN_VALUE)
             val editor = prefs.edit()
             editor.remove(oldKey).apply()
@@ -231,6 +231,18 @@ object PrefsHelper {
         if (persian.isNotEmpty()) return persian
         val english = getOptionMapLong(context, "extra")
         return english
+    }
+
+    // جدید: گزینه‌های اضافی همراه با وضعیت فعال بودن (checkbox state)
+    fun getAllExtraOptionsWithEnabled(context: Context): Map<String, Pair<Float, Boolean>> {
+        val prefs = getPrefs(context)
+        val extras = getAllExtraOptions(context)
+        val result = mutableMapOf<String, Pair<Float, Boolean>>()
+        for ((name, price) in extras) {
+            val enabled = prefs.getBoolean("extra_enabled_$name", false)
+            result[name] = price to enabled
+        }
+        return result
     }
 
     fun getCheckboxOptions(context: Context): Map<String, Float> = getAllExtraOptions(context)
