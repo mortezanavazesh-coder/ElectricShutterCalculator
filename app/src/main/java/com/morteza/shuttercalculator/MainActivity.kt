@@ -102,10 +102,8 @@ class MainActivity : AppCompatActivity() {
 
             previousInstallBase = if (bp.installBase > 0L) bp.installBase else 0L
 
-            // اگر extras از VM خالی بود، مستقیم از Prefs بساز
-            val extrasFromVm = bp.extras
-            val extrasMap = if (extrasFromVm.isNotEmpty()) extrasFromVm else PrefsHelper.getAllExtraOptions(this)
-            buildExtrasCheckboxes(extrasMap)
+            // ساخت چک‌باکس‌های گزینه‌های اضافی با وضعیت فعال/غیرفعال از Prefs
+            buildExtrasCheckboxes()
 
             recalcAllAndDisplay()
         }
@@ -114,8 +112,8 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         vm.reloadFromPrefs(this)
-        // برای اینکه بعد از برگشت از صفحه قیمت پایه، چک‌باکس‌ها فوراً بروز شوند:
-        buildExtrasCheckboxes(PrefsHelper.getAllExtraOptions(this))
+        // بروزرسانی گزینه‌های اضافی بعد از برگشت از صفحه قیمت پایه
+        buildExtrasCheckboxes()
         recalcAllAndDisplay()
     }
 
@@ -186,35 +184,30 @@ class MainActivity : AppCompatActivity() {
                     val persianDate = PersianDate()
                     val today = persianDate.toString()
 
+                    // محاسبه و بروزرسانی نمایش‌ها
+                    recalcAllAndDisplay()
+
+                    // ابعاد برای ذخیره در گزارش
                     val height = inputHeightCm.text.toString().toFloatOrNull() ?: 0f
                     val width = inputWidthCm.text.toString().toFloatOrNull() ?: 0f
                     val area = (height * width) / 10000f
-                    textAreaM2.text = String.format("مساحت: %.3f متر مربع", area)
 
+                    // استخراج نام/قیمت‌ها از نمایش فعلی
                     val bladeName = spinnerBlade.selectedItem?.toString() ?: "-"
                     val bladeBase = PrefsHelper.getLong(this, "تیغه_price_$bladeName", 0L)
-                    val bladeTotal = (area * bladeBase).toLong()
-                    textBladeLine.text = "تیغه — قیمت پایه: ${FormatUtils.formatToman(bladeBase)}  |  قیمت کل: ${FormatUtils.formatToman(bladeTotal)}"
-
                     val motorName = spinnerMotor.selectedItem?.toString() ?: "-"
                     val motorBase = PrefsHelper.getLong(this, "موتور_price_$motorName", 0L)
-                    val motorTotal = motorBase
-                    textMotorLine.text = "موتور — قیمت: ${FormatUtils.formatToman(motorBase)}"
-
                     val shaftName = spinnerShaft.selectedItem?.toString() ?: "-"
                     val shaftBase = PrefsHelper.getLong(this, "شفت_price_$shaftName", 0L)
-                    val shaftTotal = (shaftBase * (width / 100f)).toLong()
-                    textShaftLine.text = "شفت — قیمت پایه: ${FormatUtils.formatToman(shaftBase)}  |  قیمت کل: ${FormatUtils.formatToman(shaftTotal)}"
-
                     val boxName = if (checkboxBoxEnabled.isChecked) spinnerBox.selectedItem?.toString() ?: "-" else "محاسبه نشده"
                     val boxBase = if (checkboxBoxEnabled.isChecked) PrefsHelper.getLong(this, "قوطی_price_$boxName", 0L) else 0L
+
+                    // محاسبات مجدد برای ذخیره دقیق
+                    val bladeTotal = (area * bladeBase).toLong()
+                    val motorTotal = motorBase
+                    val shaftTotal = (shaftBase * (width / 100f)).toLong()
                     val effectiveHeight = if (height > 30f) height - 30f else 0f
                     val boxTotal = if (checkboxBoxEnabled.isChecked) (((effectiveHeight * 2f) / 100f) * boxBase).toLong() else 0L
-                    textBoxLine.text = if (checkboxBoxEnabled.isChecked) {
-                        "قوطی — قیمت پایه: ${FormatUtils.formatToman(boxBase)}  |  قیمت کل: ${FormatUtils.formatToman(boxTotal)}"
-                    } else {
-                        "قوطی — محاسبه نشده"
-                    }
 
                     val installBase = FormatUtils.parseTomanInput(inputInstallPrice.text.toString())
                     val weldingBase = FormatUtils.parseTomanInput(inputWeldingPrice.text.toString())
@@ -226,30 +219,20 @@ class MainActivity : AppCompatActivity() {
                         area > 10f -> (installBase * area).toLong()
                         else -> installBase * 10L
                     }
-                    textInstallComputed.text = FormatUtils.formatToman(installTotal)
-
                     val weldingTotal = weldingBase
                     val transportTotal = transportBase
 
                     val extrasSelected = mutableListOf<ExtraOption>()
-                    val extras = PrefsHelper.getAllExtraOptions(this)
+                    val extrasMap = PrefsHelper.getAllExtraOptionsWithEnabled(this)
                     var extrasTotal = 0L
-                    for ((exName, priceF) in extras) {
-                        val enabled = PrefsHelper.getBool(this, "extra_enabled_$exName")
+                    for ((exName, pair) in extrasMap) {
+                        val priceF = pair.first
+                        val enabled = pair.second
                         if (enabled) {
                             extrasSelected.add(ExtraOption(exName, priceF.toLong()))
                             extrasTotal += priceF.toLong()
                         }
                     }
-                    textBreakExtras.text = "گزینه‌های اضافی: ${FormatUtils.formatToman(extrasTotal)}"
-
-                    textBreakBlade.text = "جمع تیغه: ${FormatUtils.formatToman(bladeTotal)}"
-                    textBreakMotor.text = "موتور: ${FormatUtils.formatToman(motorTotal)}"
-                    textBreakShaft.text = "جمع شفت: ${FormatUtils.formatToman(shaftTotal)}"
-                    textBreakBox.text = "جمع قوطی: ${FormatUtils.formatToman(boxTotal)}"
-                    textBreakInstall.text = "هزینه نصب: ${FormatUtils.formatToman(installTotal)}"
-                    textBreakWelding.text = "جوشکاری: ${FormatUtils.formatToman(weldingTotal)}"
-                    textBreakTransport.text = "کرایه حمل: ${FormatUtils.formatToman(transportTotal)}"
 
                     val total = bladeTotal + motorTotal + shaftTotal + boxTotal +
                             installTotal + weldingTotal + transportTotal + extrasTotal
@@ -257,7 +240,6 @@ class MainActivity : AppCompatActivity() {
                         Toast.makeText(this, "جمع کل نامعتبر است، لطفاً ابتدا محاسبه را انجام دهید", Toast.LENGTH_SHORT).show()
                         return@setPositiveButton
                     }
-                    textTotal.text = "قیمت نهایی: ${FormatUtils.formatToman(total)}"
 
                     val report = ReportModel(
                         id = ReportStorage.generateId().toString(),
@@ -291,7 +273,7 @@ class MainActivity : AppCompatActivity() {
                     )
 
                     ReportStorage.saveReport(this, report)
-                    Toast.makeText(this, "گزارش ذخیره شد ✅", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "گزارش ذخیره شد", Toast.LENGTH_SHORT).show()
                     dialog.dismiss()
                 }
                 .setNegativeButton("لغو", null)
@@ -378,15 +360,18 @@ class MainActivity : AppCompatActivity() {
         checkboxBoxEnabled.setOnCheckedChangeListener { _, _ -> recalcAllAndDisplay() }
     }
 
-    private fun buildExtrasCheckboxes(extras: Map<String, Float>) {
+    // نسخه نهایی: ساخت چک‌باکس‌ها با وضعیت فعال/غیرفعال از PrefsHelper
+    private fun buildExtrasCheckboxes() {
         extrasContainer.removeAllViews()
-        if (extras.isEmpty()) return
-        val sorted = extras.keys.sortedWith(String.CASE_INSENSITIVE_ORDER)
+        val extrasWithState = PrefsHelper.getAllExtraOptionsWithEnabled(this)
+        if (extrasWithState.isEmpty()) return
+
+        val sorted = extrasWithState.keys.sortedWith(String.CASE_INSENSITIVE_ORDER)
         for (name in sorted) {
-            val price = extras[name]?.toLong() ?: 0L
+            val (price, enabled) = extrasWithState[name] ?: (0f to false)
             val cb = CheckBox(this)
-            cb.text = "$name  (${FormatUtils.formatToman(price)})"
-            cb.isChecked = PrefsHelper.getBool(this, "extra_enabled_$name")
+            cb.text = "$name  (${FormatUtils.formatToman(price.toLong())})"
+            cb.isChecked = enabled
             cb.setOnCheckedChangeListener { _, isChecked ->
                 PrefsHelper.saveBool(this, "extra_enabled_$name", isChecked)
                 recalcAllAndDisplay()
@@ -401,6 +386,7 @@ class MainActivity : AppCompatActivity() {
         val areaM2 = (widthCm * heightCm) / 10000.0
         textAreaM2.text = String.format("مساحت: %.3f متر مربع", areaM2)
 
+        // تیغه
         var bladeComputed = 0L
         var bladeBase = 0L
         if (spinnerBlade.adapter != null && spinnerBlade.adapter.count > 0) {
@@ -412,6 +398,7 @@ class MainActivity : AppCompatActivity() {
             textBladeLine.text = "تیغه — داده‌ای موجود نیست"
         }
 
+        // موتور
         var motorBase = 0L
         if (spinnerMotor.adapter != null && spinnerMotor.adapter.count > 0) {
             val motorName = spinnerMotor.selectedItem as? String
@@ -421,6 +408,7 @@ class MainActivity : AppCompatActivity() {
             textMotorLine.text = "موتور — داده‌ای موجود نیست"
         }
 
+        // شفت
         var shaftComputed = 0L
         var shaftBase = 0L
         if (spinnerShaft.adapter != null && spinnerShaft.adapter.count > 0) {
@@ -433,18 +421,20 @@ class MainActivity : AppCompatActivity() {
             textShaftLine.text = "شفت — داده‌ای موجود نیست"
         }
 
+        // قوطی
         var boxComputedValue = 0L
         if (checkboxBoxEnabled.isChecked && spinnerBox.adapter != null && spinnerBox.adapter.count > 0) {
             val boxName = spinnerBox.selectedItem as? String
             val boxBase = if (boxName != null) PrefsHelper.getLong(this, "قوطی_price_$boxName", 0L) else 0L
-            val effectiveHeight = max(0.0, heightCm - 30.0)
-            val units = (effectiveHeight * 2.0) / 100.0
+            val effectiveHeight = max(0.0, heightCm - 30.0) // کم کردن فضای آزاد
+            val units = (effectiveHeight * 2.0) / 100.0      // دو خط عمودی به متر
             boxComputedValue = (units * boxBase).toLong()
             textBoxLine.text = "قوطی — قیمت پایه: ${FormatUtils.formatToman(boxBase)}  |  قیمت کل: ${FormatUtils.formatToman(boxComputedValue)}"
         } else {
             textBoxLine.text = "قوطی — محاسبه نشده"
         }
 
+        // هزینه نصب / جوشکاری / حمل
         val installRate = FormatUtils.parseTomanInput(inputInstallPrice.text?.toString())
         val installComputed = when {
             areaM2 == 0.0 -> installRate
@@ -457,13 +447,16 @@ class MainActivity : AppCompatActivity() {
         val weldingComputed = FormatUtils.parseTomanInput(inputWeldingPrice.text?.toString())
         val transportComputed = FormatUtils.parseTomanInput(inputTransportPrice.text?.toString())
 
-        val extras = PrefsHelper.getAllExtraOptions(this)
+        // مجموع گزینه‌های اضافی با وضعیت تیک
+        val extrasMap = PrefsHelper.getAllExtraOptionsWithEnabled(this)
         var extrasTotal = 0L
-        for ((name, priceF) in extras) {
-            val enabled = PrefsHelper.getBool(this, "extra_enabled_$name")
+        for ((_, pair) in extrasMap) {
+            val priceF = pair.first
+            val enabled = pair.second
             if (enabled) extrasTotal += priceF.toLong()
         }
 
+        // نمایش ریزمحاسبات
         textBreakBlade.text = "جمع تیغه: ${FormatUtils.formatToman(bladeComputed)}"
         textBreakMotor.text = "موتور: ${FormatUtils.formatToman(motorBase)}"
         textBreakShaft.text = "جمع شفت: ${FormatUtils.formatToman(shaftComputed)}"
@@ -473,6 +466,7 @@ class MainActivity : AppCompatActivity() {
         textBreakTransport.text = "کرایه حمل: ${FormatUtils.formatToman(transportComputed)}"
         textBreakExtras.text = "گزینه‌های اضافی: ${FormatUtils.formatToman(extrasTotal)}"
 
+        // جمع کل
         val total = bladeComputed + motorBase + shaftComputed + boxComputedValue +
                 installComputed + weldingComputed + transportComputed + extrasTotal
         textTotal.text = "قیمت نهایی: ${FormatUtils.formatToman(total)}"
