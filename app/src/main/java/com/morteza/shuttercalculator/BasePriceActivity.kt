@@ -197,7 +197,7 @@ class BasePriceActivity : AppCompatActivity() {
         }
     }
 
-        // ------------------ افزودن تیغه ------------------
+       // ------------------ افزودن تیغه ------------------
     private fun showAddSlatDialog() {
         val view = LayoutInflater.from(this).inflate(R.layout.dialog_add_slat, null)
         val etTitle = view.findViewById<EditText>(R.id.etSlatTitle)
