@@ -34,6 +34,28 @@ object PrefsHelper {
         saveFloat(context, key, value)
     }
 
+    // ------------------ Long helpers ------------------
+    fun saveLong(context: Context, key: String, value: Long) {
+        try {
+            getPrefs(context).edit().putLong(key, value).apply()
+        } catch (e: Exception) {
+            Log.e(TAG, "saveLong failed for $key", e)
+        }
+    }
+
+    fun getLong(context: Context, key: String, defaultValue: Long = 0L): Long {
+        return try {
+            getPrefs(context).getLong(key, defaultValue)
+        } catch (e: Exception) {
+            Log.e(TAG, "getLong failed for $key", e)
+            defaultValue
+        }
+    }
+
+    fun putLong(context: Context, key: String, value: Long) {
+        saveLong(context, key, value)
+    }
+
     // ------------------ Boolean helpers ------------------
     fun saveBool(context: Context, key: String, value: Boolean) {
         try {
@@ -52,31 +74,12 @@ object PrefsHelper {
         }
     }
 
-    // 🔹 متد جدید برای بررسی وجود کلید
     fun containsKey(context: Context, key: String): Boolean {
         return try {
             getPrefs(context).contains(key)
         } catch (e: Exception) {
             Log.e(TAG, "containsKey failed for $key", e)
             false
-        }
-    }
-
-    // ------------------ Option management ------------------
-    fun addOption(context: Context, category: String, name: String, price: Float) {
-        try {
-            val key = "${category}_price_$name"
-            getPrefs(context).edit().putFloat(key, price).apply()
-        } catch (e: Exception) {
-            Log.e(TAG, "addOption failed for $category/$name", e)
-        }
-    }
-
-    fun removeOption(context: Context, category: String, name: String) {
-        try {
-            getPrefs(context).edit().remove("${category}_price_$name").apply()
-        } catch (e: Exception) {
-            Log.e(TAG, "removeOption failed for $category/$name", e)
         }
     }
 
@@ -88,49 +91,13 @@ object PrefsHelper {
         }
     }
 
-    fun renameOption(context: Context, category: String, oldName: String, newName: String) {
+    // ------------------ Option management (Float) ------------------
+    fun addOption(context: Context, category: String, name: String, price: Float) {
         try {
-            val prefs = getPrefs(context)
-            val oldKey = "${category}_price_$oldName"
-            val newKey = "${category}_price_$newName"
-            if (!prefs.contains(oldKey)) {
-                Log.w(TAG, "renameOption: old key not found $oldKey")
-                return
-            }
-            val value = prefs.getFloat(oldKey, 0f)
-            prefs.edit().remove(oldKey).putFloat(newKey, value).apply()
+            val key = "${category}_price_$name"
+            getPrefs(context).edit().putFloat(key, price).apply()
         } catch (e: Exception) {
-            Log.e(TAG, "renameOption failed for $category $oldName -> $newName", e)
-        }
-    }
-
-    fun optionExists(context: Context, category: String, name: String): Boolean {
-        return try {
-            getOptionList(context, category).any { it.equals(name, ignoreCase = true) }
-        } catch (e: Exception) {
-            Log.e(TAG, "optionExists failed for $category/$name", e)
-            false
-        }
-    }
-
-    fun getOptionList(context: Context, category: String): List<String> {
-        return try {
-            getPrefs(context).all.keys
-                .filter { it.startsWith("${category}_price_") }
-                .map { it.removePrefix("${category}_price_") }
-                .sortedWith(String.CASE_INSENSITIVE_ORDER)
-        } catch (e: Exception) {
-            Log.e(TAG, "getOptionList failed for $category", e)
-            emptyList()
-        }
-    }
-
-    fun getSortedOptionList(context: Context, category: String): MutableList<String> {
-        return try {
-            getOptionList(context, category).toMutableList().apply { sortWith(String.CASE_INSENSITIVE_ORDER) }
-        } catch (e: Exception) {
-            Log.e(TAG, "getSortedOptionList failed for $category", e)
-            mutableListOf()
+            Log.e(TAG, "addOption(Float) failed for $category/$name", e)
         }
     }
 
@@ -155,11 +122,114 @@ object PrefsHelper {
         }
     }
 
+    // ------------------ Option management (Long) ------------------
+    fun addOption(context: Context, category: String, name: String, price: Long) {
+        try {
+            val key = "${category}_price_$name"
+            getPrefs(context).edit().putLong(key, price).apply()
+        } catch (e: Exception) {
+            Log.e(TAG, "addOption(Long) failed for $category/$name", e)
+        }
+    }
+
+    fun getOptionMapLong(context: Context, category: String): Map<String, Long> {
+        return try {
+            val prefs = getPrefs(context)
+            prefs.all.keys
+                .filter { it.startsWith("${category}_price_") }
+                .mapNotNull { key ->
+                    try {
+                        val name = key.removePrefix("${category}_price_")
+                        val value = prefs.getLong(key, 0L)
+                        name to value
+                    } catch (e: Exception) {
+                        Log.w(TAG, "getOptionMapLong skip key $key", e)
+                        null
+                    }
+                }.toMap()
+        } catch (e: Exception) {
+            Log.e(TAG, "getOptionMapLong failed for $category", e)
+            emptyMap()
+        }
+    }
+
+    // ------------------ Options list helpers ------------------
+    fun getOptionList(context: Context, category: String): List<String> {
+        return try {
+            getPrefs(context).all.keys
+                .filter { it.startsWith("${category}_price_") }
+                .map { it.removePrefix("${category}_price_") }
+                .sortedWith(String.CASE_INSENSITIVE_ORDER)
+        } catch (e: Exception) {
+            Log.e(TAG, "getOptionList failed for $category", e)
+            emptyList()
+        }
+    }
+
+    fun getSortedOptionList(context: Context, category: String): MutableList<String> {
+        return try {
+            getOptionList(context, category).toMutableList().apply {
+                sortWith(String.CASE_INSENSITIVE_ORDER)
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "getSortedOptionList failed for $category", e)
+            mutableListOf()
+        }
+    }
+
+    fun optionExists(context: Context, category: String, name: String): Boolean {
+        return try {
+            getOptionList(context, category).any { it.equals(name, ignoreCase = true) }
+        } catch (e: Exception) {
+            Log.e(TAG, "optionExists failed for $category/$name", e)
+            false
+        }
+    }
+
+    fun removeOption(context: Context, category: String, name: String) {
+        try {
+            getPrefs(context).edit().remove("${category}_price_$name").apply()
+        } catch (e: Exception) {
+            Log.e(TAG, "removeOption failed for $category/$name", e)
+        }
+    }
+
+    fun renameOption(context: Context, category: String, oldName: String, newName: String) {
+        try {
+            val prefs = getPrefs(context)
+            val oldKey = "${category}_price_$oldName"
+            val newKey = "${category}_price_$newName"
+            if (!prefs.contains(oldKey)) {
+                Log.w(TAG, "renameOption: old key not found $oldKey")
+                return
+            }
+            // سعی کن مقدار را با Long بخوانی؛ اگر نبود از Float استفاده کن
+            val valueLong = prefs.getLong(oldKey, Long.MIN_VALUE)
+            val editor = prefs.edit()
+            editor.remove(oldKey).apply()
+            if (valueLong != Long.MIN_VALUE) {
+                editor.putLong(newKey, valueLong).apply()
+            } else {
+                val valueFloat = prefs.getFloat(oldKey, 0f)
+                editor.putFloat(newKey, valueFloat).apply()
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "renameOption failed for $category $oldName -> $newName", e)
+        }
+    }
+
     // ------------------ Extras helpers ------------------
     fun getAllExtraOptions(context: Context): Map<String, Float> {
         val persian = getOptionMap(context, "اضافات")
         if (persian.isNotEmpty()) return persian
         val english = getOptionMap(context, "extra")
+        return english
+    }
+
+    fun getAllExtraOptionsLong(context: Context): Map<String, Long> {
+        val persian = getOptionMapLong(context, "اضافات")
+        if (persian.isNotEmpty()) return persian
+        val english = getOptionMapLong(context, "extra")
         return english
     }
 
