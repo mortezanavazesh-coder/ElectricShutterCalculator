@@ -266,45 +266,58 @@ class MainActivity : AppCompatActivity() {
                     }
                     textTotal.text = "قیمت نهایی: ${FormatUtils.formatToman(total)}"
 
-                  // ساخت گزارش کامل مطابق ReportModel جدید
-                  val report = ReportModel(
-                      id = ReportStorage.generateId().toString(),
-                     customerName = name,
-                     customerPhone = phone,
-                     date = today,
 
-                     // ابعاد کرکره
-                     height = height,
-                    width = width,
-                    area = area,
+                    
+                     // ساخت گزارش کامل مطابق ReportModel جدید
+val report = ReportModel(
+    id = ReportStorage.generateId().toString(),
+    customerName = name,
+    customerPhone = phone,
+    date = today,
 
-                   bladeName = bladeName,
-                   bladeBasePrice = bladeBase.toLong(),
-                   motorName = motorName,
-                   motorBasePrice = motorBase.toLong(),
-                   shaftName = shaftName,
-                   shaftBasePrice = shaftBase.toLong(),
-                   boxName = boxName,
-                   boxBasePrice = boxBase.toLong(),
+    // ابعاد کرکره
+    height = height,
+    width = width,
+    area = area,
 
-                   installBasePrice = installBase.toLong(),
-                   weldingBasePrice = weldingBase.toLong(),
-                   transportBasePrice = transportBase.toLong(),
+    // قطعات انتخابی + قیمت پایه
+    bladeName = bladeName,
+    bladeBasePrice = bladeBase.toLong(),
+    motorName = motorName,
+    motorBasePrice = motorBase.toLong(),
+    shaftName = shaftName,
+    shaftBasePrice = shaftBase.toLong(),
+    boxName = boxName,
+    boxBasePrice = boxBase.toLong(),
 
-                   extrasSelected = extrasSelected,
+    // هزینه‌های پایه
+    installBasePrice = installBase.toLong(),
+    weldingBasePrice = weldingBase.toLong(),
+    transportBasePrice = transportBase.toLong(),
 
-                   bladeTotal = bladeTotal.toLong(),
-                   motorTotal = motorTotal.toLong(),
-                   shaftTotal = shaftTotal.toLong(),
-                   boxTotal = boxTotal.toLong(),
-                   installTotal = installTotal.toLong(),
-                   weldingTotal = weldingTotal.toLong(),
-                   transportTotal = transportTotal.toLong(),
-                   extrasTotal = extrasTotal.toLong(),
+    // گزینه‌های اضافی انتخاب‌شده
+    extrasSelected = extrasSelected,
 
-                   total = total.toLong()
-                  )
+    // ریز محاسبات
+    bladeTotal = bladeTotal.toLong(),
+    motorTotal = motorTotal.toLong(),
+    shaftTotal = shaftTotal.toLong(),
+    boxTotal = boxTotal.toLong(),
+    installTotal = installTotal.toLong(),
+    weldingTotal = weldingTotal.toLong(),
+    transportTotal = transportTotal.toLong(),
+    extrasTotal = extrasTotal.toLong(),
 
+    // جمع کل
+    total = total.toLong()
+)
+
+ReportStorage.saveReport(this, report)
+Toast.makeText(this, "گزارش ذخیره شد ✅", Toast.LENGTH_SHORT).show()
+dialog.dismiss()
+
+
+                    
 
                     ReportStorage.saveReport(this, report)
                     Toast.makeText(this, "گزارش ذخیره شد ✅", Toast.LENGTH_SHORT).show()
@@ -506,6 +519,7 @@ class MainActivity : AppCompatActivity() {
         textTotal.text = "قیمت نهایی: ${FormatUtils.formatToman(total.toFloat())}"
     }
 }
+
 
 
 
