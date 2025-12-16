@@ -212,7 +212,7 @@ class BasePriceActivity : AppCompatActivity() {
             .setView(view)
             .setPositiveButton("افزودن") { dialog, _ ->
                 val title = etTitle.text.toString().trim()
-                val priceLong = FormatUtils.parseTomanInput(etPrice.text.toString()).toLong()
+                val priceLong = FormatUtils.parseTomanInput(etPrice.text.toString())
                 val widthCm = etWidth.text.toString().toFloatOrNull() ?: 0f
                 val thicknessCm = etThickness.text.toString().toFloatOrNull() ?: 0f
 
@@ -248,7 +248,7 @@ class BasePriceActivity : AppCompatActivity() {
             .setView(view)
             .setPositiveButton("افزودن") { dialog, _ ->
                 val title = etTitle.text.toString().trim()
-                val priceLong = FormatUtils.parseTomanInput(etPrice.text.toString()).toLong()
+                val priceLong = FormatUtils.parseTomanInput(etPrice.text.toString())
                 val diameterCm = etDiameter.text.toString().toFloatOrNull() ?: 0f
 
                 if (title.isEmpty() || priceLong < 0L || diameterCm <= 0f) {
@@ -281,7 +281,7 @@ class BasePriceActivity : AppCompatActivity() {
             .setView(view)
             .setPositiveButton("افزودن") { dialog, _ ->
                 val title = etTitle.text.toString().trim()
-                val priceLong = FormatUtils.parseTomanInput(etPrice.text.toString()).toLong()
+                val priceLong = FormatUtils.parseTomanInput(etPrice.text.toString())
 
                 if (title.isEmpty() || priceLong < 0L) {
                     Toast.makeText(this, "عنوان و قیمت معتبر وارد کنید", Toast.LENGTH_SHORT).show()
@@ -306,9 +306,9 @@ class BasePriceActivity : AppCompatActivity() {
 
     // ------------------ ذخیره هزینه‌های پایه ------------------
     private fun saveCosts() {
-        val install = FormatUtils.parseTomanInput(inputInstallBase.text.toString()).toLong()
-        val welding = FormatUtils.parseTomanInput(inputWeldingBase.text.toString()).toLong()
-        val transport = FormatUtils.parseTomanInput(inputTransportBase.text.toString()).toLong()
+        val install = FormatUtils.parseTomanInput(inputInstallBase.text.toString())
+        val welding = FormatUtils.parseTomanInput(inputWeldingBase.text.toString())
+        val transport = FormatUtils.parseTomanInput(inputTransportBase.text.toString())
 
         // ذخیره حتی اگر صفر باشند؛ ارور نمی‌دهیم تا مقدار ذخیره‌شده صفحه اصلی معتبر بماند
         PrefsHelper.putLong(this, "install_base", install)
@@ -373,7 +373,7 @@ class BasePriceActivity : AppCompatActivity() {
             .setTitle("ویرایش قیمت $category")
             .setView(input)
             .setPositiveButton("ذخیره") { dialog, _ ->
-                val value = FormatUtils.parseTomanInput(input.text.toString()).toLong()
+                val value = FormatUtils.parseTomanInput(input.text.toString())
                 if (value < 0L) {
                     Toast.makeText(this, "قیمت معتبر وارد کنید", Toast.LENGTH_SHORT).show()
                     return@setPositiveButton
@@ -403,3 +403,4 @@ class BasePriceActivity : AppCompatActivity() {
         uiScope.cancel()
     }
 }
+
