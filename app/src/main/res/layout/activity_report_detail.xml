@@ -10,13 +10,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!-- اطلاعات مشتری -->
+        <!-- کارت اطلاعات مشتری -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
             app:cardCornerRadius="8dp"
-            app:cardElevation="4dp">
+            app:cardElevation="4dp"
+            android:layout_marginBottom="8dp">
 
             <LinearLayout
                 android:orientation="vertical"
@@ -24,37 +24,33 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/tvCustomerName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                <TextView android:id="@+id/tvCustomerName"
                     android:textStyle="bold"
                     android:textSize="16sp"
-                    android:textColor="@color/black"/>
-
-                <TextView
-                    android:id="@+id/tvCustomerPhone"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView android:id="@+id/tvCustomerPhone"
                     android:textColor="@android:color/holo_blue_dark"
-                    android:textSize="16sp"/>
-
-                <TextView
-                    android:id="@+id/tvDate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:textSize="16sp"
-                    android:textColor="@color/gray"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView android:id="@+id/tvDate"
+                    android:textColor="@color/gray"
+                    android:textSize="16sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- قطعات + هزینه‌های پایه + گزینه‌های اضافی -->
+        <!-- کارت ابعاد -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
             app:cardCornerRadius="8dp"
-            app:cardElevation="4dp">
+            app:cardElevation="4dp"
+            android:layout_marginBottom="8dp">
 
             <LinearLayout
                 android:orientation="vertical"
@@ -62,21 +58,32 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <!-- ابعاد -->
                 <TextView android:id="@+id/tvHeight"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="ارتفاع کرکره: "/>
+                    android:layout_height="wrap_content"/>
                 <TextView android:id="@+id/tvWidth"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="عرض کرکره: "/>
+                    android:layout_height="wrap_content"/>
                 <TextView android:id="@+id/tvArea"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="مساحت کرکره: "/>
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-                <!-- قطعات -->
+        <!-- کارت قطعات + هزینه‌های پایه + گزینه‌های اضافی -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp"
+            android:layout_marginBottom="8dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:padding="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
                 <TextView android:id="@+id/tvBlade"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -90,35 +97,28 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-                <!-- هزینه‌های پایه -->
                 <TextView android:id="@+id/tvInstall"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="هزینه نصب: "/>
+                    android:layout_height="wrap_content"/>
                 <TextView android:id="@+id/tvWelding"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="هزینه جوشکاری: "/>
+                    android:layout_height="wrap_content"/>
                 <TextView android:id="@+id/tvTransport"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="هزینه حمل: "/>
-
-                <!-- گزینه‌های اضافی -->
+                    android:layout_height="wrap_content"/>
                 <TextView android:id="@+id/tvExtras"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="گزینه‌های اضافی: "/>
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- ریز محاسبات -->
+        <!-- کارت ریز محاسبات -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
             app:cardCornerRadius="8dp"
-            app:cardElevation="4dp">
+            app:cardElevation="4dp"
+            android:layout_marginBottom="8dp">
 
             <LinearLayout
                 android:orientation="vertical"
@@ -153,13 +153,13 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <!-- جمع کل -->
+        <!-- کارت قیمت نهایی -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
             app:cardCornerRadius="8dp"
-            app:cardElevation="4dp">
+            app:cardElevation="4dp"
+            android:layout_marginBottom="8dp">
 
             <TextView
                 android:id="@+id/tvTotal"
@@ -171,7 +171,7 @@
                 android:textColor="@color/teal_700"/>
         </androidx.cardview.widget.CardView>
 
-        <!-- کلید بازگشت -->
+        <!-- دکمه بازگشت -->
         <Button
             android:id="@+id/buttonBackToReports"
             android:layout_width="match_parent"
