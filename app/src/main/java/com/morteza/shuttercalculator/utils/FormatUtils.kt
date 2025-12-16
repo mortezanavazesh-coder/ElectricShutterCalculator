@@ -7,12 +7,10 @@ import java.util.*
 
 object FormatUtils {
 
-    // فرمت جداکننده هزارگان
     private val tomanFormat: NumberFormat = DecimalFormat("#,###").apply {
         maximumFractionDigits = 0
     }
 
-    // فرمت کردن عدد Long به تومان با جداکننده هزار
     fun formatToman(value: Long): String {
         return try {
             "${tomanFormat.format(value)} تومان"
@@ -21,7 +19,6 @@ object FormatUtils {
         }
     }
 
-    // فرمت کردن عدد Float به تومان با جداکننده هزار
     fun formatToman(value: Float): String {
         return try {
             "${tomanFormat.format(value.toLong())} تومان"
@@ -30,7 +27,6 @@ object FormatUtils {
         }
     }
 
-    // فرمت کردن عدد Double به تومان با جداکننده هزار
     fun formatToman(value: Double): String {
         return try {
             "${tomanFormat.format(value.toLong())} تومان"
@@ -39,7 +35,6 @@ object FormatUtils {
         }
     }
 
-    // فرمت کردن عدد Long بدون متن "تومان"
     fun formatTomanPlain(value: Long): String {
         return try {
             tomanFormat.format(value)
@@ -48,7 +43,6 @@ object FormatUtils {
         }
     }
 
-    // فرمت کردن عدد Float بدون متن "تومان"
     fun formatTomanPlain(value: Float): String {
         return try {
             tomanFormat.format(value.toLong())
@@ -57,7 +51,6 @@ object FormatUtils {
         }
     }
 
-    // فرمت کردن عدد Double بدون متن "تومان"
     fun formatTomanPlain(value: Double): String {
         return try {
             tomanFormat.format(value.toLong())
@@ -66,17 +59,21 @@ object FormatUtils {
         }
     }
 
-    // پارس کردن ورودی کاربر (مثلاً "12,500") به Long
+    // پاک‌سازی امن: حذف هر کاراکتر غیرعددی و تبدیل به Long
     fun parseTomanInput(input: String?): Long {
         if (input.isNullOrBlank()) return 0L
         return try {
-            input.replace(",", "").toLong()
+            val cleaned = input
+                .replace(",", "")
+                .replace(" ", "")
+                .replace("تومان", "", ignoreCase = true)
+                .replace("[^\\d-]".toRegex(), "")
+            cleaned.toLongOrNull() ?: 0L
         } catch (e: Exception) {
             0L
         }
     }
 
-    // گرفتن تاریخ امروز به صورت yyyy/MM/dd
     fun getTodayDate(): String {
         val cal = Calendar.getInstance()
         val year = cal.get(Calendar.YEAR)
@@ -85,9 +82,8 @@ object FormatUtils {
         return String.format("%04d/%02d/%02d", year, month, day)
     }
 
-    // فرمت کردن timestamp (Long) به yyyy/MM/dd
     fun formatDate(timestamp: Long): String {
-        val sdf = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
+        val sdf = SimpleDateFormat("yyyy/MM/dd", Locale.US)
         return sdf.format(Date(timestamp))
     }
 }
