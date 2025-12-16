@@ -15,6 +15,11 @@ data class ReportModel(
     val customerPhone: String?,      // شماره موبایل (اختیاری)
     val date: String,                // تاریخ شمسی ثبت گزارش
 
+    // ابعاد کرکره
+    val height: Float,               // ارتفاع کرکره (سانتی‌متر)
+    val width: Float,                // عرض کرکره (سانتی‌متر)
+    val area: Float,                 // مساحت کرکره (متر مربع)
+
     // قطعات انتخابی + قیمت پایه
     val bladeName: String,
     val bladeBasePrice: Long,
