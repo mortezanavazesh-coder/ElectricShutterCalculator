@@ -3,6 +3,7 @@ package com.morteza.shuttercalculator
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.morteza.shuttercalculator.utils.FormatUtils
@@ -50,7 +51,7 @@ class ReportDetailActivity : AppCompatActivity() {
 
         // هزینه‌های پایه
         findViewById<TextView>(R.id.tvInstall).text =
-            "نصب\nقیمت پایه: ${FormatUtils.formatToman(report.installBasePrice)}\nجمع: ${FormatUtils.formatToman(report.installTotal)}"
+            "هزینه نصب\nقیمت پایه: ${FormatUtils.formatToman(report.installBasePrice)}\nجمع: ${FormatUtils.formatToman(report.installTotal)}"
 
         findViewById<TextView>(R.id.tvWelding).text =
             "جوشکاری\nقیمت پایه: ${FormatUtils.formatToman(report.weldingBasePrice)}\nجمع: ${FormatUtils.formatToman(report.weldingTotal)}"
@@ -72,5 +73,10 @@ class ReportDetailActivity : AppCompatActivity() {
         // جمع کل
         findViewById<TextView>(R.id.tvTotal).text =
             "قیمت نهایی: ${FormatUtils.formatToman(report.total)}"
+
+        // کلید بازگشت
+        findViewById<Button>(R.id.buttonBackToReports).setOnClickListener {
+            finish()
+        }
     }
 }
