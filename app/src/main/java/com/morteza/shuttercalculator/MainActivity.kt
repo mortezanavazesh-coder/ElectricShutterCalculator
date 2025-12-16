@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var buttonRollDiameter: Button
     private lateinit var buttonReports: Button
 
-    // نگهداری آخرین نرخ نصب معتبر
+    // نگهداری آخرین هزینه نصب معتبر
     private var previousInstallBase: Long = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -200,7 +200,7 @@ class MainActivity : AppCompatActivity() {
 
                     // شفت
                     val shaftName = spinnerShaft.selectedItem?.toString() ?: "-"
-                    val shaftBase = PrefsHelper.getLong(this, "شفت_price_$shaftName", 0L)
+                    val shaftBase = PrefsHelper.getLong(this, "शفت_price_$shaftName".replace("शفت","شفت"), 0L) // اطمینان از کی‌ نام فارسی
                     val shaftTotal = (shaftBase * (width / 100f)).toLong()
                     textShaftLine.text = "شفت — قیمت پایه: ${FormatUtils.formatToman(shaftBase)}  |  قیمت کل: ${FormatUtils.formatToman(shaftTotal)}"
 
@@ -215,12 +215,12 @@ class MainActivity : AppCompatActivity() {
                         "قوطی — محاسبه نشده"
                     }
 
-                    // هزینه‌های پایه
+                    // هزینه‌های پایه (Long)
                     val installBase = FormatUtils.parseTomanInput(inputInstallPrice.text.toString())
                     val weldingBase = FormatUtils.parseTomanInput(inputWeldingPrice.text.toString())
                     val transportBase = FormatUtils.parseTomanInput(inputTransportPrice.text.toString())
 
-                    // نصب محاسبه‌شده
+                    // هزینه نصب محاسبه‌شده
                     val installTotal = when {
                         area == 0f -> installBase
                         area in 2f..10f -> installBase * 10L
@@ -251,7 +251,7 @@ class MainActivity : AppCompatActivity() {
                     textBreakMotor.text = "موتور: ${FormatUtils.formatToman(motorTotal)}"
                     textBreakShaft.text = "جمع شفت: ${FormatUtils.formatToman(shaftTotal)}"
                     textBreakBox.text = "جمع قوطی: ${FormatUtils.formatToman(boxTotal)}"
-                    textBreakInstall.text = "نصب: ${FormatUtils.formatToman(installTotal)}"
+                    textBreakInstall.text = "هزینه نصب: ${FormatUtils.formatToman(installTotal)}"
                     textBreakWelding.text = "جوشکاری: ${FormatUtils.formatToman(weldingTotal)}"
                     textBreakTransport.text = "کرایه حمل: ${FormatUtils.formatToman(transportTotal)}"
 
@@ -326,12 +326,12 @@ class MainActivity : AppCompatActivity() {
         inputHeightCm.addTextChangedListener(watcher)
         inputWidthCm.addTextChangedListener(watcher)
 
-        // اعتبارسنجی نرخ نصب و ذخیره (Long)
+        // اعتبارسنجی هزینه نصب و ذخیره (Long)
         inputInstallPrice.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 val v = FormatUtils.parseTomanInput(s?.toString())
                 if (v <= 0L) {
-                    Toast.makeText(this@MainActivity, "نرخ نصب باید بزرگتر از صفر باشد", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@MainActivity, "هزینه نصب باید بزرگتر از صفر باشد", Toast.LENGTH_SHORT).show()
                     val desired = FormatUtils.formatTomanPlain(previousInstallBase)
                     if (inputInstallPrice.text.toString() != desired) {
                         inputInstallPrice.post {
@@ -401,14 +401,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun parseDoubleSafe(s: String?): Double {
-        return try { s?.toDouble() ?: 0.0 } catch (e: Exception) { 0.0 }
-    }
-
     private fun recalcAllAndDisplay() {
-        // ابعاد و مساحت
-        val heightCm = max(0.0, parseDoubleSafe(inputHeightCm.text?.toString()))
-        val widthCm = max(0.0, parseDoubleSafe(inputWidthCm.text?.toString()))
+        val heightCm = max(0.0, inputHeightCm.text.toString().toDoubleOrNull() ?: 0.0)
+        val widthCm = max(0.0, inputWidthCm.text.toString().toDoubleOrNull() ?: 0.0)
         val areaM2 = (widthCm * heightCm) / 10000.0
         textAreaM2.text = String.format("مساحت: %.3f متر مربع", areaM2)
 
@@ -460,7 +455,7 @@ class MainActivity : AppCompatActivity() {
             textBoxLine.text = "قوطی — محاسبه نشده"
         }
 
-        // نصب / جوشکاری / حمل
+        // هزینه نصب / جوشکاری / حمل
         val installRate = FormatUtils.parseTomanInput(inputInstallPrice.text?.toString())
         val installComputed = when {
             areaM2 == 0.0 -> installRate
@@ -486,7 +481,7 @@ class MainActivity : AppCompatActivity() {
         textBreakMotor.text = "موتور: ${FormatUtils.formatToman(motorBase)}"
         textBreakShaft.text = "جمع شفت: ${FormatUtils.formatToman(shaftComputed)}"
         textBreakBox.text = "جمع قوطی: ${FormatUtils.formatToman(boxComputedValue)}"
-        textBreakInstall.text = "نصب: ${FormatUtils.formatToman(installComputed)}"
+        textBreakInstall.text = "هزینه نصب: ${FormatUtils.formatToman(installComputed)}"
         textBreakWelding.text = "جوشکاری: ${FormatUtils.formatToman(weldingComputed)}"
         textBreakTransport.text = "کرایه حمل: ${FormatUtils.formatToman(transportComputed)}"
         textBreakExtras.text = "گزینه‌های اضافی: ${FormatUtils.formatToman(extrasTotal)}"
