@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="12dp">
 
     <LinearLayout
         android:orientation="vertical"
@@ -10,90 +10,171 @@
         android:layout_height="wrap_content">
 
         <!-- اطلاعات مشتری -->
-        <TextView
-            android:id="@+id/tvCustomerName"
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:textColor="@color/black"/>
+            android:layout_marginBottom="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
 
-        <TextView
-            android:id="@+id/tvCustomerPhone"
+            <LinearLayout
+                android:orientation="vertical"
+                android:padding="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvCustomerName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/tvCustomerPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/holo_blue_dark"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/tvDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="@color/gray"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- قطعات + هزینه‌های پایه + گزینه‌های اضافی -->
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/holo_blue_dark"
-            android:textSize="16sp"/>
+            android:layout_marginBottom="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
 
-        <TextView
-            android:id="@+id/tvDate"
+            <LinearLayout
+                android:orientation="vertical"
+                android:padding="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- ابعاد -->
+                <TextView android:id="@+id/tvHeight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="ارتفاع کرکره: "/>
+                <TextView android:id="@+id/tvWidth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="عرض کرکره: "/>
+                <TextView android:id="@+id/tvArea"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="مساحت کرکره: "/>
+
+                <!-- قطعات -->
+                <TextView android:id="@+id/tvBlade"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView android:id="@+id/tvMotor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView android:id="@+id/tvShaft"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView android:id="@+id/tvBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <!-- هزینه‌های پایه -->
+                <TextView android:id="@+id/tvInstall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="هزینه نصب: "/>
+                <TextView android:id="@+id/tvWelding"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="هزینه جوشکاری: "/>
+                <TextView android:id="@+id/tvTransport"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="هزینه حمل: "/>
+
+                <!-- گزینه‌های اضافی -->
+                <TextView android:id="@+id/tvExtras"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="گزینه‌های اضافی: "/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- ریز محاسبات -->
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:textColor="@color/gray"/>
+            android:layout_marginBottom="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
 
-        <!-- ابعاد کرکره -->
-        <TextView
-            android:id="@+id/tvHeight"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="ارتفاع کرکره: "
-            android:textSize="15sp"
-            android:layout_marginTop="6dp"/>
+            <LinearLayout
+                android:orientation="vertical"
+                android:padding="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tvWidth"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="عرض کرکره: "
-            android:textSize="15sp"/>
-
-        <TextView
-            android:id="@+id/tvArea"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="مساحت کرکره: "
-            android:textSize="15sp"
-            android:layout_marginBottom="8dp"/>
-
-        <!-- قطعات -->
-        <TextView android:id="@+id/tvBlade"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView android:id="@+id/tvMotor"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView android:id="@+id/tvShaft"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView android:id="@+id/tvBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <!-- هزینه‌های پایه -->
-        <TextView android:id="@+id/tvInstall"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView android:id="@+id/tvWelding"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView android:id="@+id/tvTransport"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <!-- گزینه‌های اضافی -->
-        <TextView android:id="@+id/tvExtras"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+                <TextView android:id="@+id/tvBreakBlade"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView android:id="@+id/tvBreakMotor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView android:id="@+id/tvBreakShaft"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView android:id="@+id/tvBreakBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView android:id="@+id/tvBreakInstall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView android:id="@+id/tvBreakWelding"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView android:id="@+id/tvBreakTransport"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <TextView android:id="@+id/tvBreakExtras"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
         <!-- جمع کل -->
-        <TextView
-            android:id="@+id/tvTotal"
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:paddingTop="12dp"
-            android:textColor="@color/teal_700"/>
+            android:layout_marginBottom="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="4dp">
+
+            <TextView
+                android:id="@+id/tvTotal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:padding="12dp"
+                android:textColor="@color/teal_700"/>
+        </androidx.cardview.widget.CardView>
+
+        <!-- کلید بازگشت -->
+        <Button
+            android:id="@+id/buttonBackToReports"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="بازگشت به گزارشات"/>
     </LinearLayout>
 </ScrollView>
