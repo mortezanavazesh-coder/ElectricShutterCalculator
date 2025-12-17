@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-       
         <!-- ابعاد -->
         <LinearLayout
             style="@style/CardStyle"
@@ -230,6 +229,16 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
+
+            <!-- نمایش لیست گزینه‌های انتخاب‌شده -->
+            <TextView
+                android:id="@+id/textExtrasLine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="گزینه‌های اضافی: انتخاب نشده"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:layout_marginTop="6dp"/>
         </LinearLayout>
 
         <!-- ریز محاسبات -->
@@ -351,4 +360,3 @@
 
     </LinearLayout>
 </ScrollView>
-
