@@ -2,44 +2,49 @@
 
     <!-- تم کلی اپلیکیشن -->
     <style name="Theme.ElectricShutterCalculator" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- رنگ‌های اصلی -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryVariant</item>
+        <item name="colorSecondary">@color/colorSecondary</item>
 
         <!-- رنگ پس‌زمینه و متن -->
-        <item name="android:windowBackground">@color/backgroundColor</item>
-        <item name="android:textColorPrimary">@color/textColorPrimary</item>
-        <item name="android:textColorSecondary">@color/textColorSecondary</item>
+        <item name="android:windowBackground">@color/colorBackground</item>
+        <item name="android:textColorPrimary">@color/colorOnSurface</item>
+        <item name="android:textColorSecondary">@color/colorOnSurfaceSecondary</item>
+
+        <!-- رنگ سطح کارت‌ها -->
+        <item name="colorSurface">@color/colorSurface</item>
+        <item name="colorOnSurface">@color/colorOnSurface</item>
     </style>
 
     <!-- استایل کارت‌ها -->
     <style name="CardStyle">
-        <item name="android:background">@color/cardBackground</item>
+        <item name="android:background">@color/colorSurface</item>
         <item name="android:padding">12dp</item>
         <item name="android:layout_marginBottom">12dp</item>
         <item name="android:elevation">4dp</item>
         <item name="android:orientation">vertical</item>
     </style>
 
-    <!-- استایل متن‌های تیتر -->
+    <!-- تیترها -->
     <style name="TitleText">
         <item name="android:textSize">16sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/textColorPrimary</item>
+        <item name="android:textColor">@color/colorOnSurface</item>
     </style>
 
-    <!-- استایل متن‌های معمولی -->
+    <!-- متن‌های معمولی -->
     <style name="BodyText">
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/textColorSecondary</item>
+        <item name="android:textColor">@color/colorOnSurfaceSecondary</item>
     </style>
 
-    <!-- استایل دکمه‌ها -->
+    <!-- دکمه‌ها -->
     <style name="PrimaryButton" parent="Widget.MaterialComponents.Button">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">48dp</item>
         <item name="android:backgroundTint">@color/colorPrimary</item>
-        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
 </resources>
