@@ -237,7 +237,7 @@
                 android:layout_height="wrap_content"
                 android:text="گزینه‌های اضافی: انتخاب نشده"
                 android:textSize="14sp"
-                android:textColor="@color/black"
+                android:textColor="@android:color/black"
                 android:layout_marginTop="6dp"/>
         </LinearLayout>
 
