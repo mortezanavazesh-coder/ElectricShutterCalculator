@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.morteza.shuttercalculator.utils.PrefsHelper
+import kotlin.math.PI
+import kotlin.math.max
 
 class RollCalculatorActivity : AppCompatActivity() {
 
@@ -36,66 +38,66 @@ class RollCalculatorActivity : AppCompatActivity() {
 
         // دکمه محاسبه
         buttonCalculate.setOnClickListener {
-            val height = inputHeight.text.toString().toDoubleOrNull() ?: 0.0
+            val heightCm = inputHeight.text.toString().toDoubleOrNull() ?: 0.0
 
-            // بررسی خالی بودن لیست‌ها
             if (spinnerBlade.adapter == null || spinnerBlade.adapter.count == 0 ||
                 spinnerShaft.adapter == null || spinnerShaft.adapter.count == 0) {
                 Toast.makeText(this, "ابتدا تیغه و شفت را تعریف کنید", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            // استخراج داده تیغه
+            // استخراج داده تیغه و شفت (همگی بر حسب سانتی‌متر)
             val bladeSelected = spinnerBlade.selectedItem?.toString() ?: ""
-            val bladeWidth = PrefsHelper.getSlatWidth(this, bladeSelected).toDouble()
-            val bladeThickness = PrefsHelper.getSlatThickness(this, bladeSelected).toDouble()
-
-            // استخراج داده شفت
             val shaftSelected = spinnerShaft.selectedItem?.toString() ?: ""
-            val shaftDiameter = PrefsHelper.getShaftDiameter(this, shaftSelected).toDouble()
+
+            val bladeWidthCm = PrefsHelper.getSlatWidth(this, bladeSelected).toDouble()
+            val bladeThicknessCm = PrefsHelper.getSlatThickness(this, bladeSelected).toDouble()
+            val shaftDiameterCm = PrefsHelper.getShaftDiameter(this, shaftSelected).toDouble()
 
             // اعتبارسنجی ورودی‌ها
-            if (bladeWidth <= 0 || bladeThickness <= 0 || shaftDiameter <= 0 || height <= 0) {
+            if (bladeWidthCm <= 0 || bladeThicknessCm <= 0 || shaftDiameterCm <= 0 || heightCm <= 0) {
                 Toast.makeText(this, "اطلاعات معتبر وارد کنید", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             // محاسبات
-            val totalBlades = height / bladeWidth
+            // تعداد تیغه‌ها (بدون اعشار در نمایش)
+            val totalBlades = heightCm / bladeWidthCm
             var remainingBlades = totalBlades
-            var rollDiameter = shaftDiameter
 
-            val circumference = shaftDiameter * Math.PI
-            val firstRoundBlades = circumference / bladeWidth
-            remainingBlades -= firstRoundBlades
-            rollDiameter += (2 * bladeThickness)
+            // شروع قطر رول از قطر شفت
+            var rollDiameterCm = shaftDiameterCm
 
             var fullRounds = 0
-            var partialRound = 0.0
-            var lastRemainingBlades = 0.0   // تیغه‌های ناقص دور آخر
+            var partialRoundRatio = 0.0
+            var lastRemainingBlades = 0.0
 
+            // حلقه دورها: در هر دور کامل، قطر رول به اندازه 2 * ضخامت تیغه افزایش می‌یابد
             while (remainingBlades > 0) {
-                val currentCircumference = rollDiameter * Math.PI
-                val bladesPerRound = currentCircumference / bladeWidth
+                val currentCircumference = rollDiameterCm * PI
+                val bladesPerRound = currentCircumference / bladeWidthCm
 
                 if (remainingBlades >= bladesPerRound) {
+                    // دور کامل
                     remainingBlades -= bladesPerRound
-                    rollDiameter += (2 * bladeThickness)
+                    rollDiameterCm += (2.0 * bladeThicknessCm) // افزایش قطر: ۲ × ضخامت
                     fullRounds++
                 } else {
-                    partialRound = remainingBlades / bladesPerRound
-                    rollDiameter += (2 * bladeThickness * partialRound)
-                    lastRemainingBlades = remainingBlades   // ذخیره تیغه‌های ناقص دور آخر
+                    // دور ناقص
+                    partialRoundRatio = max(0.0, remainingBlades / bladesPerRound)
+                    // افزایش قطر متناسب با نسبت دور ناقص
+                    rollDiameterCm += (2.0 * bladeThicknessCm * partialRoundRatio)
+                    lastRemainingBlades = remainingBlades
                     remainingBlades = 0.0
                 }
             }
 
             // نمایش خروجی‌ها
-            textTotalBlades.text = "تعداد تیغه: %.2f".format(totalBlades)
+            textTotalBlades.text = "تعداد تیغه: %.0f".format(totalBlades)
             textFullRounds.text = "تعداد دور کامل: $fullRounds"
-            textPartialRound.text = "دور ناقص: %.2f".format(partialRound)
+            textPartialRound.text = "دور ناقص: %.2f".format(partialRoundRatio)
             textRemainingBlades.text = "تیغه‌های ناقص دور آخر: %.2f".format(lastRemainingBlades)
-            textRollDiameter.text = "قطر رول نهایی: %.2f cm".format(rollDiameter)
+            textRollDiameter.text = "قطر رول نهایی: %.2f cm".format(rollDiameterCm)
         }
     }
 }
