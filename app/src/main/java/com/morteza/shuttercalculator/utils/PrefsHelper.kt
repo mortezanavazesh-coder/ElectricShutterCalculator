@@ -32,6 +32,9 @@ object PrefsHelper {
         try { getPrefs(context).getLong(key, defaultValue) }
         catch (e: Exception) { Log.e(TAG, "getLong failed for $key", e); defaultValue }
 
+    // Wrapper برای سازگاری با کدهای قدیمی
+    fun putLong(context: Context, key: String, value: Long) = saveLong(context, key, value)
+
     // ------------------ Boolean helpers ------------------
     fun saveBool(context: Context, key: String, value: Boolean) {
         try { getPrefs(context).edit().putBoolean(key, value).apply() }
@@ -41,6 +44,16 @@ object PrefsHelper {
     fun getBool(context: Context, key: String): Boolean =
         try { getPrefs(context).getBoolean(key, false) }
         catch (e: Exception) { Log.e(TAG, "getBool failed for $key", e); false }
+
+    // ------------------ Key helpers ------------------
+    fun containsKey(context: Context, key: String): Boolean =
+        try { getPrefs(context).contains(key) }
+        catch (e: Exception) { Log.e(TAG, "containsKey failed for $key", e); false }
+
+    fun removeKey(context: Context, key: String) {
+        try { getPrefs(context).edit().remove(key).apply() }
+        catch (e: Exception) { Log.e(TAG, "removeKey failed for $key", e) }
+    }
 
     // ------------------ Option management ------------------
     fun addOption(context: Context, category: String, name: String, price: Float) {
@@ -57,20 +70,20 @@ object PrefsHelper {
         val prefs = getPrefs(context)
         return prefs.all.keys
             .filter { it.startsWith("${category}_price_") }
-            .mapNotNull { key ->
+            .associate { key ->
                 val name = key.removePrefix("${category}_price_")
-                prefs.getFloat(key, 0f).let { name to it }
-            }.toMap()
+                name to prefs.getFloat(key, 0f)
+            }
     }
 
     fun getOptionMapLong(context: Context, category: String): Map<String, Long> {
         val prefs = getPrefs(context)
         return prefs.all.keys
             .filter { it.startsWith("${category}_price_") }
-            .mapNotNull { key ->
+            .associate { key ->
                 val name = key.removePrefix("${category}_price_")
-                prefs.getLong(key, 0L).let { name to it }
-            }.toMap()
+                name to prefs.getLong(key, 0L)
+            }
     }
 
     fun getOptionList(context: Context, category: String): List<String> =
@@ -79,11 +92,32 @@ object PrefsHelper {
             .map { it.removePrefix("${category}_price_") }
             .sortedWith(String.CASE_INSENSITIVE_ORDER)
 
+    fun getSortedOptionList(context: Context, category: String): MutableList<String> =
+        getOptionList(context, category).toMutableList().apply {
+            sortWith(String.CASE_INSENSITIVE_ORDER)
+        }
+
     fun optionExists(context: Context, category: String, name: String): Boolean =
         getOptionList(context, category).any { it.equals(name, ignoreCase = true) }
 
     fun removeOption(context: Context, category: String, name: String) {
         getPrefs(context).edit().remove("${category}_price_$name").apply()
+    }
+
+    fun renameOption(context: Context, category: String, oldName: String, newName: String) {
+        val prefs = getPrefs(context)
+        val oldKey = "${category}_price_$oldName"
+        val newKey = "${category}_price_$newName"
+        if (!prefs.contains(oldKey)) return
+        val editor = prefs.edit()
+        val valueLong = prefs.getLong(oldKey, Long.MIN_VALUE)
+        editor.remove(oldKey).apply()
+        if (valueLong != Long.MIN_VALUE) {
+            editor.putLong(newKey, valueLong).apply()
+        } else {
+            val valueFloat = prefs.getFloat(oldKey, 0f)
+            editor.putFloat(newKey, valueFloat).apply()
+        }
     }
 
     // ------------------ Extras helpers ------------------
