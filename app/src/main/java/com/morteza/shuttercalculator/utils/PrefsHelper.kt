@@ -66,24 +66,43 @@ object PrefsHelper {
         saveLong(context, key, price)
     }
 
+    // مقاوم‌سازی برای جلوگیری از ClassCastException
     fun getOptionMap(context: Context, category: String): Map<String, Float> {
         val prefs = getPrefs(context)
-        return prefs.all.keys
-            .filter { it.startsWith("${category}_price_") }
-            .associate { key ->
+        val result = mutableMapOf<String, Float>()
+        for (key in prefs.all.keys) {
+            if (key.startsWith("${category}_price_")) {
                 val name = key.removePrefix("${category}_price_")
-                name to prefs.getFloat(key, 0f)
+                val raw = prefs.all[key]
+                val value = when (raw) {
+                    is Float -> raw
+                    is Long -> raw.toFloat()
+                    is Int -> raw.toFloat()
+                    else -> 0f
+                }
+                result[name] = value
             }
+        }
+        return result
     }
 
     fun getOptionMapLong(context: Context, category: String): Map<String, Long> {
         val prefs = getPrefs(context)
-        return prefs.all.keys
-            .filter { it.startsWith("${category}_price_") }
-            .associate { key ->
+        val result = mutableMapOf<String, Long>()
+        for (key in prefs.all.keys) {
+            if (key.startsWith("${category}_price_")) {
                 val name = key.removePrefix("${category}_price_")
-                name to prefs.getLong(key, 0L)
+                val raw = prefs.all[key]
+                val value = when (raw) {
+                    is Long -> raw
+                    is Float -> raw.toLong()
+                    is Int -> raw.toLong()
+                    else -> 0L
+                }
+                result[name] = value
             }
+        }
+        return result
     }
 
     fun getOptionList(context: Context, category: String): List<String> =
@@ -110,13 +129,12 @@ object PrefsHelper {
         val newKey = "${category}_price_$newName"
         if (!prefs.contains(oldKey)) return
         val editor = prefs.edit()
-        val valueLong = prefs.getLong(oldKey, Long.MIN_VALUE)
+        val raw = prefs.all[oldKey]
         editor.remove(oldKey).apply()
-        if (valueLong != Long.MIN_VALUE) {
-            editor.putLong(newKey, valueLong).apply()
-        } else {
-            val valueFloat = prefs.getFloat(oldKey, 0f)
-            editor.putFloat(newKey, valueFloat).apply()
+        when (raw) {
+            is Long -> editor.putLong(newKey, raw).apply()
+            is Float -> editor.putFloat(newKey, raw).apply()
+            is Int -> editor.putLong(newKey, raw.toLong()).apply()
         }
     }
 
