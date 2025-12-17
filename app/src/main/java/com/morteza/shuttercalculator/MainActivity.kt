@@ -52,6 +52,7 @@ class MainActivity : AppCompatActivity() {
 
     // گزینه‌های اضافی
     private lateinit var extrasContainer: LinearLayout
+    private lateinit var textExtrasLine: TextView   // اضافه شد
 
     // ریز محاسبات
     private lateinit var textBreakBlade: TextView
@@ -141,6 +142,7 @@ class MainActivity : AppCompatActivity() {
         textInstallComputed = findViewById(R.id.textInstallComputed)
 
         extrasContainer = findViewById(R.id.extrasContainer)
+        textExtrasLine = findViewById(R.id.textExtrasLine)   // اتصال ویو
 
         textBreakBlade = findViewById(R.id.textBreakBlade)
         textBreakMotor = findViewById(R.id.textBreakMotor)
@@ -450,10 +452,10 @@ class MainActivity : AppCompatActivity() {
         // مجموع گزینه‌های اضافی با وضعیت تیک
         val extrasMap = PrefsHelper.getAllExtraOptionsWithEnabled(this)
         var extrasTotal = 0L
-        for ((_, pair) in extrasMap) {
+        val enabledExtras = extrasMap.filter { it.value.second }
+        for ((_, pair) in enabledExtras) {
             val priceF = pair.first
-            val enabled = pair.second
-            if (enabled) extrasTotal += priceF.toLong()
+            extrasTotal += priceF.toLong()
         }
 
         // نمایش ریزمحاسبات
@@ -465,6 +467,16 @@ class MainActivity : AppCompatActivity() {
         textBreakWelding.text = "جوشکاری: ${FormatUtils.formatToman(weldingComputed)}"
         textBreakTransport.text = "کرایه حمل: ${FormatUtils.formatToman(transportComputed)}"
         textBreakExtras.text = "گزینه‌های اضافی: ${FormatUtils.formatToman(extrasTotal)}"
+
+        // نمایش لیست گزینه‌های انتخاب‌شده در صفحه اصلی
+        if (enabledExtras.isNotEmpty()) {
+            val extrasLines = enabledExtras.entries.joinToString("\n") { (name, pair) ->
+                "$name — قیمت پایه: ${FormatUtils.formatToman(pair.first.toLong())}"
+            }
+            textExtrasLine.text = "گزینه‌های اضافی:\n$extrasLines"
+        } else {
+            textExtrasLine.text = "گزینه‌های اضافی: انتخاب نشده"
+        }
 
         // جمع کل
         val total = bladeComputed + motorBase + shaftComputed + boxComputedValue +
