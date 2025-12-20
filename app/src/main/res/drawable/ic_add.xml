@@ -7,11 +7,11 @@
 
     <!-- خط عمودی -->
     <path
-        android:fillColor="@color/white"
+        android:fillColor="@color/blue"
         android:pathData="M11,5 L13,5 L13,19 L11,19 Z"/>
 
     <!-- خط افقی -->
     <path
-        android:fillColor="@color/white"
+        android:fillColor="@color/blue"
         android:pathData="M5,11 L19,11 L19,13 L5,13 Z"/>
 </vector>
