@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fillViewport="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,250 +14,348 @@
         android:layout_height="wrap_content">
 
         <!-- کارت تیغه‌ها -->
-        <LinearLayout
-            style="@style/CardStyle"
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.App.MaterialCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
-            <TextView
-                style="@style/TitleText"
-                android:text="انتخاب تیغه"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <Button
-                style="@style/PrimaryButton"
-                android:id="@+id/buttonAddSlat"
-                android:text="افزودن تیغه"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                style="@style/BodyText"
-                android:id="@+id/emptySlats"
-                android:text="تیغه‌ای موجود نیست"
-                android:visibility="gone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvSlats"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"/>
-        </LinearLayout>
-
-        <!-- کارت موتور -->
-        <LinearLayout
-            style="@style/CardStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                style="@style/TitleText"
-                android:text="انتخاب موتور"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <Button
-                style="@style/PrimaryButton"
-                android:id="@+id/buttonAddMotor"
-                android:text="افزودن موتور"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                style="@style/BodyText"
-                android:id="@+id/emptyMotors"
-                android:text="موتوری موجود نیست"
-                android:visibility="gone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvMotors"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"/>
-        </LinearLayout>
-
-        <!-- کارت شفت -->
-        <LinearLayout
-            style="@style/CardStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                style="@style/TitleText"
-                android:text="انتخاب شفت"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <Button
-                style="@style/PrimaryButton"
-                android:id="@+id/buttonAddShaft"
-                android:text="افزودن شفت"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                style="@style/BodyText"
-                android:id="@+id/emptyShafts"
-                android:text="شفتی موجود نیست"
-                android:visibility="gone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvShafts"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"/>
-        </LinearLayout>
-
-        <!-- کارت قوطی -->
-        <LinearLayout
-            style="@style/CardStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                style="@style/TitleText"
-                android:text="انتخاب قوطی"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <Button
-                style="@style/PrimaryButton"
-                android:id="@+id/buttonAddBox"
-                android:text="افزودن قوطی"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                style="@style/BodyText"
-                android:id="@+id/emptyBoxes"
-                android:text="قوطی‌ای موجود نیست"
-                android:visibility="gone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvBoxes"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"/>
-        </LinearLayout>
-
-        <!-- کارت اضافات -->
-        <LinearLayout
-            style="@style/CardStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                style="@style/TitleText"
-                android:text="انتخاب گزینه اضافی"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <Button
-                style="@style/PrimaryButton"
-                android:id="@+id/buttonAddExtra"
-                android:text="افزودن گزینه"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                style="@style/BodyText"
-                android:id="@+id/emptyExtras"
-                android:text="گزینه‌ای موجود نیست"
-                android:visibility="gone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvExtras"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"/>
-        </LinearLayout>
-
-        <!-- کارت هزینه‌های پایه -->
-        <LinearLayout
-            style="@style/CardStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="88dp">
-
-            <TextView
-                style="@style/TitleText"
-                android:text="هزینه‌های اجرایی"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                style="@style/BodyText"
-                android:text="هزینه نصب (تومان به ازای هر متر مربع)"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"/>
-
-            <EditText
-                android:id="@+id/inputInstallBase"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"/>
-
-            <TextView
-                style="@style/BodyText"
-                android:text="جوشکاری (تومان)"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"/>
-
-            <EditText
-                android:id="@+id/inputWeldingBase"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"/>
-
-            <TextView
-                style="@style/BodyText"
-                android:text="کرایه حمل (تومان)"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"/>
-
-            <EditText
-                android:id="@+id/inputTransportBase"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"/>
 
             <LinearLayout
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="end"
-                android:layout_marginTop="16dp">
+                android:layout_height="wrap_content">
 
-                <Button
-                    style="@style/PrimaryButton"
-                    android:id="@+id/buttonSaveAll"
-                    android:text="ذخیرهٔ همه"
-                    android:layout_width="wrap_content"
+                <TextView
+                    style="@style/TitleText"
+                    android:text="انتخاب تیغه"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-                <Button
-                    style="@style/PrimaryButton"
-                    android:id="@+id/buttonBack"
-                    android:text="بازگشت"
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/buttonAddSlat"
+                    app:srcCompat="@drawable/ic_add"
+                    android:contentDescription="افزودن تیغه"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"/>
+                    android:layout_gravity="end"
+                    android:tint="@color/white"
+                    app:backgroundTint="@color/blue"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@drawable/divider"
+                    android:layout_marginVertical="6dp"/>
+
+                <TextView
+                    style="@style/BodyText"
+                    android:id="@+id/emptySlats"
+                    android:text="تیغه‌ای موجود نیست"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvSlats"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"/>
             </LinearLayout>
-        </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- کارت موتور -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.App.MaterialCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/TitleText"
+                    android:text="انتخاب موتور"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/buttonAddMotor"
+                    app:srcCompat="@drawable/ic_add"
+                    android:contentDescription="افزودن موتور"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:tint="@color/white"
+                    app:backgroundTint="@color/blue"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@drawable/divider"
+                    android:layout_marginVertical="6dp"/>
+
+                <TextView
+                    style="@style/BodyText"
+                    android:id="@+id/emptyMotors"
+                    android:text="موتوری موجود نیست"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvMotors"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- کارت شفت -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.App.MaterialCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/TitleText"
+                    android:text="انتخاب شفت"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/buttonAddShaft"
+                    app:srcCompat="@drawable/ic_add"
+                    android:contentDescription="افزودن شفت"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:tint="@color/white"
+                    app:backgroundTint="@color/blue"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@drawable/divider"
+                    android:layout_marginVertical="6dp"/>
+
+                <TextView
+                    style="@style/BodyText"
+                    android:id="@+id/emptyShafts"
+                    android:text="شفتی موجود نیست"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvShafts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- کارت قوطی -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.App.MaterialCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/TitleText"
+                    android:text="انتخاب قوطی"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/buttonAddBox"
+                    app:srcCompat="@drawable/ic_add"
+                    android:contentDescription="افزودن قوطی"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:tint="@color/white"
+                    app:backgroundTint="@color/blue"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@drawable/divider"
+                    android:layout_marginVertical="6dp"/>
+
+                <TextView
+                    style="@style/BodyText"
+                    android:id="@+id/emptyBoxes"
+                    android:text="قوطی‌ای موجود نیست"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvBoxes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- کارت اضافات -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.App.MaterialCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/TitleText"
+                    android:text="انتخاب گزینه اضافی"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/buttonAddExtra"
+                    app:srcCompat="@drawable/ic_add"
+                    android:contentDescription="افزودن گزینه"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:tint="@color/white"
+                    app:backgroundTint="@color/blue"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@drawable/divider"
+                    android:layout_marginVertical="6dp"/>
+
+                <TextView
+                    style="@style/BodyText"
+                    android:id="@+id/emptyExtras"
+                    android:text="گزینه‌ای موجود نیست"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvExtras"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <!-- کارت هزینه‌های پایه -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.App.MaterialCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="88dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- نصب -->
+                <TextView
+                    style="@style/BodyText"
+                    android:text="هزینه نصب (تومان به ازای هر متر مربع)"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"/>
+
+                <EditText
+                    android:id="@+id/inputInstallBase"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:hint="مثال: 250000"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@drawable/divider"
+                    android:layout_marginVertical="6dp"/>
+
+                <!-- جوشکاری -->
+                <TextView
+                    style="@style/BodyText"
+                    android:text="جوشکاری (تومان)"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"/>
+
+                <EditText
+                    android:id="@+id/inputWeldingBase"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:hint="مثال: 180000"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@drawable/divider"
+                    android:layout_marginVertical="6dp"/>
+
+                <!-- کرایه حمل -->
+                <TextView
+                    style="@style/BodyText"
+                    android:text="کرایه حمل (تومان)"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"/>
+
+                <EditText
+                    android:id="@+id/inputTransportBase"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:hint="مثال: 120000"/>
+
+                <!-- دکمه‌ها -->
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:layout_marginTop="16dp">
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/Widget.App.PrimaryButton"
+                        android:id="@+id/buttonSaveAll"
+                        android:text="ذخیرهٔ همه"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <com.google.android.material.button.MaterialButton
+                        style="@style/Widget.App.PrimaryButton"
+                        android:id="@+id/buttonBack"
+                        android:text="بازگشت"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"/>
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
