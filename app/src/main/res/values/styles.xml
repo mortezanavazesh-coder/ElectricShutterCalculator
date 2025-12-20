@@ -1,26 +1,48 @@
 <resources>
-    <!-- رنگ‌های اصلی اپ -->
-    <color name="colorPrimary">#1565C0</color>
-    <color name="colorPrimaryVariant">#0D47A1</color>
-    <color name="colorSecondary">#64B5F6</color>
 
-    <!-- رنگ‌های عمومی -->
-    <color name="white">#FFFFFF</color>
-    <color name="black">#000000</color>
-    <color name="gray">#808080</color>
-    <color name="teal_700">#00796B</color>
+    <!-- متن‌های اصلی -->
+    <style name="BodyText">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">14sp</item>
+    </style>
 
-    <!-- رنگ‌های سطح و متن -->
-    <color name="colorBackground">#121212</color>
-    <color name="colorSurface">#1E1E1E</color>
-    <color name="colorOnSurface">#FFFFFF</color>
-    <color name="colorOnSurfaceSecondary">#B0B0B0</color>
-    <color name="blue">#2196F3</color>
+    <!-- تیتر کارت‌ها -->
+    <style name="TitleText">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+    </style>
 
-    <!-- رنگ‌های وضعیت -->
-    <color name="colorError">#CF6679</color>
-    <color name="colorSuccess">#4CAF50</color>
+    <!-- متن‌های خاص -->
+    <style name="SpecialText.Blue">
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 
-    <!-- رنگ‌های خاص برای متن‌ها -->
-    <color name="cream">#FFF8E1</color> <!-- برای تاریخ -->
+    <style name="SpecialText.Date">
+        <item name="android:textColor">@color/cream</item>
+    </style>
+
+    <style name="SpecialText.Green">
+        <item name="android:textColor">@color/colorSuccess</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- کارت‌ها -->
+    <style name="Widget.App.MaterialCard" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">8dp</item>
+        <item name="cardElevation">4dp</item>
+        <item name="strokeColor">@color/white</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="cardBackgroundColor">@color/colorSurface</item>
+    </style>
+
+    <!-- دکمه‌ها -->
+    <style name="Widget.App.PrimaryButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:backgroundTint">@color/blue</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="android:padding">8dp</item>
+    </style>
+
 </resources>
