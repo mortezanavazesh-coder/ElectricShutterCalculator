@@ -1,50 +1,79 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
-    <!-- تم کلی اپلیکیشن -->
+    <!-- تم اصلی اپ -->
     <style name="Theme.ElectricShutterCalculator" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- رنگ‌های اصلی -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryVariant</item>
-        <item name="colorSecondary">@color/colorSecondary</item>
-
-        <!-- رنگ پس‌زمینه و متن -->
+        <!-- رنگ‌ها -->
+        <item name="colorPrimary">@color/blue</item>
+        <item name="colorPrimaryVariant">@color/blue</item>
+        <item name="colorSecondary">@color/blue</item>
         <item name="android:windowBackground">@color/colorBackground</item>
-        <item name="android:textColorPrimary">@color/colorOnSurface</item>
-        <item name="android:textColorSecondary">@color/colorOnSurfaceSecondary</item>
-
-        <!-- رنگ سطح کارت‌ها -->
         <item name="colorSurface">@color/colorSurface</item>
-        <item name="colorOnSurface">@color/colorOnSurface</item>
+        <item name="colorOnSurface">@color/white</item>
+
+        <!-- متن‌ها -->
+        <item name="textAppearanceHeadline6">@style/TextAppearance.Title</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.Body</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.BodySecondary</item>
+
+        <!-- دکمه‌ها -->
+        <item name="materialButtonStyle">@style/Widget.App.PrimaryButton</item>
+
+        <!-- کارت‌ها -->
+        <item name="materialCardViewStyle">@style/Widget.App.MaterialCard</item>
     </style>
 
-    <!-- استایل کارت‌ها -->
-    <style name="CardStyle">
-        <item name="android:background">@color/colorSurface</item>
-        <item name="android:padding">12dp</item>
-        <item name="android:layout_marginBottom">12dp</item>
-        <item name="android:elevation">4dp</item>
-        <item name="android:orientation">vertical</item>
-    </style>
-
-    <!-- تیترها -->
-    <style name="TitleText">
-        <item name="android:textSize">16sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/colorOnSurface</item>
-    </style>
-
-    <!-- متن‌های معمولی -->
-    <style name="BodyText">
-        <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/colorOnSurfaceSecondary</item>
-    </style>
-
-    <!-- دکمه‌ها -->
-    <style name="PrimaryButton" parent="Widget.MaterialComponents.Button">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">48dp</item>
-        <item name="android:backgroundTint">@color/colorPrimary</item>
+    <!-- تیترها (سفید) -->
+    <style name="TextAppearance.Title" parent="TextAppearance.MaterialComponents.Headline6">
         <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <!-- متن‌های معمولی (سفید) -->
+    <style name="TextAppearance.Body" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!-- متن‌های ثانویه -->
+    <style name="TextAppearance.BodySecondary" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!-- دکمه‌ها (زمینه آبی، متن سفید) -->
+    <style name="Widget.App.PrimaryButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="backgroundTint">@color/blue</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="android:minHeight">48dp</item>
+    </style>
+
+    <!-- کارت‌ها (لبه گرد + بوردر سفید نازک) -->
+    <style name="Widget.App.MaterialCard" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/colorSurface</item>
+        <item name="cardCornerRadius">12dp</item>
+        <item name="cardElevation">4dp</item>
+        <item name="strokeColor">@color/white</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="contentPadding">12dp</item>
+    </style>
+
+    <!-- استایل‌های خاص برای موارد استثنا -->
+    <style name="SpecialText.Green">
+        <item name="android:textColor">@color/colorSuccess</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="SpecialText.Blue">
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="SpecialText.Date">
+        <item name="android:textColor">@color/cream</item> <!-- رنگ کرم -->
+        <item name="android:textStyle">bold</item>
     </style>
 
 </resources>
