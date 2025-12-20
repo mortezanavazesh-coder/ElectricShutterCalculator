@@ -18,16 +18,22 @@
 
             <TextView
                 style="@style/TitleText"
-                android:id="@+id/tvCustomerName"/>
+                android:id="@+id/tvCustomerName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <TextView
                 style="@style/BodyText"
                 android:id="@+id/tvCustomerPhone"
-                android:textColor="@color/blue"/>
+                android:textColor="@color/blue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <TextView
                 style="@style/BodyText"
-                android:id="@+id/tvDate"/>
+                android:id="@+id/tvDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
         </LinearLayout>
 
         <!-- کارت ابعاد -->
@@ -36,9 +42,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView style="@style/BodyText" android:id="@+id/tvHeight"/>
-            <TextView style="@style/BodyText" android:id="@+id/tvWidth"/>
-            <TextView style="@style/BodyText" android:id="@+id/tvArea"/>
+            <TextView style="@style/BodyText"
+                android:id="@+id/tvHeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView style="@style/BodyText"
+                android:id="@+id/tvWidth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView style="@style/BodyText"
+                android:id="@+id/tvArea"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
         </LinearLayout>
 
         <!-- کارت قطعات و هزینه‌ها -->
@@ -47,14 +64,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView style="@style/TitleText" android:id="@+id/tvBlade"/>
-            <TextView style="@style/TitleText" android:id="@+id/tvMotor"/>
-            <TextView style="@style/TitleText" android:id="@+id/tvShaft"/>
-            <TextView style="@style/TitleText" android:id="@+id/tvBox"/>
-            <TextView style="@style/TitleText" android:id="@+id/tvInstall"/>
-            <TextView style="@style/TitleText" android:id="@+id/tvWelding"/>
-            <TextView style="@style/TitleText" android:id="@+id/tvTransport"/>
-            <TextView style="@style/TitleText" android:id="@+id/tvExtras"/>
+            <TextView style="@style/TitleText" android:id="@+id/tvBlade"
+                android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            <TextView style="@style/TitleText" android:id="@+id/tvMotor"
+                android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            <TextView style="@style/TitleText" android:id="@+id/tvShaft"
+                android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            <TextView style="@style/TitleText" android:id="@+id/tvBox"
+                android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            <TextView style="@style/TitleText" android:id="@+id/tvInstall"
+                android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            <TextView style="@style/TitleText" android:id="@+id/tvWelding"
+                android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            <TextView style="@style/TitleText" android:id="@+id/tvTransport"
+                android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            <TextView style="@style/TitleText" android:id="@+id/tvExtras"
+                android:layout_width="match_parent" android:layout_height="wrap_content"/>
         </LinearLayout>
 
         <!-- کارت ریز محاسبات -->
@@ -63,14 +88,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView style="@style/BodyText" android:id="@+id/tvBreakBlade"/>
-            <TextView style="@style/BodyText" android:id="@+id/tvBreakMotor"/>
-            <TextView style="@style/BodyText" android:id="@+id/tvBreakShaft"/>
-            <TextView style="@style/BodyText" android:id="@+id/tvBreakBox"/>
-            <TextView style="@style/BodyText" android:id="@+id/tvBreakInstall"/>
-            <TextView style="@style/BodyText" android:id="@+id/tvBreakWelding"/>
-            <TextView style="@style/BodyText" android:id="@+id/tvBreakTransport"/>
-            <TextView style="@style/BodyText" android:id="@+id/tvBreakExtras"/>
+            <TextView style="@style/BodyText" android:id="@+id/tvBreakBlade"
+                android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            <TextView style="@style/BodyText" android:id="@+id/tvBreakMotor"
+                android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            <TextView style="@style/BodyText" android:id="@+id/tvBreakShaft"
+                android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            <TextView style="@style/BodyText" android:id="@+id/tvBreakBox"
+                android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            <TextView style="@style/BodyText" android:id="@+id/tvBreakInstall"
+                android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            <TextView style="@style/BodyText" android:id="@+id/tvBreakWelding"
+                android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            <TextView style="@style/BodyText" android:id="@+id/tvBreakTransport"
+                android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            <TextView style="@style/BodyText" android:id="@+id/tvBreakExtras"
+                android:layout_width="match_parent" android:layout_height="wrap_content"/>
         </LinearLayout>
 
         <!-- کارت قیمت نهایی -->
@@ -83,13 +116,17 @@
                 style="@style/TitleText"
                 android:id="@+id/tvTotal"
                 android:textSize="18sp"
-                android:textColor="@color/colorSuccess"/>
+                android:textColor="@color/colorSuccess"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
         </LinearLayout>
 
         <!-- دکمه بازگشت -->
         <Button
             style="@style/PrimaryButton"
             android:id="@+id/buttonBackToReports"
-            android:text="بازگشت به گزارشات"/>
+            android:text="بازگشت به گزارشات"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 </ScrollView>
