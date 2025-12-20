@@ -11,298 +11,214 @@
         android:layout_height="wrap_content">
 
         <!-- کارت اطلاعات مشتری -->
-        <LinearLayout
-            style="@style/CardStyle"
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.App.MaterialCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
-                style="@style/TitleText"
-                android:id="@+id/tvCustomerName"
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@drawable/divider"
-                android:layout_marginVertical="6dp"/>
+                <TextView style="@style/TitleText"
+                    android:id="@+id/tvCustomerName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-            <TextView
-                style="@style/SpecialText.Blue"
-                android:id="@+id/tvCustomerPhone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                <View android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@drawable/divider"
+                    android:layout_marginVertical="6dp"/>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@drawable/divider"
-                android:layout_marginVertical="6dp"/>
+                <TextView style="@style/SpecialText.Blue"
+                    android:id="@+id/tvCustomerPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-            <TextView
-                style="@style/SpecialText.Date"
-                android:id="@+id/tvDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
+                <View android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@drawable/divider"
+                    android:layout_marginVertical="6dp"/>
+
+                <TextView style="@style/SpecialText.Date"
+                    android:id="@+id/tvDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
         <!-- کارت ابعاد -->
-        <LinearLayout
-            style="@style/CardStyle"
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.App.MaterialCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp">
 
-            <TextView
-                style="@style/BodyText"
-                android:id="@+id/tvHeight"
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@drawable/divider"
-                android:layout_marginVertical="6dp"/>
+                <TextView style="@style/BodyText"
+                    android:id="@+id/tvHeight"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-            <TextView
-                style="@style/BodyText"
-                android:id="@+id/tvWidth"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                <View android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@drawable/divider"
+                    android:layout_marginVertical="6dp"/>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@drawable/divider"
-                android:layout_marginVertical="6dp"/>
+                <TextView style="@style/BodyText"
+                    android:id="@+id/tvWidth"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-            <TextView
-                style="@style/BodyText"
-                android:id="@+id/tvArea"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
+                <View android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@drawable/divider"
+                    android:layout_marginVertical="6dp"/>
+
+                <TextView style="@style/BodyText"
+                    android:id="@+id/tvArea"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
         <!-- کارت قطعات و هزینه‌ها -->
-        <LinearLayout
-            style="@style/CardStyle"
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.App.MaterialCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp">
 
-            <TextView
-                style="@style/TitleText"
-                android:id="@+id/tvBlade"
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@drawable/divider"
-                android:layout_marginVertical="6dp"/>
+                <TextView style="@style/TitleText" android:id="@+id/tvBlade"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"/>
+                <View android:layout_width="match_parent" android:layout_height="1dp"
+                    android:background="@drawable/divider" android:layout_marginVertical="6dp"/>
 
-            <TextView
-                style="@style/TitleText"
-                android:id="@+id/tvMotor"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                <TextView style="@style/TitleText" android:id="@+id/tvMotor"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"/>
+                <View android:layout_width="match_parent" android:layout_height="1dp"
+                    android:background="@drawable/divider" android:layout_marginVertical="6dp"/>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@drawable/divider"
-                android:layout_marginVertical="6dp"/>
+                <TextView style="@style/TitleText" android:id="@+id/tvShaft"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"/>
+                <View android:layout_width="match_parent" android:layout_height="1dp"
+                    android:background="@drawable/divider" android:layout_marginVertical="6dp"/>
 
-            <TextView
-                style="@style/TitleText"
-                android:id="@+id/tvShaft"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                <TextView style="@style/TitleText" android:id="@+id/tvBox"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"/>
+                <View android:layout_width="match_parent" android:layout_height="1dp"
+                    android:background="@drawable/divider" android:layout_marginVertical="6dp"/>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@drawable/divider"
-                android:layout_marginVertical="6dp"/>
+                <TextView style="@style/TitleText" android:id="@+id/tvInstall"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"/>
+                <View android:layout_width="match_parent" android:layout_height="1dp"
+                    android:background="@drawable/divider" android:layout_marginVertical="6dp"/>
 
-            <TextView
-                style="@style/TitleText"
-                android:id="@+id/tvBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                <TextView style="@style/TitleText" android:id="@+id/tvWelding"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"/>
+                <View android:layout_width="match_parent" android:layout_height="1dp"
+                    android:background="@drawable/divider" android:layout_marginVertical="6dp"/>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@drawable/divider"
-                android:layout_marginVertical="6dp"/>
+                <TextView style="@style/TitleText" android:id="@+id/tvTransport"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"/>
+                <View android:layout_width="match_parent" android:layout_height="1dp"
+                    android:background="@drawable/divider" android:layout_marginVertical="6dp"/>
 
-            <TextView
-                style="@style/TitleText"
-                android:id="@+id/tvInstall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@drawable/divider"
-                android:layout_marginVertical="6dp"/>
-
-            <TextView
-                style="@style/TitleText"
-                android:id="@+id/tvWelding"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@drawable/divider"
-                android:layout_marginVertical="6dp"/>
-
-            <TextView
-                style="@style/TitleText"
-                android:id="@+id/tvTransport"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@drawable/divider"
-                android:layout_marginVertical="6dp"/>
-
-            <TextView
-                style="@style/TitleText"
-                android:id="@+id/tvExtras"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-
+                <TextView style="@style/TitleText" android:id="@+id/tvExtras"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
         <!-- کارت ریز محاسبات -->
-        <LinearLayout
-            style="@style/CardStyle"
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.App.MaterialCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp">
 
-            <TextView
-                style="@style/BodyText"
-                android:id="@+id/tvBreakBlade"
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@drawable/divider"
-                android:layout_marginVertical="6dp"/>
+                <TextView style="@style/BodyText" android:id="@+id/tvBreakBlade"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"/>
+                <View android:layout_width="match_parent" android:layout_height="1dp"
+                    android:background="@drawable/divider" android:layout_marginVertical="6dp"/>
 
-            <TextView
-                style="@style/BodyText"
-                android:id="@+id/tvBreakMotor"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                <TextView style="@style/BodyText" android:id="@+id/tvBreakMotor"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"/>
+                <View android:layout_width="match_parent" android:layout_height="1dp"
+                    android:background="@drawable/divider" android:layout_marginVertical="6dp"/>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@drawable/divider"
-                android:layout_marginVertical="6dp"/>
+                <TextView style="@style/BodyText" android:id="@+id/tvBreakShaft"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"/>
+                <View android:layout_width="match_parent" android:layout_height="1dp"
+                    android:background="@drawable/divider" android:layout_marginVertical="6dp"/>
 
-            <TextView
-                style="@style/BodyText"
-                android:id="@+id/tvBreakShaft"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                <TextView style="@style/BodyText" android:id="@+id/tvBreakBox"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"/>
+                <View android:layout_width="match_parent" android:layout_height="1dp"
+                    android:background="@drawable/divider" android:layout_marginVertical="6dp"/>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@drawable/divider"
-                android:layout_marginVertical="6dp"/>
+                <TextView style="@style/BodyText" android:id="@+id/tvBreakInstall"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"/>
+                <View android:layout_width="match_parent" android:layout_height="1dp"
+                    android:background="@drawable/divider" android:layout_marginVertical="6dp"/>
 
-            <TextView
-                style="@style/BodyText"
-                android:id="@+id/tvBreakBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                <TextView style="@style/BodyText" android:id="@+id/tvBreakWelding"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"/>
+                <View android:layout_width="match_parent" android:layout_height="1dp"
+                    android:background="@drawable/divider" android:layout_marginVertical="6dp"/>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@drawable/divider"
-                android:layout_marginVertical="6dp"/>
+                <TextView style="@style/BodyText" android:id="@+id/tvBreakTransport"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"/>
+                <View android:layout_width="match_parent" android:layout_height="1dp"
+                    android:background="@drawable/divider" android:layout_marginVertical="6dp"/>
 
-            <TextView
-                style="@style/BodyText"
-                android:id="@+id/tvBreakInstall"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@drawable/divider"
-                android:layout_marginVertical="6dp"/>
-
-            <TextView
-                style="@style/BodyText"
-                android:id="@+id/tvBreakWelding"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@drawable/divider"
-                android:layout_marginVertical="6dp"/>
-
-            <TextView
-                style="@style/BodyText"
-                android:id="@+id/tvBreakTransport"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@drawable/divider"
-                android:layout_marginVertical="6dp"/>
-
-            <TextView
-                style="@style/BodyText"
-                android:id="@+id/tvBreakExtras"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
+                <TextView style="@style/BodyText" android:id="@+id/tvBreakExtras"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
         <!-- کارت قیمت نهایی -->
-        <LinearLayout
-            style="@style/CardStyle"
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.App.MaterialCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp">
 
-            <TextView
-                style="@style/SpecialText.Green"
-                android:id="@+id/tvTotal"
-                android:textSize="18sp"
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/SpecialText.Green"
+                    android:id="@+id/tvTotal"
+                    android:textSize="18sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
         <!-- دکمه بازگشت -->
-        <Button
-            style="@style/PrimaryButton"
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.App.PrimaryButton"
             android:id="@+id/buttonBackToReports"
             android:text="بازگشت به گزارشات"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"/>
+
     </LinearLayout>
 </ScrollView>
