@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fillViewport="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,320 +12,210 @@
         android:layout_height="wrap_content">
 
         <!-- کارت تیغه‌ها -->
-        <androidx.cardview.widget.CardView
+        <LinearLayout
+            style="@style/CardStyle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            app:cardElevation="2dp"
-            app:cardCornerRadius="8dp"
-            app:cardBackgroundColor="@color/colorSurface">
+            android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:padding="12dp"
+            <TextView
+                style="@style/TitleText"
+                android:text="انتخاب تیغه"/>
+
+            <Button
+                style="@style/PrimaryButton"
+                android:id="@+id/buttonAddSlat"
+                android:text="افزودن تیغه"/>
+
+            <TextView
+                style="@style/BodyText"
+                android:id="@+id/emptySlats"
+                android:text="تیغه‌ای موجود نیست"
+                android:visibility="gone"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvSlats"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:text="انتخاب تیغه"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:textColor="@color/colorOnSurface"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <Button
-                    android:id="@+id/buttonAddSlat"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="افزودن تیغه" />
-
-                <TextView
-                    android:id="@+id/emptySlats"
-                    android:text="تیغه‌ای موجود نیست"
-                    android:visibility="gone"
-                    android:textColor="@color/colorOnSurfaceSecondary"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvSlats"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:nestedScrollingEnabled="false" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"/>
+        </LinearLayout>
 
         <!-- کارت موتور -->
-        <androidx.cardview.widget.CardView
+        <LinearLayout
+            style="@style/CardStyle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            app:cardElevation="2dp"
-            app:cardCornerRadius="8dp"
-            app:cardBackgroundColor="@color/colorSurface">
+            android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:padding="12dp"
+            <TextView
+                style="@style/TitleText"
+                android:text="انتخاب موتور"/>
+
+            <Button
+                style="@style/PrimaryButton"
+                android:id="@+id/buttonAddMotor"
+                android:text="افزودن موتور"/>
+
+            <TextView
+                style="@style/BodyText"
+                android:id="@+id/emptyMotors"
+                android:text="موتوری موجود نیست"
+                android:visibility="gone"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvMotors"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:text="انتخاب موتور"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:textColor="@color/colorOnSurface"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <Button
-                    android:id="@+id/buttonAddMotor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="افزودن موتور" />
-
-                <TextView
-                    android:id="@+id/emptyMotors"
-                    android:text="موتوری موجود نیست"
-                    android:visibility="gone"
-                    android:textColor="@color/colorOnSurfaceSecondary"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvMotors"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:nestedScrollingEnabled="false" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"/>
+        </LinearLayout>
 
         <!-- کارت شفت -->
-        <androidx.cardview.widget.CardView
+        <LinearLayout
+            style="@style/CardStyle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            app:cardElevation="2dp"
-            app:cardCornerRadius="8dp"
-            app:cardBackgroundColor="@color/colorSurface">
+            android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:padding="12dp"
+            <TextView
+                style="@style/TitleText"
+                android:text="انتخاب شفت"/>
+
+            <Button
+                style="@style/PrimaryButton"
+                android:id="@+id/buttonAddShaft"
+                android:text="افزودن شفت"/>
+
+            <TextView
+                style="@style/BodyText"
+                android:id="@+id/emptyShafts"
+                android:text="شفتی موجود نیست"
+                android:visibility="gone"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvShafts"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:text="انتخاب شفت"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:textColor="@color/colorOnSurface"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <Button
-                    android:id="@+id/buttonAddShaft"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="افزودن شفت" />
-
-                <TextView
-                    android:id="@+id/emptyShafts"
-                    android:text="شفتی موجود نیست"
-                    android:visibility="gone"
-                    android:textColor="@color/colorOnSurfaceSecondary"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvShafts"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:nestedScrollingEnabled="false" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"/>
+        </LinearLayout>
 
         <!-- کارت قوطی -->
-        <androidx.cardview.widget.CardView
+        <LinearLayout
+            style="@style/CardStyle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            app:cardElevation="2dp"
-            app:cardCornerRadius="8dp"
-            app:cardBackgroundColor="@color/colorSurface">
+            android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:padding="12dp"
+            <TextView
+                style="@style/TitleText"
+                android:text="انتخاب قوطی"/>
+
+            <Button
+                style="@style/PrimaryButton"
+                android:id="@+id/buttonAddBox"
+                android:text="افزودن قوطی"/>
+
+            <TextView
+                style="@style/BodyText"
+                android:id="@+id/emptyBoxes"
+                android:text="قوطی‌ای موجود نیست"
+                android:visibility="gone"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvBoxes"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:text="انتخاب قوطی"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:textColor="@color/colorOnSurface"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <Button
-                    android:id="@+id/buttonAddBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="افزودن قوطی" />
-
-                <TextView
-                    android:id="@+id/emptyBoxes"
-                    android:text="قوطی‌ای موجود نیست"
-                    android:visibility="gone"
-                    android:textColor="@color/colorOnSurfaceSecondary"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvBoxes"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:nestedScrollingEnabled="false" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"/>
+        </LinearLayout>
 
         <!-- کارت اضافات -->
-        <androidx.cardview.widget.CardView
+        <LinearLayout
+            style="@style/CardStyle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            app:cardElevation="2dp"
-            app:cardCornerRadius="8dp"
-            app:cardBackgroundColor="@color/colorSurface">
+            android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:padding="12dp"
+            <TextView
+                style="@style/TitleText"
+                android:text="انتخاب گزینه اضافی"/>
+
+            <Button
+                style="@style/PrimaryButton"
+                android:id="@+id/buttonAddExtra"
+                android:text="افزودن گزینه"/>
+
+            <TextView
+                style="@style/BodyText"
+                android:id="@+id/emptyExtras"
+                android:text="گزینه‌ای موجود نیست"
+                android:visibility="gone"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvExtras"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:text="انتخاب گزینه اضافی"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:textColor="@color/colorOnSurface"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <Button
-                    android:id="@+id/buttonAddExtra"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="افزودن گزینه" />
-
-                <TextView
-                    android:id="@+id/emptyExtras"
-                    android:text="گزینه‌ای موجود نیست"
-                    android:visibility="gone"
-                    android:textColor="@color/colorOnSurfaceSecondary"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvExtras"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:nestedScrollingEnabled="false" />
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"/>
+        </LinearLayout>
 
         <!-- کارت هزینه‌های پایه -->
-        <androidx.cardview.widget.CardView
+        <LinearLayout
+            style="@style/CardStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardElevation="2dp"
-            app:cardCornerRadius="8dp"
-            app:cardBackgroundColor="@color/colorSurface"
             android:layout_marginBottom="88dp">
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:padding="12dp"
+            <TextView
+                style="@style/TitleText"
+                android:text="هزینه‌های اجرایی"/>
+
+            <TextView
+                style="@style/BodyText"
+                android:text="هزینه نصب (تومان به ازای هر متر مربع)"
+                android:layout_marginTop="8dp"/>
+
+            <EditText
+                android:id="@+id/inputInstallBase"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"/>
 
-                <TextView
-                    android:text="هزینه‌های اجرایی"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:textColor="@color/colorOnSurface"
+            <TextView
+                style="@style/BodyText"
+                android:text="جوشکاری (تومان)"
+                android:layout_marginTop="12dp"/>
+
+            <EditText
+                android:id="@+id/inputWeldingBase"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"/>
+
+            <TextView
+                style="@style/BodyText"
+                android:text="کرایه حمل (تومان)"
+                android:layout_marginTop="12dp"/>
+
+            <EditText
+                android:id="@+id/inputTransportBase"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:layout_marginTop="16dp">
+
+                <Button
+                    style="@style/PrimaryButton"
+                    android:id="@+id/buttonSaveAll"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:text="ذخیرهٔ همه"/>
 
-                <TextView
-                    android:text="هزینه نصب (تومان به ازای هر متر مربع)"
-                    android:textColor="@color/colorOnSurfaceSecondary"
+                <Button
+                    style="@style/PrimaryButton"
+                    android:id="@+id/buttonBack"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp" />
-
-                <EditText
-                    android:id="@+id/inputInstallBase"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="numberDecimal" />
-
-                <TextView
-                    android:text="جوشکاری (تومان)"
-                    android:textColor="@color/colorOnSurfaceSecondary"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp" />
-
-                <EditText
-                    android:id="@+id/inputWeldingBase"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="numberDecimal" />
-
-                <TextView
-                    android:text="کرایه حمل (تومان)"
-                    android:textColor="@color/colorOnSurfaceSecondary"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp" />
-
-                <EditText
-                    android:id="@+id/inputTransportBase"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="numberDecimal" />
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="end"
-                    android:layout_marginTop="16dp">
-
-                    <Button
-                        android:id="@+id/buttonSaveAll"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="ذخیرهٔ همه" />
-
-                    <Button
-                        android:id="@+id/buttonBack"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="بازگشت"
-                        android:layout_marginStart="12dp" />
-                </LinearLayout>
+                    android:text="بازگشت"
+                    android:layout_marginStart="12dp"/>
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
+        </LinearLayout>
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
-
