@@ -18,7 +18,9 @@
 
             <TextView
                 style="@style/BodyText"
-                android:text="ارتفاع (cm)"/>
+                android:text="ارتفاع (cm)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <EditText
                 android:id="@+id/inputHeight"
@@ -28,7 +30,9 @@
 
             <TextView
                 style="@style/BodyText"
-                android:text="انتخاب تیغه"/>
+                android:text="انتخاب تیغه"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <Spinner
                 android:id="@+id/spinnerBlade"
@@ -37,7 +41,9 @@
 
             <TextView
                 style="@style/BodyText"
-                android:text="انتخاب شفت"/>
+                android:text="انتخاب شفت"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <Spinner
                 android:id="@+id/spinnerShaft"
@@ -54,22 +60,30 @@
             <TextView
                 style="@style/BodyText"
                 android:id="@+id/textTotalBlades"
-                android:text="تعداد تیغه: -"/>
+                android:text="تعداد تیغه: -"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <TextView
                 style="@style/BodyText"
                 android:id="@+id/textFullRounds"
-                android:text="تعداد دور کامل: -"/>
+                android:text="تعداد دور کامل: -"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <TextView
                 style="@style/BodyText"
                 android:id="@+id/textPartialRound"
-                android:text="دور ناقص: -"/>
+                android:text="دور ناقص: -"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <TextView
                 style="@style/BodyText"
                 android:id="@+id/textRemainingBlades"
-                android:text="تیغه‌های باقی‌مانده: -"/>
+                android:text="تیغه‌های باقی‌مانده: -"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
         </LinearLayout>
 
         <!-- کارت خروجی نهایی -->
@@ -84,18 +98,24 @@
                 android:text="قطر رول: - cm"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:textColor="@color/colorSuccess"/>
+                android:textColor="@color/colorSuccess"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <Button
                 style="@style/PrimaryButton"
                 android:id="@+id/buttonCalculateRoll"
                 android:text="محاسبه قطر رول"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"/>
 
             <Button
                 style="@style/PrimaryButton"
                 android:id="@+id/buttonBackToMain"
                 android:text="بازگشت به صفحه اصلی"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"/>
         </LinearLayout>
 
