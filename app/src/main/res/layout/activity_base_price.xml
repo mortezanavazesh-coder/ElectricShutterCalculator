@@ -19,18 +19,24 @@
 
             <TextView
                 style="@style/TitleText"
-                android:text="انتخاب تیغه"/>
+                android:text="انتخاب تیغه"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <Button
                 style="@style/PrimaryButton"
                 android:id="@+id/buttonAddSlat"
-                android:text="افزودن تیغه"/>
+                android:text="افزودن تیغه"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <TextView
                 style="@style/BodyText"
                 android:id="@+id/emptySlats"
                 android:text="تیغه‌ای موجود نیست"
-                android:visibility="gone"/>
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvSlats"
@@ -47,18 +53,24 @@
 
             <TextView
                 style="@style/TitleText"
-                android:text="انتخاب موتور"/>
+                android:text="انتخاب موتور"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <Button
                 style="@style/PrimaryButton"
                 android:id="@+id/buttonAddMotor"
-                android:text="افزودن موتور"/>
+                android:text="افزودن موتور"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <TextView
                 style="@style/BodyText"
                 android:id="@+id/emptyMotors"
                 android:text="موتوری موجود نیست"
-                android:visibility="gone"/>
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvMotors"
@@ -75,18 +87,24 @@
 
             <TextView
                 style="@style/TitleText"
-                android:text="انتخاب شفت"/>
+                android:text="انتخاب شفت"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <Button
                 style="@style/PrimaryButton"
                 android:id="@+id/buttonAddShaft"
-                android:text="افزودن شفت"/>
+                android:text="افزودن شفت"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <TextView
                 style="@style/BodyText"
                 android:id="@+id/emptyShafts"
                 android:text="شفتی موجود نیست"
-                android:visibility="gone"/>
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvShafts"
@@ -103,18 +121,24 @@
 
             <TextView
                 style="@style/TitleText"
-                android:text="انتخاب قوطی"/>
+                android:text="انتخاب قوطی"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <Button
                 style="@style/PrimaryButton"
                 android:id="@+id/buttonAddBox"
-                android:text="افزودن قوطی"/>
+                android:text="افزودن قوطی"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <TextView
                 style="@style/BodyText"
                 android:id="@+id/emptyBoxes"
                 android:text="قوطی‌ای موجود نیست"
-                android:visibility="gone"/>
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvBoxes"
@@ -131,18 +155,24 @@
 
             <TextView
                 style="@style/TitleText"
-                android:text="انتخاب گزینه اضافی"/>
+                android:text="انتخاب گزینه اضافی"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <Button
                 style="@style/PrimaryButton"
                 android:id="@+id/buttonAddExtra"
-                android:text="افزودن گزینه"/>
+                android:text="افزودن گزینه"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <TextView
                 style="@style/BodyText"
                 android:id="@+id/emptyExtras"
                 android:text="گزینه‌ای موجود نیست"
-                android:visibility="gone"/>
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvExtras"
@@ -160,11 +190,15 @@
 
             <TextView
                 style="@style/TitleText"
-                android:text="هزینه‌های اجرایی"/>
+                android:text="هزینه‌های اجرایی"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <TextView
                 style="@style/BodyText"
                 android:text="هزینه نصب (تومان به ازای هر متر مربع)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"/>
 
             <EditText
@@ -176,6 +210,8 @@
             <TextView
                 style="@style/BodyText"
                 android:text="جوشکاری (تومان)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"/>
 
             <EditText
@@ -187,6 +223,8 @@
             <TextView
                 style="@style/BodyText"
                 android:text="کرایه حمل (تومان)"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"/>
 
             <EditText
@@ -205,14 +243,16 @@
                 <Button
                     style="@style/PrimaryButton"
                     android:id="@+id/buttonSaveAll"
+                    android:text="ذخیرهٔ همه"
                     android:layout_width="wrap_content"
-                    android:text="ذخیرهٔ همه"/>
+                    android:layout_height="wrap_content"/>
 
                 <Button
                     style="@style/PrimaryButton"
                     android:id="@+id/buttonBack"
-                    android:layout_width="wrap_content"
                     android:text="بازگشت"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"/>
             </LinearLayout>
         </LinearLayout>
