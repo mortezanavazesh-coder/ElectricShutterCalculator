@@ -1,35 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="12dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground">
 
-    <!-- پیام خالی -->
-    <TextView
-        style="@style/BodyText"
-        android:id="@+id/textEmptyReports"
+    <!-- کارت پیام خالی -->
+    <com.google.android.material.card.MaterialCardView
+        style="@style/Widget.App.MaterialCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="هیچ گزارشی موجود نیست"
-        android:gravity="center"
         android:visibility="gone"
-        android:layout_marginBottom="12dp"
-        android:textSize="16sp"/>
+        android:layout_marginBottom="12dp">
 
-    <!-- لیست گزارش‌ها -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerReports"
+        <TextView
+            style="@style/BodyText"
+            android:id="@+id/textEmptyReports"
+            android:text="هیچ گزارشی موجود نیست"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- کارت لیست گزارش‌ها -->
+    <com.google.android.material.card.MaterialCardView
+        style="@style/Widget.App.MaterialCard"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:clipToPadding="false"
-        android:paddingBottom="16dp"/>
+        android:layout_marginBottom="12dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerReports"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingBottom="16dp"/>
+    </com.google.android.material.card.MaterialCardView>
 
     <!-- دکمه بازگشت -->
-    <Button
-        style="@style/PrimaryButton"
+    <com.google.android.material.button.MaterialButton
+        style="@style/Widget.App.PrimaryButton"
         android:id="@+id/buttonBackToMain"
         android:text="بازگشت به صفحه اصلی"
         android:layout_width="match_parent"
