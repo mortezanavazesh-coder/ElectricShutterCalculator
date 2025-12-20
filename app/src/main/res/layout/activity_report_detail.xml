@@ -150,43 +150,87 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView style="@style/BodyText" android:id="@+id/tvBreakBlade"
-                    android:layout_width="match_parent" android:layout_height="wrap_content"/>
-                <View android:layout_width="match_parent" android:layout_height="1dp"
-                    android:background="@drawable/divider" android:layout_marginVertical="6dp"/>
+                <TextView style="@style/BodyText"
+                    android:id="@+id/tvBreakBlade"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-                <TextView style="@style/BodyText" android:id="@+id/tvBreakMotor"
-                    android:layout_width="match_parent" android:layout_height="wrap_content"/>
-                <View android:layout_width="match_parent" android:layout_height="1dp"
-                    android:background="@drawable/divider" android:layout_marginVertical="6dp"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@drawable/divider"
+                    android:layout_marginVertical="6dp"/>
 
-                <TextView style="@style/BodyText" android:id="@+id/tvBreakShaft"
-                    android:layout_width="match_parent" android:layout_height="wrap_content"/>
-                <View android:layout_width="match_parent" android:layout_height="1dp"
-                    android:background="@drawable/divider" android:layout_marginVertical="6dp"/>
+                <TextView style="@style/BodyText"
+                    android:id="@+id/tvBreakMotor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-                <TextView style="@style/BodyText" android:id="@+id/tvBreakBox"
-                    android:layout_width="match_parent" android:layout_height="wrap_content"/>
-                <View android:layout_width="match_parent" android:layout_height="1dp"
-                    android:background="@drawable/divider" android:layout_marginVertical="6dp"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@drawable/divider"
+                    android:layout_marginVertical="6dp"/>
 
-                <TextView style="@style/BodyText" android:id="@+id/tvBreakInstall"
-                    android:layout_width="match_parent" android:layout_height="wrap_content"/>
-                <View android:layout_width="match_parent" android:layout_height="1dp"
-                    android:background="@drawable/divider" android:layout_marginVertical="6dp"/>
+                <TextView style="@style/BodyText"
+                    android:id="@+id/tvBreakShaft"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-                <TextView style="@style/BodyText" android:id="@+id/tvBreakWelding"
-                    android:layout_width="match_parent" android:layout_height="wrap_content"/>
-                <View android:layout_width="match_parent" android:layout_height="1dp"
-                    android:background="@drawable/divider" android:layout_marginVertical="6dp"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@drawable/divider"
+                    android:layout_marginVertical="6dp"/>
 
-                <TextView style="@style/BodyText" android:id="@+id/tvBreakTransport"
-                    android:layout_width="match_parent" android:layout_height="wrap_content"/>
-                <View android:layout_width="match_parent" android:layout_height="1dp"
-                    android:background="@drawable/divider" android:layout_marginVertical="6dp"/>
+                <TextView style="@style/BodyText"
+                    android:id="@+id/tvBreakBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-                <TextView style="@style/BodyText" android:id="@+id/tvBreakExtras"
-                    android:layout_width="match_parent" android:layout_height="wrap_content"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@drawable/divider"
+                    android:layout_marginVertical="6dp"/>
+
+                <TextView style="@style/BodyText"
+                    android:id="@+id/tvBreakInstall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@drawable/divider"
+                    android:layout_marginVertical="6dp"/>
+
+                <TextView style="@style/BodyText"
+                    android:id="@+id/tvBreakWelding"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@drawable/divider"
+                    android:layout_marginVertical="6dp"/>
+
+                <TextView style="@style/BodyText"
+                    android:id="@+id/tvBreakTransport"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@drawable/divider"
+                    android:layout_marginVertical="6dp"/>
+
+                <TextView style="@style/BodyText"
+                    android:id="@+id/tvBreakExtras"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
