@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackground"
     android:padding="12dp">
 
     <LinearLayout
@@ -11,332 +11,85 @@
         android:layout_height="wrap_content">
 
         <!-- کارت اطلاعات مشتری -->
-        <androidx.cardview.widget.CardView
+        <LinearLayout
+            style="@style/CardStyle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="4dp"
-            android:layout_marginBottom="12dp">
+            android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:padding="12dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <TextView
+                style="@style/TitleText"
+                android:id="@+id/tvCustomerName"/>
 
-                <TextView
-                    android:id="@+id/tvCustomerName"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+            <TextView
+                style="@style/BodyText"
+                android:id="@+id/tvCustomerPhone"
+                android:textColor="@color/blue"/>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@android:color/darker_gray"
-                    android:layout_marginVertical="6dp"/>
-
-                <TextView
-                    android:id="@+id/tvCustomerPhone"
-                    android:textColor="@android:color/holo_blue_dark"
-                    android:textSize="16sp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@android:color/darker_gray"
-                    android:layout_marginVertical="6dp"/>
-
-                <TextView
-                    android:id="@+id/tvDate"
-                    android:textColor="@android:color/darker_gray"
-                    android:textSize="14sp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+            <TextView
+                style="@style/BodyText"
+                android:id="@+id/tvDate"/>
+        </LinearLayout>
 
         <!-- کارت ابعاد -->
-        <androidx.cardview.widget.CardView
+        <LinearLayout
+            style="@style/CardStyle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="4dp"
-            android:layout_marginBottom="12dp">
+            android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:padding="12dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <TextView style="@style/BodyText" android:id="@+id/tvHeight"/>
+            <TextView style="@style/BodyText" android:id="@+id/tvWidth"/>
+            <TextView style="@style/BodyText" android:id="@+id/tvArea"/>
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tvHeight"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@android:color/darker_gray"
-                    android:layout_marginVertical="6dp"/>
-
-                <TextView
-                    android:id="@+id/tvWidth"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@android:color/darker_gray"
-                    android:layout_marginVertical="6dp"/>
-
-                <TextView
-                    android:id="@+id/tvArea"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <!-- کارت قطعات + هزینه‌های پایه + گزینه‌های اضافی -->
-        <androidx.cardview.widget.CardView
+        <!-- کارت قطعات و هزینه‌ها -->
+        <LinearLayout
+            style="@style/CardStyle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="4dp"
-            android:layout_marginBottom="12dp">
+            android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:padding="12dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <!-- تیغه -->
-                <TextView
-                    android:id="@+id/tvBlade"
-                    android:textStyle="bold"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@android:color/darker_gray"
-                    android:layout_marginVertical="6dp"/>
-
-                <!-- موتور -->
-                <TextView
-                    android:id="@+id/tvMotor"
-                    android:textStyle="bold"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@android:color/darker_gray"
-                    android:layout_marginVertical="6dp"/>
-
-                <!-- شفت -->
-                <TextView
-                    android:id="@+id/tvShaft"
-                    android:textStyle="bold"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@android:color/darker_gray"
-                    android:layout_marginVertical="6dp"/>
-
-                <!-- قوطی -->
-                <TextView
-                    android:id="@+id/tvBox"
-                    android:textStyle="bold"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@android:color/darker_gray"
-                    android:layout_marginVertical="6dp"/>
-
-                <!-- هزینه نصب -->
-                <TextView
-                    android:id="@+id/tvInstall"
-                    android:textStyle="bold"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@android:color/darker_gray"
-                    android:layout_marginVertical="6dp"/>
-
-                <!-- جوشکاری -->
-                <TextView
-                    android:id="@+id/tvWelding"
-                    android:textStyle="bold"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@android:color/darker_gray"
-                    android:layout_marginVertical="6dp"/>
-
-                <!-- کرایه حمل -->
-                <TextView
-                    android:id="@+id/tvTransport"
-                    android:textStyle="bold"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@android:color/darker_gray"
-                    android:layout_marginVertical="6dp"/>
-
-                <!-- گزینه‌های اضافی -->
-                <TextView
-                    android:id="@+id/tvExtras"
-                    android:textStyle="bold"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+            <TextView style="@style/TitleText" android:id="@+id/tvBlade"/>
+            <TextView style="@style/TitleText" android:id="@+id/tvMotor"/>
+            <TextView style="@style/TitleText" android:id="@+id/tvShaft"/>
+            <TextView style="@style/TitleText" android:id="@+id/tvBox"/>
+            <TextView style="@style/TitleText" android:id="@+id/tvInstall"/>
+            <TextView style="@style/TitleText" android:id="@+id/tvWelding"/>
+            <TextView style="@style/TitleText" android:id="@+id/tvTransport"/>
+            <TextView style="@style/TitleText" android:id="@+id/tvExtras"/>
+        </LinearLayout>
 
         <!-- کارت ریز محاسبات -->
-        <androidx.cardview.widget.CardView
+        <LinearLayout
+            style="@style/CardStyle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="4dp"
-            android:layout_marginBottom="12dp">
+            android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:padding="12dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/tvBreakBlade"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@android:color/darker_gray"
-                    android:layout_marginVertical="6dp"/>
-
-                <TextView
-                    android:id="@+id/tvBreakMotor"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@android:color/darker_gray"
-                    android:layout_marginVertical="6dp"/>
-
-                <TextView
-                    android:id="@+id/tvBreakShaft"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@android:color/darker_gray"
-                    android:layout_marginVertical="6dp"/>
-
-                <TextView
-                    android:id="@+id/tvBreakBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@android:color/darker_gray"
-                    android:layout_marginVertical="6dp"/>
-
-                <TextView
-                    android:id="@+id/tvBreakInstall"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@android:color/darker_gray"
-                    android:layout_marginVertical="6dp"/>
-
-                <TextView
-                    android:id="@+id/tvBreakWelding"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@android:color/darker_gray"
-                    android:layout_marginVertical="6dp"/>
-
-                <TextView
-                    android:id="@+id/tvBreakTransport"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@android:color/darker_gray"
-                    android:layout_marginVertical="6dp"/>
-
-                <TextView
-                    android:id="@+id/tvBreakExtras"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+            <TextView style="@style/BodyText" android:id="@+id/tvBreakBlade"/>
+            <TextView style="@style/BodyText" android:id="@+id/tvBreakMotor"/>
+            <TextView style="@style/BodyText" android:id="@+id/tvBreakShaft"/>
+            <TextView style="@style/BodyText" android:id="@+id/tvBreakBox"/>
+            <TextView style="@style/BodyText" android:id="@+id/tvBreakInstall"/>
+            <TextView style="@style/BodyText" android:id="@+id/tvBreakWelding"/>
+            <TextView style="@style/BodyText" android:id="@+id/tvBreakTransport"/>
+            <TextView style="@style/BodyText" android:id="@+id/tvBreakExtras"/>
+        </LinearLayout>
 
         <!-- کارت قیمت نهایی -->
-        <androidx.cardview.widget.CardView
+        <LinearLayout
+            style="@style/CardStyle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="4dp"
-            android:layout_marginBottom="12dp">
+            android:layout_height="wrap_content">
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:padding="12dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/tvTotal"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:textColor="@android:color/holo_green_dark"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+            <TextView
+                style="@style/TitleText"
+                android:id="@+id/tvTotal"
+                android:textSize="18sp"
+                android:textColor="@color/colorSuccess"/>
+        </LinearLayout>
 
         <!-- دکمه بازگشت -->
         <Button
+            style="@style/PrimaryButton"
             android:id="@+id/buttonBackToReports"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:text="بازگشت به گزارشات"/>
     </LinearLayout>
 </ScrollView>
