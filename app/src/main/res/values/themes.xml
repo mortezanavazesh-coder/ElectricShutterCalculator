@@ -19,7 +19,7 @@
         <!-- فونت پیش‌فرض (IranYekan) -->
         <item name="android:fontFamily">@font/iran_yekan</item>
 
-        <!-- استایل کارت‌ها (هماهنگ با عکس) -->
+        <!-- استایل عمومی کارت‌ها -->
         <item name="materialCardViewStyle">@style/Widget.App.MaterialCard</item>
 
         <!-- استایل دکمه‌ها -->
