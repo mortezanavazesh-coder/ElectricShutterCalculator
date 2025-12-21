@@ -16,8 +16,8 @@
         <item name="colorSurface">@color/colorSurface</item>
         <item name="colorOnSurface">@color/colorOnSurface</item>
 
-        <!-- فونت پیش‌فرض -->
-        <item name="android:fontFamily">@font/roboto</item>
+        <!-- فونت پیش‌فرض (IranYekan) -->
+        <item name="android:fontFamily">@font/iran_yekan</item>
 
         <!-- استایل دکمه‌ها -->
         <item name="materialButtonStyle">@style/Widget.App.PrimaryButton</item>
