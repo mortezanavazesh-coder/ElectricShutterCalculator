@@ -1,48 +1,37 @@
 <resources>
 
-    <!-- استایل عمومی کارت‌ها -->
-    <style name="Widget.App.MaterialCard" parent="Widget.MaterialComponents.CardView">
-        <item name="android:layout_margin">8dp</item>
-        <item name="android:foreground">?attr/selectableItemBackground</item>
-        <item name="cardElevation">2dp</item>
-        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.App.Card</item>
-    </style>
-
-    <!-- استایل دکمه اصلی -->
-    <style name="Widget.App.PrimaryButton" parent="Widget.MaterialComponents.Button">
-        <item name="android:layout_marginTop">8dp</item>
-        <item name="cornerRadius">8dp</item>
-        <item name="android:textAllCaps">false</item>
-    </style>
-
-    <!-- متن‌های عمومی -->
-    <style name="TitleText">
-        <item name="android:textSize">16sp</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/black</item>
-    </style>
-
-    <style name="BodyText">
+    <!-- استایل پایه برای متن‌های خاص -->
+    <style name="SpecialText">
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/black</item>
     </style>
 
-    <!-- متن‌های خاص -->
-    <style name="SpecialText.Green">
+    <style name="SpecialText.Green" parent="SpecialText">
         <item name="android:textColor">@color/green</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="SpecialText.Blue">
+    <style name="SpecialText.Blue" parent="SpecialText">
         <item name="android:textColor">@color/blue</item>
     </style>
 
-    <style name="SpecialText.Date">
+    <style name="SpecialText.Date" parent="SpecialText">
         <item name="android:textColor">@color/gray</item>
         <item name="android:textSize">12sp</item>
     </style>
 
-    <!-- استایل Divider مخصوص ریز گزارشات -->
+    <!-- کارت‌ها -->
+    <style name="Widget.App.MaterialCard" parent="Widget.MaterialComponents.CardView">
+        <item name="cardElevation">2dp</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.App.Card</item>
+    </style>
+
+    <!-- شکل کارت‌ها -->
+    <style name="ShapeAppearanceOverlay.App.Card" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
+    <!-- Divider مخصوص ریز گزارشات -->
     <style name="Widget.App.ReportDivider">
         <item name="android:layout_height">1dp</item>
         <item name="android:background">@color/white</item>
