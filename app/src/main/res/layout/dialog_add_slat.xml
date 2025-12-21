@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:padding="16dp"
     android:orientation="vertical"
@@ -8,6 +7,7 @@
     <!-- عنوان تیغه -->
     <EditText
         android:id="@+id/etSlatTitle"
+        style="@style/BodyText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="عنوان تیغه"
@@ -16,6 +16,7 @@
     <!-- قیمت تیغه (تومان) -->
     <EditText
         android:id="@+id/etSlatPrice"
+        style="@style/BodyText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="قیمت تیغه (تومان)"
@@ -25,6 +26,7 @@
     <!-- عرض تیغه (سانتی‌متر) -->
     <EditText
         android:id="@+id/etSlatWidth"
+        style="@style/BodyText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="عرض تیغه (سانتی‌متر)"
@@ -34,6 +36,7 @@
     <!-- ضخامت تیغه (سانتی‌متر) -->
     <EditText
         android:id="@+id/etSlatThickness"
+        style="@style/BodyText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="ضخامت تیغه (سانتی‌متر)"
