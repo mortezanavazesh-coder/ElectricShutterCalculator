@@ -16,14 +16,18 @@
             android:id="@+id/textReportTitle"
             style="@style/TitleText"
             android:text="نام مشتری"
-            android:textSize="18sp"/>
+            android:textSize="18sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
         <!-- تاریخ گزارش -->
         <TextView
             android:id="@+id/textReportDate"
             style="@style/SpecialText.Date"
             android:text="تاریخ"
-            android:layout_marginTop="4dp"/>
+            android:layout_marginTop="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
         <!-- جمع کل -->
         <TextView
@@ -31,7 +35,9 @@
             style="@style/SpecialText.Green"
             android:text="جمع کل: 0 تومان"
             android:textSize="16sp"
-            android:layout_marginTop="6dp"/>
+            android:layout_marginTop="6dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
         <!-- دکمه حذف -->
         <ImageButton
