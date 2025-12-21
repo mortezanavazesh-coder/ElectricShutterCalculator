@@ -1,13 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/Widget.App.MaterialCard"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="6dp"
-    app:strokeColor="@color/teal_700"
-    app:strokeWidth="1dp">
+    android:layout_margin="8dp">
 
     <LinearLayout
         android:orientation="vertical"
@@ -18,33 +14,24 @@
         <!-- عنوان گزارش (نام مشتری) -->
         <TextView
             android:id="@+id/textReportTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/TitleText"
             android:text="نام مشتری"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:textColor="@color/black" />
+            android:textSize="18sp"/>
 
         <!-- تاریخ گزارش -->
         <TextView
             android:id="@+id/textReportDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/SpecialText.Date"
             android:text="تاریخ"
-            android:textSize="14sp"
-            android:textColor="@color/gray"
-            android:layout_marginTop="4dp" />
+            android:layout_marginTop="4dp"/>
 
         <!-- جمع کل -->
         <TextView
             android:id="@+id/textReportPrice"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/SpecialText.Green"
             android:text="جمع کل: 0 تومان"
-            android:textStyle="bold"
             android:textSize="16sp"
-            android:textColor="@color/teal_700"
-            android:layout_marginTop="6dp" />
+            android:layout_marginTop="6dp"/>
 
         <!-- دکمه حذف -->
         <ImageButton
@@ -53,7 +40,7 @@
             android:layout_height="40dp"
             android:layout_gravity="end"
             android:src="@drawable/ic_delete"
-            android:tint="@color/black"
+            android:tint="@color/white"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="حذف گزارش"
             android:layout_marginTop="8dp" />
