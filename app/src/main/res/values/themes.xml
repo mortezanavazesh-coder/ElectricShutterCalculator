@@ -3,16 +3,18 @@
     <!-- تم اصلی اپلیکیشن -->
     <style name="Theme.ElectricShutterCalculator" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- رنگ‌های اصلی -->
-        <item name="colorPrimary">@color/blue</item>
-        <item name="colorPrimaryVariant">@color/blue_dark</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
         <item name="colorOnPrimary">@color/white</item>
 
-        <item name="colorSecondary">@color/colorSuccess</item>
-        <item name="colorSecondaryVariant">@color/green_dark</item>
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="colorSecondaryVariant">@color/blue_dark</item>
         <item name="colorOnSecondary">@color/white</item>
 
         <!-- رنگ پس‌زمینه -->
-        <item name="android:windowBackground">@color/colorSurface</item>
+        <item name="android:windowBackground">@color/colorBackground</item>
+        <item name="colorSurface">@color/colorSurface</item>
+        <item name="colorOnSurface">@color/colorOnSurface</item>
 
         <!-- فونت پیش‌فرض -->
         <item name="android:fontFamily">@font/roboto</item>
