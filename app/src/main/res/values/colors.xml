@@ -16,10 +16,12 @@
     <color name="colorOnSurface">#FFFFFF</color>
     <color name="colorOnSurfaceSecondary">#B0B0B0</color>
     <color name="blue">#2196F3</color>
+    <color name="blue_dark">#0D47A1</color> <!-- اضافه شد -->
 
     <!-- رنگ‌های وضعیت -->
     <color name="colorError">#CF6679</color>
     <color name="colorSuccess">#4CAF50</color>
+    <color name="green_dark">#2E7D32</color> <!-- اضافه شد -->
 
     <!-- رنگ‌های خاص برای متن‌ها -->
     <color name="cream">#FFF8E1</color> <!-- برای تاریخ -->
