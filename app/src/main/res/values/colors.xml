@@ -4,6 +4,13 @@
     <color name="colorPrimaryVariant">#0D47A1</color>
     <color name="colorSecondary">#64B5F6</color>
 
+    <color name="green">#4CAF50</color>
+    <color name="blue">#2196F3</color>
+    <color name="gray">#9E9E9E</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+
+    
     <!-- رنگ‌های عمومی -->
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
@@ -26,3 +33,4 @@
     <!-- رنگ‌های خاص برای متن‌ها -->
     <color name="cream">#FFF8E1</color>
 </resources>
+
