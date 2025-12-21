@@ -29,6 +29,6 @@
         <activity
             android:name=".ReportDetailActivity"
             android:exported="false"
-            android:label="جزئیات گزارش"/>
+            android:label="@string/report_detail_title"/>
     </application>
 </manifest>
