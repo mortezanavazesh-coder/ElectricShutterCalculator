@@ -35,10 +35,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-                <!-- Divider -->
-                <View style="@style/Widget.App.ReportDivider"
-                    android:layout_width="match_parent"/>
-
                 <TextView
                     style="@style/BodyText"
                     android:text="انتخاب تیغه"
@@ -49,10 +45,6 @@
                     android:id="@+id/spinnerBlade"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
-
-                <!-- Divider -->
-                <View style="@style/Widget.App.ReportDivider"
-                    android:layout_width="match_parent"/>
 
                 <TextView
                     style="@style/BodyText"
@@ -86,9 +78,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-                <View style="@style/Widget.App.ReportDivider"
-                    android:layout_width="match_parent"/>
-
                 <TextView
                     style="@style/BodyText"
                     android:id="@+id/textFullRounds"
@@ -96,18 +85,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-                <View style="@style/Widget.App.ReportDivider"
-                    android:layout_width="match_parent"/>
-
                 <TextView
                     style="@style/BodyText"
                     android:id="@+id/textPartialRound"
                     android:text="دور ناقص: -"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
-
-                <View style="@style/Widget.App.ReportDivider"
-                    android:layout_width="match_parent"/>
 
                 <TextView
                     style="@style/BodyText"
