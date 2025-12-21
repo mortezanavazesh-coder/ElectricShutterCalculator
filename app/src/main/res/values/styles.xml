@@ -13,21 +13,27 @@
         <item name="android:textSize">16sp</item>
     </style>
 
-    <!-- متن‌های خاص -->
-    <style name="SpecialText.Blue">
+    <!-- استایل پایه برای متن‌های خاص -->
+    <style name="SpecialText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <!-- نسخه‌های فرعی SpecialText -->
+    <style name="SpecialText.Blue" parent="SpecialText">
         <item name="android:textColor">@color/blue</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="SpecialText.Date">
-        <item name="android:textColor">@color/cream</item>
-        <item name="android:textSize">14sp</item>
-        <item name="android:textStyle">italic</item>
-    </style>
-
-    <style name="SpecialText.Green">
+    <style name="SpecialText.Green" parent="SpecialText">
         <item name="android:textColor">@color/colorSuccess</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="SpecialText.Date" parent="SpecialText">
+        <item name="android:textColor">@color/cream</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:textSize">13sp</item>
     </style>
 
     <!-- کارت‌ها -->
