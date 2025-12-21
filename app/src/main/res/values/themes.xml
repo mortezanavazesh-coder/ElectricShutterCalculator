@@ -17,8 +17,8 @@
         <item name="colorError">@color/colorError</item>
         <item name="colorOnError">@color/white</item>
 
-        <!-- فونت پیش‌فرض -->
-        <item name="android:fontFamily">@font/sans_serif</item>
+        <!-- فونت پیش‌فرض پروژه -->
+        <item name="android:fontFamily">@font/iran_yekan</item>
 
         <!-- رنگ متن پیش‌فرض -->
         <item name="android:textColor">@color/white</item>
