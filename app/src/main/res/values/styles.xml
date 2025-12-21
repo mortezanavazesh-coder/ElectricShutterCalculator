@@ -36,13 +36,20 @@
         <item name="android:textSize">13sp</item>
     </style>
 
-    <!-- کارت‌ها با بوردر سفید و ظاهر مشابه عکس -->
+    <!-- کارت عمومی (بدون خط دور) -->
     <style name="Widget.App.MaterialCard" parent="Widget.MaterialComponents.CardView">
-        <item name="cardCornerRadius">6dp</item> <!-- گوشه‌های متوسط -->
-        <item name="cardElevation">0dp</item> <!-- بدون سایه -->
-        <item name="strokeColor">@color/white</item> <!-- خط سفید دور کارت -->
-        <item name="strokeWidth">1dp</item> <!-- ضخامت نازک -->
-        <item name="cardBackgroundColor">@color/colorSurface</item> <!-- پس‌زمینه‌ی تیره -->
+        <item name="cardCornerRadius">6dp</item>
+        <item name="cardElevation">0dp</item>
+        <item name="cardBackgroundColor">@color/colorSurface</item>
+    </style>
+
+    <!-- کارت مخصوص ریز گزارش (با خط سفید نازک) -->
+    <style name="Widget.App.ReportCard" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">6dp</item>
+        <item name="cardElevation">0dp</item>
+        <item name="strokeColor">@color/white</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="cardBackgroundColor">@color/colorSurface</item>
     </style>
 
     <!-- دکمه‌ها -->
