@@ -1,20 +1,19 @@
+
+
 <resources>
     <!-- رنگ‌های اصلی اپ -->
     <color name="colorPrimary">#1565C0</color>
     <color name="colorPrimaryVariant">#0D47A1</color>
     <color name="colorSecondary">#64B5F6</color>
 
+    <!-- رنگ‌های پایه -->
     <color name="green">#4CAF50</color>
     <color name="blue">#2196F3</color>
+    <color name="blue_dark">#0D47A1</color>
     <color name="gray">#9E9E9E</color>
+    <color name="gray_alt">#808080</color>
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
-
-    
-    <!-- رنگ‌های عمومی -->
-    <color name="white">#FFFFFF</color>
-    <color name="black">#000000</color>
-    <color name="gray">#808080</color>
     <color name="teal_700">#00796B</color>
 
     <!-- رنگ‌های سطح و متن -->
@@ -22,8 +21,6 @@
     <color name="colorSurface">#1E1E1E</color>
     <color name="colorOnSurface">#FFFFFF</color>
     <color name="colorOnSurfaceSecondary">#B0B0B0</color>
-    <color name="blue">#2196F3</color>
-    <color name="blue_dark">#0D47A1</color>
 
     <!-- رنگ‌های وضعیت -->
     <color name="colorError">#CF6679</color>
@@ -33,4 +30,3 @@
     <!-- رنگ‌های خاص برای متن‌ها -->
     <color name="cream">#FFF8E1</color>
 </resources>
-
