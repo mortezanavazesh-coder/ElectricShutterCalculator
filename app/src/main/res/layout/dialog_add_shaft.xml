@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:padding="16dp"
     android:orientation="vertical"
@@ -8,6 +7,7 @@
     <!-- عنوان شفت -->
     <EditText
         android:id="@+id/etShaftTitle"
+        style="@style/BodyText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="عنوان شفت"
@@ -16,6 +16,7 @@
     <!-- قیمت شفت (تومان) -->
     <EditText
         android:id="@+id/etShaftPrice"
+        style="@style/BodyText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="قیمت شفت (تومان)"
@@ -25,6 +26,7 @@
     <!-- قطر شفت (سانتی‌متر) -->
     <EditText
         android:id="@+id/etShaftDiameter"
+        style="@style/BodyText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="قطر شفت (سانتی‌متر)"
