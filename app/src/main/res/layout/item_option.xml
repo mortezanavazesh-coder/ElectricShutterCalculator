@@ -17,6 +17,8 @@
             android:id="@+id/textOptionName"
             style="@style/TitleText"
             android:text="گزینه"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="2"/>
 
         <!-- قیمت گزینه -->
@@ -24,6 +26,8 @@
             android:id="@+id/textOptionPrice"
             style="@style/SpecialText.Blue"
             android:text="0 تومان"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="end"/>
 
