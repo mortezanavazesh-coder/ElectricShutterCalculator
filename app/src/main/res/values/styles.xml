@@ -13,6 +13,12 @@
         <item name="cornerSize">8dp</item>
     </style>
 
+    <!-- استایل عمومی برای ShapeAppearanceOverlay -->
+    <style name="ShapeAppearanceOverlay">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
     <!-- استایل عمومی برای ShapeAppearanceOverlay.App -->
     <style name="ShapeAppearanceOverlay.App">
         <item name="cornerFamily">rounded</item>
