@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <!-- نام اپلیکیشن -->
     <string name="app_name">Electric Shutter Calculator</string>
 
@@ -33,4 +34,5 @@
     <string name="transport">کرایه حمل</string>
     <string name="extras">اضافات</string>
     <string name="total">جمع کل</string>
+
 </resources>
