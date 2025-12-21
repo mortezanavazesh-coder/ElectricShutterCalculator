@@ -1,11 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/Widget.App.MaterialCard"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    app:cardElevation="2dp"
-    app:cardCornerRadius="6dp">
+    android:layout_margin="8dp">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -17,50 +15,41 @@
         <!-- نام گزینه -->
         <TextView
             android:id="@+id/textOptionName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
+            style="@style/TitleText"
             android:text="گزینه"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:textColor="#212121" />
+            android:layout_weight="2"/>
 
         <!-- قیمت گزینه -->
         <TextView
             android:id="@+id/textOptionPrice"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            style="@style/SpecialText.Blue"
             android:text="0 تومان"
-            android:textSize="14sp"
-            android:textColor="#1565C0"
-            android:gravity="end" />
+            android:layout_weight="1"
+            android:gravity="end"/>
 
-        <!-- دکمه ویرایش نام -->
+        <!-- دکمه‌ها -->
         <ImageButton
             android:id="@+id/buttonRenameOption"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:src="@drawable/ic_edit"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="ویرایش نام گزینه" />
+            android:contentDescription="ویرایش نام گزینه"/>
 
-        <!-- دکمه ویرایش قیمت -->
         <ImageButton
             android:id="@+id/buttonEditPriceOption"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:src="@drawable/ic_price"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="ویرایش قیمت گزینه" />
+            android:contentDescription="ویرایش قیمت گزینه"/>
 
-        <!-- دکمه حذف -->
         <ImageButton
             android:id="@+id/buttonDeleteOption"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:src="@drawable/ic_delete"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="حذف گزینه" />
+            android:contentDescription="حذف گزینه"/>
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>
