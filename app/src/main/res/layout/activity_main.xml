@@ -330,6 +330,7 @@
                     android:layout_height="wrap_content"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
+
         <!-- ریز محاسبات -->
         <com.google.android.material.card.MaterialCardView
             style="@style/Widget.App.MaterialCard"
@@ -342,89 +343,105 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView style="@style/TitleText"
+                <TextView
+                    style="@style/TitleText"
                     android:text="ریز محاسبات"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-                <TextView style="@style/BodyText"
+                <TextView
+                    style="@style/BodyText"
                     android:id="@+id/textBreakBlade"
                     android:text="جمع تیغه: -"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-                <View android:layout_width="match_parent"
+                <View
+                    android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@drawable/divider"
                     android:layout_marginVertical="6dp"/>
 
-                <TextView style="@style/BodyText"
+                <TextView
+                    style="@style/BodyText"
                     android:id="@+id/textBreakMotor"
                     android:text="موتور: -"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-                <View android:layout_width="match_parent"
+                <View
+                    android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@drawable/divider"
                     android:layout_marginVertical="6dp"/>
 
-                <TextView style="@style/BodyText"
+                <TextView
+                    style="@style/BodyText"
                     android:id="@+id/textBreakShaft"
                     android:text="جمع شفت: -"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-                <View android:layout_width="match_parent"
+                <View
+                    android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@drawable/divider"
                     android:layout_marginVertical="6dp"/>
 
-                <TextView style="@style/BodyText"
+                <TextView
+                    style="@style/BodyText"
                     android:id="@+id/textBreakBox"
                     android:text="جمع قوطی: -"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-                <View android:layout_width="match_parent"
+                <View
+                    android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@drawable/divider"
                     android:layout_marginVertical="6dp"/>
 
-                <TextView style="@style/BodyText"
+                <TextView
+                    style="@style/BodyText"
                     android:id="@+id/textBreakInstall"
                     android:text="نصب: -"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-                <View android:layout_width="match_parent"
+                <View
+                    android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@drawable/divider"
                     android:layout_marginVertical="6dp"/>
 
-                <TextView style="@style/BodyText"
+                <TextView
+                    style="@style/BodyText"
                     android:id="@+id/textBreakWelding"
                     android:text="جوشکاری: -"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-                <View android:layout_width="match_parent"
+                <View
+                    android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@drawable/divider"
                     android:layout_marginVertical="6dp"/>
 
-                <TextView style="@style/BodyText"
+                <TextView
+                    style="@style/BodyText"
                     android:id="@+id/textBreakTransport"
                     android:text="کرایه حمل: -"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-                <View android:layout_width="match_parent"
+                <View
+                    android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@drawable/divider"
                     android:layout_marginVertical="6dp"/>
 
-                <TextView style="@style/BodyText"
+                <TextView
+                    style="@style/BodyText"
                     android:id="@+id/textBreakExtras"
                     android:text="گزینه‌های اضافی: -"
                     android:layout_width="match_parent"
