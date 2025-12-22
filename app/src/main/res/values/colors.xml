@@ -2,15 +2,11 @@
     <!-- رنگ‌های اصلی اپ -->
     <color name="colorPrimary">#1976D2</color> <!-- آبی دکمه‌ها -->
     <color name="colorPrimaryVariant">#1565C0</color>
-    <color name="colorSecondary">#2196F3</color> <!-- آبی روشن برای بعلاوه -->
+    <color name="colorSecondary">#2196F3</color> <!-- آبی بعلاوه -->
 
     <!-- رنگ‌های پایه -->
     <color name="green">#4CAF50</color> <!-- سبز قیمت نهایی و قطر رول -->
-    <color name="green_dark">#2E7D32</color>
     <color name="blue">#2196F3</color> <!-- شماره موبایل -->
-    <color name="blue_dark">#0D47A1</color>
-    <color name="gray">#9E9E9E</color>
-    <color name="gray_alt">#808080</color>
     <color name="black">#000000</color> <!-- زمینه اصلی -->
     <color name="white">#FFFFFF</color>
     <color name="cream">#FFE0B2</color> <!-- تاریخ کرم رنگ -->
