@@ -3,8 +3,8 @@
     <!-- کارت‌ها -->
     <style name="Widget.App.MaterialCard" parent="Widget.MaterialComponents.CardView">
         <item name="cardBackgroundColor">@color/colorSurface</item>
-        <item name="cardElevation">2dp</item> <!-- برجستگی خیلی خفیف -->
-        <item name="strokeColor">@color/colorSurfaceStroke</item> <!-- لبه روشن‌تر -->
+        <item name="cardElevation">2dp</item>
+        <item name="strokeColor">@color/colorSurfaceStroke</item>
         <item name="strokeWidth">1dp</item>
         <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.App.Card</item>
         <item name="android:layout_margin">8dp</item>
@@ -16,7 +16,7 @@
         <item name="cornerSize">12dp</item>
     </style>
 
-    <!-- استایل fallback برای جلوگیری از خطا -->
+    <!-- استایل fallback -->
     <style name="ShapeAppearanceOverlay.App">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">12dp</item>
@@ -35,12 +35,12 @@
     <style name="TitleText">
         <item name="android:textSize">16sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/colorOnSurface</item> <!-- سفید -->
+        <item name="android:textColor">@color/colorOnSurface</item>
     </style>
 
     <style name="BodyText">
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/colorOnSurface</item> <!-- سفید -->
+        <item name="android:textColor">@color/colorOnSurface</item>
     </style>
 
     <!-- متن‌های خاص -->
@@ -49,16 +49,16 @@
     </style>
 
     <style name="SpecialText.Green" parent="SpecialText">
-        <item name="android:textColor">@color/green</item> <!-- سبز قیمت نهایی و قطر رول -->
+        <item name="android:textColor">@color/green</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="SpecialText.Blue" parent="SpecialText">
-        <item name="android:textColor">@color/blue</item> <!-- شماره موبایل -->
+        <item name="android:textColor">@color/blue</item>
     </style>
 
     <style name="SpecialText.Date" parent="SpecialText">
-        <item name="android:textColor">@color/cream</item> <!-- تاریخ کرم رنگ -->
+        <item name="android:textColor">@color/cream</item>
         <item name="android:textSize">12sp</item>
     </style>
 
