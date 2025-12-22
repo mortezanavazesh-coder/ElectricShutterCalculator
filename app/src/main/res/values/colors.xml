@@ -5,18 +5,18 @@
     <color name="colorSecondary">#2196F3</color>
 
     <!-- رنگ‌های پایه -->
-    <color name="green">#4CAF50</color>
-    <color name="blue">#2196F3</color>
-    <color name="black">#000000</color>
+    <color name="green">#4CAF50</color> <!-- قیمت نهایی و قطر رول -->
+    <color name="blue">#2196F3</color> <!-- شماره موبایل -->
+    <color name="black">#000000</color> <!-- زمینه اصلی -->
     <color name="white">#FFFFFF</color>
-    <color name="cream">#FFE0B2</color>
+    <color name="cream">#FFE0B2</color> <!-- تاریخ -->
 
     <!-- رنگ‌های سطح و متن -->
-    <color name="colorBackground">#000000</color> <!-- زمینه مشکی کامل -->
+    <color name="colorBackground">#000000</color> <!-- پس‌زمینه مشکی کامل -->
     <color name="colorSurface">#121212</color>   <!-- کارت مشکی کمی روشن‌تر -->
     <color name="colorSurfaceStroke">#2A2A2A</color> <!-- لبه روشن‌تر کارت -->
-    <color name="colorOnSurface">#FFFFFF</color>
-    <color name="colorOnSurfaceSecondary">#B0B0B0</color>
+    <color name="colorOnSurface">#FFFFFF</color> <!-- متن سفید -->
+    <color name="colorOnSurfaceSecondary">#B0B0B0</color> <!-- متن خاکستری روشن‌تر -->
 
     <!-- رنگ‌های وضعیت -->
     <color name="colorError">#CF6679</color>
