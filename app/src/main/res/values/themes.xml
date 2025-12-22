@@ -2,48 +2,36 @@
 
     <!-- تم اصلی اپ -->
     <style name="Theme.ElectricShutterCalculator" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <!-- رنگ‌های اصلی -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
         <item name="colorSecondary">@color/colorSecondary</item>
 
-        <!-- رنگ‌های سطح و پس‌زمینه -->
         <item name="android:colorBackground">@color/colorBackground</item>
         <item name="colorSurface">@color/colorSurface</item>
         <item name="colorOnSurface">@color/colorOnSurface</item>
         <item name="colorOnSurfaceVariant">@color/colorOnSurfaceSecondary</item>
 
-        <!-- رنگ‌های وضعیت -->
         <item name="colorError">@color/colorError</item>
         <item name="colorOnError">@color/white</item>
 
-        <!-- فونت پیش‌فرض پروژه -->
         <item name="android:fontFamily">@font/iran_yekan</item>
-
-        <!-- رنگ متن پیش‌فرض -->
         <item name="android:textColor">@color/white</item>
     </style>
 
-    <!-- تم برای دکمه‌ها -->
+    <!-- دکمه‌ها -->
     <style name="Theme.ElectricShutterCalculator.Button" parent="Widget.MaterialComponents.Button">
         <item name="android:textColor">@color/white</item>
         <item name="backgroundTint">@color/colorPrimary</item>
         <item name="cornerRadius">8dp</item>
     </style>
 
-    <!-- تم برای کارت‌ها -->
+    <!-- کارت‌ها -->
     <style name="Theme.ElectricShutterCalculator.Card" parent="Widget.MaterialComponents.CardView">
         <item name="cardBackgroundColor">@color/colorSurface</item>
         <item name="cardElevation">2dp</item>
         <item name="strokeColor">@color/colorSurfaceStroke</item>
         <item name="strokeWidth">1dp</item>
         <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.App.Card</item>
-    </style>
-
-    <!-- استایل fallback برای جلوگیری از خطا -->
-    <style name="ShapeAppearanceOverlay.App">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">12dp</item>
     </style>
 
 </resources>
