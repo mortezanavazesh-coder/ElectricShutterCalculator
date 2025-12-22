@@ -2,7 +2,7 @@
     <!-- رنگ‌های اصلی اپ -->
     <color name="colorPrimary">#1976D2</color> <!-- آبی دکمه‌ها -->
     <color name="colorPrimaryVariant">#1565C0</color>
-    <color name="colorSecondary">#2196F3</color> <!-- آبی بعلاوه -->
+    <color name="colorSecondary">#2196F3</color> <!-- آبی ثانویه -->
 
     <!-- رنگ‌های پایه -->
     <color name="green">#4CAF50</color> <!-- سبز قیمت نهایی و قطر رول -->
@@ -12,8 +12,8 @@
     <color name="cream">#FFE0B2</color> <!-- تاریخ کرم رنگ -->
 
     <!-- رنگ‌های سطح و متن -->
-    <color name="colorBackground">#000000</color> <!-- زمینه کلی سیاه -->
-    <color name="colorSurface">#1E1E1E</color> <!-- کارت‌ها -->
+    <color name="colorBackground">#000000</color> <!-- پس‌زمینه کلی سیاه -->
+    <color name="colorSurface">#121212</color> <!-- کارت‌ها مشکی کمی روشن‌تر -->
     <color name="colorSurfaceStroke">#2A2A2A</color> <!-- لبه روشن‌تر کارت‌ها -->
     <color name="colorOnSurface">#FFFFFF</color> <!-- متن سفید -->
     <color name="colorOnSurfaceSecondary">#B0B0B0</color> <!-- متن خاکستری روشن‌تر -->
