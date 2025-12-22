@@ -2,7 +2,7 @@
 
     <!-- کارت‌ها -->
     <style name="Widget.App.MaterialCard" parent="Widget.MaterialComponents.CardView">
-        <item name="android:background">@drawable/card_background</item> <!-- shape کارت -->
+        <item name="android:background">@drawable/bg_card</item> <!-- تغییر به bg_card -->
         <item name="cardElevation">6dp</item> <!-- برجستگی بیشتر -->
         <item name="android:layout_margin">8dp</item>
         <item name="android:padding">12dp</item> <!-- متن‌ها از لبه جدا بشن -->
