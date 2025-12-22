@@ -40,4 +40,10 @@
         <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.App.Card</item>
     </style>
 
+    <!-- استایل fallback برای جلوگیری از خطا -->
+    <style name="ShapeAppearanceOverlay.App">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+
 </resources>
