@@ -3,7 +3,7 @@
     <!-- کارت‌ها -->
     <style name="Widget.App.MaterialCard" parent="Widget.MaterialComponents.CardView">
         <item name="cardBackgroundColor">@color/colorSurface</item>
-        <item name="cardElevation">2dp</item> <!-- برجستگی خفیف -->
+        <item name="cardElevation">2dp</item> <!-- برجستگی خیلی خفیف -->
         <item name="strokeColor">@color/colorSurfaceStroke</item> <!-- لبه روشن‌تر -->
         <item name="strokeWidth">1dp</item>
         <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.App.Card</item>
@@ -12,18 +12,6 @@
 
     <!-- شکل کارت‌ها -->
     <style name="ShapeAppearanceOverlay.App.Card">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">12dp</item>
-    </style>
-
-    <!-- استایل عمومی برای ShapeAppearanceOverlay -->
-    <style name="ShapeAppearanceOverlay">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">12dp</item>
-    </style>
-
-    <!-- استایل عمومی برای ShapeAppearanceOverlay.App -->
-    <style name="ShapeAppearanceOverlay.App">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">12dp</item>
     </style>
@@ -75,7 +63,7 @@
         <item name="android:layout_marginVertical">6dp</item>
     </style>
 
-    <!-- Alias برای جلوگیری از خطای missing style -->
+    <!-- Alias -->
     <style name="Widget.App" parent="Widget.App.MaterialCard" />
 
 </resources>
