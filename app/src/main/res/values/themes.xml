@@ -28,7 +28,7 @@
 
     <!-- کارت‌ها -->
     <style name="Theme.ElectricShutterCalculator.Card" parent="Widget.MaterialComponents.CardView">
-        <item name="android:background">@drawable/card_background</item>
+        <item name="android:background">@drawable/bg_card</item> <!-- تغییر به bg_card -->
         <item name="cardElevation">6dp</item>
         <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.App.Card</item>
     </style>
