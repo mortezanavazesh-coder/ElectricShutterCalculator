@@ -3,29 +3,30 @@
     <!-- کارت‌ها -->
     <style name="Widget.App.MaterialCard" parent="Widget.MaterialComponents.CardView">
         <item name="cardBackgroundColor">@color/colorSurface</item>
-        <item name="cardElevation">2dp</item>
+        <item name="cardElevation">4dp</item> <!-- برجستگی بیشتر -->
         <item name="strokeColor">@color/colorSurfaceStroke</item>
         <item name="strokeWidth">1dp</item>
         <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.App.Card</item>
         <item name="android:layout_margin">8dp</item>
+        <item name="android:padding">12dp</item> <!-- متن‌ها از لبه جدا بشن -->
     </style>
 
     <!-- شکل کارت‌ها -->
     <style name="ShapeAppearanceOverlay.App.Card">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">12dp</item>
+        <item name="cornerSize">8dp</item> <!-- گردی کمتر -->
     </style>
 
     <!-- fallback برای ShapeAppearanceOverlay.App -->
     <style name="ShapeAppearanceOverlay.App">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">12dp</item>
+        <item name="cornerSize">8dp</item>
     </style>
 
     <!-- fallback برای ShapeAppearanceOverlay -->
     <style name="ShapeAppearanceOverlay">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">12dp</item>
+        <item name="cornerSize">8dp</item>
     </style>
 
     <!-- دکمه اصلی -->
