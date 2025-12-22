@@ -2,11 +2,8 @@
 
     <!-- کارت‌ها -->
     <style name="Widget.App.MaterialCard" parent="Widget.MaterialComponents.CardView">
-        <item name="cardBackgroundColor">@color/colorSurface</item>
+        <item name="android:background">@drawable/card_background</item> <!-- shape کارت -->
         <item name="cardElevation">6dp</item> <!-- برجستگی بیشتر -->
-        <item name="strokeColor">@color/colorSurfaceStroke</item>
-        <item name="strokeWidth">1dp</item>
-        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.App.Card</item>
         <item name="android:layout_margin">8dp</item>
         <item name="android:padding">12dp</item> <!-- متن‌ها از لبه جدا بشن -->
     </style>
