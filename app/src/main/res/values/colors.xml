@@ -1,27 +1,27 @@
 <resources>
     <!-- رنگ‌های اصلی اپ -->
-    <color name="colorPrimary">#1976D2</color> <!-- آبی دکمه‌ها -->
+    <color name="colorPrimary">#1976D2</color>
     <color name="colorPrimaryVariant">#1565C0</color>
-    <color name="colorSecondary">#2196F3</color> <!-- آبی ثانویه -->
+    <color name="colorSecondary">#2196F3</color>
 
     <!-- رنگ‌های پایه -->
-    <color name="green">#4CAF50</color> <!-- سبز قیمت نهایی و قطر رول -->
-    <color name="blue">#2196F3</color> <!-- شماره موبایل -->
-    <color name="black">#000000</color> <!-- زمینه اصلی -->
+    <color name="green">#4CAF50</color>
+    <color name="blue">#2196F3</color>
+    <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
-    <color name="cream">#FFE0B2</color> <!-- تاریخ کرم رنگ -->
+    <color name="cream">#FFE0B2</color>
 
     <!-- رنگ‌های سطح و متن -->
-    <color name="colorBackground">#000000</color> <!-- پس‌زمینه کلی سیاه -->
-    <color name="colorSurface">#121212</color> <!-- کارت‌ها مشکی کمی روشن‌تر -->
-    <color name="colorSurfaceStroke">#2A2A2A</color> <!-- لبه روشن‌تر کارت‌ها -->
-    <color name="colorOnSurface">#FFFFFF</color> <!-- متن سفید -->
-    <color name="colorOnSurfaceSecondary">#B0B0B0</color> <!-- متن خاکستری روشن‌تر -->
+    <color name="colorBackground">#000000</color> <!-- زمینه مشکی کامل -->
+    <color name="colorSurface">#121212</color>   <!-- کارت مشکی کمی روشن‌تر -->
+    <color name="colorSurfaceStroke">#2A2A2A</color> <!-- لبه روشن‌تر کارت -->
+    <color name="colorOnSurface">#FFFFFF</color>
+    <color name="colorOnSurfaceSecondary">#B0B0B0</color>
 
     <!-- رنگ‌های وضعیت -->
     <color name="colorError">#CF6679</color>
     <color name="colorSuccess">@color/green</color>
 
     <!-- رنگ‌های آیکن‌ها -->
-    <color name="colorIcon">#000000</color> <!-- آیکن حذف و ویرایش -->
+    <color name="colorIcon">#000000</color>
 </resources>
