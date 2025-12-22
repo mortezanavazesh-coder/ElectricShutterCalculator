@@ -2,10 +2,10 @@
 
     <!-- کارت‌ها -->
     <style name="Widget.App.MaterialCard" parent="Widget.MaterialComponents.CardView">
-        <item name="android:background">@drawable/bg_card</item> <!-- پس‌زمینه کارت -->
-        <item name="cardElevation">6dp</item> <!-- سایه برای برجستگی -->
+        <item name="android:background">@drawable/bg_card</item>
+        <item name="cardElevation">6dp</item>
         <item name="android:layout_margin">8dp</item>
-        <item name="android:padding">12dp</item> <!-- متن‌ها از لبه جدا بشن -->
+        <item name="android:padding">12dp</item>
     </style>
 
     <!-- شکل کارت‌ها -->
@@ -14,13 +14,10 @@
         <item name="cornerSize">8dp</item>
     </style>
 
-    <!-- دکمه اصلی -->
-    <style name="Widget.App.PrimaryButton" parent="Widget.MaterialComponents.Button">
-        <item name="android:layout_marginTop">8dp</item>
-        <item name="cornerRadius">8dp</item>
-        <item name="android:textAllCaps">false</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="backgroundTint">@color/colorPrimary</item>
+    <!-- fallback برای ShapeAppearanceOverlay.App -->
+    <style name="ShapeAppearanceOverlay.App">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
     </style>
 
     <!-- متن‌های عمومی -->
@@ -36,16 +33,21 @@
     </style>
 
     <!-- متن‌های خاص -->
-    <style name="SpecialText.Green">
+    <style name="SpecialText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorOnSurface</item>
+    </style>
+
+    <style name="SpecialText.Green" parent="SpecialText">
         <item name="android:textColor">@color/green</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="SpecialText.Blue">
+    <style name="SpecialText.Blue" parent="SpecialText">
         <item name="android:textColor">@color/blue</item>
     </style>
 
-    <style name="SpecialText.Date">
+    <style name="SpecialText.Date" parent="SpecialText">
         <item name="android:textColor">@color/cream</item>
         <item name="android:textSize">12sp</item>
     </style>
