@@ -1,9 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/Widget.App.MaterialCard"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp">
+    android:layout_marginTop="12dp"
+    android:foreground="?attr/selectableItemBackground">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -37,6 +39,7 @@
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:src="@drawable/ic_edit"
+            android:tint="@color/white"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="ویرایش نام گزینه"/>
 
@@ -45,6 +48,7 @@
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:src="@drawable/ic_price"
+            android:tint="@color/white"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="ویرایش قیمت گزینه"/>
 
@@ -53,6 +57,7 @@
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:src="@drawable/ic_delete"
+            android:tint="@color/white"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="حذف گزینه"/>
     </LinearLayout>
