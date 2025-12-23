@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
-    android:padding="16dp">
+    android:padding="12dp"
+    android:clipToPadding="false">
 
     <LinearLayout
         android:orientation="vertical"
@@ -39,7 +40,8 @@
                     style="@style/BodyText"
                     android:text="انتخاب تیغه"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"/>
 
                 <Spinner
                     android:id="@+id/spinnerBlade"
@@ -50,7 +52,8 @@
                     style="@style/BodyText"
                     android:text="انتخاب شفت"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"/>
 
                 <Spinner
                     android:id="@+id/spinnerShaft"
@@ -83,21 +86,24 @@
                     android:id="@+id/textFullRounds"
                     android:text="تعداد دور کامل: -"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"/>
 
                 <TextView
                     style="@style/BodyText"
                     android:id="@+id/textPartialRound"
                     android:text="دور ناقص: -"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"/>
 
                 <TextView
                     style="@style/BodyText"
                     android:id="@+id/textRemainingBlades"
                     android:text="تیغه‌های باقی‌مانده: -"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
