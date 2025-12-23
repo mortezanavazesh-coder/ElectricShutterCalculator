@@ -298,38 +298,31 @@
 
         <!-- گزینه‌های اضافی -->
         <com.google.android.material.card.MaterialCardView
-            style="@style/Widget.App.MaterialCard"
+    style="@style/Widget.App.MaterialCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="12dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            style="@style/TitleText"
+            android:text="گزینه‌های اضافی"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <!-- کانتینر برای چک‌باکس‌ها -->
+        <LinearLayout
+            android:id="@+id/extrasContainer"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp">
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    style="@style/TitleText"
-                    android:text="گزینه‌های اضافی"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-                <LinearLayout
-                    android:id="@+id/extrasContainer"
-                    android:orientation="vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-                <TextView
-                    style="@style/BodyText"
-                    android:id="@+id/textExtrasLine"
-                    android:text="گزینه‌های اضافی: انتخاب نشده"
-                    android:textSize="14sp"
-                    android:layout_marginTop="6dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+            android:layout_marginTop="8dp"/>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
 
         <!-- ریز محاسبات -->
         <com.google.android.material.card.MaterialCardView
@@ -519,3 +512,4 @@
 
     </LinearLayout>
 </ScrollView>
+
