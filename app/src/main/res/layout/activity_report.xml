@@ -12,8 +12,7 @@
         style="@style/Widget.App.MaterialCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone"
-        android:layout_marginBottom="12dp">
+        android:visibility="gone">
 
         <TextView
             style="@style/BodyText"
@@ -22,7 +21,8 @@
             android:gravity="center"
             android:textSize="16sp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"/>
     </com.google.android.material.card.MaterialCardView>
 
     <!-- کارت لیست گزارش‌ها -->
@@ -31,7 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_marginBottom="12dp">
+        android:layout_marginTop="12dp">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerReports"
@@ -48,5 +48,5 @@
         android:text="بازگشت به صفحه اصلی"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="12dp"/>
 </LinearLayout>
