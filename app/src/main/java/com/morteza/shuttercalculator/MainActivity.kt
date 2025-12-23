@@ -53,7 +53,6 @@ class MainActivity : AppCompatActivity() {
 
     // گزینه‌های اضافی
     private lateinit var extrasContainer: LinearLayout
-    private lateinit var textExtrasLine: TextView
 
     // ریز محاسبات
     private lateinit var textBreakBlade: TextView
@@ -140,7 +139,6 @@ class MainActivity : AppCompatActivity() {
         textInstallComputed = findViewById(R.id.textInstallComputed)
 
         extrasContainer = findViewById(R.id.extrasContainer)
-        textExtrasLine = findViewById(R.id.textExtrasLine)
 
         textBreakBlade = findViewById(R.id.textBreakBlade)
         textBreakMotor = findViewById(R.id.textBreakMotor)
@@ -181,7 +179,7 @@ class MainActivity : AppCompatActivity() {
         inputHeightCm.addTextChangedListener(watcher)
         inputWidthCm.addTextChangedListener(watcher)
 
-        // حذف شرط بزرگتر از صفر؛ ذخیره مستقیم مقدار ورودی
+        // ذخیره مستقیم مقدار ورودی نصب
         inputInstallPrice.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 val v = FormatUtils.parseTomanInput(s?.toString())
@@ -233,7 +231,7 @@ class MainActivity : AppCompatActivity() {
         extrasContainer.removeAllViews()
         val extrasWithState = PrefsHelper.getAllExtraOptionsWithEnabled(this)
         if (extrasWithState.isEmpty()) {
-            textExtrasLine.text = "گزینه‌های اضافی: انتخاب نشده"
+            // هیچ گزینه‌ای برای نمایش وجود ندارد
             return
         }
 
@@ -336,16 +334,6 @@ class MainActivity : AppCompatActivity() {
         textBreakWelding.text = "جوشکاری: ${FormatUtils.formatToman(weldingComputed)}"
         textBreakTransport.text = "کرایه حمل: ${FormatUtils.formatToman(transportComputed)}"
         textBreakExtras.text = "گزینه‌های اضافی: ${FormatUtils.formatToman(extrasTotal)}"
-
-        // نمایش لیست گزینه‌های انتخاب‌شده در صفحه اصلی
-        if (enabledExtras.isNotEmpty()) {
-            val extrasLines = enabledExtras.entries.joinToString("\n") { (name, pair) ->
-                "$name — قیمت پایه: ${FormatUtils.formatToman(pair.first.toLong())}"
-            }
-            textExtrasLine.text = "گزینه‌های اضافی:\n$extrasLines"
-        } else {
-            textExtrasLine.text = "گزینه‌های اضافی: انتخاب نشده"
-        }
 
         // جمع کل
         val total = bladeComputed + motorBase + shaftComputed + boxComputedValue +
