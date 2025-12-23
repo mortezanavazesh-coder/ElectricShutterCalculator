@@ -24,25 +24,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <!-- دکمه بعلاوه سمت چپ بالا -->
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/buttonAddSlat"
-                    app:srcCompat="@drawable/ic_add"
-                    android:contentDescription="افزودن تیغه"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="start"
-                    android:layout_marginTop="8dp"
-                    android:tint="@color/white"
-                    app:backgroundTint="@color/blue"
-                    app:borderWidth="0dp"/>
-
-                <TextView
-                    style="@style/TitleText"
-                    android:text="انتخاب تیغه"
+                <!-- هدر: FAB آبی + عنوان -->
+                <LinearLayout
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"/>
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="8dp">
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/buttonAddSlat"
+                        app:srcCompat="@drawable/ic_add"
+                        android:contentDescription="افزودن تیغه"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:tint="@color/white"
+                        app:backgroundTint="@color/blue"
+                        app:borderWidth="0dp"/>
+
+                    <TextView
+                        style="@style/TitleText"
+                        android:text="انتخاب تیغه"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"/>
+                </LinearLayout>
 
                 <TextView
                     style="@style/BodyText"
@@ -74,24 +80,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/buttonAddMotor"
-                    app:srcCompat="@drawable/ic_add"
-                    android:contentDescription="افزودن موتور"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="start"
-                    android:layout_marginTop="8dp"
-                    android:tint="@color/white"
-                    app:backgroundTint="@color/blue"
-                    app:borderWidth="0dp"/>
-
-                <TextView
-                    style="@style/TitleText"
-                    android:text="انتخاب موتور"
+                <!-- هدر: FAB آبی + عنوان -->
+                <LinearLayout
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"/>
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="8dp">
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/buttonAddMotor"
+                        app:srcCompat="@drawable/ic_add"
+                        android:contentDescription="افزودن موتور"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:tint="@color/white"
+                        app:backgroundTint="@color/blue"
+                        app:borderWidth="0dp"/>
+
+                    <TextView
+                        style="@style/TitleText"
+                        android:text="انتخاب موتور"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"/>
+                </LinearLayout>
 
                 <TextView
                     style="@style/BodyText"
@@ -123,24 +136,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/buttonAddShaft"
-                    app:srcCompat="@drawable/ic_add"
-                    android:contentDescription="افزودن شفت"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="start"
-                    android:layout_marginTop="8dp"
-                    android:tint="@color/white"
-                    app:backgroundTint="@color/blue"
-                    app:borderWidth="0dp"/>
-
-                <TextView
-                    style="@style/TitleText"
-                    android:text="انتخاب شفت"
+                <!-- هدر: FAB آبی + عنوان -->
+                <LinearLayout
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"/>
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="8dp">
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/buttonAddShaft"
+                        app:srcCompat="@drawable/ic_add"
+                        android:contentDescription="افزودن شفت"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:tint="@color/white"
+                        app:backgroundTint="@color/blue"
+                        app:borderWidth="0dp"/>
+
+                    <TextView
+                        style="@style/TitleText"
+                        android:text="انتخاب شفت"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"/>
+                </LinearLayout>
 
                 <TextView
                     style="@style/BodyText"
@@ -172,24 +192,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/buttonAddBox"
-                    app:srcCompat="@drawable/ic_add"
-                    android:contentDescription="افزودن قوطی"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="start"
-                    android:layout_marginTop="8dp"
-                    android:tint="@color/white"
-                    app:backgroundTint="@color/blue"
-                    app:borderWidth="0dp"/>
-
-                <TextView
-                    style="@style/TitleText"
-                    android:text="انتخاب قوطی"
+                <!-- هدر: FAB آبی + عنوان -->
+                <LinearLayout
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"/>
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="8dp">
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/buttonAddBox"
+                        app:srcCompat="@drawable/ic_add"
+                        android:contentDescription="افزودن قوطی"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:tint="@color/white"
+                        app:backgroundTint="@color/blue"
+                        app:borderWidth="0dp"/>
+
+                    <TextView
+                        style="@style/TitleText"
+                        android:text="انتخاب قوطی"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"/>
+                </LinearLayout>
 
                 <TextView
                     style="@style/BodyText"
@@ -221,24 +248,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/buttonAddExtra"
-                    app:srcCompat="@drawable/ic_add"
-                    android:contentDescription="افزودن گزینه"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="start"
-                    android:layout_marginTop="8dp"
-                    android:tint="@color/white"
-                    app:backgroundTint="@color/blue"
-                    app:borderWidth="0dp"/>
-
-                <TextView
-                    style="@style/TitleText"
-                    android:text="انتخاب گزینه اضافی"
+                <!-- هدر: FAB آبی + عنوان -->
+                <LinearLayout
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"/>
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="8dp">
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/buttonAddExtra"
+                        app:srcCompat="@drawable/ic_add"
+                        android:contentDescription="افزودن گزینه"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:tint="@color/white"
+                        app:backgroundTint="@color/blue"
+                        app:borderWidth="0dp"/>
+
+                    <TextView
+                        style="@style/TitleText"
+                        android:text="انتخاب گزینه اضافی"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"/>
+                </LinearLayout>
 
                 <TextView
                     style="@style/BodyText"
@@ -258,7 +292,7 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- کارت هزینه‌های پایه -->
+        <!-- کارت هزینه‌های پایه (بدون FAB) -->
         <com.google.android.material.card.MaterialCardView
             style="@style/Widget.App.MaterialCard"
             android:layout_width="match_parent"
