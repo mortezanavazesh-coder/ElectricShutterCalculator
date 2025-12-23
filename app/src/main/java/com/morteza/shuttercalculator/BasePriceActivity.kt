@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -13,7 +14,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.morteza.shuttercalculator.utils.FormatUtils
 import com.morteza.shuttercalculator.utils.PrefsHelper
 import com.morteza.shuttercalculator.utils.ThousandSeparatorTextWatcher
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class BasePriceActivity : AppCompatActivity() {
 
@@ -29,11 +35,12 @@ class BasePriceActivity : AppCompatActivity() {
     private lateinit var emptyBoxes: TextView
     private lateinit var emptyExtras: TextView
 
-    private lateinit var buttonAddSlat: View
-    private lateinit var buttonAddMotor: View
-    private lateinit var buttonAddShaft: View
-    private lateinit var buttonAddBox: View
-    private lateinit var buttonAddExtra: View
+    // آیکن‌های بعلاوه به صورت ImageView
+    private lateinit var buttonAddSlat: ImageView
+    private lateinit var buttonAddMotor: ImageView
+    private lateinit var buttonAddShaft: ImageView
+    private lateinit var buttonAddBox: ImageView
+    private lateinit var buttonAddExtra: ImageView
 
     private lateinit var inputInstallBase: EditText
     private lateinit var inputWeldingBase: EditText
@@ -197,13 +204,13 @@ class BasePriceActivity : AppCompatActivity() {
         }
     }
 
-       // ------------------ افزودن تیغه ------------------
+    // ------------------ افزودن تیغه ------------------
     private fun showAddSlatDialog() {
         val view = LayoutInflater.from(this).inflate(R.layout.dialog_add_slat, null)
         val etTitle = view.findViewById<EditText>(R.id.etSlatTitle)
         val etPrice = view.findViewById<EditText>(R.id.etSlatPrice)
-        val etWidth = view.findViewById<EditText>(R.id.etSlatWidth)         // واحد: سانتی‌متر
-        val etThickness = view.findViewById<EditText>(R.id.etSlatThickness) // واحد: سانتی‌متر
+        val etWidth = view.findViewById<EditText>(R.id.etSlatWidth)         // سانتی‌متر
+        val etThickness = view.findViewById<EditText>(R.id.etSlatThickness) // سانتی‌متر
 
         etPrice.addTextChangedListener(ThousandSeparatorTextWatcher(etPrice))
 
@@ -221,7 +228,6 @@ class BasePriceActivity : AppCompatActivity() {
                     return@setPositiveButton
                 }
 
-                // ذخیره عنوان + قیمت پایه (Long) و مشخصات تیغه (Float)
                 PrefsHelper.addOption(this, "تیغه", title, priceLong)
                 PrefsHelper.putLong(this, "تیغه_price_$title", priceLong)
                 PrefsHelper.saveSlatSpecs(this, title, widthCm, thicknessCm)
@@ -239,7 +245,7 @@ class BasePriceActivity : AppCompatActivity() {
         val view = LayoutInflater.from(this).inflate(R.layout.dialog_add_shaft, null)
         val etTitle = view.findViewById<EditText>(R.id.etShaftTitle)
         val etPrice = view.findViewById<EditText>(R.id.etShaftPrice)
-        val etDiameter = view.findViewById<EditText>(R.id.etShaftDiameter) // واحد: سانتی‌متر
+        val etDiameter = view.findViewById<EditText>(R.id.etShaftDiameter) // سانتی‌متر
 
         etPrice.addTextChangedListener(ThousandSeparatorTextWatcher(etPrice))
 
