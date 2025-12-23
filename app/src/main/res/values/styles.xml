@@ -30,6 +30,12 @@
         <item name="cornerSize">8dp</item>
     </style>
 
+    <!-- fallback اصلی -->
+    <style name="ShapeAppearanceOverlay">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
     <!-- دکمه اصلی -->
     <style name="Widget.App.PrimaryButton" parent="Widget.MaterialComponents.Button">
         <item name="android:layout_marginTop">8dp</item>
