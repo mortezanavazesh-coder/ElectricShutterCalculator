@@ -1,9 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/Widget.App.MaterialCard"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp">
+    android:layout_marginTop="12dp"
+    android:foreground="?attr/selectableItemBackground">
 
     <LinearLayout
         android:orientation="vertical"
@@ -25,9 +27,9 @@
             android:id="@+id/textReportDate"
             style="@style/SpecialText.Date"
             android:text="تاریخ"
-            android:layout_marginTop="4dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"/>
 
         <!-- جمع کل -->
         <TextView
@@ -35,9 +37,9 @@
             style="@style/SpecialText.Green"
             android:text="جمع کل: 0 تومان"
             android:textSize="16sp"
-            android:layout_marginTop="6dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"/>
 
         <!-- دکمه حذف -->
         <ImageButton
@@ -49,6 +51,6 @@
             android:tint="@color/white"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="حذف گزارش"
-            android:layout_marginTop="8dp" />
+            android:layout_marginTop="12dp" />
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>
