@@ -35,7 +35,8 @@
                     style="@style/BodyText"
                     android:text="ارتفاع (cm)"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"/>
 
                 <EditText
                     android:id="@+id/inputHeightCm"
@@ -44,17 +45,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@drawable/divider"
-                    android:layout_marginVertical="6dp"/>
-
                 <TextView
                     style="@style/BodyText"
                     android:text="عرض (cm)"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"/>
 
                 <EditText
                     android:id="@+id/inputWidthCm"
@@ -68,7 +64,8 @@
                     android:id="@+id/textAreaM2"
                     android:text="مساحت: 0.000 متر مربع"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -93,14 +90,16 @@
                 <Spinner
                     android:id="@+id/spinnerBlade"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"/>
 
                 <TextView
                     style="@style/BodyText"
                     android:id="@+id/textBladeLine"
                     android:text="تیغه — قیمت پایه: - | قیمت کل: -"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -125,14 +124,16 @@
                 <Spinner
                     android:id="@+id/spinnerMotor"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"/>
 
                 <TextView
                     style="@style/BodyText"
                     android:id="@+id/textMotorLine"
                     android:text="موتور — قیمت: -"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -157,14 +158,16 @@
                 <Spinner
                     android:id="@+id/spinnerShaft"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"/>
 
                 <TextView
                     style="@style/BodyText"
                     android:id="@+id/textShaftLine"
                     android:text="شفت — قیمت پایه: - | قیمت کل: -"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -190,19 +193,22 @@
                     android:id="@+id/checkboxBoxEnabled"
                     android:text="محاسبه قوطی"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"/>
 
                 <Spinner
                     android:id="@+id/spinnerBox"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"/>
 
                 <TextView
                     style="@style/BodyText"
                     android:id="@+id/textBoxLine"
                     android:text="قوطی — محاسبه نشده"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -228,7 +234,8 @@
                     style="@style/BodyText"
                     android:text="نرخ نصب"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"/>
 
                 <EditText
                     android:id="@+id/inputInstallPrice"
@@ -237,17 +244,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@drawable/divider"
-                    android:layout_marginVertical="6dp"/>
-
                 <TextView
                     style="@style/BodyText"
                     android:text="هزینه نصب محاسبه شده"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"/>
 
                 <TextView
                     style="@style/BodyText"
@@ -256,17 +258,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@drawable/divider"
-                    android:layout_marginVertical="6dp"/>
-
                 <TextView
                     style="@style/BodyText"
                     android:text="قیمت جوشکاری"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"/>
 
                 <EditText
                     android:id="@+id/inputWeldingPrice"
@@ -275,17 +272,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@drawable/divider"
-                    android:layout_marginVertical="6dp"/>
-
                 <TextView
                     style="@style/BodyText"
                     android:text="کرایه حمل"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"/>
 
                 <EditText
                     android:id="@+id/inputTransportPrice"
@@ -298,31 +290,31 @@
 
         <!-- گزینه‌های اضافی -->
         <com.google.android.material.card.MaterialCardView
-    style="@style/Widget.App.MaterialCard"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="12dp">
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            style="@style/TitleText"
-            android:text="گزینه‌های اضافی"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <!-- کانتینر برای چک‌باکس‌ها -->
-        <LinearLayout
-            android:id="@+id/extrasContainer"
-            android:orientation="vertical"
+            style="@style/Widget.App.MaterialCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"/>
-    </LinearLayout>
-</com.google.android.material.card.MaterialCardView>
+            android:layout_marginTop="12dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/TitleText"
+                    android:text="گزینه‌های اضافی"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <!-- کانتینر برای چک‌باکس‌ها -->
+                <LinearLayout
+                    android:id="@+id/extrasContainer"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
         <!-- ریز محاسبات -->
         <com.google.android.material.card.MaterialCardView
@@ -347,98 +339,64 @@
                     android:id="@+id/textBreakBlade"
                     android:text="جمع تیغه: -"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@drawable/divider"
-                    android:layout_marginVertical="6dp"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"/>
 
                 <TextView
                     style="@style/BodyText"
                     android:id="@+id/textBreakMotor"
                     android:text="موتور: -"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@drawable/divider"
-                    android:layout_marginVertical="6dp"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"/>
 
                 <TextView
                     style="@style/BodyText"
                     android:id="@+id/textBreakShaft"
                     android:text="جمع شفت: -"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@drawable/divider"
-                    android:layout_marginVertical="6dp"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"/>
 
                 <TextView
                     style="@style/BodyText"
                     android:id="@+id/textBreakBox"
                     android:text="جمع قوطی: -"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@drawable/divider"
-                    android:layout_marginVertical="6dp"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"/>
 
                 <TextView
                     style="@style/BodyText"
                     android:id="@+id/textBreakInstall"
                     android:text="نصب: -"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@drawable/divider"
-                    android:layout_marginVertical="6dp"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"/>
 
                 <TextView
                     style="@style/BodyText"
                     android:id="@+id/textBreakWelding"
                     android:text="جوشکاری: -"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@drawable/divider"
-                    android:layout_marginVertical="6dp"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"/>
 
                 <TextView
                     style="@style/BodyText"
                     android:id="@+id/textBreakTransport"
                     android:text="کرایه حمل: -"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@drawable/divider"
-                    android:layout_marginVertical="6dp"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"/>
 
                 <TextView
                     style="@style/BodyText"
                     android:id="@+id/textBreakExtras"
                     android:text="گزینه‌های اضافی: -"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -466,7 +424,8 @@
                     android:text="قیمت نهایی: -"
                     android:textSize="18sp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -476,7 +435,8 @@
             android:orientation="vertical"
             android:padding="12dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp">
 
             <com.google.android.material.button.MaterialButton
                 style="@style/Widget.App.PrimaryButton"
@@ -512,4 +472,3 @@
 
     </LinearLayout>
 </ScrollView>
-
