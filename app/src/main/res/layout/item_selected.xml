@@ -1,8 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
-    android:padding="8dp"
+    android:padding="12dp"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical">
 
     <LinearLayout
         android:orientation="vertical"
@@ -10,6 +12,7 @@
         android:layout_weight="1"
         android:layout_height="wrap_content">
 
+        <!-- نام آیتم -->
         <TextView
             android:id="@+id/selName"
             style="@style/TitleText"
@@ -18,14 +21,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
+        <!-- تعداد -->
         <TextView
             android:id="@+id/selCount"
             style="@style/BodyText"
             android:text="1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"/>
     </LinearLayout>
 
+    <!-- قیمت واحد -->
     <TextView
         android:id="@+id/selUnit"
         style="@style/BodyText"
@@ -34,6 +40,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
+    <!-- جمع کل -->
     <TextView
         android:id="@+id/selTotal"
         style="@style/SpecialText.Green"
@@ -42,6 +49,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
+    <!-- دکمه ویرایش -->
     <ImageButton
         android:id="@+id/selEdit"
         android:layout_width="40dp"
@@ -51,6 +59,7 @@
         android:contentDescription="ویرایش"
         android:tint="@color/white"/>
 
+    <!-- دکمه حذف -->
     <ImageButton
         android:id="@+id/selDelete"
         android:layout_width="40dp"
@@ -58,6 +67,6 @@
         android:src="@drawable/ic_delete_circle_red"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="حذف"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="12dp"
         android:tint="@color/white"/>
 </LinearLayout>
