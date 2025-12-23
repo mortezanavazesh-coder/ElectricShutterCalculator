@@ -11,21 +11,10 @@
         <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.App.Card</item>
         <!-- جلوگیری از تاریک شدن کارت‌ها -->
         <item name="android:forceDarkAllowed">false</item>
-        <item name="materialForceDarkEnabled">false</item>
     </style>
 
     <!-- شکل کارت‌ها -->
     <style name="ShapeAppearanceOverlay.App.Card">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">8dp</item>
-    </style>
-
-    <style name="ShapeAppearanceOverlay.App">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">8dp</item>
-    </style>
-
-    <style name="ShapeAppearanceOverlay">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">8dp</item>
     </style>
