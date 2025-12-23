@@ -29,15 +29,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
-                    android:layout_marginTop="8dp">
+                    android:layout_marginTop="12dp">
 
                     <ImageView
                         android:id="@+id/buttonAddSlat"
                         android:src="@drawable/ic_add"
                         android:contentDescription="افزودن تیغه"
                         android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:tint="@color/blue"/>
+                        android:layout_height="24dp"/>
 
                     <TextView
                         style="@style/TitleText"
@@ -74,15 +73,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
-                    android:layout_marginTop="8dp">
+                    android:layout_marginTop="12dp">
 
                     <ImageView
                         android:id="@+id/buttonAddMotor"
                         android:src="@drawable/ic_add"
                         android:contentDescription="افزودن موتور"
                         android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:tint="@color/blue"/>
+                        android:layout_height="24dp"/>
 
                     <TextView
                         style="@style/TitleText"
@@ -119,15 +117,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
-                    android:layout_marginTop="8dp">
+                    android:layout_marginTop="12dp">
 
                     <ImageView
                         android:id="@+id/buttonAddShaft"
                         android:src="@drawable/ic_add"
                         android:contentDescription="افزودن شفت"
                         android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:tint="@color/blue"/>
+                        android:layout_height="24dp"/>
 
                     <TextView
                         style="@style/TitleText"
@@ -164,15 +161,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
-                    android:layout_marginTop="8dp">
+                    android:layout_marginTop="12dp">
 
                     <ImageView
                         android:id="@+id/buttonAddBox"
                         android:src="@drawable/ic_add"
                         android:contentDescription="افزودن قوطی"
                         android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:tint="@color/blue"/>
+                        android:layout_height="24dp"/>
 
                     <TextView
                         style="@style/TitleText"
@@ -209,15 +205,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
-                    android:layout_marginTop="8dp">
+                    android:layout_marginTop="12dp">
 
                     <ImageView
                         android:id="@+id/buttonAddExtra"
                         android:src="@drawable/ic_add"
                         android:contentDescription="افزودن گزینه"
                         android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:tint="@color/blue"/>
+                        android:layout_height="24dp"/>
 
                     <TextView
                         style="@style/TitleText"
@@ -255,7 +250,7 @@
                     android:text="هزینه نصب (تومان به ازای هر متر مربع)"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"/>
+                    android:layout_marginTop="12dp"/>
 
                 <EditText
                     android:id="@+id/inputInstallBase"
@@ -263,7 +258,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal"
                     android:hint="مثال: 250000"
-                    android:layout_marginTop="8dp"/>
+                    android:layout_marginTop="12dp"/>
 
                 <!-- جوشکاری -->
                 <TextView
@@ -279,7 +274,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal"
                     android:hint="مثال: 180000"
-                    android:layout_marginTop="8dp"/>
+                    android:layout_marginTop="12dp"/>
 
                 <!-- کرایه حمل -->
                 <TextView
@@ -295,7 +290,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal"
                     android:hint="مثال: 120000"
-                    android:layout_marginTop="8dp"/>
+                    android:layout_marginTop="12dp"/>
 
                 <!-- دکمه‌ها -->
                 <LinearLayout
