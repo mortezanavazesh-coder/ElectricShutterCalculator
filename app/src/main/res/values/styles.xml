@@ -2,12 +2,17 @@
 
     <!-- کارت‌ها -->
     <style name="Widget.App.MaterialCard" parent="Widget.MaterialComponents.CardView">
+        <!-- رنگ پس‌زمینه کارت -->
         <item name="cardBackgroundColor">@color/colorSurface</item>
+        <!-- خط دور کارت -->
         <item name="strokeColor">@color/colorSurfaceStroke</item>
         <item name="strokeWidth">1dp</item>
+        <!-- سایه -->
         <item name="cardElevation">6dp</item>
+        <!-- فاصله و padding -->
         <item name="android:layout_margin">8dp</item>
         <item name="android:padding">12dp</item>
+        <!-- گوشه‌های گرد -->
         <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.App.Card</item>
         <!-- جلوگیری از تاریک شدن کارت‌ها -->
         <item name="android:forceDarkAllowed">false</item>
@@ -15,6 +20,12 @@
 
     <!-- شکل کارت‌ها -->
     <style name="ShapeAppearanceOverlay.App.Card">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
+    <!-- fallback عمومی -->
+    <style name="ShapeAppearanceOverlay.App">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">8dp</item>
     </style>
