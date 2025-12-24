@@ -46,7 +46,7 @@
         <item name="android:ellipsize">end</item>
     </style>
 
-    <!-- اسپینر (اصلاح‌شده) -->
+    <!-- اسپینر -->
     <style name="Widget.App.Spinner" parent="Widget.AppCompat.Spinner">
         <item name="android:textColor">@color/white</item>
         <item name="android:textColorHint">@color/cream</item>
@@ -58,6 +58,25 @@
     <style name="Widget.App.Spinner.Popup" parent="ThemeOverlay.AppCompat.Light">
         <item name="android:textColor">@color/white</item>
         <item name="android:background">@color/colorSurface</item>
+    </style>
+
+    <!-- EditText سفارشی -->
+    <style name="Widget.App.EditText" parent="Widget.MaterialComponents.TextInputEditText">
+        <item name="android:textColor">@color/colorOnSurface</item>
+        <item name="android:hintTextColor">@color/cream</item>
+        <item name="android:backgroundTint">@color/colorSurfaceStroke</item>
+        <item name="android:padding">8dp</item>
+    </style>
+
+    <!-- TextInputLayout سفارشی -->
+    <style name="Widget.App.TextInput" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxBackgroundColor">@color/colorSurface</item>
+        <item name="boxStrokeColor">@color/colorSurfaceStroke</item>
+        <item name="boxCornerRadiusTopStart">8dp</item>
+        <item name="boxCornerRadiusTopEnd">8dp</item>
+        <item name="boxCornerRadiusBottomStart">8dp</item>
+        <item name="boxCornerRadiusBottomEnd">8dp</item>
+        <item name="android:hintTextColor">@color/cream</item>
     </style>
 
     <!-- متن‌های عمومی -->
