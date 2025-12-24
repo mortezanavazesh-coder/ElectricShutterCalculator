@@ -338,14 +338,19 @@ class BasePriceActivity : AppCompatActivity() {
                 }
                 uiScope.launch {
                     withContext(Dispatchers.IO) {
+                        // تغییر نام در لیست اصلی
                         PrefsHelper.renameOption(this@BasePriceActivity, category, oldTitle, newTitle)
 
+                        // انتقال قیمت بدون صفر شدن
                         val oldKey = "${category}_price_$oldTitle"
                         val newKey = "${category}_price_$newTitle"
-                        val price = PrefsHelper.getLong(this@BasePriceActivity, oldKey, 0L)
-                        PrefsHelper.putLong(this@BasePriceActivity, newKey, price)
-                        PrefsHelper.removeKey(this@BasePriceActivity, oldKey)
+                        val price = PrefsHelper.getLong(this@BasePriceActivity, oldKey, -1L)
+                        if (price != -1L) {
+                            PrefsHelper.putLong(this@BasePriceActivity, newKey, price)
+                            PrefsHelper.removeKey(this@BasePriceActivity, oldKey)
+                        }
 
+                        // انتقال وضعیت گزینه‌های اضافی
                         if (category == "اضافات") {
                             val oldEnabledKey = "extra_enabled_$oldTitle"
                             val newEnabledKey = "extra_enabled_$newTitle"
