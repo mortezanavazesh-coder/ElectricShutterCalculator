@@ -45,11 +45,33 @@
         <item name="backgroundTint">@color/colorPrimary</item>
     </style>
 
+    <!-- چک‌باکس -->
+    <style name="Widget.App.CheckBox" parent="Widget.MaterialComponents.CompoundButton.CheckBox">
+        <item name="android:textColor">@color/colorOnSurface</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <!-- اسپینر -->
+    <style name="Widget.App.Spinner" parent="Widget.MaterialComponents.Spinner">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorHint">@color/cream</item>
+        <item name="android:background">@color/colorSurface</item>
+        <item name="android:popupTheme">@style/Widget.App.Spinner.Popup</item>
+        <!-- فلش سفید -->
+        <item name="android:drawableEnd">@drawable/spinner_arrow_white</item>
+    </style>
+
+    <style name="Widget.App.Spinner.Popup" parent="ThemeOverlay.MaterialComponents.Light">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@color/colorSurface</item>
+    </style>
+
     <!-- متن‌های عمومی -->
     <style name="TitleText">
         <item name="android:textSize">16sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/colorOnSurface</item>
+        <item name="android:textColor">@color/cream</item>
         <item name="android:maxLines">1</item>
         <item name="android:ellipsize">end</item>
     </style>
