@@ -19,6 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:preventCornerOverlap="true"
+            app:cardUseCompatPadding="true"
             android:clipToPadding="true"
             android:clipChildren="true">
 
@@ -110,6 +111,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             app:preventCornerOverlap="true"
+            app:cardUseCompatPadding="true"
             android:clipToPadding="true"
             android:clipChildren="true">
 
@@ -133,7 +135,50 @@
                     android:paddingStart="8dp"
                     android:paddingEnd="8dp"/>
 
-                <!-- بقیه TextViewها مشابه همین با paddingStart/End -->
+                <TextView
+                    style="@style/BodyText"
+                    android:id="@+id/textFullRounds"
+                    android:text="تعداد دور کامل: -"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:scrollHorizontally="false"
+                    android:includeFontPadding="false"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
+
+                <TextView
+                    style="@style/BodyText"
+                    android:id="@+id/textPartialRound"
+                    android:text="دور ناقص: -"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:scrollHorizontally="false"
+                    android:includeFontPadding="false"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
+
+                <TextView
+                    style="@style/BodyText"
+                    android:id="@+id/textRemainingBlades"
+                    android:text="تیغه‌های باقی‌مانده: -"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:scrollHorizontally="false"
+                    android:includeFontPadding="false"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -144,6 +189,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             app:preventCornerOverlap="true"
+            app:cardUseCompatPadding="true"
             android:clipToPadding="true"
             android:clipChildren="true">
 
