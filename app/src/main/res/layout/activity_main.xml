@@ -89,6 +89,7 @@
 
                 <Spinner
                     android:id="@+id/spinnerBlade"
+                    style="@style/Widget.App.Spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"/>
@@ -123,6 +124,7 @@
 
                 <Spinner
                     android:id="@+id/spinnerMotor"
+                    style="@style/Widget.App.Spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"/>
@@ -157,6 +159,7 @@
 
                 <Spinner
                     android:id="@+id/spinnerShaft"
+                    style="@style/Widget.App.Spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"/>
@@ -191,6 +194,7 @@
 
                 <CheckBox
                     android:id="@+id/checkboxBoxEnabled"
+                    style="@style/Widget.App.CheckBox"
                     android:text="محاسبه قوطی"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -198,6 +202,7 @@
 
                 <Spinner
                     android:id="@+id/spinnerBox"
+                    style="@style/Widget.App.Spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"/>
