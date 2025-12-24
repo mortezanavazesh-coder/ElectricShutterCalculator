@@ -18,7 +18,65 @@
         <item name="cornerSize">8dp</item>
     </style>
 
-    <!-- متن عمومی -->
+    <!-- fallback عمومی برای کارت‌ها -->
+    <style name="ShapeAppearanceOverlay.App">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
+    <!-- دکمه اصلی -->
+    <style name="Widget.App.PrimaryButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="backgroundTint">@color/colorPrimary</item>
+    </style>
+
+    <!-- چک‌باکس -->
+    <style name="Widget.App.CheckBox" parent="Widget.MaterialComponents.CompoundButton.CheckBox">
+        <item name="android:textColor">@color/colorOnSurface</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:scrollHorizontally">false</item>
+        <item name="android:breakStrategy">simple</item>
+    </style>
+
+    <!-- اسپینر -->
+    <style name="Widget.App.Spinner" parent="Widget.AppCompat.Spinner">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorHint">@color/cream</item>
+        <item name="android:background">@color/colorSurface</item>
+        <item name="android:popupTheme">@style/Widget.App.Spinner.Popup</item>
+        <item name="android:drawableEnd">@drawable/spinner_arrow_white</item>
+    </style>
+
+    <style name="Widget.App.Spinner.Popup" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@color/colorSurface</item>
+    </style>
+
+    <!-- EditText سفارشی -->
+    <style name="Widget.App.EditText" parent="Widget.AppCompat.EditText">
+        <item name="android:textColor">@color/colorOnSurface</item>
+        <item name="android:textColorHint">@color/cream</item>
+        <item name="android:backgroundTint">@color/colorSurfaceStroke</item>
+        <item name="android:padding">8dp</item>
+    </style>
+
+    <!-- TextInputLayout سفارشی -->
+    <style name="Widget.App.TextInput" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxBackgroundColor">@color/colorSurface</item>
+        <item name="boxStrokeColor">@color/colorSurfaceStroke</item>
+        <item name="boxCornerRadiusTopStart">8dp</item>
+        <item name="boxCornerRadiusTopEnd">8dp</item>
+        <item name="boxCornerRadiusBottomStart">8dp</item>
+        <item name="boxCornerRadiusBottomEnd">8dp</item>
+        <item name="android:textColorHint">@color/cream</item>
+    </style>
+
+    <!-- متن‌های عمومی -->
     <style name="AppTextAppearance" parent="TextAppearance.MaterialComponents.Body1">
         <item name="android:textColor">@color/white</item>
         <item name="android:ellipsize">end</item>
@@ -28,7 +86,6 @@
         <item name="android:breakStrategy">simple</item>
     </style>
 
-    <!-- متن‌های خاص -->
     <style name="TitleText" parent="AppTextAppearance">
         <item name="android:textSize">16sp</item>
         <item name="android:textStyle">bold</item>
