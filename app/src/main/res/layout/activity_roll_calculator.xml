@@ -23,42 +23,85 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <!-- ارتفاع -->
                 <TextView
                     style="@style/BodyText"
                     android:text="ارتفاع (cm)"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:singleLine="false"
+                    android:ellipsize="none"
+                    android:scrollHorizontally="false"/>
 
-                <EditText
-                    android:id="@+id/inputHeight"
-                    android:inputType="numberDecimal"
-                    android:hint="مثال: 250"
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.App.TextInput"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    app:hintEnabled="true"
+                    android:layout_marginTop="8dp">
 
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputHeight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"
+                        android:hint="مثال: 250"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- انتخاب تیغه -->
                 <TextView
                     style="@style/BodyText"
                     android:text="انتخاب تیغه"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"/>
+                    android:layout_marginTop="12dp"
+                    android:singleLine="false"
+                    android:ellipsize="none"
+                    android:scrollHorizontally="false"/>
 
-                <Spinner
-                    android:id="@+id/spinnerBlade"
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.App.TextInput"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    app:endIconMode="dropdown"
+                    android:layout_marginTop="8dp">
 
+                    <AutoCompleteTextView
+                        android:id="@+id/dropdownBlade"
+                        style="@style/Widget.App.Dropdown"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="تیغه را انتخاب کنید"
+                        android:inputType="none"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- انتخاب شفت -->
                 <TextView
                     style="@style/BodyText"
                     android:text="انتخاب شفت"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"/>
+                    android:layout_marginTop="12dp"
+                    android:singleLine="false"
+                    android:ellipsize="none"
+                    android:scrollHorizontally="false"/>
 
-                <Spinner
-                    android:id="@+id/spinnerShaft"
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.App.TextInput"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    app:endIconMode="dropdown"
+                    android:layout_marginTop="8dp">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/dropdownShaft"
+                        style="@style/Widget.App.Dropdown"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="شفت را انتخاب کنید"
+                        android:inputType="none"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -79,7 +122,10 @@
                     android:id="@+id/textTotalBlades"
                     android:text="تعداد تیغه: -"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:singleLine="false"
+                    android:ellipsize="none"
+                    android:scrollHorizontally="false"/>
 
                 <TextView
                     style="@style/BodyText"
@@ -87,7 +133,10 @@
                     android:text="تعداد دور کامل: -"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"/>
+                    android:layout_marginTop="12dp"
+                    android:singleLine="false"
+                    android:ellipsize="none"
+                    android:scrollHorizontally="false"/>
 
                 <TextView
                     style="@style/BodyText"
@@ -95,7 +144,10 @@
                     android:text="دور ناقص: -"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"/>
+                    android:layout_marginTop="12dp"
+                    android:singleLine="false"
+                    android:ellipsize="none"
+                    android:scrollHorizontally="false"/>
 
                 <TextView
                     style="@style/BodyText"
@@ -103,7 +155,10 @@
                     android:text="تیغه‌های باقی‌مانده: -"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"/>
+                    android:layout_marginTop="12dp"
+                    android:singleLine="false"
+                    android:ellipsize="none"
+                    android:scrollHorizontally="false"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -126,25 +181,35 @@
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-                <com.google.android.material.button.MaterialButton
-                    style="@style/Widget.App.PrimaryButton"
-                    android:id="@+id/buttonCalculateRoll"
-                    android:text="محاسبه قطر رول"
-                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"/>
-
-                <com.google.android.material.button.MaterialButton
-                    style="@style/Widget.App.PrimaryButton"
-                    android:id="@+id/buttonBackToMain"
-                    android:text="بازگشت به صفحه اصلی"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"/>
+                    android:singleLine="false"
+                    android:ellipsize="none"
+                    android:scrollHorizontally="false"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
+
+        <!-- دکمه‌ها خارج از کارت -->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp">
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.App.PrimaryButton"
+                android:id="@+id/buttonCalculateRoll"
+                android:text="محاسبه قطر رول"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.App.PrimaryButton"
+                android:id="@+id/buttonBackToMain"
+                android:text="بازگشت به صفحه اصلی"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"/>
+        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>
