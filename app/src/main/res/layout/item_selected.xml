@@ -4,7 +4,8 @@
     android:padding="12dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center_vertical">
+    android:gravity="center_vertical"
+    android:background="@color/colorSurface">
 
     <LinearLayout
         android:orientation="vertical"
@@ -19,7 +20,10 @@
             android:text="نام آیتم"
             android:textSize="16sp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:singleLine="false"
+            android:ellipsize="none"/>
 
         <!-- تعداد -->
         <TextView
@@ -28,7 +32,8 @@
             android:text="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"/>
+            android:layout_marginTop="4dp"
+            android:textColor="@color/cream"/>
     </LinearLayout>
 
     <!-- قیمت واحد -->
@@ -38,7 +43,10 @@
         android:text="قیمت واحد"
         android:layout_marginEnd="12dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:singleLine="false"
+        android:ellipsize="none"/>
 
     <!-- جمع کل -->
     <TextView
@@ -47,7 +55,9 @@
         android:text="جمع"
         android:layout_marginEnd="12dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:singleLine="false"
+        android:ellipsize="none"/>
 
     <!-- دکمه ویرایش -->
     <ImageButton
