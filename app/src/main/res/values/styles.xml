@@ -2,19 +2,13 @@
 
     <!-- کارت‌ها -->
     <style name="Widget.App.MaterialCard" parent="Widget.MaterialComponents.CardView">
-        <!-- رنگ پس‌زمینه کارت -->
         <item name="cardBackgroundColor">@color/colorSurface</item>
-        <!-- خط دور کارت -->
         <item name="strokeColor">@color/colorSurfaceStroke</item>
         <item name="strokeWidth">1dp</item>
-        <!-- سایه -->
         <item name="cardElevation">6dp</item>
-        <!-- فاصله و padding -->
         <item name="android:layout_margin">8dp</item>
         <item name="android:padding">12dp</item>
-        <!-- گوشه‌های گرد -->
         <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.App.Card</item>
-        <!-- جلوگیری از تاریک شدن کارت‌ها -->
         <item name="android:forceDarkAllowed">false</item>
     </style>
 
@@ -52,17 +46,16 @@
         <item name="android:ellipsize">end</item>
     </style>
 
-    <!-- اسپینر -->
-    <style name="Widget.App.Spinner" parent="Widget.MaterialComponents.Spinner">
+    <!-- اسپینر (اصلاح‌شده) -->
+    <style name="Widget.App.Spinner" parent="Widget.AppCompat.Spinner">
         <item name="android:textColor">@color/white</item>
         <item name="android:textColorHint">@color/cream</item>
         <item name="android:background">@color/colorSurface</item>
         <item name="android:popupTheme">@style/Widget.App.Spinner.Popup</item>
-        <!-- فلش سفید -->
         <item name="android:drawableEnd">@drawable/spinner_arrow_white</item>
     </style>
 
-    <style name="Widget.App.Spinner.Popup" parent="ThemeOverlay.MaterialComponents.Light">
+    <style name="Widget.App.Spinner.Popup" parent="ThemeOverlay.AppCompat.Light">
         <item name="android:textColor">@color/white</item>
         <item name="android:background">@color/colorSurface</item>
     </style>
