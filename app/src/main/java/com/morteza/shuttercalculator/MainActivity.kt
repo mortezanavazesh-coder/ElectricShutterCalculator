@@ -3,6 +3,7 @@ package com.morteza.shuttercalculator
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
+import android.text.TextUtils
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
@@ -87,15 +88,15 @@ class MainActivity : AppCompatActivity() {
         setupButtons()
 
         vm.basePrices.observe(this) { bp ->
-            // آداپترها
-            spinnerBlade.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, bp.blades)
-                .apply { setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item) }
-            spinnerMotor.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, bp.motors)
-                .apply { setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item) }
-            spinnerShaft.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, bp.shafts)
-                .apply { setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item) }
-            spinnerBox.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, bp.boxes)
-                .apply { setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item) }
+            // آداپترها با layout سفارشی برای ظاهر منوی بازشو
+            spinnerBlade.adapter = ArrayAdapter(this, R.layout.spinner_dropdown_item, bp.blades)
+                .apply { setDropDownViewResource(R.layout.spinner_dropdown_item) }
+            spinnerMotor.adapter = ArrayAdapter(this, R.layout.spinner_dropdown_item, bp.motors)
+                .apply { setDropDownViewResource(R.layout.spinner_dropdown_item) }
+            spinnerShaft.adapter = ArrayAdapter(this, R.layout.spinner_dropdown_item, bp.shafts)
+                .apply { setDropDownViewResource(R.layout.spinner_dropdown_item) }
+            spinnerBox.adapter = ArrayAdapter(this, R.layout.spinner_dropdown_item, bp.boxes)
+                .apply { setDropDownViewResource(R.layout.spinner_dropdown_item) }
 
             // مقداردهی ورودی‌های هزینه از BasePrices
             inputInstallPrice.setText(FormatUtils.formatTomanPlain(bp.installBase))
@@ -231,7 +232,6 @@ class MainActivity : AppCompatActivity() {
         extrasContainer.removeAllViews()
         val extrasWithState = PrefsHelper.getAllExtraOptionsWithEnabled(this)
         if (extrasWithState.isEmpty()) {
-            // هیچ گزینه‌ای برای نمایش وجود ندارد
             return
         }
 
@@ -241,6 +241,12 @@ class MainActivity : AppCompatActivity() {
             val cb = CheckBox(this)
             cb.text = "$name  (${FormatUtils.formatToman(price.toLong())})"
             cb.isChecked = enabled
+
+            // جلوگیری از بیرون‌زدگی متن و اعمال رنگ صحیح
+            cb.setTextColor(resources.getColor(R.color.colorOnSurface, theme))
+            cb.maxLines = 1
+            cb.ellipsize = TextUtils.TruncateAt.END
+
             cb.setOnCheckedChangeListener { _, isChecked ->
                 PrefsHelper.saveBool(this, "extra_enabled_$name", isChecked)
                 recalcAllAndDisplay()
