@@ -18,8 +18,14 @@
         <item name="cornerSize">8dp</item>
     </style>
 
-    <!-- fallback عمومی برای کارت‌ها -->
+    <!-- fallback عمومی -->
     <style name="ShapeAppearanceOverlay.App">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
+    <!-- ⚠️ استایل پایه که برای ارجاع‌های قدیمی لازم است -->
+    <style name="ShapeAppearanceOverlay">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">8dp</item>
     </style>
