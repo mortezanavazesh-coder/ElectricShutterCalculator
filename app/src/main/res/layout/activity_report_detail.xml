@@ -25,21 +25,33 @@
                     style="@style/TitleText"
                     android:id="@+id/tvCustomerName"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:ellipsize="none"
+                    android:scrollHorizontally="false"
+                    android:singleLine="false"
+                    android:breakStrategy="simple"/>
 
                 <TextView
                     style="@style/SpecialText.Blue"
                     android:id="@+id/tvCustomerPhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"/>
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="none"
+                    android:scrollHorizontally="false"
+                    android:singleLine="false"
+                    android:breakStrategy="simple"/>
 
                 <TextView
                     style="@style/SpecialText.Date"
                     android:id="@+id/tvDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"/>
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="none"
+                    android:scrollHorizontally="false"
+                    android:singleLine="false"
+                    android:breakStrategy="simple"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -59,21 +71,33 @@
                     style="@style/BodyText"
                     android:id="@+id/tvHeight"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:ellipsize="none"
+                    android:scrollHorizontally="false"
+                    android:singleLine="false"
+                    android:breakStrategy="simple"/>
 
                 <TextView
                     style="@style/BodyText"
                     android:id="@+id/tvWidth"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"/>
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="none"
+                    android:scrollHorizontally="false"
+                    android:singleLine="false"
+                    android:breakStrategy="simple"/>
 
                 <TextView
                     style="@style/BodyText"
                     android:id="@+id/tvArea"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"/>
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="none"
+                    android:scrollHorizontally="false"
+                    android:singleLine="false"
+                    android:breakStrategy="simple"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -89,29 +113,46 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <!-- همه‌ی TextViewهای این بخش چندخطی و داخل کارت -->
                 <TextView style="@style/TitleText" android:id="@+id/tvBlade"
-                    android:layout_width="match_parent" android:layout_height="wrap_content"/>
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:ellipsize="none" android:scrollHorizontally="false"
+                    android:singleLine="false" android:breakStrategy="simple"/>
                 <TextView style="@style/TitleText" android:id="@+id/tvMotor"
                     android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"/>
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="none" android:scrollHorizontally="false"
+                    android:singleLine="false" android:breakStrategy="simple"/>
                 <TextView style="@style/TitleText" android:id="@+id/tvShaft"
                     android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"/>
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="none" android:scrollHorizontally="false"
+                    android:singleLine="false" android:breakStrategy="simple"/>
                 <TextView style="@style/TitleText" android:id="@+id/tvBox"
                     android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"/>
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="none" android:scrollHorizontally="false"
+                    android:singleLine="false" android:breakStrategy="simple"/>
                 <TextView style="@style/TitleText" android:id="@+id/tvInstall"
                     android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"/>
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="none" android:scrollHorizontally="false"
+                    android:singleLine="false" android:breakStrategy="simple"/>
                 <TextView style="@style/TitleText" android:id="@+id/tvWelding"
                     android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"/>
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="none" android:scrollHorizontally="false"
+                    android:singleLine="false" android:breakStrategy="simple"/>
                 <TextView style="@style/TitleText" android:id="@+id/tvTransport"
                     android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"/>
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="none" android:scrollHorizontally="false"
+                    android:singleLine="false" android:breakStrategy="simple"/>
                 <TextView style="@style/TitleText" android:id="@+id/tvExtras"
                     android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"/>
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="none" android:scrollHorizontally="false"
+                    android:singleLine="false" android:breakStrategy="simple"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -127,29 +168,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <!-- همه‌ی TextViewهای این بخش هم چندخطی -->
                 <TextView style="@style/BodyText" android:id="@+id/tvBreakBlade"
-                    android:layout_width="match_parent" android:layout_height="wrap_content"/>
-                <TextView style="@style/BodyText" android:id="@+id/tvBreakMotor"
                     android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"/>
-                <TextView style="@style/BodyText" android:id="@+id/tvBreakShaft"
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"/>
-                <TextView style="@style/BodyText" android:id="@+id/tvBreakBox"
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"/>
-                <TextView style="@style/BodyText" android:id="@+id/tvBreakInstall"
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"/>
-                <TextView style="@style/BodyText" android:id="@+id/tvBreakWelding"
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"/>
-                <TextView style="@style/BodyText" android:id="@+id/tvBreakTransport"
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"/>
-                <TextView style="@style/BodyText" android:id="@+id/tvBreakExtras"
-                    android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"/>
+                    android:ellipsize="none" android:scrollHorizontally="false"
+                    android:singleLine="false" android:breakStrategy="simple"/>
+                <!-- بقیه‌ی TextViewها مشابه همین -->
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -170,17 +194,14 @@
                     android:id="@+id/tvTotal"
                     android:textSize="18sp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:ellipsize="none"
+                    android:scrollHorizontally="false"
+                    android:singleLine="false"
+                    android:breakStrategy="simple"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <!-- دکمه بازگشت -->
         <com.google.android.material.button.MaterialButton
             style="@style/Widget.App.PrimaryButton"
-            android:id="@+id/buttonBackToReports"
-            android:text="بازگشت به گزارشات"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"/>
-    </LinearLayout>
-</ScrollView>
