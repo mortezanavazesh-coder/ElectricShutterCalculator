@@ -89,7 +89,7 @@
 
                 <Spinner
                     android:id="@+id/spinnerBlade"
-                    style="@style/Widget.App.Spinner"
+                    style="@style/Widget.AppCompat.Spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"/>
@@ -124,7 +124,7 @@
 
                 <Spinner
                     android:id="@+id/spinnerMotor"
-                    style="@style/Widget.App.Spinner"
+                    style="@style/Widget.AppCompat.Spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"/>
@@ -159,7 +159,7 @@
 
                 <Spinner
                     android:id="@+id/spinnerShaft"
-                    style="@style/Widget.App.Spinner"
+                    style="@style/Widget.AppCompat.Spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"/>
@@ -202,7 +202,7 @@
 
                 <Spinner
                     android:id="@+id/spinnerBox"
-                    style="@style/Widget.App.Spinner"
+                    style="@style/Widget.AppCompat.Spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"/>
@@ -311,7 +311,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-                <!-- کانتینر برای چک‌باکس‌ها -->
                 <LinearLayout
                     android:id="@+id/extrasContainer"
                     android:orientation="vertical"
