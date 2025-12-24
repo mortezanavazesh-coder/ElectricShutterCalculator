@@ -3,34 +3,44 @@
     android:padding="16dp"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/colorSurface">
 
     <!-- عنوان شفت -->
     <EditText
         android:id="@+id/etShaftTitle"
-        style="@style/BodyText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="عنوان شفت"
-        android:inputType="textCapSentences" />
+        android:inputType="textCapSentences"
+        android:textColor="@color/white"
+        android:textColorHint="@color/cream"
+        android:maxLines="1"
+        android:ellipsize="end"/>
 
     <!-- قیمت شفت (تومان) -->
     <EditText
         android:id="@+id/etShaftPrice"
-        style="@style/BodyText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="قیمت شفت (تومان)"
         android:inputType="numberDecimal"
-        android:layout_marginTop="12dp" />
+        android:layout_marginTop="12dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/cream"
+        android:maxLines="1"
+        android:ellipsize="end"/>
 
     <!-- قطر شفت (سانتی‌متر) -->
     <EditText
         android:id="@+id/etShaftDiameter"
-        style="@style/BodyText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="قطر شفت (سانتی‌متر)"
         android:inputType="numberDecimal"
-        android:layout_marginTop="12dp" />
+        android:layout_marginTop="12dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/cream"
+        android:maxLines="1"
+        android:ellipsize="end"/>
 </LinearLayout>
