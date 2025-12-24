@@ -36,7 +36,9 @@
                         android:src="@drawable/ic_add"
                         android:contentDescription="افزودن تیغه"
                         android:layout_width="24dp"
-                        android:layout_height="24dp"/>
+                        android:layout_height="24dp"
+                        android:tint="@color/blue"
+                        android:layout_marginStart="8dp"/>
 
                     <TextView
                         style="@style/TitleText"
@@ -92,7 +94,9 @@
                         android:src="@drawable/ic_add"
                         android:contentDescription="افزودن موتور"
                         android:layout_width="24dp"
-                        android:layout_height="24dp"/>
+                        android:layout_height="24dp"
+                        android:tint="@color/blue"
+                        android:layout_marginStart="8dp"/>
 
                     <TextView
                         style="@style/TitleText"
@@ -148,7 +152,9 @@
                         android:src="@drawable/ic_add"
                         android:contentDescription="افزودن شفت"
                         android:layout_width="24dp"
-                        android:layout_height="24dp"/>
+                        android:layout_height="24dp"
+                        android:tint="@color/blue"
+                        android:layout_marginStart="8dp"/>
 
                     <TextView
                         style="@style/TitleText"
@@ -204,7 +210,9 @@
                         android:src="@drawable/ic_add"
                         android:contentDescription="افزودن قوطی"
                         android:layout_width="24dp"
-                        android:layout_height="24dp"/>
+                        android:layout_height="24dp"
+                        android:tint="@color/blue"
+                        android:layout_marginStart="8dp"/>
 
                     <TextView
                         style="@style/TitleText"
@@ -260,7 +268,9 @@
                         android:src="@drawable/ic_add"
                         android:contentDescription="افزودن گزینه"
                         android:layout_width="24dp"
-                        android:layout_height="24dp"/>
+                        android:layout_height="24dp"
+                        android:tint="@color/blue"
+                        android:layout_marginStart="8dp"/>
 
                     <TextView
                         style="@style/TitleText"
@@ -296,8 +306,7 @@
             style="@style/Widget.App.MaterialCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="88dp">
+            android:layout_marginTop="12dp">
 
             <LinearLayout
                 android:orientation="vertical"
@@ -314,6 +323,7 @@
 
                 <EditText
                     android:id="@+id/inputInstallBase"
+                    style="@style/Widget.App.EditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal"
@@ -330,6 +340,7 @@
 
                 <EditText
                     android:id="@+id/inputWeldingBase"
+                    style="@style/Widget.App.EditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal"
@@ -346,37 +357,40 @@
 
                 <EditText
                     android:id="@+id/inputTransportBase"
+                    style="@style/Widget.App.EditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal"
                     android:hint="مثال: 120000"
                     android:layout_marginTop="12dp"/>
-
-                <!-- دکمه‌ها -->
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="end"
-                    android:layout_marginTop="16dp">
-
-                    <com.google.android.material.button.MaterialButton
-                        style="@style/Widget.App.PrimaryButton"
-                        android:id="@+id/buttonSaveAll"
-                        android:text="ذخیرهٔ همه"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-
-                    <com.google.android.material.button.MaterialButton
-                        style="@style/Widget.App.PrimaryButton"
-                        android:id="@+id/buttonBack"
-                        android:text="بازگشت"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"/>
-                </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
+
+        <!-- دکمه‌ها خارج از کارت‌ها -->
+        <LinearLayout
+            android:id="@+id/bottomButtons"
+            android:orientation="horizontal"
+            android:gravity="end"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="88dp">
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.App.PrimaryButton"
+                android:id="@+id/buttonSaveAll"
+                android:text="ذخیرهٔ همه"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.App.PrimaryButton"
+                android:id="@+id/buttonBack"
+                android:text="بازگشت"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"/>
+        </LinearLayout>
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
