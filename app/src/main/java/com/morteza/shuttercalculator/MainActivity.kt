@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.morteza.shuttercalculator.utils.FormatUtils
 import com.morteza.shuttercalculator.utils.PrefsHelper
@@ -88,15 +89,11 @@ class MainActivity : AppCompatActivity() {
         setupButtons()
 
         vm.basePrices.observe(this) { bp ->
-            // آداپترها با layout سفارشی برای ظاهر منوی بازشو
-            spinnerBlade.adapter = ArrayAdapter(this, R.layout.spinner_dropdown_item, bp.blades)
-                .apply { setDropDownViewResource(R.layout.spinner_dropdown_item) }
-            spinnerMotor.adapter = ArrayAdapter(this, R.layout.spinner_dropdown_item, bp.motors)
-                .apply { setDropDownViewResource(R.layout.spinner_dropdown_item) }
-            spinnerShaft.adapter = ArrayAdapter(this, R.layout.spinner_dropdown_item, bp.shafts)
-                .apply { setDropDownViewResource(R.layout.spinner_dropdown_item) }
-            spinnerBox.adapter = ArrayAdapter(this, R.layout.spinner_dropdown_item, bp.boxes)
-                .apply { setDropDownViewResource(R.layout.spinner_dropdown_item) }
+            // اسپینرها با آداپتر عمومی و رنگ متن سفید
+            spinnerBlade.adapter = makeWhiteAdapter(bp.blades)
+            spinnerMotor.adapter = makeWhiteAdapter(bp.motors)
+            spinnerShaft.adapter = makeWhiteAdapter(bp.shafts)
+            spinnerBox.adapter = makeWhiteAdapter(bp.boxes)
 
             // مقداردهی ورودی‌های هزینه از BasePrices
             inputInstallPrice.setText(FormatUtils.formatTomanPlain(bp.installBase))
@@ -461,5 +458,28 @@ class MainActivity : AppCompatActivity() {
             }
             .setNegativeButton("لغو", null)
             .show()
+    }
+
+    // آداپتر عمومی اسپینر با رنگ متن سفید
+    private fun makeWhiteAdapter(items: List<String>): ArrayAdapter<String> {
+        return object : ArrayAdapter<String>(
+            this,
+            android.R.layout.simple_spinner_item,
+            items
+        ) {
+            override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+                val view = super.getView(position, convertView, parent) as TextView
+                view.setTextColor(ContextCompat.getColor(context, R.color.white))
+                return view
+            }
+
+            override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
+                val view = super.getDropDownView(position, convertView, parent) as TextView
+                view.setTextColor(ContextCompat.getColor(context, R.color.white))
+                return view
+            }
+        }.apply {
+            setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        }
     }
 }
