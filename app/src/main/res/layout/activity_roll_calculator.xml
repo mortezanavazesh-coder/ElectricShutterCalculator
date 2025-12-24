@@ -18,7 +18,7 @@
             style="@style/Widget.App.MaterialCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:preventCornerOverlap="true"
+            app:cardPreventCornerOverlap="true"
             app:cardUseCompatPadding="true"
             android:clipToPadding="true"
             android:clipChildren="true">
@@ -110,7 +110,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            app:preventCornerOverlap="true"
+            app:cardPreventCornerOverlap="true"
             app:cardUseCompatPadding="true"
             android:clipToPadding="true"
             android:clipChildren="true">
@@ -188,7 +188,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            app:preventCornerOverlap="true"
+            app:cardPreventCornerOverlap="true"
             app:cardUseCompatPadding="true"
             android:clipToPadding="true"
             android:clipChildren="true">
@@ -240,5 +240,4 @@
                 android:layout_marginTop="12dp"/>
         </LinearLayout>
 
-    </LinearLayout>
-</ScrollView>
+    </LinearLayout
