@@ -3,21 +3,24 @@
     android:padding="16dp"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/colorSurface">
 
     <EditText
         android:id="@+id/etItemTitle"
-        style="@style/BodyText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="عنوان" />
+        android:hint="عنوان"
+        android:textColor="@color/white"
+        android:textColorHint="@color/cream"/>
 
     <EditText
         android:id="@+id/etItemPrice"
-        style="@style/BodyText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="قیمت"
         android:inputType="numberDecimal"
-        android:layout_marginTop="12dp" />
+        android:layout_marginTop="12dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/cream"/>
 </LinearLayout>
