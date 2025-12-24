@@ -3,24 +3,31 @@
     android:orientation="vertical"
     android:padding="16dp"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@color/colorSurface">
 
     <!-- نام مشتری -->
     <EditText
         android:id="@+id/etCustomerName"
-        style="@style/BodyText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:hint="نام مشتری"
         android:inputType="textPersonName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:textColor="@color/white"
+        android:textColorHint="@color/cream"
+        android:maxLines="1"
+        android:ellipsize="end"/>
 
     <!-- شماره موبایل -->
     <EditText
         android:id="@+id/etCustomerPhone"
-        style="@style/BodyText"
-        android:hint="شماره موبایل (اختیاری)"
-        android:inputType="phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"/>
+        android:hint="شماره موبایل (اختیاری)"
+        android:inputType="phone"
+        android:layout_marginTop="12dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/cream"
+        android:maxLines="1"
+        android:ellipsize="end"/>
 </LinearLayout>
