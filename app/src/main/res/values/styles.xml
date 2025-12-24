@@ -61,9 +61,9 @@
     </style>
 
     <!-- EditText سفارشی -->
-    <style name="Widget.App.EditText" parent="Widget.MaterialComponents.TextInputEditText">
+    <style name="Widget.App.EditText" parent="Widget.AppCompat.EditText">
         <item name="android:textColor">@color/colorOnSurface</item>
-        <item name="android:hintTextColor">@color/cream</item>
+        <item name="android:textColorHint">@color/cream</item>
         <item name="android:backgroundTint">@color/colorSurfaceStroke</item>
         <item name="android:padding">8dp</item>
     </style>
@@ -76,7 +76,7 @@
         <item name="boxCornerRadiusTopEnd">8dp</item>
         <item name="boxCornerRadiusBottomStart">8dp</item>
         <item name="boxCornerRadiusBottomEnd">8dp</item>
-        <item name="android:hintTextColor">@color/cream</item>
+        <item name="android:textColorHint">@color/cream</item>
     </style>
 
     <!-- متن‌های عمومی -->
