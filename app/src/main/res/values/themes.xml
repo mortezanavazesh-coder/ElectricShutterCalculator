@@ -16,7 +16,9 @@
 
         <!-- فونت معمولی سیستم -->
         <item name="android:fontFamily">sans-serif</item>
-        <item name="android:textColor">@color/white</item>
+
+        <!-- استایل عمومی متن‌ها -->
+        <item name="android:textViewStyle">@style/AppTextAppearance</item>
 
         <!-- جلوگیری از تغییر رنگ در حالت شب -->
         <item name="android:forceDarkAllowed">false</item>
