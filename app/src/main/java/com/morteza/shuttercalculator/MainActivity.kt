@@ -1,480 +1,700 @@
-package com.morteza.shuttercalculator
-
-import android.content.Intent
-import android.os.Bundle
-import android.text.Editable
-import android.text.TextUtils
-import android.text.TextWatcher
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.*
-import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import androidx.lifecycle.ViewModelProvider
-import com.morteza.shuttercalculator.utils.FormatUtils
-import com.morteza.shuttercalculator.utils.PrefsHelper
-import com.morteza.shuttercalculator.utils.ReportStorage
-import com.morteza.shuttercalculator.utils.ThousandSeparatorTextWatcher
-import kotlin.math.max
-import saman.zamani.persiandate.PersianDate
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
-
-class MainActivity : AppCompatActivity() {
-
-    private lateinit var vm: MainViewModel
-
-    // ورودی‌ها
-    private lateinit var inputHeightCm: EditText
-    private lateinit var inputWidthCm: EditText
-
-    // نمایش‌ها
-    private lateinit var textAreaM2: TextView
-
-    // تیغه
-    private lateinit var spinnerBlade: Spinner
-    private lateinit var textBladeLine: TextView
-
-    // موتور
-    private lateinit var spinnerMotor: Spinner
-    private lateinit var textMotorLine: TextView
-
-    // شفت
-    private lateinit var spinnerShaft: Spinner
-    private lateinit var textShaftLine: TextView
-
-    // قوطی
-    private lateinit var checkboxBoxEnabled: CheckBox
-    private lateinit var spinnerBox: Spinner
-    private lateinit var textBoxLine: TextView
-
-    // هزینه‌ها
-    private lateinit var inputInstallPrice: EditText
-    private lateinit var inputWeldingPrice: EditText
-    private lateinit var inputTransportPrice: EditText
-    private lateinit var textInstallComputed: TextView
-
-    // گزینه‌های اضافی
-    private lateinit var extrasContainer: LinearLayout
-
-    // ریز محاسبات
-    private lateinit var textBreakBlade: TextView
-    private lateinit var textBreakMotor: TextView
-    private lateinit var textBreakShaft: TextView
-    private lateinit var textBreakBox: TextView
-    private lateinit var textBreakInstall: TextView
-    private lateinit var textBreakWelding: TextView
-    private lateinit var textBreakTransport: TextView
-    private lateinit var textBreakExtras: TextView
-
-    // جمع کل
-    private lateinit var textTotal: TextView
-
-    // دکمه‌ها
-    private lateinit var buttonSaveReport: Button
-    private lateinit var buttonBasePrice: Button
-    private lateinit var buttonRollDiameter: Button
-    private lateinit var buttonReports: Button
-
-    private var previousInstallBase: Long = 0L
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        vm = ViewModelProvider(this).get(MainViewModel::class.java)
-
-        bindViews()
-        setupTextWatchers()
-        setupSpinners()
-        setupButtons()
-
-        vm.basePrices.observe(this) { bp ->
-            spinnerBlade.adapter = makeWhiteAdapter(bp.blades)
-            spinnerMotor.adapter = makeWhiteAdapter(bp.motors)
-            spinnerShaft.adapter = makeWhiteAdapter(bp.shafts)
-            spinnerBox.adapter = makeWhiteAdapter(bp.boxes)
-
-            inputInstallPrice.setText(FormatUtils.formatTomanPlain(bp.installBase))
-            inputWeldingPrice.setText(FormatUtils.formatTomanPlain(bp.weldingBase))
-            inputTransportPrice.setText(FormatUtils.formatTomanPlain(bp.transportBase))
-            previousInstallBase = bp.installBase
-
-            buildExtrasCheckboxes()
-            recalcAllAndDisplay()
-        }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        vm.reloadFromPrefs(this)
-        buildExtrasCheckboxes()
-        recalcAllAndDisplay()
-    }
-
-    private fun bindViews() {
-        inputHeightCm = findViewById(R.id.inputHeightCm)
-        inputWidthCm = findViewById(R.id.inputWidthCm)
-        textAreaM2 = findViewById(R.id.textAreaM2)
-
-        spinnerBlade = findViewById(R.id.spinnerBlade)
-        textBladeLine = findViewById(R.id.textBladeLine)
-
-        spinnerMotor = findViewById(R.id.spinnerMotor)
-        textMotorLine = findViewById(R.id.textMotorLine)
-
-        spinnerShaft = findViewById(R.id.spinnerShaft)
-        textShaftLine = findViewById(R.id.textShaftLine)
-
-        checkboxBoxEnabled = findViewById(R.id.checkboxBoxEnabled)
-        spinnerBox = findViewById(R.id.spinnerBox)
-        textBoxLine = findViewById(R.id.textBoxLine)
-
-        inputInstallPrice = findViewById(R.id.inputInstallPrice)
-        inputWeldingPrice = findViewById(R.id.inputWeldingPrice)
-        inputTransportPrice = findViewById(R.id.inputTransportPrice)
-        textInstallComputed = findViewById(R.id.textInstallComputed)
-
-        extrasContainer = findViewById(R.id.extrasContainer)
-
-        textBreakBlade = findViewById(R.id.textBreakBlade)
-        textBreakMotor = findViewById(R.id.textBreakMotor)
-        textBreakShaft = findViewById(R.id.textBreakShaft)
-        textBreakBox = findViewById(R.id.textBreakBox)
-        textBreakInstall = findViewById(R.id.textBreakInstall)
-        textBreakWelding = findViewById(R.id.textBreakWelding)
-        textBreakTransport = findViewById(R.id.textBreakTransport)
-        textBreakExtras = findViewById(R.id.textBreakExtras)
-
-        textTotal = findViewById(R.id.textTotal)
-
-        buttonSaveReport = findViewById(R.id.buttonSaveReport)
-        buttonBasePrice = findViewById(R.id.buttonBasePrice)
-        buttonRollDiameter = findViewById(R.id.buttonRollDiameter)
-        buttonReports = findViewById(R.id.buttonReports)
-
-        inputInstallPrice.addTextChangedListener(ThousandSeparatorTextWatcher(inputInstallPrice))
-        inputWeldingPrice.addTextChangedListener(ThousandSeparatorTextWatcher(inputWeldingPrice))
-        inputTransportPrice.addTextChangedListener(ThousandSeparatorTextWatcher(inputTransportPrice))
-    }
-
-    private fun setupButtons() {
-        buttonSaveReport.setOnClickListener { showSaveDialogAndPersist() }
-        buttonBasePrice.setOnClickListener { startActivity(Intent(this, BasePriceActivity::class.java)) }
-        buttonRollDiameter.setOnClickListener { startActivity(Intent(this, RollCalculatorActivity::class.java)) }
-        buttonReports.setOnClickListener { startActivity(Intent(this, ReportActivity::class.java)) }
-    }
-
-    private fun setupTextWatchers() {
-        val recomputeTrigger = { recalcAllAndDisplay() }
-        val watcher = object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) { recomputeTrigger.invoke() }
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-        }
-        inputHeightCm.addTextChangedListener(watcher)
-        inputWidthCm.addTextChangedListener(watcher)
-
-        inputInstallPrice.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                val v = FormatUtils.parseTomanInput(s?.toString())
-                previousInstallBase = v
-                PrefsHelper.saveLong(this@MainActivity, "install_base", v)
-                recalcAllAndDisplay()
-            }
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-        })
-
-        inputWeldingPrice.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                val v = FormatUtils.parseTomanInput(s?.toString())
-                PrefsHelper.saveLong(this@MainActivity, "welding_base", v)
-                recalcAllAndDisplay()
-            }
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-        })
-
-        inputTransportPrice.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-                val v = FormatUtils.parseTomanInput(s?.toString())
-                PrefsHelper.saveLong(this@MainActivity, "transport_base", v)
-                recalcAllAndDisplay()
-            }
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-        })
-    }
-
-    private fun setupSpinners() {
-        val listener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                recalcAllAndDisplay()
-            }
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-        }
-        spinnerBlade.onItemSelectedListener = listener
-        spinnerMotor.onItemSelectedListener = listener
-        spinnerShaft.onItemSelectedListener = listener
-        spinnerBox.onItemSelectedListener = listener
-        checkboxBoxEnabled.setOnCheckedChangeListener { _, _ -> recalcAllAndDisplay() }
-    }
-    // ساخت چک‌باکس‌های گزینه‌های اضافی بر اساس Prefs
-    private fun buildExtrasCheckboxes() {
-        extrasContainer.removeAllViews()
-        val extrasWithState = PrefsHelper.getAllExtraOptionsWithEnabled(this)
-        if (extrasWithState.isEmpty()) return
-
-        val sorted = extrasWithState.keys.sortedWith(String.CASE_INSENSITIVE_ORDER)
-        for (name in sorted) {
-            val (price, enabled) = extrasWithState[name] ?: (0f to false)
-            val cb = CheckBox(this)
-            cb.text = "$name  (${FormatUtils.formatToman(price.toLong())})"
-            cb.isChecked = enabled
-            cb.setTextColor(resources.getColor(R.color.colorOnSurface, theme))
-            cb.maxLines = 1
-            cb.ellipsize = TextUtils.TruncateAt.END
-            cb.setOnCheckedChangeListener { _, isChecked ->
-                PrefsHelper.saveBool(this, "extra_enabled_$name", isChecked)
-                recalcAllAndDisplay()
-            }
-            extrasContainer.addView(cb)
-        }
-    }
-
-    private fun recalcAllAndDisplay() {
-        val heightCm = max(0.0, inputHeightCm.text.toString().toDoubleOrNull() ?: 0.0)
-        val widthCm = max(0.0, inputWidthCm.text.toString().toDoubleOrNull() ?: 0.0)
-        val areaM2 = (widthCm * heightCm) / 10000.0
-        textAreaM2.text = String.format("مساحت: %.3f متر مربع", areaM2)
-
-        // تیغه
-        var bladeComputed = 0L
-        var bladeBase = 0L
-        if (spinnerBlade.adapter != null && spinnerBlade.adapter.count > 0) {
-            val bladeName = spinnerBlade.selectedItem as? String
-            bladeBase = if (bladeName != null) PrefsHelper.getLong(this, "تیغه_price_$bladeName", 0L) else 0L
-            bladeComputed = (areaM2 * bladeBase).toLong()
-            textBladeLine.text = "قیمت پایه: ${FormatUtils.formatToman(bladeBase)}  |  قیمت کل: ${FormatUtils.formatToman(bladeComputed)}"
-        } else {
-            textBladeLine.text = "تیغه — داده‌ای موجود نیست"
-        }
-
-        // موتور
-        var motorBase = 0L
-        if (spinnerMotor.adapter != null && spinnerMotor.adapter.count > 0) {
-            val motorName = spinnerMotor.selectedItem as? String
-            motorBase = if (motorName != null) PrefsHelper.getLong(this, "موتور_price_$motorName", 0L) else 0L
-            textMotorLine.text = "قیمت: ${FormatUtils.formatToman(motorBase)}"
-        } else {
-            textMotorLine.text = "موتور — داده‌ای موجود نیست"
-        }
-
-        // شفت
-        var shaftComputed = 0L
-        var shaftBase = 0L
-        if (spinnerShaft.adapter != null && spinnerShaft.adapter.count > 0) {
-            val shaftName = spinnerShaft.selectedItem as? String
-            shaftBase = if (shaftName != null) PrefsHelper.getLong(this, "شفت_price_$shaftName", 0L) else 0L
-            val widthM = widthCm / 100.0
-            shaftComputed = (shaftBase * widthM).toLong()
-            textShaftLine.text = "قیمت پایه: ${FormatUtils.formatToman(shaftBase)}  |  قیمت کل: ${FormatUtils.formatToman(shaftComputed)}"
-        } else {
-            textShaftLine.text = "شفت — داده‌ای موجود نیست"
-        }
-
-        // قوطی
-        var boxComputedValue = 0L
-        if (checkboxBoxEnabled.isChecked && spinnerBox.adapter != null && spinnerBox.adapter.count > 0) {
-            val boxName = spinnerBox.selectedItem as? String
-            val boxBase = if (boxName != null) PrefsHelper.getLong(this, "قوطی_price_$boxName", 0L) else 0L
-            val effectiveHeight = max(0.0, heightCm - 30.0) // کم کردن فضای آزاد
-            val units = (effectiveHeight * 2.0) / 100.0      // دو خط عمودی به متر
-            boxComputedValue = (units * boxBase).toLong()
-            textBoxLine.text = "قیمت پایه: ${FormatUtils.formatToman(boxBase)}  |  قیمت کل: ${FormatUtils.formatToman(boxComputedValue)}"
-        } else {
-            textBoxLine.text = "قوطی — محاسبه نشده"
-        }
-
-        // هزینه نصب / جوشکاری / حمل
-        val installRate = FormatUtils.parseTomanInput(inputInstallPrice.text?.toString())
-        val installComputed = when {
-            areaM2 == 0.0 -> installRate
-            areaM2 in 2.0..10.0 -> installRate * 10L
-            areaM2 > 10.0 -> (installRate * areaM2).toLong()
-            else -> installRate * 10L
-        }
-        textInstallComputed.text = FormatUtils.formatToman(installComputed)
-
-        val weldingComputed = FormatUtils.parseTomanInput(inputWeldingPrice.text?.toString())
-        val transportComputed = FormatUtils.parseTomanInput(inputTransportPrice.text?.toString())
-
-        // گزینه‌های اضافی
-        val extrasMap = PrefsHelper.getAllExtraOptionsWithEnabled(this)
-        val enabledExtras = extrasMap.filter { it.value.second }
-
-        var extrasTotal = 0L
-        for ((_, pair) in enabledExtras) {
-            extrasTotal += pair.first.toLong()
-        }
-
-        // ریز محاسبات
-        textBreakBlade.text = "جمع تیغه: ${FormatUtils.formatToman(bladeComputed)}"
-        textBreakMotor.text = "موتور: ${FormatUtils.formatToman(motorBase)}"
-        textBreakShaft.text = "جمع شفت: ${FormatUtils.formatToman(shaftComputed)}"
-        textBreakBox.text = "جمع قوطی: ${FormatUtils.formatToman(boxComputedValue)}"
-        textBreakInstall.text = "هزینه نصب: ${FormatUtils.formatToman(installComputed)}"
-        textBreakWelding.text = "جوشکاری: ${FormatUtils.formatToman(weldingComputed)}"
-        textBreakTransport.text = "کرایه حمل: ${FormatUtils.formatToman(transportComputed)}"
-        textBreakExtras.text = "گزینه‌های اضافی: ${FormatUtils.formatToman(extrasTotal)}"
-
-        // جمع کل
-        val total = bladeComputed + motorBase + shaftComputed + boxComputedValue +
-                installComputed + weldingComputed + transportComputed + extrasTotal
-        textTotal.text = "قیمت نهایی: ${FormatUtils.formatToman(total)}"
-    }
-
-    private fun showSaveDialogAndPersist() {
-        val view = LayoutInflater.from(this).inflate(R.layout.dialog_save_report, null)
-        val etName = view.findViewById<EditText>(R.id.etCustomerName)
-        val etPhone = view.findViewById<EditText>(R.id.etCustomerPhone)
-        val btnSave = view.findViewById<Button>(R.id.btnSave)
-        val btnCancel = view.findViewById<Button>(R.id.btnCancel)
-
-        val dialog = AlertDialog.Builder(this)
-            .setView(view)
-            .create()
-
-        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-
-        btnSave.setOnClickListener {
-            val name = etName.text.toString().trim()
-            val phone = etPhone.text.toString().trim()
-            if (name.isEmpty()) {
-                Toast.makeText(this, "نام مشتری الزامی است", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-
-            recalcAllAndDisplay()
-
-            val height = inputHeightCm.text.toString().toFloatOrNull() ?: 0f
-            val width = inputWidthCm.text.toString().toFloatOrNull() ?: 0f
-            val area = (height * width) / 10000f
-
-            val bladeName = spinnerBlade.selectedItem?.toString() ?: "-"
-            val bladeBase = PrefsHelper.getLong(this, "تیغه_price_$bladeName", 0L)
-            val motorName = spinnerMotor.selectedItem?.toString() ?: "-"
-            val motorBase = PrefsHelper.getLong(this, "موتور_price_$motorName", 0L)
-            val shaftName = spinnerShaft.selectedItem?.toString() ?: "-"
-            val shaftBase = PrefsHelper.getLong(this, "شفت_price_$shaftName", 0L)
-            val boxName = if (checkboxBoxEnabled.isChecked) spinnerBox.selectedItem?.toString() ?: "-" else "محاسبه نشده"
-            val boxBase = if (checkboxBoxEnabled.isChecked) PrefsHelper.getLong(this, "قوطی_price_$boxName", 0L) else 0L
-
-            val bladeTotal = (area * bladeBase).toLong()
-            val motorTotal = motorBase
-            val shaftTotal = (shaftBase * (width / 100f)).toLong()
-            val effectiveHeight = if (height > 30f) height - 30f else 0f
-            val boxTotal = if (checkboxBoxEnabled.isChecked) (((effectiveHeight * 2f) / 100f) * boxBase).toLong() else 0L
-
-            val installBase = FormatUtils.parseTomanInput(inputInstallPrice.text.toString())
-            val weldingBase = FormatUtils.parseTomanInput(inputWeldingPrice.text.toString())
-            val transportBase = FormatUtils.parseTomanInput(inputTransportPrice.text.toString())
-
-            val installTotal = when {
-                area == 0f -> installBase
-                area in 2f..10f -> installBase * 10L
-                area > 10f -> (installBase * area).toLong()
-                else -> installBase * 10L
-            }
-            val weldingTotal = weldingBase
-            val transportTotal = transportBase
-
-            val extrasSelected = mutableListOf<ExtraOption>()
-            val extrasMap = PrefsHelper.getAllExtraOptionsWithEnabled(this)
-            var extrasTotal = 0L
-            for ((exName, pair) in extrasMap) {
-                val priceF = pair.first
-                val enabled = pair.second
-                if (enabled) {
-                    extrasSelected.add(ExtraOption(exName, priceF.toLong()))
-                    extrasTotal += priceF.toLong()
-                }
-            }
-
-            val total = bladeTotal + motorTotal + shaftTotal + boxTotal +
-                    installTotal + weldingTotal + transportTotal + extrasTotal
-            if (total <= 0L) {
-                Toast.makeText(this, "جمع کل نامعتبر است، لطفاً ابتدا محاسبه را انجام دهید", Toast.LENGTH_SHORT).show()
-                return@setOnClickListener
-            }
-
-            val today = PersianDate().toString()
-
-            val report = ReportModel(
-                id = ReportStorage.generateId().toString(),
-                customerName = name,
-                customerPhone = phone,
-                date = today,
-                height = height,
-                width = width,
-                area = area,
-                bladeName = bladeName,
-                bladeBasePrice = bladeBase,
-                motorName = motorName,
-                motorBasePrice = motorBase,
-                shaftName = shaftName,
-                shaftBasePrice = shaftBase,
-                boxName = boxName,
-                boxBasePrice = boxBase,
-                installBasePrice = installBase,
-                weldingBasePrice = weldingBase,
-                transportBasePrice = transportBase,
-                extrasSelected = extrasSelected,
-                bladeTotal = bladeTotal,
-                motorTotal = motorTotal,
-                shaftTotal = shaftTotal,
-                boxTotal = boxTotal,
-                installTotal = installTotal,
-                weldingTotal = weldingTotal,
-                transportTotal = transportTotal,
-                extrasTotal = extrasTotal,
-                total = total
-            )
-
-            ReportStorage.saveReport(this, report)
-            Toast.makeText(this, "گزارش ذخیره شد", Toast.LENGTH_SHORT).show()
-            dialog.dismiss()
-        }
-
-        btnCancel.setOnClickListener { dialog.dismiss() }
-
-        dialog.show()
-    }
-
-    // آداپتر عمومی اسپینر با رنگ متن سفید
-    private fun makeWhiteAdapter(items: List<String>): ArrayAdapter<String> {
-        return object : ArrayAdapter<String>(
-            this,
-            android.R.layout.simple_spinner_item,
-            items
-        ) {
-            override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-                val view = super.getView(position, convertView, parent) as TextView
-                view.setTextColor(ContextCompat.getColor(context, R.color.white))
-                return view
-            }
-
-            override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
-                val view = super.getDropDownView(position, convertView, parent) as TextView
-                view.setTextColor(ContextCompat.getColor(context, R.color.white))
-                return view
-            }
-        }.apply {
-            setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        }
-    }
-}
-
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scrollRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="3dp"
+    android:clipToPadding="false"
+    android:background="@color/colorBackground">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- ابعاد -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.App.MaterialCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="6dp">
+
+                <TextView
+                    style="@style/TitleText"
+                    android:text="ابعاد کرکره"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:includeFontPadding="false"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
+
+                <TextView
+                    style="@style/BodyText"
+                    android:text="ارتفاع (cm)"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:includeFontPadding="false"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
+
+                <EditText
+                    android:id="@+id/inputHeightCm"
+                    android:inputType="numberDecimal"
+                    android:hint="مثال: 250"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorOnSurface"
+                    android:textColorHint="@color/colorOnSurfaceSecondary"
+                    android:background="@android:color/transparent"/>
+
+                <TextView
+                    style="@style/BodyText"
+                    android:text="عرض (cm)"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:includeFontPadding="false"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
+
+                <EditText
+                    android:id="@+id/inputWidthCm"
+                    android:inputType="numberDecimal"
+                    android:hint="مثال: 300"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorOnSurface"
+                    android:textColorHint="@color/colorOnSurfaceSecondary"
+                    android:background="@android:color/transparent"/>
+
+                <TextView
+                    style="@style/BodyText"
+                    android:id="@+id/textAreaM2"
+                    android:text="مساحت: 0.000 متر مربع"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:includeFontPadding="false"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- تیغه -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.App.MaterialCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="6dp">
+
+                <TextView
+                    style="@style/TitleText"
+                    android:text="انتخاب تیغه"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:includeFontPadding="false"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
+
+                <Spinner
+                    android:id="@+id/spinnerBlade"
+                    style="@style/Widget.AppCompat.Spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"/>
+
+                <TextView
+                    style="@style/BodyText"
+                    android:id="@+id/textBladeLine"
+                    android:text="قیمت پایه: - | قیمت کل: -"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:includeFontPadding="false"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- موتور -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.App.MaterialCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="6dp">
+
+                <TextView
+                    style="@style/TitleText"
+                    android:text="انتخاب موتور"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:includeFontPadding="false"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
+
+                <Spinner
+                    android:id="@+id/spinnerMotor"
+                    style="@style/Widget.AppCompat.Spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"/>
+
+                <TextView
+                    style="@style/BodyText"
+                    android:id="@+id/textMotorLine"
+                    android:text="قیمت: -"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:includeFontPadding="false"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- شفت -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.App.MaterialCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="6dp">
+
+                <TextView
+                    style="@style/TitleText"
+                    android:text="انتخاب شفت"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:includeFontPadding="false"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
+
+                <Spinner
+                    android:id="@+id/spinnerShaft"
+                    style="@style/Widget.AppCompat.Spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"/>
+
+                <TextView
+                    style="@style/BodyText"
+                    android:id="@+id/textShaftLine"
+                    android:text="قیمت پایه: - | قیمت کل: -"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:includeFontPadding="false"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- قوطی -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.App.MaterialCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="6dp">
+
+                <TextView
+                    style="@style/TitleText"
+                    android:text="انتخاب قوطی"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:includeFontPadding="false"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
+
+                <CheckBox
+                    android:id="@+id/checkboxBoxEnabled"
+                    style="@style/Widget.App.CheckBox"
+                    android:text="محاسبه قوطی"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"/>
+
+                <Spinner
+                    android:id="@+id/spinnerBox"
+                    style="@style/Widget.AppCompat.Spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"/>
+
+                <TextView
+                    style="@style/BodyText"
+                    android:id="@+id/textBoxLine"
+                    android:text="قوطی — محاسبه نشده"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:includeFontPadding="false"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- هزینه‌ها -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.App.MaterialCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="6dp">
+
+                <TextView
+                    style="@style/TitleText"
+                    android:text="هزینه‌های اجرایی"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:includeFontPadding="false"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
+
+                <TextView
+                    style="@style/BodyText"
+                    android:text="هزینه نصب"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:includeFontPadding="false"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
+
+                <EditText
+                    android:id="@+id/inputInstallPrice"
+                    android:inputType="numberDecimal"
+                    android:hint="مثال: 250000"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorOnSurface"
+                    android:textColorHint="@color/colorOnSurfaceSecondary"
+                    android:background="@android:color/transparent"/>
+
+                <TextView
+                    style="@style/BodyText"
+                    android:text="هزینه نصب محاسبه شده"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:includeFontPadding="false"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
+
+                <TextView
+                    style="@style/BodyText"
+                    android:id="@+id/textInstallComputed"
+                    android:text="0 تومان"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:includeFontPadding="false"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
+
+                <TextView
+                    style="@style/BodyText"
+                    android:text="قیمت جوشکاری"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:includeFontPadding="false"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
+
+                <EditText
+                    android:id="@+id/inputWeldingPrice"
+                    android:inputType="numberDecimal"
+                    android:hint="مثال: 180000"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorOnSurface"
+                    android:textColorHint="@color/colorOnSurfaceSecondary"
+                    android:background="@android:color/transparent"/>
+
+                <TextView
+                    style="@style/BodyText"
+                    android:text="کرایه حمل"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:includeFontPadding="false"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
+
+                <EditText
+                    android:id="@+id/inputTransportPrice"
+                    android:inputType="numberDecimal"
+                    android:hint="مثال: 120000"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorOnSurface"
+                    android:textColorHint="@color/colorOnSurfaceSecondary"
+                    android:background="@android:color/transparent"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- گزینه‌های اضافی -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.App.MaterialCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="6dp">
+
+                <TextView
+                    style="@style/TitleText"
+                    android:text="گزینه‌های اضافی"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:includeFontPadding="false"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
+
+                <LinearLayout
+                    android:id="@+id/extrasContainer"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- ریز محاسبات -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.App.MaterialCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="6dp">
+
+                <TextView
+                    style="@style/TitleText"
+                    android:text="ریز محاسبات"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:includeFontPadding="false"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
+
+                <TextView
+                    style="@style/BodyText"
+                    android:id="@+id/textBreakBlade"
+                    android:text="جمع تیغه: -"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:includeFontPadding="false"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
+
+                <TextView
+                    style="@style/BodyText"
+                    android:id="@+id/textBreakMotor"
+                    android:text="موتور: -"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:includeFontPadding="false"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
+
+                <TextView
+                    style="@style/BodyText"
+                    android:id="@+id/textBreakShaft"
+                    android:text="جمع شفت: -"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:includeFontPadding="false"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
+
+                <TextView
+                    style="@style/BodyText"
+                    android:id="@+id/textBreakBox"
+                    android:text="جمع قوطی: -"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:includeFontPadding="false"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
+
+                <TextView
+                    style="@style/BodyText"
+                    android:id="@+id/textBreakInstall"
+                    android:text="هزینه نصب: -"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:includeFontPadding="false"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
+
+                <TextView
+                    style="@style/BodyText"
+                    android:id="@+id/textBreakWelding"
+                    android:text="جوشکاری: -"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:includeFontPadding="false"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
+
+                <TextView
+                    style="@style/BodyText"
+                    android:id="@+id/textBreakTransport"
+                    android:text="کرایه حمل: -"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:includeFontPadding="false"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
+
+                <TextView
+                    style="@style/BodyText"
+                    android:id="@+id/textBreakExtras"
+                    android:text="گزینه‌های اضافی: -"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:includeFontPadding="false"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- قیمت نهایی -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.App.MaterialCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="6dp">
+
+                <TextView
+                    style="@style/SpecialText.Green"
+                    android:text="قیمت نهایی"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:includeFontPadding="false"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
+
+                <TextView
+                    style="@style/SpecialText.Green"
+                    android:id="@+id/textTotal"
+                    android:text="قیمت نهایی: -"
+                    android:textSize="18sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:includeFontPadding="false"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- دکمه‌ها -->
+        <LinearLayout
+            android:id="@+id/bottomBar"
+            android:orientation="vertical"
+            android:padding="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp">
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.App.PrimaryButton"
+                android:id="@+id/buttonSaveReport"
+                android:text="ذخیره گزارش"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="8dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.App.PrimaryButton"
+                android:id="@+id/buttonBasePrice"
+                android:text="صفحه قیمت پایه"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="8dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.App.PrimaryButton"
+                android:id="@+id/buttonReports"
+                android:text="صفحه گزارشات"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginBottom="8dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.App.PrimaryButton"
+                android:id="@+id/buttonRollDiameter"
+                android:text="صفحه قطر رول"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
