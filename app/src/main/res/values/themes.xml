@@ -1,44 +1,15 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<style name="Theme.ElectricShutterCalculator" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
+    <item name="colorSecondary">@color/colorSecondary</item>
 
-    <!-- تم اصلی اپ -->
-    <style name="Theme.ElectricShutterCalculator" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
-        <item name="colorSecondary">@color/colorSecondary</item>
+    <!-- رنگ‌های وضعیت -->
+    <item name="colorError">@color/colorError</item>
+    <item name="colorOnError">@color/white</item>
 
-        <item name="android:colorBackground">@color/colorBackground</item>
-        <item name="colorSurface">@color/colorSurface</item>
-        <item name="colorOnSurface">@color/colorOnSurface</item>
-        <item name="colorOnSurfaceVariant">@color/colorOnSurfaceSecondary</item>
+    <!-- فونت معمولی سیستم -->
+    <item name="android:fontFamily">sans-serif</item>
 
-        <item name="colorError">@color/colorError</item>
-        <item name="colorOnError">@color/white</item>
-
-        <!-- فونت معمولی سیستم -->
-        <item name="android:fontFamily">sans-serif</item>
-
-        <!-- استایل عمومی متن‌ها -->
-        <item name="android:textViewStyle">@style/AppTextAppearance</item>
-
-        <!-- جلوگیری از تغییر رنگ در حالت شب -->
-        <item name="android:forceDarkAllowed">false</item>
-    </style>
-
-    <!-- دکمه‌ها -->
-    <style name="Theme.ElectricShutterCalculator.Button" parent="Widget.MaterialComponents.Button">
-        <item name="android:textColor">@color/white</item>
-        <item name="backgroundTint">@color/colorPrimary</item>
-        <item name="cornerRadius">8dp</item>
-    </style>
-
-    <!-- کارت‌ها -->
-    <style name="Theme.ElectricShutterCalculator.Card" parent="Widget.MaterialComponents.CardView">
-        <item name="cardBackgroundColor">@color/colorSurface</item>
-        <item name="strokeColor">@color/colorSurfaceStroke</item>
-        <item name="strokeWidth">1dp</item>
-        <item name="cardElevation">6dp</item>
-        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.App.Card</item>
-        <item name="android:forceDarkAllowed">false</item>
-    </style>
-
-</resources>
+    <!-- جلوگیری از تغییر رنگ در حالت شب -->
+    <item name="android:forceDarkAllowed">false</item>
+</style>
