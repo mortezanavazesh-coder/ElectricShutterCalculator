@@ -136,7 +136,7 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- کارت قیمت نهایی -->
+              <!-- کارت قیمت نهایی -->
         <com.google.android.material.card.MaterialCardView
             style="@style/Widget.App.MaterialCard"
             android:layout_width="match_parent"
@@ -167,4 +167,7 @@
             android:id="@+id/buttonBackToReports"
             android:text="بازگشت به گزارشات"
             android:layout_width="match_parent"
-            android:layout_height
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"/>
+    </LinearLayout>
+</ScrollView>
