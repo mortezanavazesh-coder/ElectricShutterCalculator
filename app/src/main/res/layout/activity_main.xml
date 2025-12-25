@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/scrollRoot"
     android:layout_width="match_parent"
@@ -18,87 +17,57 @@
         <com.google.android.material.card.MaterialCardView
             style="@style/Widget.App.MaterialCard"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardPreventCornerOverlap="true"
-            app:cardUseCompatPadding="true">
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:orientation="vertical"
+                android:padding="6dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="6dp">
+                android:layout_height="wrap_content">
 
                 <TextView
                     style="@style/TitleText"
                     android:text="ابعاد کرکره"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:includeFontPadding="false"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"/>
+                    android:layout_height="wrap_content"/>
 
                 <TextView
                     style="@style/BodyText"
                     android:text="ارتفاع (cm)"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:includeFontPadding="false"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"/>
+                    android:layout_marginTop="12dp"/>
 
                 <EditText
+                    style="@style/Widget.App.EditText"
                     android:id="@+id/inputHeightCm"
                     android:inputType="numberDecimal"
                     android:hint="مثال: 250"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorOnSurface"
-                    android:textColorHint="@color/colorOnSurfaceSecondary"
-                    android:background="@android:color/transparent"/>
+                    android:layout_height="wrap_content"/>
 
                 <TextView
                     style="@style/BodyText"
                     android:text="عرض (cm)"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:includeFontPadding="false"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"/>
+                    android:layout_marginTop="12dp"/>
 
                 <EditText
+                    style="@style/Widget.App.EditText"
                     android:id="@+id/inputWidthCm"
                     android:inputType="numberDecimal"
                     android:hint="مثال: 300"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorOnSurface"
-                    android:textColorHint="@color/colorOnSurfaceSecondary"
-                    android:background="@android:color/transparent"/>
+                    android:layout_height="wrap_content"/>
 
                 <TextView
-                    style="@style/BodyText"
                     android:id="@+id/textAreaM2"
+                    style="@style/BodyText"
                     android:text="مساحت: 0.000 متر مربع"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:includeFontPadding="false"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"/>
+                    android:layout_marginTop="12dp"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -107,48 +76,34 @@
             style="@style/Widget.App.MaterialCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            app:cardPreventCornerOverlap="true"
-            app:cardUseCompatPadding="true">
+            android:layout_marginTop="12dp">
 
             <LinearLayout
                 android:orientation="vertical"
+                android:padding="6dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="6dp">
+                android:layout_height="wrap_content">
 
                 <TextView
                     style="@style/TitleText"
                     android:text="انتخاب تیغه"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:includeFontPadding="false"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"/>
+                    android:layout_height="wrap_content"/>
 
                 <Spinner
                     android:id="@+id/spinnerBlade"
-                    style="@style/Widget.AppCompat.Spinner"
+                    style="@style/Widget.App.Spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"/>
 
                 <TextView
-                    style="@style/BodyText"
                     android:id="@+id/textBladeLine"
+                    style="@style/BodyText"
                     android:text="قیمت پایه: - | قیمت کل: -"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:includeFontPadding="false"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"/>
+                    android:layout_marginTop="12dp"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -157,48 +112,34 @@
             style="@style/Widget.App.MaterialCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            app:cardPreventCornerOverlap="true"
-            app:cardUseCompatPadding="true">
+            android:layout_marginTop="12dp">
 
             <LinearLayout
                 android:orientation="vertical"
+                android:padding="6dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="6dp">
+                android:layout_height="wrap_content">
 
                 <TextView
                     style="@style/TitleText"
                     android:text="انتخاب موتور"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:includeFontPadding="false"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"/>
+                    android:layout_height="wrap_content"/>
 
                 <Spinner
                     android:id="@+id/spinnerMotor"
-                    style="@style/Widget.AppCompat.Spinner"
+                    style="@style/Widget.App.Spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"/>
 
                 <TextView
-                    style="@style/BodyText"
                     android:id="@+id/textMotorLine"
+                    style="@style/BodyText"
                     android:text="قیمت: -"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:includeFontPadding="false"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"/>
+                    android:layout_marginTop="12dp"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -207,48 +148,34 @@
             style="@style/Widget.App.MaterialCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            app:cardPreventCornerOverlap="true"
-            app:cardUseCompatPadding="true">
+            android:layout_marginTop="12dp">
 
             <LinearLayout
                 android:orientation="vertical"
+                android:padding="6dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="6dp">
+                android:layout_height="wrap_content">
 
                 <TextView
                     style="@style/TitleText"
                     android:text="انتخاب شفت"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:includeFontPadding="false"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"/>
+                    android:layout_height="wrap_content"/>
 
                 <Spinner
                     android:id="@+id/spinnerShaft"
-                    style="@style/Widget.AppCompat.Spinner"
+                    style="@style/Widget.App.Spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"/>
 
                 <TextView
-                    style="@style/BodyText"
                     android:id="@+id/textShaftLine"
+                    style="@style/BodyText"
                     android:text="قیمت پایه: - | قیمت کل: -"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:includeFontPadding="false"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"/>
+                    android:layout_marginTop="12dp"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -257,27 +184,19 @@
             style="@style/Widget.App.MaterialCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            app:cardPreventCornerOverlap="true"
-            app:cardUseCompatPadding="true">
+            android:layout_marginTop="12dp">
 
             <LinearLayout
                 android:orientation="vertical"
+                android:padding="6dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="6dp">
+                android:layout_height="wrap_content">
 
                 <TextView
                     style="@style/TitleText"
                     android:text="انتخاب قوطی"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:includeFontPadding="false"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"/>
+                    android:layout_height="wrap_content"/>
 
                 <CheckBox
                     android:id="@+id/checkboxBoxEnabled"
@@ -289,24 +208,18 @@
 
                 <Spinner
                     android:id="@+id/spinnerBox"
-                    style="@style/Widget.AppCompat.Spinner"
+                    style="@style/Widget.App.Spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"/>
 
                 <TextView
-                    style="@style/BodyText"
                     android:id="@+id/textBoxLine"
+                    style="@style/BodyText"
                     android:text="قوطی — محاسبه نشده"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:includeFontPadding="false"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"/>
+                    android:layout_marginTop="12dp"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -315,122 +228,78 @@
             style="@style/Widget.App.MaterialCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            app:cardPreventCornerOverlap="true"
-            app:cardUseCompatPadding="true">
+            android:layout_marginTop="12dp">
 
             <LinearLayout
                 android:orientation="vertical"
+                android:padding="6dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="6dp">
+                android:layout_height="wrap_content">
 
                 <TextView
                     style="@style/TitleText"
                     android:text="هزینه‌های اجرایی"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:includeFontPadding="false"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"/>
+                    android:layout_height="wrap_content"/>
 
                 <TextView
                     style="@style/BodyText"
                     android:text="هزینه نصب"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:includeFontPadding="false"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"/>
+                    android:layout_marginTop="12dp"/>
 
                 <EditText
+                    style="@style/Widget.App.EditText"
                     android:id="@+id/inputInstallPrice"
                     android:inputType="numberDecimal"
                     android:hint="مثال: 250000"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorOnSurface"
-                    android:textColorHint="@color/colorOnSurfaceSecondary"
-                    android:background="@android:color/transparent"/>
+                    android:layout_height="wrap_content"/>
 
                 <TextView
                     style="@style/BodyText"
                     android:text="هزینه نصب محاسبه شده"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:includeFontPadding="false"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"/>
+                    android:layout_marginTop="12dp"/>
 
                 <TextView
-                    style="@style/BodyText"
                     android:id="@+id/textInstallComputed"
+                    style="@style/BodyText"
                     android:text="0 تومان"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:includeFontPadding="false"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"/>
+                    android:layout_height="wrap_content"/>
 
                 <TextView
                     style="@style/BodyText"
                     android:text="قیمت جوشکاری"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:includeFontPadding="false"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"/>
+                    android:layout_marginTop="12dp"/>
 
                 <EditText
+                    style="@style/Widget.App.EditText"
                     android:id="@+id/inputWeldingPrice"
                     android:inputType="numberDecimal"
                     android:hint="مثال: 180000"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorOnSurface"
-                    android:textColorHint="@color/colorOnSurfaceSecondary"
-                    android:background="@android:color/transparent"/>
+                    android:layout_height="wrap_content"/>
 
                 <TextView
                     style="@style/BodyText"
                     android:text="کرایه حمل"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:includeFontPadding="false"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"/>
+                    android:layout_marginTop="12dp"/>
 
                 <EditText
+                    style="@style/Widget.App.EditText"
                     android:id="@+id/inputTransportPrice"
                     android:inputType="numberDecimal"
                     android:hint="مثال: 120000"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorOnSurface"
-                    android:textColorHint="@color/colorOnSurfaceSecondary"
-                    android:background="@android:color/transparent"/>
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -439,27 +308,19 @@
             style="@style/Widget.App.MaterialCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            app:cardPreventCornerOverlap="true"
-            app:cardUseCompatPadding="true">
+            android:layout_marginTop="12dp">
 
             <LinearLayout
                 android:orientation="vertical"
+                android:padding="6dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="6dp">
+                android:layout_height="wrap_content">
 
                 <TextView
                     style="@style/TitleText"
                     android:text="گزینه‌های اضافی"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:includeFontPadding="false"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"/>
+                    android:layout_height="wrap_content"/>
 
                 <LinearLayout
                     android:id="@+id/extrasContainer"
@@ -475,139 +336,28 @@
             style="@style/Widget.App.MaterialCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            app:cardPreventCornerOverlap="true"
-            app:cardUseCompatPadding="true">
+            android:layout_marginTop="12dp">
 
             <LinearLayout
                 android:orientation="vertical"
+                android:padding="6dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="6dp">
+                android:layout_height="wrap_content">
 
                 <TextView
                     style="@style/TitleText"
                     android:text="ریز محاسبات"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:includeFontPadding="false"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"/>
+                    android:layout_height="wrap_content"/>
 
-                <TextView
-                    style="@style/BodyText"
-                    android:id="@+id/textBreakBlade"
-                    android:text="جمع تیغه: -"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:includeFontPadding="false"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"/>
-
-                <TextView
-                    style="@style/BodyText"
-                    android:id="@+id/textBreakMotor"
-                    android:text="موتور: -"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:includeFontPadding="false"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"/>
-
-                <TextView
-                    style="@style/BodyText"
-                    android:id="@+id/textBreakShaft"
-                    android:text="جمع شفت: -"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:includeFontPadding="false"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"/>
-
-                <TextView
-                    style="@style/BodyText"
-                    android:id="@+id/textBreakBox"
-                    android:text="جمع قوطی: -"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:includeFontPadding="false"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"/>
-
-                <TextView
-                    style="@style/BodyText"
-                    android:id="@+id/textBreakInstall"
-                    android:text="هزینه نصب: -"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:includeFontPadding="false"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"/>
-
-                <TextView
-                    style="@style/BodyText"
-                    android:id="@+id/textBreakWelding"
-                    android:text="جوشکاری: -"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:includeFontPadding="false"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"/>
-
-                <TextView
-                    style="@style/BodyText"
-                    android:id="@+id/textBreakTransport"
-                    android:text="کرایه حمل: -"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:includeFontPadding="false"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"/>
-
-                <TextView
-                    style="@style/BodyText"
-                    android:id="@+id/textBreakExtras"
-                    android:text="گزینه‌های اضافی: -"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:includeFontPadding="false"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"/>
+                <TextView android:id="@+id/textBreakBlade" style="@style/BodyText" android:text="جمع تیغه: -"/>
+                <TextView android:id="@+id/textBreakMotor" style="@style/BodyText" android:text="موتور: -"/>
+                <TextView android:id="@+id/textBreakShaft" style="@style/BodyText" android:text="جمع شفت: -"/>
+                <TextView android:id="@+id/textBreakBox" style="@style/BodyText" android:text="جمع قوطی: -"/>
+                <TextView android:id="@+id/textBreakInstall" style="@style/BodyText" android:text="هزینه نصب: -"/>
+                <TextView android:id="@+id/textBreakWelding" style="@style/BodyText" android:text="جوشکاری: -"/>
+                <TextView android:id="@+id/textBreakTransport" style="@style/BodyText" android:text="کرایه حمل: -"/>
+                <TextView android:id="@+id/textBreakExtras" style="@style/BodyText" android:text="گزینه‌های اضافی: -"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -616,42 +366,28 @@
             style="@style/Widget.App.MaterialCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            app:cardPreventCornerOverlap="true"
-            app:cardUseCompatPadding="true">
+            android:layout_marginTop="12dp">
 
             <LinearLayout
                 android:orientation="vertical"
+                android:padding="6dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="6dp">
+                android:layout_height="wrap_content">
 
                 <TextView
                     style="@style/SpecialText.Green"
                     android:text="قیمت نهایی"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:includeFontPadding="false"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"/>
+                    android:layout_height="wrap_content"/>
 
                 <TextView
-                    style="@style/SpecialText.Green"
                     android:id="@+id/textTotal"
+                    style="@style/SpecialText.Green"
                     android:text="قیمت نهایی: -"
                     android:textSize="18sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:includeFontPadding="false"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"/>
+                    android:layout_marginTop="12dp"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
