@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/scrollRoot"
     android:layout_width="match_parent"
@@ -350,14 +351,61 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
-                <TextView android:id="@+id/textBreakBlade" style="@style/BodyText" android:text="جمع تیغه: -"/>
-                <TextView android:id="@+id/textBreakMotor" style="@style/BodyText" android:text="موتور: -"/>
-                <TextView android:id="@+id/textBreakShaft" style="@style/BodyText" android:text="جمع شفت: -"/>
-                <TextView android:id="@+id/textBreakBox" style="@style/BodyText" android:text="جمع قوطی: -"/>
-                <TextView android:id="@+id/textBreakInstall" style="@style/BodyText" android:text="هزینه نصب: -"/>
-                <TextView android:id="@+id/textBreakWelding" style="@style/BodyText" android:text="جوشکاری: -"/>
-                <TextView android:id="@+id/textBreakTransport" style="@style/BodyText" android:text="کرایه حمل: -"/>
-                <TextView android:id="@+id/textBreakExtras" style="@style/BodyText" android:text="گزینه‌های اضافی: -"/>
+                <TextView
+                    android:id="@+id/textBreakBlade"
+                    style="@style/BodyText"
+                    android:text="جمع تیغه: -"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/textBreakMotor"
+                    style="@style/BodyText"
+                    android:text="موتور: -"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/textBreakShaft"
+                    style="@style/BodyText"
+                    android:text="جمع شفت: -"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/textBreakBox"
+                    style="@style/BodyText"
+                    android:text="جمع قوطی: -"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/textBreakInstall"
+                    style="@style/BodyText"
+                    android:text="هزینه نصب: -"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/textBreakWelding"
+                    style="@style/BodyText"
+                    android:text="جوشکاری: -"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/textBreakTransport"
+                    style="@style/BodyText"
+                    android:text="کرایه حمل: -"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/textBreakExtras"
+                    style="@style/BodyText"
+                    android:text="گزینه‌های اضافی: -"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
