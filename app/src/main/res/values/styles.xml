@@ -18,13 +18,13 @@
         <item name="cornerSize">8dp</item>
     </style>
 
-    <!-- fallback عمومی -->
+    <!-- fallback عمومی برای ارجاعات قدیمی -->
     <style name="ShapeAppearanceOverlay.App">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">8dp</item>
     </style>
 
-    <!-- ⚠️ استایل پایه که برای ارجاع‌های قدیمی لازم است -->
+    <!-- ⚠️ سازگاری با ارجاعات قدیمی اندروید -->
     <style name="ShapeAppearanceOverlay">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">8dp</item>
@@ -52,7 +52,7 @@
     <!-- اسپینر -->
     <style name="Widget.App.Spinner" parent="Widget.AppCompat.Spinner">
         <item name="android:textColor">@color/white</item>
-        <item name="android:textColorHint">@color/cream</item>
+        <item name="android:textColorHint">@color/colorOnSurfaceSecondary</item>
         <item name="android:background">@color/colorSurface</item>
         <item name="android:popupTheme">@style/Widget.App.Spinner.Popup</item>
         <item name="android:drawableEnd">@drawable/spinner_arrow_white</item>
@@ -63,15 +63,16 @@
         <item name="android:background">@color/colorSurface</item>
     </style>
 
-    <!-- EditText سفارشی -->
+    <!-- EditText عمومی (بدون پدینگ داخلی و فضای فونت) -->
     <style name="Widget.App.EditText" parent="Widget.AppCompat.EditText">
         <item name="android:textColor">@color/colorOnSurface</item>
-        <item name="android:textColorHint">@color/cream</item>
-        <item name="android:backgroundTint">@color/colorSurfaceStroke</item>
-        <item name="android:padding">8dp</item>
+        <item name="android:textColorHint">@color/colorOnSurfaceSecondary</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:includeFontPadding">false</item>
     </style>
 
-    <!-- TextInputLayout سفارشی -->
+    <!-- اگر از TextInputLayout استفاده شود -->
     <style name="Widget.App.TextInput" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxBackgroundColor">@color/colorSurface</item>
         <item name="boxStrokeColor">@color/colorSurfaceStroke</item>
@@ -79,7 +80,7 @@
         <item name="boxCornerRadiusTopEnd">8dp</item>
         <item name="boxCornerRadiusBottomStart">8dp</item>
         <item name="boxCornerRadiusBottomEnd">8dp</item>
-        <item name="android:textColorHint">@color/cream</item>
+        <item name="android:textColorHint">@color/colorOnSurfaceSecondary</item>
     </style>
 
     <!-- متن‌های عمومی -->
