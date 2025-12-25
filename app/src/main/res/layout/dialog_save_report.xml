@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:layout_width="match_parent"
+    android:padding="8dp"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_gravity="start|top"
     android:background="@drawable/bg_dialog_dark">
 
     <!-- نام مشتری -->
     <EditText
         android:id="@+id/etCustomerName"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:hint="نام مشتری"
         android:inputType="textPersonName"
@@ -22,11 +23,11 @@
     <!-- شماره موبایل -->
     <EditText
         android:id="@+id/etCustomerPhone"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:hint="شماره موبایل (اختیاری)"
         android:inputType="phone"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:textColor="@color/colorOnSurface"
         android:textColorHint="@color/colorOnSurfaceSecondary"
         android:background="@android:color/transparent"
@@ -39,7 +40,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="end"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="12dp">
 
         <Button
             android:id="@+id/btnCancel"
@@ -53,7 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="ذخیره"
-            android:layout_marginStart="12dp"
+            android:layout_marginStart="8dp"
             style="?attr/materialButtonOutlinedStyle"/>
     </LinearLayout>
 </LinearLayout>
