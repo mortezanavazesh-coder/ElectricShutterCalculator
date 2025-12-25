@@ -32,4 +32,28 @@
         android:background="@android:color/transparent"
         android:maxLines="1"
         android:ellipsize="end"/>
+
+    <!-- دکمه‌ها -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end"
+        android:layout_marginTop="16dp">
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="لغو"
+            style="?attr/materialButtonOutlinedStyle"/>
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ذخیره"
+            android:layout_marginStart="12dp"
+            style="?attr/materialButtonOutlinedStyle"/>
+    </LinearLayout>
 </LinearLayout>
