@@ -1,5 +1,6 @@
 package com.morteza.shuttercalculator
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -19,6 +20,8 @@ import com.morteza.shuttercalculator.utils.ReportStorage
 import com.morteza.shuttercalculator.utils.ThousandSeparatorTextWatcher
 import kotlin.math.max
 import saman.zamani.persiandate.PersianDate
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 
 class MainActivity : AppCompatActivity() {
 
@@ -224,7 +227,6 @@ class MainActivity : AppCompatActivity() {
         spinnerBox.onItemSelectedListener = listener
         checkboxBoxEnabled.setOnCheckedChangeListener { _, _ -> recalcAllAndDisplay() }
     }
-
     // ساخت چک‌باکس‌های گزینه‌های اضافی بر اساس Prefs
     private fun buildExtrasCheckboxes() {
         extrasContainer.removeAllViews()
@@ -350,10 +352,11 @@ class MainActivity : AppCompatActivity() {
         val etName = view.findViewById<EditText>(R.id.etCustomerName)
         val etPhone = view.findViewById<EditText>(R.id.etCustomerPhone)
 
-        AlertDialog.Builder(this)
+        // ساخت دیالوگ و نگه‌داشتن ارجاع برای شفاف‌سازی پنجره
+        val dialog = AlertDialog.Builder(this)
             .setTitle("ذخیره گزارش")
             .setView(view)
-            .setPositiveButton("ذخیره") { dialog, _ ->
+            .setPositiveButton("ذخیره") { d: DialogInterface, _ ->
                 val name = etName.text.toString().trim()
                 val phone = etPhone.text.toString().trim()
                 if (name.isEmpty()) {
@@ -419,8 +422,7 @@ class MainActivity : AppCompatActivity() {
                     return@setPositiveButton
                 }
 
-                val persianDate = PersianDate()
-                val today = persianDate.toString()
+                val today = PersianDate().toString()
 
                 val report = ReportModel(
                     id = ReportStorage.generateId().toString(),
@@ -455,10 +457,14 @@ class MainActivity : AppCompatActivity() {
 
                 ReportStorage.saveReport(this, report)
                 Toast.makeText(this, "گزارش ذخیره شد", Toast.LENGTH_SHORT).show()
-                dialog.dismiss()
+                d.dismiss()
             }
             .setNegativeButton("لغو", null)
-            .show()
+            .create()
+
+        // حذف زمینه سفید پیش‌فرض پنجره دیالوگ
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        dialog.show()
     }
 
     // آداپتر عمومی اسپینر با رنگ متن سفید
