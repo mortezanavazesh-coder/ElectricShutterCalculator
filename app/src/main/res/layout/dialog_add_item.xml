@@ -4,8 +4,9 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorSurface">
+    android:background="@drawable/bg_dialog_dark">
 
+    <!-- عنوان آیتم -->
     <EditText
         android:id="@+id/etItemTitle"
         android:layout_width="match_parent"
@@ -13,8 +14,11 @@
         android:hint="عنوان"
         android:textColor="@color/colorOnSurface"
         android:textColorHint="@color/colorOnSurfaceSecondary"
-        android:background="@android:color/transparent"/>
+        android:background="@android:color/transparent"
+        android:maxLines="1"
+        android:ellipsize="end"/>
 
+    <!-- قیمت آیتم -->
     <EditText
         android:id="@+id/etItemPrice"
         android:layout_width="match_parent"
@@ -24,5 +28,7 @@
         android:layout_marginTop="12dp"
         android:textColor="@color/colorOnSurface"
         android:textColorHint="@color/colorOnSurfaceSecondary"
-        android:background="@android:color/transparent"/>
+        android:background="@android:color/transparent"
+        android:maxLines="1"
+        android:ellipsize="end"/>
 </LinearLayout>
