@@ -1,15 +1,20 @@
-<style name="Theme.ElectricShutterCalculator" parent="Theme.MaterialComponents.Light.NoActionBar">
-    <item name="colorPrimary">@color/colorPrimary</item>
-    <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
-    <item name="colorSecondary">@color/colorSecondary</item>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- رنگ‌های وضعیت -->
-    <item name="colorError">@color/colorError</item>
-    <item name="colorOnError">@color/white</item>
+    <!-- تم اصلی اپ -->
+    <style name="Theme.ElectricShutterCalculator" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
+        <item name="colorSecondary">@color/colorSecondary</item>
 
-    <!-- فونت معمولی سیستم -->
-    <item name="android:fontFamily">sans-serif</item>
+        <!-- رنگ‌های وضعیت -->
+        <item name="colorError">@color/colorError</item>
+        <item name="colorOnError">@color/white</item>
 
-    <!-- جلوگیری از تغییر رنگ در حالت شب -->
-    <item name="android:forceDarkAllowed">false</item>
-</style>
+        <!-- فونت معمولی سیستم -->
+        <item name="android:fontFamily">sans-serif</item>
+
+        <!-- جلوگیری از تغییر رنگ در حالت شب -->
+        <item name="android:forceDarkAllowed">false</item>
+    </style>
+
+</resources>
