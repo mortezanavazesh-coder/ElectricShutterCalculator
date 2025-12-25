@@ -133,7 +133,7 @@
                 <TextView
                     style="@style/BodyText"
                     android:id="@+id/textBladeLine"
-                    android:text="تیغه — قیمت پایه: - | قیمت کل: -"
+                    android:text=" قیمت پایه: - | قیمت کل: -"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -183,7 +183,7 @@
                 <TextView
                     style="@style/BodyText"
                     android:id="@+id/textMotorLine"
-                    android:text="موتور — قیمت: -"
+                    android:text=" قیمت: -"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -233,7 +233,7 @@
                 <TextView
                     style="@style/BodyText"
                     android:id="@+id/textShaftLine"
-                    android:text="شفت — قیمت پایه: - | قیمت کل: -"
+                    android:text="قیمت پایه: - | قیمت کل: -"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -321,7 +321,7 @@
 
                 <TextView
                     style="@style/TitleText"
-                    android:text="هزینه‌های پایه"
+                    android:text="هزینه‌های اجرایی"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
@@ -333,7 +333,7 @@
 
                 <TextView
                     style="@style/BodyText"
-                    android:text="نرخ نصب"
+                    android:text="هزینه نصب"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -683,4 +683,5 @@
 
     </LinearLayout>
 </ScrollView>
+
 
