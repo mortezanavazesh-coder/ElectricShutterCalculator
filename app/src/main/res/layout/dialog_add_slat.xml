@@ -13,25 +13,27 @@
         android:layout_height="wrap_content"
         android:hint="عنوان تیغه"
         android:inputType="textCapSentences"
-        android:textColor="@color/white"
-        android:textColorHint="@color/cream"
+        android:textColor="@color/colorOnSurface"
+        android:textColorHint="@color/colorOnSurfaceSecondary"
+        android:background="@android:color/transparent"
         android:maxLines="1"
         android:ellipsize="end"/>
 
-    <!-- قیمت تیغه (تومان) -->
+    <!-- قیمت تیغه -->
     <EditText
         android:id="@+id/etSlatPrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="قیمت تیغه (تومان)"
+        android:hint="قیمت تیغه (ت)"
         android:inputType="numberDecimal"
         android:layout_marginTop="12dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/cream"
+        android:textColor="@color/colorOnSurface"
+        android:textColorHint="@color/colorOnSurfaceSecondary"
+        android:background="@android:color/transparent"
         android:maxLines="1"
         android:ellipsize="end"/>
 
-    <!-- عرض تیغه (سانتی‌متر) -->
+    <!-- عرض تیغه -->
     <EditText
         android:id="@+id/etSlatWidth"
         android:layout_width="match_parent"
@@ -39,12 +41,13 @@
         android:hint="عرض تیغه (سانتی‌متر)"
         android:inputType="numberDecimal"
         android:layout_marginTop="12dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/cream"
+        android:textColor="@color/colorOnSurface"
+        android:textColorHint="@color/colorOnSurfaceSecondary"
+        android:background="@android:color/transparent"
         android:maxLines="1"
         android:ellipsize="end"/>
 
-    <!-- ضخامت تیغه (سانتی‌متر) -->
+    <!-- ضخامت تیغه -->
     <EditText
         android:id="@+id/etSlatThickness"
         android:layout_width="match_parent"
@@ -52,8 +55,9 @@
         android:hint="ضخامت تیغه (سانتی‌متر)"
         android:inputType="numberDecimal"
         android:layout_marginTop="12dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/cream"
+        android:textColor="@color/colorOnSurface"
+        android:textColorHint="@color/colorOnSurfaceSecondary"
+        android:background="@android:color/transparent"
         android:maxLines="1"
         android:ellipsize="end"/>
 </LinearLayout>
