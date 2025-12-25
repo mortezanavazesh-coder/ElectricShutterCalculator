@@ -258,7 +258,7 @@ class MainActivity : AppCompatActivity() {
             val bladeName = spinnerBlade.selectedItem as? String
             bladeBase = if (bladeName != null) PrefsHelper.getLong(this, "تیغه_price_$bladeName", 0L) else 0L
             bladeComputed = (areaM2 * bladeBase).toLong()
-            textBladeLine.text = "تیغه — قیمت پایه: ${FormatUtils.formatToman(bladeBase)}  |  قیمت کل: ${FormatUtils.formatToman(bladeComputed)}"
+            textBladeLine.text = "قیمت پایه: ${FormatUtils.formatToman(bladeBase)}  |  قیمت کل: ${FormatUtils.formatToman(bladeComputed)}"
         } else {
             textBladeLine.text = "تیغه — داده‌ای موجود نیست"
         }
@@ -268,7 +268,7 @@ class MainActivity : AppCompatActivity() {
         if (spinnerMotor.adapter != null && spinnerMotor.adapter.count > 0) {
             val motorName = spinnerMotor.selectedItem as? String
             motorBase = if (motorName != null) PrefsHelper.getLong(this, "موتور_price_$motorName", 0L) else 0L
-            textMotorLine.text = "موتور — قیمت: ${FormatUtils.formatToman(motorBase)}"
+            textMotorLine.text = "قیمت: ${FormatUtils.formatToman(motorBase)}"
         } else {
             textMotorLine.text = "موتور — داده‌ای موجود نیست"
         }
@@ -281,7 +281,7 @@ class MainActivity : AppCompatActivity() {
             shaftBase = if (shaftName != null) PrefsHelper.getLong(this, "شفت_price_$shaftName", 0L) else 0L
             val widthM = widthCm / 100.0
             shaftComputed = (shaftBase * widthM).toLong()
-            textShaftLine.text = "شفت — قیمت پایه: ${FormatUtils.formatToman(shaftBase)}  |  قیمت کل: ${FormatUtils.formatToman(shaftComputed)}"
+            textShaftLine.text = "قیمت پایه: ${FormatUtils.formatToman(shaftBase)}  |  قیمت کل: ${FormatUtils.formatToman(shaftComputed)}"
         } else {
             textShaftLine.text = "شفت — داده‌ای موجود نیست"
         }
@@ -294,7 +294,7 @@ class MainActivity : AppCompatActivity() {
             val effectiveHeight = max(0.0, heightCm - 30.0) // کم کردن فضای آزاد
             val units = (effectiveHeight * 2.0) / 100.0      // دو خط عمودی به متر
             boxComputedValue = (units * boxBase).toLong()
-            textBoxLine.text = "قوطی — قیمت پایه: ${FormatUtils.formatToman(boxBase)}  |  قیمت کل: ${FormatUtils.formatToman(boxComputedValue)}"
+            textBoxLine.text = "قیمت پایه: ${FormatUtils.formatToman(boxBase)}  |  قیمت کل: ${FormatUtils.formatToman(boxComputedValue)}"
         } else {
             textBoxLine.text = "قوطی — محاسبه نشده"
         }
@@ -477,3 +477,4 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
+
