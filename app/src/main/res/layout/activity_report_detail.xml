@@ -21,47 +21,29 @@
 
             <LinearLayout
                 android:orientation="vertical"
+                android:padding="12dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="12dp">
+                android:layout_height="wrap_content">
 
                 <TextView
                     style="@style/TitleText"
                     android:id="@+id/tvCustomerName"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:includeFontPadding="false"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"/>
+                    android:layout_height="wrap_content"/>
 
                 <TextView
                     style="@style/SpecialText.Blue"
                     android:id="@+id/tvCustomerPhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:includeFontPadding="false"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"/>
+                    android:layout_marginTop="12dp"/>
 
                 <TextView
                     style="@style/SpecialText.Date"
                     android:id="@+id/tvDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:includeFontPadding="false"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"/>
+                    android:layout_marginTop="12dp"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -76,47 +58,29 @@
 
             <LinearLayout
                 android:orientation="vertical"
+                android:padding="12dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="12dp">
+                android:layout_height="wrap_content">
 
                 <TextView
                     style="@style/BodyText"
                     android:id="@+id/tvHeight"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:includeFontPadding="false"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"/>
+                    android:layout_height="wrap_content"/>
 
                 <TextView
                     style="@style/BodyText"
                     android:id="@+id/tvWidth"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:includeFontPadding="false"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"/>
+                    android:layout_marginTop="12dp"/>
 
                 <TextView
                     style="@style/BodyText"
                     android:id="@+id/tvArea"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:includeFontPadding="false"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"/>
+                    android:layout_marginTop="12dp"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -131,23 +95,18 @@
 
             <LinearLayout
                 android:orientation="vertical"
+                android:padding="12dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="12dp">
+                android:layout_height="wrap_content">
 
-                <!-- همه TextViewهای قطعات مشابه همین با ellipsize="end" و paddingStart/End -->
-                <TextView
-                    style="@style/TitleText"
-                    android:id="@+id/tvBlade"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:includeFontPadding="false"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"/>
-                <!-- بقیه TextViewها (Motor, Shaft, Box, Install, Welding, Transport, Extras) مشابه همین -->
+                <TextView style="@style/TitleText" android:id="@+id/tvBlade" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+                <TextView style="@style/TitleText" android:id="@+id/tvMotor" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp"/>
+                <TextView style="@style/TitleText" android:id="@+id/tvShaft" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp"/>
+                <TextView style="@style/TitleText" android:id="@+id/tvBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp"/>
+                <TextView style="@style/TitleText" android:id="@+id/tvInstall" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp"/>
+                <TextView style="@style/TitleText" android:id="@+id/tvWelding" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp"/>
+                <TextView style="@style/TitleText" android:id="@+id/tvTransport" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp"/>
+                <TextView style="@style/TitleText" android:id="@+id/tvExtras" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -162,23 +121,18 @@
 
             <LinearLayout
                 android:orientation="vertical"
+                android:padding="12dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="12dp">
+                android:layout_height="wrap_content">
 
-                <!-- همه TextViewهای ریز محاسبات مشابه همین -->
-                <TextView
-                    style="@style/BodyText"
-                    android:id="@+id/tvBreakBlade"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:includeFontPadding="false"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"/>
-                <!-- بقیه TextViewها (BreakMotor, BreakShaft, ...) مشابه همین -->
+                <TextView style="@style/BodyText" android:id="@+id/tvBreakBlade" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+                <TextView style="@style/BodyText" android:id="@+id/tvBreakMotor" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp"/>
+                <TextView style="@style/BodyText" android:id="@+id/tvBreakShaft" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp"/>
+                <TextView style="@style/BodyText" android:id="@+id/tvBreakBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp"/>
+                <TextView style="@style/BodyText" android:id="@+id/tvBreakInstall" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp"/>
+                <TextView style="@style/BodyText" android:id="@+id/tvBreakWelding" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp"/>
+                <TextView style="@style/BodyText" android:id="@+id/tvBreakTransport" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp"/>
+                <TextView style="@style/BodyText" android:id="@+id/tvBreakExtras" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -193,22 +147,17 @@
 
             <LinearLayout
                 android:orientation="vertical"
+                android:padding="12dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="12dp">
+                android:layout_height="wrap_content">
 
                 <TextView
                     style="@style/SpecialText.Green"
                     android:id="@+id/tvTotal"
+                    android:text="قیمت نهایی: -"
                     android:textSize="18sp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:singleLine="true"
-                    android:maxLines="1"
-                    android:includeFontPadding="false"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"/>
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -218,7 +167,4 @@
             android:id="@+id/buttonBackToReports"
             android:text="بازگشت به گزارشات"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"/>
-    </LinearLayout>
-</ScrollView>
+            android:layout_height
