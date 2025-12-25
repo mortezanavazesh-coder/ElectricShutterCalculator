@@ -8,7 +8,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ElectricShutterCalculator">
+        android:theme="@style/AppTheme"> <!-- تغییر به تم پیش‌فرض -->
 
         <!-- اکتیویتی اصلی -->
         <activity android:name=".MainActivity" android:exported="true">
