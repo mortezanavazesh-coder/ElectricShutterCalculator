@@ -58,7 +58,10 @@
                     android:inputType="numberDecimal"
                     android:hint="مثال: 250"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorOnSurface"
+                    android:textColorHint="@color/colorOnSurfaceSecondary"
+                    android:background="@android:color/transparent"/>
 
                 <TextView
                     style="@style/BodyText"
@@ -78,7 +81,10 @@
                     android:inputType="numberDecimal"
                     android:hint="مثال: 300"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorOnSurface"
+                    android:textColorHint="@color/colorOnSurfaceSecondary"
+                    android:background="@android:color/transparent"/>
 
                 <TextView
                     style="@style/BodyText"
@@ -133,7 +139,7 @@
                 <TextView
                     style="@style/BodyText"
                     android:id="@+id/textBladeLine"
-                    android:text=" قیمت پایه: - | قیمت کل: -"
+                    android:text="قیمت پایه: - | قیمت کل: -"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -183,7 +189,7 @@
                 <TextView
                     style="@style/BodyText"
                     android:id="@+id/textMotorLine"
-                    android:text=" قیمت: -"
+                    android:text="قیمت: -"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -349,7 +355,10 @@
                     android:inputType="numberDecimal"
                     android:hint="مثال: 250000"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorOnSurface"
+                    android:textColorHint="@color/colorOnSurfaceSecondary"
+                    android:background="@android:color/transparent"/>
 
                 <TextView
                     style="@style/BodyText"
@@ -395,7 +404,10 @@
                     android:inputType="numberDecimal"
                     android:hint="مثال: 180000"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorOnSurface"
+                    android:textColorHint="@color/colorOnSurfaceSecondary"
+                    android:background="@android:color/transparent"/>
 
                 <TextView
                     style="@style/BodyText"
@@ -415,7 +427,10 @@
                     android:inputType="numberDecimal"
                     android:hint="مثال: 120000"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorOnSurface"
+                    android:textColorHint="@color/colorOnSurfaceSecondary"
+                    android:background="@android:color/transparent"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -541,7 +556,7 @@
                 <TextView
                     style="@style/BodyText"
                     android:id="@+id/textBreakInstall"
-                    android:text="نصب: -"
+                    android:text="هزینه نصب: -"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -683,5 +698,3 @@
 
     </LinearLayout>
 </ScrollView>
-
-
