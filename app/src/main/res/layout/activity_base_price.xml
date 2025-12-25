@@ -103,7 +103,7 @@
 
                     <TextView
                         style="@style/TitleText"
-                        android:text="اافزودن موتور"
+                        android:text="افزودن موتور"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"/>
@@ -402,4 +402,5 @@
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
+
 
