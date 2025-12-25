@@ -23,7 +23,7 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:padding="12dp"
+                android:padding="6dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -44,7 +44,7 @@
 
                     <TextView
                         style="@style/TitleText"
-                        android:text="انتخاب تیغه"
+                        android:text="افزودن تیغه"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"/>
@@ -82,7 +82,7 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:padding="12dp"
+                android:padding="6dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -103,7 +103,7 @@
 
                     <TextView
                         style="@style/TitleText"
-                        android:text="انتخاب موتور"
+                        android:text="اافزودن موتور"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"/>
@@ -141,7 +141,7 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:padding="12dp"
+                android:padding="6dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -162,7 +162,7 @@
 
                     <TextView
                         style="@style/TitleText"
-                        android:text="انتخاب شفت"
+                        android:text="افزودن شفت"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"/>
@@ -200,7 +200,7 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:padding="12dp"
+                android:padding="6dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -221,7 +221,7 @@
 
                     <TextView
                         style="@style/TitleText"
-                        android:text="انتخاب قوطی"
+                        android:text="افزودن قوطی"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"/>
@@ -259,7 +259,7 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:padding="12dp"
+                android:padding="6dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -280,7 +280,7 @@
 
                     <TextView
                         style="@style/TitleText"
-                        android:text="انتخاب گزینه اضافی"
+                        android:text="افزودن گزینه اضافی"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"/>
@@ -318,7 +318,7 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:padding="12dp"
+                android:padding="6dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -335,7 +335,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal"
-                    android:hint="مثال: 250000"
+                    android:hint="مثال: 300000"
                     android:layout_marginTop="12dp"/>
 
                 <!-- جوشکاری -->
@@ -352,7 +352,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal"
-                    android:hint="مثال: 180000"
+                    android:hint="مثال: 300000"
                     android:layout_marginTop="12dp"/>
 
                 <!-- کرایه حمل -->
@@ -369,7 +369,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal"
-                    android:hint="مثال: 120000"
+                    android:hint="مثال: 300000"
                     android:layout_marginTop="12dp"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -402,3 +402,4 @@
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
+
