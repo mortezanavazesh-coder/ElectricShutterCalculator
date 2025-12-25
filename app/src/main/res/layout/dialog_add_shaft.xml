@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:padding="16dp"
+    android:padding="8dp"
     android:orientation="vertical"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_gravity="center"
     android:background="@drawable/bg_dialog_dark">
 
     <!-- عنوان شفت -->
     <EditText
         android:id="@+id/etShaftTitle"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:hint="عنوان شفت"
         android:inputType="textCapSentences"
@@ -22,11 +23,11 @@
     <!-- قیمت شفت -->
     <EditText
         android:id="@+id/etShaftPrice"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:hint="قیمت شفت (ت)"
         android:inputType="numberDecimal"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:textColor="@color/colorOnSurface"
         android:textColorHint="@color/colorOnSurfaceSecondary"
         android:background="@android:color/transparent"
@@ -36,11 +37,11 @@
     <!-- قطر شفت -->
     <EditText
         android:id="@+id/etShaftDiameter"
-        android:layout_width="match_parent"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:hint="قطر شفت (سانتی‌متر)"
         android:inputType="numberDecimal"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:textColor="@color/colorOnSurface"
         android:textColorHint="@color/colorOnSurfaceSecondary"
         android:background="@android:color/transparent"
@@ -53,7 +54,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="end"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="12dp">
 
         <Button
             android:id="@+id/btnCancelShaft"
@@ -67,7 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="ذخیره"
-            android:layout_marginStart="12dp"
+            android:layout_marginStart="8dp"
             style="?attr/materialButtonOutlinedStyle"/>
     </LinearLayout>
 </LinearLayout>
