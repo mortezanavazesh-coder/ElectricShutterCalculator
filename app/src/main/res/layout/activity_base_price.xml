@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
-    android:padding="6dp">
+    android:padding="3dp">
 
     <LinearLayout
         android:orientation="vertical"
@@ -402,6 +402,7 @@
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
+
 
 
 
