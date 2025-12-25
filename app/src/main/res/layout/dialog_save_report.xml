@@ -6,28 +6,39 @@
     android:layout_height="wrap_content"
     android:background="@color/colorSurface">
 
-    <!-- نام مشتری -->
+    <!-- عنوان گزارش -->
     <EditText
-        android:id="@+id/etCustomerName"
+        android:id="@+id/etReportTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="نام مشتری"
-        android:inputType="textPersonName"
-        android:textColor="@color/white"
-        android:textColorHint="@color/cream"
+        android:hint="عنوان گزارش"
+        android:inputType="textCapSentences"
+        android:textColor="@color/colorOnSurface"
+        android:textColorHint="@color/colorOnSurfaceSecondary"
+        android:background="@android:color/transparent"
         android:maxLines="1"
         android:ellipsize="end"/>
 
-    <!-- شماره موبایل -->
+    <!-- توضیحات گزارش -->
     <EditText
-        android:id="@+id/etCustomerPhone"
+        android:id="@+id/etReportDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="شماره موبایل (اختیاری)"
-        android:inputType="phone"
+        android:hint="توضیحات (اختیاری)"
+        android:inputType="textMultiLine"
         android:layout_marginTop="12dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/cream"
-        android:maxLines="1"
+        android:textColor="@color/colorOnSurface"
+        android:textColorHint="@color/colorOnSurfaceSecondary"
+        android:background="@android:color/transparent"
+        android:minLines="3"
         android:ellipsize="end"/>
+
+    <!-- دکمه ذخیره -->
+    <com.google.android.material.button.MaterialButton
+        style="@style/Widget.App.PrimaryButton"
+        android:id="@+id/buttonSaveReport"
+        android:text="ذخیره گزارش"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"/>
 </LinearLayout>
