@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fillViewport="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -16,20 +17,22 @@
         <com.google.android.material.card.MaterialCardView
             style="@style/Widget.App.MaterialCard"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true">
 
             <LinearLayout
                 android:orientation="vertical"
+                android:padding="12dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <!-- هدر -->
                 <LinearLayout
                     android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:gravity="center_vertical"
-                    android:layout_marginTop="12dp">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
                     <ImageView
                         android:id="@+id/buttonAddSlat"
@@ -37,8 +40,7 @@
                         android:contentDescription="افزودن تیغه"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:tint="@color/blue"
-                        android:layout_marginStart="8dp"/>
+                        android:tint="@color/blue"/>
 
                     <TextView
                         style="@style/TitleText"
@@ -53,10 +55,10 @@
                     android:id="@+id/emptySlats"
                     style="@style/BodyText"
                     android:text="هیچ تیغه‌ای موجود نیست"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:gravity="center"
                     android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"/>
 
                 <!-- لیست -->
@@ -74,20 +76,22 @@
             style="@style/Widget.App.MaterialCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp">
+            android:layout_marginTop="12dp"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true">
 
             <LinearLayout
                 android:orientation="vertical"
+                android:padding="12dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <!-- هدر -->
                 <LinearLayout
                     android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:gravity="center_vertical"
-                    android:layout_marginTop="12dp">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
                     <ImageView
                         android:id="@+id/buttonAddMotor"
@@ -95,8 +99,7 @@
                         android:contentDescription="افزودن موتور"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:tint="@color/blue"
-                        android:layout_marginStart="8dp"/>
+                        android:tint="@color/blue"/>
 
                     <TextView
                         style="@style/TitleText"
@@ -111,10 +114,10 @@
                     android:id="@+id/emptyMotors"
                     style="@style/BodyText"
                     android:text="هیچ موتوری موجود نیست"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:gravity="center"
                     android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"/>
 
                 <!-- لیست -->
@@ -132,20 +135,22 @@
             style="@style/Widget.App.MaterialCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp">
+            android:layout_marginTop="12dp"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true">
 
             <LinearLayout
                 android:orientation="vertical"
+                android:padding="12dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <!-- هدر -->
                 <LinearLayout
                     android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:gravity="center_vertical"
-                    android:layout_marginTop="12dp">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
                     <ImageView
                         android:id="@+id/buttonAddShaft"
@@ -153,8 +158,7 @@
                         android:contentDescription="افزودن شفت"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:tint="@color/blue"
-                        android:layout_marginStart="8dp"/>
+                        android:tint="@color/blue"/>
 
                     <TextView
                         style="@style/TitleText"
@@ -169,10 +173,10 @@
                     android:id="@+id/emptyShafts"
                     style="@style/BodyText"
                     android:text="هیچ شفتی موجود نیست"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:gravity="center"
                     android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"/>
 
                 <!-- لیست -->
@@ -190,20 +194,22 @@
             style="@style/Widget.App.MaterialCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp">
+            android:layout_marginTop="12dp"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true">
 
             <LinearLayout
                 android:orientation="vertical"
+                android:padding="12dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <!-- هدر -->
                 <LinearLayout
                     android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:gravity="center_vertical"
-                    android:layout_marginTop="12dp">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
                     <ImageView
                         android:id="@+id/buttonAddBox"
@@ -211,8 +217,7 @@
                         android:contentDescription="افزودن قوطی"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:tint="@color/blue"
-                        android:layout_marginStart="8dp"/>
+                        android:tint="@color/blue"/>
 
                     <TextView
                         style="@style/TitleText"
@@ -227,10 +232,10 @@
                     android:id="@+id/emptyBoxes"
                     style="@style/BodyText"
                     android:text="هیچ قوطی‌ای موجود نیست"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:gravity="center"
                     android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"/>
 
                 <!-- لیست -->
@@ -248,20 +253,22 @@
             style="@style/Widget.App.MaterialCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp">
+            android:layout_marginTop="12dp"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true">
 
             <LinearLayout
                 android:orientation="vertical"
+                android:padding="12dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <!-- هدر -->
                 <LinearLayout
                     android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:gravity="center_vertical"
-                    android:layout_marginTop="12dp">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
                     <ImageView
                         android:id="@+id/buttonAddExtra"
@@ -269,8 +276,7 @@
                         android:contentDescription="افزودن گزینه"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:tint="@color/blue"
-                        android:layout_marginStart="8dp"/>
+                        android:tint="@color/blue"/>
 
                     <TextView
                         style="@style/TitleText"
@@ -285,10 +291,10 @@
                     android:id="@+id/emptyExtras"
                     style="@style/BodyText"
                     android:text="هیچ گزینه‌ای موجود نیست"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:gravity="center"
                     android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"/>
 
                 <!-- لیست -->
@@ -306,10 +312,13 @@
             style="@style/Widget.App.MaterialCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp">
+            android:layout_marginTop="12dp"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true">
 
             <LinearLayout
                 android:orientation="vertical"
+                android:padding="12dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -318,8 +327,7 @@
                     style="@style/BodyText"
                     android:text="هزینه نصب (تومان به ازای هر متر مربع)"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"/>
+                    android:layout_height="wrap_content"/>
 
                 <EditText
                     android:id="@+id/inputInstallBase"
