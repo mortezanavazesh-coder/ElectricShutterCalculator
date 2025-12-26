@@ -1,25 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- زمینه و کارت‌ها -->
-    <color name="colorBackground">#000000</color> <!-- مشکی -->
-    <color name="colorCardBackground">#121212</color> <!-- کمی روشن‌تر از زمینه -->
-    <color name="colorCardStroke">#D3D3D3</color> <!-- خاکستری روشن برای لبه کارت -->
-
     <!-- رنگ‌های اصلی -->
-    <color name="colorPrimary">#2196F3</color> <!-- آبی -->
-    <color name="colorSecondary">#03DAC6</color> <!-- سبز فیروزه‌ای -->
-    <color name="colorError">#B00020</color>
+    <color name="colorPrimary">#2196F3</color>          <!-- آبی اصلی -->
+    <color name="colorSecondary">#00BCD4</color>        <!-- فیروزه‌ای -->
+    <color name="colorBackground">#000000</color>       <!-- مشکی زمینه -->
+    <color name="colorCardBackground">#121212</color>   <!-- مشکی روشن‌تر برای کارت‌ها -->
+    <color name="colorCardStroke">#1E1E1E</color>      <!-- خط دور کارت -->
 
-    <!-- متن‌ها -->
-    <color name="colorTextPrimary">#FFFFFF</color> <!-- سفید -->
-    <color name="colorTextHint">#B0B0B0</color> <!-- خاکستری روشن‌تر -->
-    <color name="colorCardTitle">#FFFDD0</color> <!-- کرم برای عنوان کارت -->
+    <!-- رنگ‌های متن -->
+    <color name="colorTextPrimary">#FFFFFF</color>      <!-- سفید -->
+    <color name="colorTextHint">#B0B0B0</color>        <!-- خاکستری روشن -->
+    <color name="colorCardTitle">#FFE0B2</color>       <!-- کرم (برای عنوان‌ها) -->
+    <color name="colorDate">#FFD180</color>            <!-- کرم روشن برای تاریخ -->
+    <color name="colorCustomerNumber">#64B5F6</color>  <!-- آبی روشن برای شماره مشتری -->
+    <color name="colorFinalPrice">#4CAF50</color>      <!-- سبز برای جمع کل -->
 
-    <!-- متن‌های خاص -->
-    <color name="colorFinalPrice">#00FF00</color> <!-- سبز برای قیمت نهایی و قطر رول -->
-    <color name="colorCustomerNumber">#2196F3</color> <!-- آبی برای شماره مشتری -->
-    <color name="colorDate">#FFFDD0</color> <!-- کرم برای تاریخ -->
-
-    <!-- آیکن‌ها -->
-    <color name="colorIconAdd">#2196F3</color> <!-- آبی -->
-    <color name="colorIconEdit">#FFFDD0</color> <!-- کرم (ویرایش و حذف) -->
+    <!-- رنگ آیکن‌ها -->
+    <color name="colorIconEdit">#FFE0B2</color>        <!-- کرم برای آیکن‌ها -->
 </resources>
