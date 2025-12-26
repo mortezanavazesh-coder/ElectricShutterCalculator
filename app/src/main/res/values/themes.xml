@@ -2,19 +2,20 @@
 
     <!-- تم اصلی اپ -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
-        <item name="colorSecondary">@color/colorSecondary</item>
-
-        <!-- رنگ‌های وضعیت -->
-        <item name="colorError">@color/colorError</item>
-        <item name="colorOnError">@color/white</item>
-
-        <!-- فونت معمولی سیستم -->
-        <item name="android:fontFamily">sans-serif</item>
-
-        <!-- جلوگیری از تغییر رنگ در حالت شب -->
         <item name="android:forceDarkAllowed">false</item>
+
+        <!-- رنگ‌های اصلی -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="colorError">@color/colorError</item>
+
+        <!-- زمینه و سطح -->
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="colorSurface">@color/colorBackground</item>
+        <item name="colorOnSurface">@color/colorTextPrimary</item>
+
+        <!-- فونت عمومی -->
+        <item name="android:fontFamily">sans-serif</item>
     </style>
 
 </resources>
