@@ -47,12 +47,12 @@
     <!-- استایل ورودی‌ها -->
     <style name="Widget.App.EditText" parent="Widget.MaterialComponents.TextInputEditText.FilledBox">
         <item name="android:textColor">@color/colorTextPrimary</item>
-        <item name="android:textColorHint">@color/colorTextHint</item> <!-- اصلاح شد -->
+        <item name="android:textColorHint">@color/colorTextHint</item>
     </style>
 
     <style name="Widget.App.TextInput" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
         <item name="boxBackgroundColor">@color/colorCardBackground</item>
-        <item name="android:textColorHint">@color/colorTextHint</item> <!-- اصلاح شد -->
+        <item name="android:textColorHint">@color/colorTextHint</item>
     </style>
 
     <!-- استایل اسپینر -->
@@ -65,6 +65,19 @@
     <style name="Widget.App.CheckBox" parent="Widget.MaterialComponents.CompoundButton.CheckBox">
         <item name="android:textColor">@color/colorTextPrimary</item>
         <item name="buttonTint">@color/colorPrimary</item>
+    </style>
+
+    <!-- استایل‌های گمشده -->
+    <style name="TitleText" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textColor">@color/cream</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="SpecialText.Blue" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
     </style>
 
 </resources>
