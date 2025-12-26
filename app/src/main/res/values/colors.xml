@@ -1,27 +1,26 @@
 <resources>
-    <!-- رنگ‌های اصلی اپ -->
-    <color name="colorPrimary">#1976D2</color>
-    <color name="colorPrimaryVariant">#1565C0</color>
-    <color name="colorSecondary">#2196F3</color>
+    <!-- زمینه و کارت‌ها -->
+    <color name="colorBackground">#000000</color> <!-- مشکی -->
+    <color name="colorCardBackground">#121212</color> <!-- خاکستری تیره‌تر از زمینه -->
+    <color name="colorCardStroke">#D3D3D3</color> <!-- خاکستری روشن نازک برای لبه کارت -->
 
-    <!-- رنگ‌های پایه -->
-    <color name="green">#4CAF50</color>
-    <color name="blue">#2196F3</color>
-    <color name="black">#000000</color>
-    <color name="white">#FFFFFF</color>
-    <color name="cream">#FFE0B2</color>
+    <!-- رنگ‌های اصلی -->
+    <color name="colorPrimary">#2196F3</color> <!-- آبی -->
+    <color name="colorSecondary">#03DAC6</color> <!-- سبز فیروزه‌ای (اختیاری) -->
+    <color name="colorError">#B00020</color>
 
-    <!-- رنگ‌های سطح و متن -->
-    <color name="colorBackground">#000000</color> <!-- زمینه مشکی کامل -->
-    <color name="colorSurface">#121212</color>   <!-- کارت مشکی کمی روشن‌تر -->
-    <color name="colorSurfaceStroke">#2A2A2A</color> <!-- لبه روشن‌تر کارت -->
-    <color name="colorOnSurface">#FFFFFF</color>
-    <color name="colorOnSurfaceSecondary">#B0B0B0</color>
+    <!-- متن‌ها -->
+    <color name="colorTextPrimary">#FFFFFF</color> <!-- سفید -->
+    <color name="colorTextHint">#B0B0B0</color> <!-- خاکستری روشن‌تر برای hint -->
+    <color name="colorCardTitle">#FFFDD0</color> <!-- کرم برای عنوان کارت -->
 
-    <!-- رنگ‌های وضعیت -->
-    <color name="colorError">#CF6679</color>
-    <color name="colorSuccess">@color/green</color>
+    <!-- متن‌های خاص -->
+    <color name="colorFinalPrice">#00FF00</color> <!-- سبز برای قیمت نهایی و قطر رول -->
+    <color name="colorCustomerNumber">#2196F3</color> <!-- آبی برای شماره مشتری -->
+    <color name="colorDate">#FFFDD0</color> <!-- کرم برای تاریخ -->
 
-    <!-- رنگ‌های آیکن‌ها -->
-    <color name="colorIcon">#000000</color>
+    <!-- آیکن‌ها -->
+    <color name="colorIconDelete">#FF0000</color>
+    <color name="colorIconEdit">#FFFDD0</color>
+    <color name="colorIconAdd">#2196F3</color>
 </resources>
