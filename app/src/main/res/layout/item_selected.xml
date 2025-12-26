@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
-    android:padding="12dp"
+    android:padding="4dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
-    android:background="@color/colorSurface">
+    android:background="@color/colorCardBackground">
 
     <LinearLayout
         android:orientation="vertical"
@@ -16,14 +16,14 @@
         <!-- نام آیتم -->
         <TextView
             android:id="@+id/selName"
-            style="@style/TitleText"
+            style="@style/BodyText"
             android:text="نام آیتم"
             android:textSize="16sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:singleLine="false"
-            android:ellipsize="none"/>
+            android:singleLine="true"
+            android:ellipsize="end"/>
 
         <!-- تعداد -->
         <TextView
@@ -33,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:textColor="@color/cream"/>
+            android:textColor="@color/colorCardTitle"/>
     </LinearLayout>
 
     <!-- قیمت واحد -->
@@ -45,19 +45,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
-        android:singleLine="false"
-        android:ellipsize="none"/>
+        android:singleLine="true"
+        android:ellipsize="end"/>
 
     <!-- جمع کل -->
     <TextView
         android:id="@+id/selTotal"
-        style="@style/SpecialText.Green"
+        style="@style/FinalPriceText"
         android:text="جمع"
         android:layout_marginEnd="12dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:singleLine="false"
-        android:ellipsize="none"/>
+        android:singleLine="true"
+        android:ellipsize="end"/>
 
     <!-- دکمه ویرایش -->
     <ImageButton
@@ -67,7 +67,7 @@
         android:src="@drawable/ic_edit_square_green"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="ویرایش"
-        android:tint="@color/white"/>
+        android:tint="@color/colorIconEdit"/>
 
     <!-- دکمه حذف -->
     <ImageButton
@@ -78,5 +78,5 @@
         android:background="?attr/selectableItemBackgroundBorderless"
         android:contentDescription="حذف"
         android:layout_marginStart="12dp"
-        android:tint="@color/white"/>
+        android:tint="@color/colorIconEdit"/>
 </LinearLayout>
