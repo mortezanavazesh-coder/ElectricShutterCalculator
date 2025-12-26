@@ -1,17 +1,17 @@
 <resources>
     <!-- زمینه و کارت‌ها -->
     <color name="colorBackground">#000000</color> <!-- مشکی -->
-    <color name="colorCardBackground">#121212</color> <!-- خاکستری تیره‌تر از زمینه -->
-    <color name="colorCardStroke">#D3D3D3</color> <!-- خاکستری روشن نازک برای لبه کارت -->
+    <color name="colorCardBackground">#121212</color> <!-- کمی روشن‌تر از زمینه -->
+    <color name="colorCardStroke">#D3D3D3</color> <!-- خاکستری روشن برای لبه کارت -->
 
     <!-- رنگ‌های اصلی -->
     <color name="colorPrimary">#2196F3</color> <!-- آبی -->
-    <color name="colorSecondary">#03DAC6</color> <!-- سبز فیروزه‌ای (اختیاری) -->
+    <color name="colorSecondary">#03DAC6</color> <!-- سبز فیروزه‌ای -->
     <color name="colorError">#B00020</color>
 
     <!-- متن‌ها -->
     <color name="colorTextPrimary">#FFFFFF</color> <!-- سفید -->
-    <color name="colorTextHint">#B0B0B0</color> <!-- خاکستری روشن‌تر برای hint -->
+    <color name="colorTextHint">#B0B0B0</color> <!-- خاکستری روشن‌تر -->
     <color name="colorCardTitle">#FFFDD0</color> <!-- کرم برای عنوان کارت -->
 
     <!-- متن‌های خاص -->
@@ -20,7 +20,6 @@
     <color name="colorDate">#FFFDD0</color> <!-- کرم برای تاریخ -->
 
     <!-- آیکن‌ها -->
-    <color name="colorIconDelete">#FF0000</color>
-    <color name="colorIconEdit">#FFFDD0</color>
-    <color name="colorIconAdd">#2196F3</color>
+    <color name="colorIconAdd">#2196F3</color> <!-- آبی -->
+    <color name="colorIconEdit">#FFFDD0</color> <!-- کرم (ویرایش و حذف) -->
 </resources>
