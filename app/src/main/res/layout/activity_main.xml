@@ -5,7 +5,7 @@
     android:id="@+id/scrollRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="3dp"
+    android:padding="4dp"
     android:clipToPadding="false"
     android:background="@color/colorBackground">
 
@@ -22,12 +22,12 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:padding="6dp"
+                android:padding="4dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    style="@style/TitleText"
+                    style="@style/CardTitleText"
                     android:text="ابعاد کرکره"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -81,12 +81,12 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:padding="6dp"
+                android:padding="4dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    style="@style/TitleText"
+                    style="@style/CardTitleText"
                     android:text="انتخاب تیغه"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -117,12 +117,12 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:padding="6dp"
+                android:padding="4dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    style="@style/TitleText"
+                    style="@style/CardTitleText"
                     android:text="انتخاب موتور"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -153,12 +153,12 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:padding="6dp"
+                android:padding="4dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    style="@style/TitleText"
+                    style="@style/CardTitleText"
                     android:text="انتخاب شفت"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -189,12 +189,12 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:padding="6dp"
+                android:padding="4dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    style="@style/TitleText"
+                    style="@style/CardTitleText"
                     android:text="انتخاب قوطی"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -233,12 +233,12 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:padding="6dp"
+                android:padding="4dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    style="@style/TitleText"
+                    style="@style/CardTitleText"
                     android:text="هزینه‌های اجرایی"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -313,12 +313,12 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:padding="6dp"
+                android:padding="4dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    style="@style/TitleText"
+                    style="@style/CardTitleText"
                     android:text="گزینه‌های اضافی"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -341,12 +341,12 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:padding="6dp"
+                android:padding="4dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    style="@style/TitleText"
+                    style="@style/CardTitleText"
                     android:text="ریز محاسبات"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -418,19 +418,19 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:padding="6dp"
+                android:padding="4dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    style="@style/SpecialText.Green"
+                    style="@style/FinalPriceText"
                     android:text="قیمت نهایی"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
                 <TextView
                     android:id="@+id/textTotal"
-                    style="@style/SpecialText.Green"
+                    style="@style/FinalPriceText"
                     android:text="قیمت نهایی: -"
                     android:textSize="18sp"
                     android:layout_width="match_parent"
