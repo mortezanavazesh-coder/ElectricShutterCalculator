@@ -9,14 +9,14 @@
 
     <LinearLayout
         android:orientation="vertical"
-        android:padding="12dp"
+        android:padding="4dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <!-- عنوان گزارش (نام مشتری) -->
         <TextView
             android:id="@+id/textReportTitle"
-            style="@style/TitleText"
+            style="@style/BodyText"
             android:text="نام مشتری"
             android:textSize="18sp"
             android:layout_width="match_parent"
@@ -25,7 +25,7 @@
         <!-- تاریخ گزارش -->
         <TextView
             android:id="@+id/textReportDate"
-            style="@style/SpecialText.Date"
+            style="@style/DateText"
             android:text="تاریخ"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
         <!-- جمع کل -->
         <TextView
             android:id="@+id/textReportPrice"
-            style="@style/SpecialText.Green"
+            style="@style/FinalPriceText"
             android:text="جمع کل: 0 تومان"
             android:textSize="16sp"
             android:layout_width="match_parent"
@@ -48,7 +48,7 @@
             android:layout_height="40dp"
             android:layout_gravity="end"
             android:src="@drawable/ic_delete"
-            android:tint="@color/white"
+            android:tint="@color/colorIconEdit"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="حذف گزارش"
             android:layout_marginTop="12dp" />
