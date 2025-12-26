@@ -11,6 +11,7 @@
         <!-- رنگ‌های متن -->
         <item name="android:textColorPrimary">@color/colorTextPrimary</item>
         <item name="android:textColorSecondary">@color/colorTextHint</item>
+        <item name="android:textColorHint">@color/colorTextHint</item>
 
         <!-- رنگ پس‌زمینه -->
         <item name="android:windowBackground">@color/colorBackground</item>
@@ -23,3 +24,4 @@
     </style>
 
 </resources>
+
