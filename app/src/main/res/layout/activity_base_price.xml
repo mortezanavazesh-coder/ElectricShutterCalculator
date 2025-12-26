@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
-    android:padding="3dp">
+    android:padding="4dp">
 
     <LinearLayout
         android:orientation="vertical"
@@ -23,7 +23,7 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:padding="6dp"
+                android:padding="4dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -40,10 +40,10 @@
                         android:contentDescription="افزودن تیغه"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:tint="@color/blue"/>
+                        android:tint="@color/colorIconAdd"/>
 
                     <TextView
-                        style="@style/TitleText"
+                        style="@style/CardTitleText"
                         android:text="افزودن تیغه"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -82,7 +82,7 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:padding="6dp"
+                android:padding="4dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -99,10 +99,10 @@
                         android:contentDescription="افزودن موتور"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:tint="@color/blue"/>
+                        android:tint="@color/colorIconAdd"/>
 
                     <TextView
-                        style="@style/TitleText"
+                        style="@style/CardTitleText"
                         android:text="افزودن موتور"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -141,7 +141,7 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:padding="6dp"
+                android:padding="4dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -158,10 +158,10 @@
                         android:contentDescription="افزودن شفت"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:tint="@color/blue"/>
+                        android:tint="@color/colorIconAdd"/>
 
                     <TextView
-                        style="@style/TitleText"
+                        style="@style/CardTitleText"
                         android:text="افزودن شفت"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -200,7 +200,7 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:padding="6dp"
+                android:padding="4dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -217,10 +217,10 @@
                         android:contentDescription="افزودن قوطی"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:tint="@color/blue"/>
+                        android:tint="@color/colorIconAdd"/>
 
                     <TextView
-                        style="@style/TitleText"
+                        style="@style/CardTitleText"
                         android:text="افزودن قوطی"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -259,7 +259,7 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:padding="6dp"
+                android:padding="4dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -276,10 +276,10 @@
                         android:contentDescription="افزودن گزینه"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:tint="@color/blue"/>
+                        android:tint="@color/colorIconAdd"/>
 
                     <TextView
-                        style="@style/TitleText"
+                        style="@style/CardTitleText"
                         android:text="افزودن گزینه اضافی"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -318,7 +318,7 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:padding="6dp"
+                android:padding="4dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -402,7 +402,3 @@
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
-
-
-
-
