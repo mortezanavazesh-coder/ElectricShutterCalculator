@@ -5,48 +5,60 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:background="@drawable/bg_dialog_dark">
+    android:background="@color/colorCardBackground">
 
     <!-- عنوان شفت -->
-    <EditText
-        android:id="@+id/etShaftTitle"
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.App.TextInput"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:hint="عنوان شفت"
-        android:inputType="textCapSentences"
-        android:textColor="@color/colorOnSurface"
-        android:textColorHint="@color/colorOnSurfaceSecondary"
-        android:background="@android:color/transparent"
-        android:maxLines="1"
-        android:ellipsize="end"/>
+        android:hint="عنوان شفت">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etShaftTitle"
+            style="@style/Widget.App.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapSentences"
+            android:maxLines="1"
+            android:ellipsize="end"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <!-- قیمت شفت -->
-    <EditText
-        android:id="@+id/etShaftPrice"
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.App.TextInput"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:hint="قیمت شفت (ت)"
-        android:inputType="numberDecimal"
-        android:layout_marginTop="8dp"
-        android:textColor="@color/colorOnSurface"
-        android:textColorHint="@color/colorOnSurfaceSecondary"
-        android:background="@android:color/transparent"
-        android:maxLines="1"
-        android:ellipsize="end"/>
+        android:layout_marginTop="8dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etShaftPrice"
+            style="@style/Widget.App.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:maxLines="1"
+            android:ellipsize="end"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <!-- قطر شفت -->
-    <EditText
-        android:id="@+id/etShaftDiameter"
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.App.TextInput"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:hint="قطر شفت (سانتی‌متر)"
-        android:inputType="numberDecimal"
-        android:layout_marginTop="8dp"
-        android:textColor="@color/colorOnSurface"
-        android:textColorHint="@color/colorOnSurfaceSecondary"
-        android:background="@android:color/transparent"
-        android:maxLines="1"
-        android:ellipsize="end"/>
+        android:layout_marginTop="8dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etShaftDiameter"
+            style="@style/Widget.App.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:maxLines="1"
+            android:ellipsize="end"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <!-- دکمه‌ها -->
     <LinearLayout
@@ -56,19 +68,19 @@
         android:gravity="end"
         android:layout_marginTop="12dp">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCancelShaft"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="?attr/materialButtonOutlinedStyle"
             android:text="لغو"
-            style="?attr/materialButtonOutlinedStyle"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSaveShaft"
+            style="@style/Widget.App.PrimaryButton"
+            android:text="ذخیره"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ذخیره"
-            android:layout_marginStart="8dp"
-            style="?attr/materialButtonOutlinedStyle"/>
+            android:layout_marginStart="8dp"/>
     </LinearLayout>
 </LinearLayout>
