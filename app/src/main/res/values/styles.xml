@@ -1,78 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- کارت‌ها -->
+    <!-- استایل متن‌ها -->
+    <style name="BodyText" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textColor">@color/colorTextPrimary</item> <!-- سفید -->
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="CardTitleText" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textColor">@color/colorCardTitle</item> <!-- کرم -->
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="DateText" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:textColor">@color/colorDate</item> <!-- کرم روشن -->
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="CustomerNumberText" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:textColor">@color/colorCustomerNumber</item> <!-- آبی روشن -->
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="FinalPriceText" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textColor">@color/colorFinalPrice</item> <!-- سبز -->
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <!-- استایل کارت‌ها -->
     <style name="Widget.App.MaterialCard" parent="Widget.MaterialComponents.CardView">
         <item name="cardBackgroundColor">@color/colorCardBackground</item>
         <item name="strokeColor">@color/colorCardStroke</item>
         <item name="strokeWidth">1dp</item>
-        <item name="cardElevation">6dp</item>
-        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.App.Card</item>
-        <item name="android:padding">4dp</item>
+        <item name="cardCornerRadius">8dp</item>
     </style>
 
-    <style name="ShapeAppearanceOverlay.App.Card">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">8dp</item>
+    <!-- استایل دکمه‌ها -->
+    <style name="Widget.App.PrimaryButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:backgroundTint">@color/colorPrimary</item> <!-- آبی -->
+        <item name="android:textColor">@color/colorTextPrimary</item> <!-- سفید -->
+        <item name="cornerRadius">8dp</item>
     </style>
 
-    <!-- عنوان کارت -->
-    <style name="CardTitleText" parent="TextAppearance.MaterialComponents.Headline6">
-        <item name="android:textColor">@color/colorCardTitle</item>
-        <item name="android:textStyle">bold</item>
+    <!-- استایل ورودی‌ها -->
+    <style name="Widget.App.EditText" parent="Widget.MaterialComponents.TextInputEditText.FilledBox">
+        <item name="android:textColor">@color/colorTextPrimary</item> <!-- سفید -->
+        <item name="android:hintTextColor">@color/colorTextHint</item> <!-- خاکستری روشن -->
     </style>
 
-    <!-- متن عمومی -->
-    <style name="BodyText" parent="TextAppearance.MaterialComponents.Body1">
-        <item name="android:textColor">@color/colorTextPrimary</item>
-    </style>
-
-    <!-- TextInputLayout -->
-    <style name="Widget.App.TextInput" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="boxBackgroundColor">@color/colorCardBackground</item>
-        <item name="boxStrokeColor">@color/colorCardStroke</item>
+    <style name="Widget.App.TextInput" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="boxBackgroundColor">@color/colorCardBackground</item> <!-- مشکی روشن‌تر -->
         <item name="hintTextColor">@color/colorTextHint</item>
     </style>
 
-    <!-- TextInputEditText -->
-    <style name="Widget.App.EditText" parent="Widget.AppCompat.EditText">
-        <item name="android:textColor">@color/colorTextPrimary</item>
-        <item name="android:textColorHint">@color/colorTextHint</item>
-        <item name="android:background">@android:color/transparent</item>
-    </style>
-
-    <!-- Spinner -->
+    <!-- استایل اسپینر -->
     <style name="Widget.App.Spinner" parent="Widget.AppCompat.Spinner">
+        <item name="android:popupBackground">@color/colorCardBackground</item>
         <item name="android:textColor">@color/colorTextPrimary</item>
-        <item name="android:textColorHint">@color/colorTextHint</item>
-        <item name="android:popupTheme">@style/Widget.App.Spinner.Popup</item>
     </style>
 
-    <style name="Widget.App.Spinner.Popup" parent="ThemeOverlay.AppCompat.Light">
+    <!-- استایل چک‌باکس -->
+    <style name="Widget.App.CheckBox" parent="Widget.MaterialComponents.CompoundButton.CheckBox">
         <item name="android:textColor">@color/colorTextPrimary</item>
-        <item name="android:background">@color/colorCardBackground</item>
-    </style>
-
-    <!-- دکمه‌ها -->
-    <style name="Widget.App.PrimaryButton" parent="Widget.MaterialComponents.Button">
-        <item name="android:textColor">@color/colorTextPrimary</item>
-        <item name="backgroundTint">@color/colorPrimary</item>
-        <item name="cornerRadius">8dp</item>
-        <item name="android:padding">12dp</item>
-    </style>
-
-    <!-- متن‌های خاص -->
-    <style name="FinalPriceText" parent="TextAppearance.MaterialComponents.Body1">
-        <item name="android:textColor">@color/colorFinalPrice</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="CustomerNumberText" parent="TextAppearance.MaterialComponents.Body1">
-        <item name="android:textColor">@color/colorCustomerNumber</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="DateText" parent="TextAppearance.MaterialComponents.Body2">
-        <item name="android:textColor">@color/colorDate</item>
+        <item name="buttonTint">@color/colorPrimary</item>
     </style>
 
 </resources>
