@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
-    android:padding="3dp">
+    android:padding="4dp"
+    android:clipToPadding="false">
 
     <LinearLayout
         android:orientation="vertical"
@@ -21,25 +23,25 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:padding="6dp"
+                android:padding="4dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    style="@style/TitleText"
+                    style="@style/CardTitleText"
                     android:id="@+id/tvCustomerName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
 
                 <TextView
-                    style="@style/SpecialText.Blue"
+                    style="@style/CustomerNumberText"
                     android:id="@+id/tvCustomerPhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"/>
 
                 <TextView
-                    style="@style/SpecialText.Date"
+                    style="@style/DateText"
                     android:id="@+id/tvDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -58,7 +60,7 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:padding="6dp"
+                android:padding="4dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -95,18 +97,18 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:padding="6dp"
+                android:padding="4dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView style="@style/TitleText" android:id="@+id/tvBlade" android:layout_width="match_parent" android:layout_height="wrap_content"/>
-                <TextView style="@style/TitleText" android:id="@+id/tvMotor" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp"/>
-                <TextView style="@style/TitleText" android:id="@+id/tvShaft" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp"/>
-                <TextView style="@style/TitleText" android:id="@+id/tvBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp"/>
-                <TextView style="@style/TitleText" android:id="@+id/tvInstall" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp"/>
-                <TextView style="@style/TitleText" android:id="@+id/tvWelding" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp"/>
-                <TextView style="@style/TitleText" android:id="@+id/tvTransport" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp"/>
-                <TextView style="@style/TitleText" android:id="@+id/tvExtras" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp"/>
+                <TextView style="@style/CardTitleText" android:id="@+id/tvBlade" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+                <TextView style="@style/CardTitleText" android:id="@+id/tvMotor" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp"/>
+                <TextView style="@style/CardTitleText" android:id="@+id/tvShaft" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp"/>
+                <TextView style="@style/CardTitleText" android:id="@+id/tvBox" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp"/>
+                <TextView style="@style/CardTitleText" android:id="@+id/tvInstall" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp"/>
+                <TextView style="@style/CardTitleText" android:id="@+id/tvWelding" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp"/>
+                <TextView style="@style/CardTitleText" android:id="@+id/tvTransport" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp"/>
+                <TextView style="@style/CardTitleText" android:id="@+id/tvExtras" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -121,7 +123,7 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:padding="6dp"
+                android:padding="4dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -136,7 +138,7 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-              <!-- کارت قیمت نهایی -->
+        <!-- کارت قیمت نهایی -->
         <com.google.android.material.card.MaterialCardView
             style="@style/Widget.App.MaterialCard"
             android:layout_width="match_parent"
@@ -147,12 +149,12 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:padding="6dp"
+                android:padding="4dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    style="@style/SpecialText.Green"
+                    style="@style/FinalPriceText"
                     android:id="@+id/tvTotal"
                     android:text="قیمت نهایی: -"
                     android:textSize="18sp"
@@ -171,5 +173,3 @@
             android:layout_marginTop="12dp"/>
     </LinearLayout>
 </ScrollView>
-
-
