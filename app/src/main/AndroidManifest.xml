@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.yourapp.package">
 
     <application
         android:name=".App"
@@ -8,10 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme.DarkBlue"> <!-- تغییر به تم جدید -->
+        android:theme="@style/AppTheme.DarkBlue"> <!-- تم ثابت مشکی/آبی -->
 
         <!-- اکتیویتی اصلی -->
-        <activity android:name=".MainActivity" android:exported="true">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -19,13 +22,19 @@
         </activity>
 
         <!-- صفحه محاسبه قطر رول -->
-        <activity android:name=".RollCalculatorActivity" android:exported="true"/>
+        <activity
+            android:name=".RollCalculatorActivity"
+            android:exported="true"/>
 
         <!-- صفحه قیمت پایه -->
-        <activity android:name=".BasePriceActivity" android:exported="true"/>
+        <activity
+            android:name=".BasePriceActivity"
+            android:exported="true"/>
 
         <!-- صفحه گزارش‌ها -->
-        <activity android:name=".ReportActivity" android:exported="true"/>
+        <activity
+            android:name=".ReportActivity"
+            android:exported="true"/>
 
         <!-- جزئیات گزارش -->
         <activity
