@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="3dp"
+    android:padding="4dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground">
@@ -14,15 +15,21 @@
         android:layout_height="wrap_content"
         android:visibility="gone">
 
-        <TextView
-            style="@style/BodyText"
-            android:id="@+id/textEmptyReports"
-            android:text="هیچ گزارشی موجود نیست"
-            android:gravity="center"
-            android:textSize="16sp"
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="4dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"/>
+            android:layout_height="wrap_content">
+
+            <TextView
+                style="@style/BodyText"
+                android:id="@+id/textEmptyReports"
+                android:text="هیچ گزارشی موجود نیست"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
     <!-- کارت لیست گزارش‌ها -->
@@ -33,12 +40,19 @@
         android:layout_weight="1"
         android:layout_marginTop="12dp">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerReports"
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="4dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:paddingBottom="16dp"/>
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerReports"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:padding="0dp"/>
+        </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
     <!-- دکمه بازگشت -->
@@ -50,6 +64,3 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"/>
 </LinearLayout>
-
-
-
