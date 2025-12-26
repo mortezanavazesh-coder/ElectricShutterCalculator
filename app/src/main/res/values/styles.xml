@@ -3,28 +3,28 @@
 
     <!-- استایل متن‌ها -->
     <style name="BodyText" parent="TextAppearance.MaterialComponents.Body1">
-        <item name="android:textColor">@color/colorTextPrimary</item> <!-- سفید -->
+        <item name="android:textColor">@color/colorTextPrimary</item>
         <item name="android:textSize">14sp</item>
     </style>
 
     <style name="CardTitleText" parent="TextAppearance.MaterialComponents.Headline6">
-        <item name="android:textColor">@color/colorCardTitle</item> <!-- کرم -->
+        <item name="android:textColor">@color/colorCardTitle</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">16sp</item>
     </style>
 
     <style name="DateText" parent="TextAppearance.MaterialComponents.Body2">
-        <item name="android:textColor">@color/colorDate</item> <!-- کرم روشن -->
+        <item name="android:textColor">@color/colorDate</item>
         <item name="android:textSize">14sp</item>
     </style>
 
     <style name="CustomerNumberText" parent="TextAppearance.MaterialComponents.Body2">
-        <item name="android:textColor">@color/colorCustomerNumber</item> <!-- آبی روشن -->
+        <item name="android:textColor">@color/colorCustomerNumber</item>
         <item name="android:textSize">14sp</item>
     </style>
 
     <style name="FinalPriceText" parent="TextAppearance.MaterialComponents.Headline6">
-        <item name="android:textColor">@color/colorFinalPrice</item> <!-- سبز -->
+        <item name="android:textColor">@color/colorFinalPrice</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">16sp</item>
     </style>
@@ -39,19 +39,19 @@
 
     <!-- استایل دکمه‌ها -->
     <style name="Widget.App.PrimaryButton" parent="Widget.MaterialComponents.Button">
-        <item name="android:backgroundTint">@color/colorPrimary</item> <!-- آبی -->
-        <item name="android:textColor">@color/colorTextPrimary</item> <!-- سفید -->
+        <item name="android:backgroundTint">@color/colorPrimary</item>
+        <item name="android:textColor">@color/colorTextPrimary</item>
         <item name="cornerRadius">8dp</item>
     </style>
 
     <!-- استایل ورودی‌ها -->
     <style name="Widget.App.EditText" parent="Widget.MaterialComponents.TextInputEditText.FilledBox">
-        <item name="android:textColor">@color/colorTextPrimary</item> <!-- سفید -->
-        <item name="android:hintTextColor">@color/colorTextHint</item> <!-- خاکستری روشن -->
+        <item name="android:textColor">@color/colorTextPrimary</item>
+        <item name="android:hintTextColor">@color/colorTextHint</item>
     </style>
 
     <style name="Widget.App.TextInput" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
-        <item name="boxBackgroundColor">@color/colorCardBackground</item> <!-- مشکی روشن‌تر -->
+        <item name="boxBackgroundColor">@color/colorCardBackground</item>
         <item name="hintTextColor">@color/colorTextHint</item>
     </style>
 
