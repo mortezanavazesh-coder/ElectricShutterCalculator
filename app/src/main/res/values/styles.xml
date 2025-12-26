@@ -47,12 +47,12 @@
     <!-- استایل ورودی‌ها -->
     <style name="Widget.App.EditText" parent="Widget.MaterialComponents.TextInputEditText.FilledBox">
         <item name="android:textColor">@color/colorTextPrimary</item>
-        <item name="android:hintTextColor">@color/colorTextHint</item>
+        <item name="android:textColorHint">@color/colorTextHint</item> <!-- اصلاح شد -->
     </style>
 
     <style name="Widget.App.TextInput" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
         <item name="boxBackgroundColor">@color/colorCardBackground</item>
-        <item name="hintTextColor">@color/colorTextHint</item>
+        <item name="android:textColorHint">@color/colorTextHint</item> <!-- اصلاح شد -->
     </style>
 
     <!-- استایل اسپینر -->
