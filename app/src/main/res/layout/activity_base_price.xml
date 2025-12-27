@@ -27,7 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <!-- هدر -->
+                <!-- هدر: آیکن چپ + عنوان راست -->
                 <LinearLayout
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
@@ -273,7 +273,7 @@
                     <ImageView
                         android:id="@+id/buttonAddExtra"
                         android:src="@drawable/ic_add"
-                        android:contentDescription="افزودن گزینه"
+                        android:contentDescription="افزودن گزینه اضافی"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:tint="@color/colorIconAdd"/>
@@ -323,54 +323,52 @@
                 android:layout_height="wrap_content">
 
                 <!-- نصب -->
-                <TextView
-                    style="@style/BodyText"
-                    android:text="هزینه نصب (تومان به ازای هر متر مربع)"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
-                <EditText
-                    android:id="@+id/inputInstallBase"
-                    style="@style/Widget.App.EditText"
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.App.TextBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="numberDecimal"
-                    android:hint="مثال: 300000"
-                    android:layout_marginTop="12dp"/>
+                    android:hint="هزینه نصب (تومان به ازای هر متر مربع)"
+                    android:layout_marginTop="12dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputInstallBase"
+                        style="@style/Widget.App.TextBox.EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <!-- جوشکاری -->
-                <TextView
-                    style="@style/BodyText"
-                    android:text="جوشکاری (تومان)"
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.App.TextBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"/>
+                    android:hint="جوشکاری (تومان)"
+                    android:layout_marginTop="12dp">
 
-                <EditText
-                    android:id="@+id/inputWeldingBase"
-                    style="@style/Widget.App.EditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="numberDecimal"
-                    android:hint="مثال: 300000"
-                    android:layout_marginTop="12dp"/>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputWeldingBase"
+                        style="@style/Widget.App.TextBox.EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"/>
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <!-- کرایه حمل -->
-                <TextView
-                    style="@style/BodyText"
-                    android:text="کرایه حمل (تومان)"
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.App.TextBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"/>
+                    android:hint="کرایه حمل (تومان)"
+                    android:layout_marginTop="12dp">
 
-                <EditText
-                    android:id="@+id/inputTransportBase"
-                    style="@style/Widget.App.EditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="numberDecimal"
-                    android:hint="مثال: 300000"
-                    android:layout_marginTop="12dp"/>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputTransportBase"
+                        style="@style/Widget.App.TextBox.EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"/>
+                </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
