@@ -39,7 +39,7 @@
     <style name="Widget.App.TextBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxStrokeColor">@color/colorPrimary</item>
         <item name="boxStrokeWidth">2dp</item>
-        <item name="hintTextColor">@color/colorTextSecondary</item>
+        <item name="hintTextColor">@color/colorTextHint</item>
     </style>
 
     <style name="Widget.App.TextBox.EditText" parent="Widget.MaterialComponents.TextInputEditText.OutlinedBox">
