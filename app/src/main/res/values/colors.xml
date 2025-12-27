@@ -6,7 +6,7 @@
 
     <!-- رنگ‌های پس‌زمینه -->
     <color name="colorBackground">#000000</color>       <!-- پس‌زمینه مشکی -->
-    <color name="colorCardBackground">#121212</color>   <!-- پس‌زمینه کارت -->
+    <color name="colorCardBackground">#121212</color>   <!-- پس‌زمینه کارت و دیالوگ -->
     <color name="colorCardStroke">#1E1E1E</color>       <!-- خط دور کارت -->
     <color name="colorSurface">#1E1E1E</color>          <!-- سطح کارت/دیالوگ -->
     <color name="colorSurfaceStroke">#333333</color>    <!-- خط دور سطح -->
