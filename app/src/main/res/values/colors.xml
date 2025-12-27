@@ -2,28 +2,29 @@
 <resources>
     <!-- رنگ‌های اصلی پروژه -->
     <color name="colorPrimary">#2196F3</color>          <!-- آبی اصلی -->
-    <color name="colorSecondary">#00BCD4</color>        <!-- فیروزه‌ای -->
+    <color name="colorSecondary">#FFE0B2</color>        <!-- کرم -->
+
+    <!-- رنگ‌های پس‌زمینه -->
     <color name="colorBackground">#000000</color>       <!-- پس‌زمینه مشکی -->
     <color name="colorCardBackground">#121212</color>   <!-- پس‌زمینه کارت -->
     <color name="colorCardStroke">#1E1E1E</color>       <!-- خط دور کارت -->
+    <color name="colorSurface">#1E1E1E</color>          <!-- سطح کارت/دیالوگ -->
+    <color name="colorSurfaceStroke">#333333</color>    <!-- خط دور سطح -->
 
     <!-- رنگ‌های متن -->
     <color name="colorTextPrimary">#FFFFFF</color>      <!-- متن اصلی سفید -->
     <color name="colorTextHint">#B0B0B0</color>         <!-- متن راهنما خاکستری -->
-    <color name="colorCardTitle">#FFE0B2</color>        <!-- عنوان کارت کرم -->
-    <color name="colorDate">#FFD180</color>             <!-- تاریخ نارنجی روشن -->
-    <color name="colorCustomerNumber">#64B5F6</color>   <!-- شماره مشتری آبی روشن -->
-    <color name="colorFinalPrice">#4CAF50</color>       <!-- قیمت نهایی سبز -->
+    <color name="colorCardTitle">@color/colorSecondary</color> <!-- عنوان کارت کرم -->
+    <color name="colorFinalPrice">@color/colorSecondary</color> <!-- قیمت نهایی کرم -->
 
-    <!-- رنگ‌های مورد نیاز drawable و layout -->
-    <color name="colorSurface">#1E1E1E</color>          <!-- سطح کارت/دیالوگ -->
-    <color name="colorSurfaceStroke">#333333</color>    <!-- خط دور سطح -->
+    <!-- رنگ‌های عمومی -->
     <color name="white">#FFFFFF</color>
-    <color name="blue">#2196F3</color>
     <color name="black">#000000</color>
-    <color name="cream">#FFE0B2</color>
+    <color name="blue">@color/colorPrimary</color>
+    <color name="cream">@color/colorSecondary</color>
 
     <!-- رنگ‌های آیکن‌ها -->
-    <color name="colorIconAdd">#4CAF50</color>          <!-- آیکن افزودن سبز -->
-    <color name="colorIconEdit">#FFC107</color>         <!-- آیکن ویرایش زرد/نارنجی -->
+    <color name="colorIconAdd">@color/colorPrimary</color>     <!-- آیکن افزودن آبی -->
+    <color name="colorIconEdit">@color/colorSecondary</color>  <!-- آیکن ویرایش کرم -->
+    <color name="colorIconDelete">@color/colorSecondary</color> <!-- آیکن حذف کرم -->
 </resources>
