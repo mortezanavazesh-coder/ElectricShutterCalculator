@@ -25,7 +25,7 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <!-- کارت‌ها (اصلاح: استفاده از cardBackgroundColor به‌جای android:background) -->
+    <!-- کارت‌ها -->
     <style name="Widget.App.MaterialCard" parent="Widget.MaterialComponents.CardView">
         <item name="android:layout_marginTop">8dp</item>
         <item name="android:layout_marginBottom">8dp</item>
@@ -86,9 +86,9 @@
         <item name="android:textSize">18sp</item>
     </style>
 
-    <!-- شماره مشتری -->
+    <!-- شماره مشتری (اصلاح: رنگ آبی) -->
     <style name="CustomerNumberText" parent="TextAppearance.MaterialComponents.Body1">
-        <item name="android:textColor">@color/colorTextPrimary</item>
+        <item name="android:textColor">@color/colorPrimary</item> <!-- آبی -->
         <item name="android:textSize">14sp</item>
     </style>
 
@@ -125,22 +125,15 @@
         <item name="cornerSize">8dp</item>
     </style>
 
-    <!-- تم اختصاصی دیالوگ متریال (کلید حل تفاوت رنگ) -->
+    <!-- تم اختصاصی دیالوگ متریال -->
     <style name="AppAlertDialogTheme" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
-        <!-- بک‌گراند خود دیالوگ دقیقا رنگ کارت‌ها -->
         <item name="materialAlertDialogBackgroundColor">@color/colorCardBackground</item>
-
-        <!-- حذف هاله/حاشیه تیره اطراف محتوا -->
         <item name="backgroundInsetStart">0dp</item>
         <item name="backgroundInsetEnd">0dp</item>
         <item name="backgroundInsetTop">0dp</item>
         <item name="backgroundInsetBottom">0dp</item>
-
-        <!-- گوشه‌های گرد هماهنگ با کارت‌ها -->
         <item name="shapeAppearanceCornerMedium">@style/Shape.Round8</item>
         <item name="shapeAppearanceCornerLarge">@style/Shape.Round8</item>
-
-        <!-- هماهنگی تیتر و متن دیالوگ با استایل‌های پروژه -->
         <item name="materialAlertDialogBodyTextStyle">@style/BodyText</item>
         <item name="materialAlertDialogTitleTextStyle">@style/TitleText</item>
     </style>
