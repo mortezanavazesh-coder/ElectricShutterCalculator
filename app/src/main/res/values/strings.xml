@@ -38,4 +38,7 @@
     <string name="report_total">جمع کل: 0 تومان</string>
     <string name="unit_price">قیمت واحد</string>
     <string name="total_price">جمع</string>
+
+    <!-- راهنما پیش‌فرض -->
+    <string name="hint_default">ورودی</string>
 </resources>
