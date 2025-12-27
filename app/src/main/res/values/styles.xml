@@ -1,68 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- متن اصلی -->
-    <style name="TextPrimary" parent="TextAppearance.MaterialComponents.Body1">
+    <!-- متن‌های اصلی -->
+    <style name="BodyText" parent="TextAppearance.MaterialComponents.Body1">
         <item name="android:textColor">@color/colorTextPrimary</item>
         <item name="android:textSize">14sp</item>
     </style>
 
-    <!-- متن راهنما -->
-    <style name="TextHint" parent="TextAppearance.MaterialComponents.Body2">
-        <item name="android:textColor">@color/colorTextHint</item>
-        <item name="android:textSize">12sp</item>
-    </style>
-
-    <!-- عنوان بخش یا کارت -->
-    <style name="TextTitle" parent="TextAppearance.MaterialComponents.Headline6">
-        <item name="android:textColor">@color/colorSecondary</item> <!-- کرم -->
+    <style name="CardTitleText" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textColor">@color/colorTextPrimary</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">16sp</item>
     </style>
 
     <!-- متن قیمت نهایی -->
-    <style name="TextFinalPrice" parent="TextAppearance.MaterialComponents.Headline6">
-        <item name="android:textColor">@color/colorFinalPrice</item> <!-- سبز -->
+    <style name="TextFinalPrice" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="android:textColor">@color/colorFinalPrice</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">18sp</item>
     </style>
 
     <!-- متن قطر رول -->
-    <style name="TextRollDiameter" parent="TextAppearance.MaterialComponents.Body1">
-        <item name="android:textColor">@color/colorRollDiameter</item> <!-- سبز -->
+    <style name="TextRollDiameter" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textColor">@color/colorRollDiameter</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textSize">16sp</item>
     </style>
 
     <!-- کارت‌ها -->
     <style name="Widget.App.MaterialCard" parent="Widget.MaterialComponents.CardView">
-        <item name="cardBackgroundColor">@color/colorCardBackground</item>
-        <item name="cardStrokeColor">@color/colorCardStroke</item>
-        <item name="cardElevation">4dp</item>
-        <item name="cardCornerRadius">8dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="app:strokeColor">@color/colorPrimary</item>
+        <item name="app:cardCornerRadius">8dp</item>
+        <item name="app:cardElevation">4dp</item>
     </style>
 
-    <!-- دکمه‌ها -->
-    <style name="Widget.App.PrimaryButton" parent="Widget.MaterialComponents.Button">
-        <item name="android:textColor">@color/white</item>
-        <item name="backgroundTint">@color/colorPrimary</item> <!-- آبی -->
-        <item name="cornerRadius">8dp</item>
-    </style>
-
-    <!-- تکست‌باکس‌ها (ورودی‌ها) -->
+    <!-- تکست‌باکس -->
     <style name="Widget.App.TextBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="boxBackgroundMode">underline</item>
-        <item name="boxStrokeColor">@color/colorPrimary</item> <!-- آبی در حالت انتخاب -->
-        <item name="android:textColor">@color/colorTextPrimary</item>
-        <item name="android:textColorHint">@color/colorTextHint</item> <!-- خاکستری در حالت عادی -->
-        <item name="boxStrokeWidth">1dp</item>
-        <item name="boxStrokeWidthFocused">2dp</item>
+        <item name="app:boxStrokeColor">@color/colorPrimary</item>
+        <item name="app:boxStrokeWidth">2dp</item>
+        <item name="app:hintTextColor">@color/colorTextSecondary</item>
     </style>
 
-    <style name="Widget.App.TextBox.EditText" parent="Widget.MaterialComponents.TextInputEditText.FilledBox">
+    <style name="Widget.App.TextBox.EditText" parent="Widget.MaterialComponents.TextInputEditText.OutlinedBox">
         <item name="android:textColor">@color/colorTextPrimary</item>
-        <item name="android:textColorHint">@color/colorTextHint</item>
-        <item name="android:padding">8dp</item>
+        <item name="android:hint">@string/hint_default</item>
+    </style>
+
+    <!-- EditText ساده -->
+    <style name="Widget.App.EditText" parent="Widget.MaterialComponents.TextInputEditText.OutlinedBox">
+        <item name="android:textColor">@color/colorTextPrimary</item>
+        <item name="android:hint">@string/hint_default</item>
+    </style>
+
+    <!-- Spinner -->
+    <style name="Widget.App.Spinner" parent="Widget.MaterialComponents.Spinner">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorTextPrimary</item>
+    </style>
+
+    <!-- CheckBox -->
+    <style name="Widget.App.CheckBox" parent="Widget.MaterialComponents.CompoundButton.CheckBox">
+        <item name="android:textColor">@color/colorTextPrimary</item>
+    </style>
+
+    <!-- دکمه اصلی -->
+    <style name="Widget.App.PrimaryButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="backgroundTint">@color/colorPrimary</item>
     </style>
 
 </resources>
