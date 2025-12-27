@@ -28,25 +28,19 @@
                 android:padding="4dp">
 
                 <!-- ارتفاع -->
-                <TextView
-                    style="@style/BodyText"
-                    android:text="ارتفاع (cm)"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-
                 <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.App.TextInput"
+                    style="@style/Widget.App.TextBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:hint="ارتفاع (cm)"
                     android:layout_marginTop="8dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/inputHeight"
-                        style="@style/Widget.App.EditText"
+                        style="@style/Widget.App.TextBox.EditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="numberDecimal"
-                        android:hint="مثال: 250"/>
+                        android:inputType="numberDecimal"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <!-- انتخاب تیغه -->
@@ -145,7 +139,7 @@
                 android:padding="4dp">
 
                 <TextView
-                    style="@style/FinalPriceText"
+                    style="@style/TextRollDiameter"
                     android:id="@+id/textRollDiameter"
                     android:text="قطر رول: - cm"
                     android:textSize="18sp"
