@@ -11,7 +11,9 @@
         android:theme="@style/AppTheme.DarkBlue">
 
         <!-- اکتیویتی اصلی -->
-        <activity android:name=".MainActivity" android:exported="true">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -19,13 +21,19 @@
         </activity>
 
         <!-- صفحه محاسبه قطر رول -->
-        <activity android:name=".RollCalculatorActivity" android:exported="true"/>
+        <activity
+            android:name=".RollCalculatorActivity"
+            android:exported="true"/>
 
         <!-- صفحه قیمت پایه -->
-        <activity android:name=".BasePriceActivity" android:exported="true"/>
+        <activity
+            android:name=".BasePriceActivity"
+            android:exported="true"/>
 
         <!-- صفحه گزارش‌ها -->
-        <activity android:name=".ReportActivity" android:exported="true"/>
+        <activity
+            android:name=".ReportActivity"
+            android:exported="true"/>
 
         <!-- جزئیات گزارش -->
         <activity
@@ -33,4 +41,5 @@
             android:exported="false"
             android:label="@string/report_detail_title"/>
     </application>
+
 </manifest>
