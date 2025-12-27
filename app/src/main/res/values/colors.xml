@@ -13,7 +13,7 @@
 
     <!-- رنگ‌های متن -->
     <color name="colorTextPrimary">#FFFFFF</color>      <!-- متن اصلی سفید -->
-    <color name="colorTextHint">#B0B0B0</color>         <!-- متن راهنما خاکستری -->
+    <color name="colorTextSecondary">#B0B0B0</color>    <!-- متن راهنما خاکستری -->
     <color name="colorCardTitle">@color/colorSecondary</color> <!-- عنوان کارت کرم -->
     <color name="colorFinalPrice">#4CAF50</color>       <!-- قیمت نهایی سبز -->
     <color name="colorRollDiameter">#4CAF50</color>     <!-- قطر رول سبز -->
