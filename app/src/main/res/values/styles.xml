@@ -86,15 +86,15 @@
         <item name="android:textSize">18sp</item>
     </style>
 
-    <!-- شماره مشتری (برگشت به سفید) -->
+    <!-- شماره مشتری (سفید عمومی) -->
     <style name="CustomerNumberText" parent="TextAppearance.MaterialComponents.Body1">
-        <item name="android:textColor">@color/colorTextPrimary</item> <!-- سفید -->
+        <item name="android:textColor">@color/colorTextPrimary</item>
         <item name="android:textSize">14sp</item>
     </style>
 
     <!-- شماره موبایل فقط در صفحه ریز گزارش (آبی) -->
     <style name="CustomerPhoneReportText" parent="TextAppearance.MaterialComponents.Body1">
-        <item name="android:textColor">@color/colorPrimary</item> <!-- آبی -->
+        <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textStyle">bold</item>
     </style>
@@ -103,14 +103,6 @@
     <style name="DateText" parent="TextAppearance.MaterialComponents.Body2">
         <item name="android:textColor">@color/colorTextHint</item>
         <item name="android:textSize">12sp</item>
-    </style>
-
-    <!-- تکست‌باکس برای دیالوگ‌ها -->
-    <style name="Widget.App.TextInput" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="boxStrokeColor">@color/colorPrimary</item>
-        <item name="hintTextColor">@color/colorTextHint</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
     </style>
 
     <!-- عنوان آیتم‌ها -->
@@ -132,15 +124,22 @@
         <item name="cornerSize">8dp</item>
     </style>
 
-    <!-- تم اختصاصی دیالوگ متریال -->
+    <!-- تم اختصاصی دیالوگ متریال (Material 2) -->
     <style name="AppAlertDialogTheme" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
-        <item name="materialAlertDialogBackgroundColor">@color/colorCardBackground</item>
+        <!-- بک‌گراند دیالوگ -->
+        <item name="android:background">@color/colorCardBackground</item>
+
+        <!-- حذف حاشیه‌های پیش‌فرض -->
         <item name="backgroundInsetStart">0dp</item>
         <item name="backgroundInsetEnd">0dp</item>
         <item name="backgroundInsetTop">0dp</item>
         <item name="backgroundInsetBottom">0dp</item>
-        <item name="shapeAppearanceCornerMedium">@style/Shape.Round8</item>
-        <item name="shapeAppearanceCornerLarge">@style/Shape.Round8</item>
+
+        <!-- گوشه‌های گرد -->
+        <item name="shapeAppearanceMediumComponent">@style/Shape.Round8</item>
+        <item name="shapeAppearanceLargeComponent">@style/Shape.Round8</item>
+
+        <!-- متن‌ها -->
         <item name="materialAlertDialogBodyTextStyle">@style/BodyText</item>
         <item name="materialAlertDialogTitleTextStyle">@style/TitleText</item>
     </style>
