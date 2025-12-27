@@ -5,7 +5,7 @@
     <color name="colorSecondary">#FFE0B2</color>        <!-- کرم -->
 
     <!-- رنگ‌های پس‌زمینه -->
-    <color name="colorBackground">#000000</color>       <!-- پس‌زمینه مشکی -->
+    <color name="colorBackground">#121212</color>       <!-- پس‌زمینه کلی اپ (خاکستری تیره) -->
     <color name="colorCardBackground">#121212</color>   <!-- پس‌زمینه کارت و دیالوگ -->
     <color name="colorCardStroke">#1E1E1E</color>       <!-- خط دور کارت -->
     <color name="colorSurface">#1E1E1E</color>          <!-- سطح کارت/دیالوگ -->
@@ -25,9 +25,10 @@
     <color name="blue">@color/colorPrimary</color>
     <color name="cream">@color/colorSecondary</color>
     <color name="green">#4CAF50</color>
+    <color name="red">#F44336</color>
 
     <!-- رنگ‌های آیکن‌ها -->
     <color name="colorIconAdd">@color/colorPrimary</color>     <!-- آیکن افزودن آبی -->
     <color name="colorIconEdit">@color/colorSecondary</color>  <!-- آیکن ویرایش کرم -->
-    <color name="colorIconDelete">@color/colorSecondary</color> <!-- آیکن حذف کرم -->
+    <color name="colorIconDelete">@color/red</color>           <!-- آیکن حذف قرمز -->
 </resources>
