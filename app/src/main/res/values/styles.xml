@@ -73,4 +73,44 @@
         <item name="backgroundTint">@color/colorPrimary</item>
     </style>
 
+    <!-- استایل‌های گمشده -->
+
+    <!-- متن قیمت نهایی (برای بعضی layoutها) -->
+    <style name="FinalPriceText" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="android:textColor">@color/colorFinalPrice</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <!-- شماره مشتری -->
+    <style name="CustomerNumberText" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textColor">@color/colorTextPrimary</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!-- تاریخ گزارش -->
+    <style name="DateText" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:textColor">@color/colorTextHint</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <!-- تکست‌باکس برای دیالوگ‌ها -->
+    <style name="Widget.App.TextInput" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/colorPrimary</item>
+        <item name="hintTextColor">@color/colorTextHint</item>
+    </style>
+
+    <!-- عنوان آیتم‌ها -->
+    <style name="TitleText" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="android:textColor">@color/colorCardTitle</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <!-- متن خاص آبی -->
+    <style name="SpecialText.Blue" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>
