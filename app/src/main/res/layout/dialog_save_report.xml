@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:padding="8dp"
-    android:layout_width="wrap_content"
+    android:padding="16dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:background="@color/colorCardBackground">
 
     <!-- نام مشتری -->
     <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.App.TextInput"
-        android:layout_width="250dp"
+        style="@style/Widget.App.TextBox"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="نام مشتری">
+        android:hint="@string/dialog_report_customer_name">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etCustomerName"
-            style="@style/Widget.App.EditText"
+            style="@style/Widget.App.TextBox.EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
@@ -26,15 +26,15 @@
 
     <!-- شماره موبایل -->
     <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.App.TextInput"
-        android:layout_width="250dp"
+        style="@style/Widget.App.TextBox"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="شماره موبایل (اختیاری)"
-        android:layout_marginTop="8dp">
+        android:hint="@string/dialog_report_customer_phone"
+        android:layout_marginTop="12dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etCustomerPhone"
-            style="@style/Widget.App.EditText"
+            style="@style/Widget.App.TextBox.EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="phone"
@@ -48,21 +48,21 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="end"
-        android:layout_marginTop="12dp">
+        android:layout_marginTop="20dp">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCancel"
-            style="?attr/materialButtonOutlinedStyle"
-            android:text="لغو"
+            style="@style/Widget.App.PrimaryButton"
+            android:text="@string/btn_cancel"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSave"
             style="@style/Widget.App.PrimaryButton"
-            android:text="ذخیره"
+            android:text="@string/btn_save"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"/>
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 </LinearLayout>
