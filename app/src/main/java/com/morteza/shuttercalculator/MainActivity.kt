@@ -222,6 +222,7 @@ class MainActivity : AppCompatActivity() {
         spinnerBox.onItemSelectedListener = listener
         checkboxBoxEnabled.setOnCheckedChangeListener { _, _ -> recalcAllAndDisplay() }
     }
+
     // ساخت چک‌باکس‌های گزینه‌های اضافی بر اساس Prefs
     private fun buildExtrasCheckboxes() {
         extrasContainer.removeAllViews()
@@ -234,7 +235,8 @@ class MainActivity : AppCompatActivity() {
             val cb = CheckBox(this)
             cb.text = "$name  (${FormatUtils.formatToman(price.toLong())})"
             cb.isChecked = enabled
-            cb.setTextColor(resources.getColor(R.color.colorOnSurface, theme))
+            // هماهنگ با تم: متن چک‌باکس‌ها از رنگ متن اصلی استفاده کند
+            cb.setTextColor(ContextCompat.getColor(this, R.color.colorTextPrimary))
             cb.maxLines = 1
             cb.ellipsize = TextUtils.TruncateAt.END
             cb.setOnCheckedChangeListener { _, isChecked ->
@@ -244,7 +246,6 @@ class MainActivity : AppCompatActivity() {
             extrasContainer.addView(cb)
         }
     }
-
     private fun recalcAllAndDisplay() {
         val heightCm = max(0.0, inputHeightCm.text.toString().toDoubleOrNull() ?: 0.0)
         val widthCm = max(0.0, inputWidthCm.text.toString().toDoubleOrNull() ?: 0.0)
