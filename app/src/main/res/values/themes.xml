@@ -2,10 +2,9 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- تم اصلی اپلیکیشن -->
-    <style name="AppTheme.DarkBlue" parent="Theme.MaterialComponents.NoActionBar">
+    <style name="AppTheme.DarkBlue" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- رنگ‌های اصلی -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryVariant">@color/colorCardBackground</item>
         <item name="colorSecondary">@color/colorSecondary</item>
 
         <!-- رنگ‌های متن -->
@@ -21,7 +20,20 @@
         <item name="editTextStyle">@style/Widget.App.EditText</item>
         <item name="spinnerStyle">@style/Widget.App.Spinner</item>
         <item name="checkboxStyle">@style/Widget.App.CheckBox</item>
+
+        <!-- تم دیالوگ‌ها -->
+        <item name="alertDialogTheme">@style/AppAlertDialogTheme</item>
+    </style>
+
+    <!-- تم اختصاصی دیالوگ -->
+    <style name="AppAlertDialogTheme" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="materialAlertDialogBackgroundColor">@color/colorCardBackground</item>
+        <item name="backgroundInsetStart">0dp</item>
+        <item name="backgroundInsetEnd">0dp</item>
+        <item name="backgroundInsetTop">0dp</item>
+        <item name="backgroundInsetBottom">0dp</item>
+        <item name="materialAlertDialogBodyTextStyle">@style/BodyText</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/TitleText</item>
     </style>
 
 </resources>
-
