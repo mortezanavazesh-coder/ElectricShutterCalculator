@@ -15,28 +15,54 @@
 
     <!-- عنوان بخش یا کارت -->
     <style name="TextTitle" parent="TextAppearance.MaterialComponents.Headline6">
-        <item name="android:textColor">@color/colorCardTitle</item>
+        <item name="android:textColor">@color/colorSecondary</item> <!-- کرم -->
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">16sp</item>
     </style>
 
     <!-- متن قیمت نهایی -->
     <style name="TextFinalPrice" parent="TextAppearance.MaterialComponents.Headline6">
-        <item name="android:textColor">@color/colorFinalPrice</item>
+        <item name="android:textColor">@color/colorFinalPrice</item> <!-- سبز -->
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">18sp</item>
     </style>
 
-    <!-- متن تاریخ -->
-    <style name="TextDate" parent="TextAppearance.MaterialComponents.Body2">
-        <item name="android:textColor">@color/colorDate</item>
-        <item name="android:textSize">12sp</item>
+    <!-- متن قطر رول -->
+    <style name="TextRollDiameter" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textColor">@color/colorRollDiameter</item> <!-- سبز -->
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
     </style>
 
-    <!-- شماره مشتری -->
-    <style name="TextCustomerNumber" parent="TextAppearance.MaterialComponents.Body2">
-        <item name="android:textColor">@color/colorCustomerNumber</item>
-        <item name="android:textSize">14sp</item>
+    <!-- کارت‌ها -->
+    <style name="Widget.App.MaterialCard" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/colorCardBackground</item>
+        <item name="cardStrokeColor">@color/colorCardStroke</item>
+        <item name="cardElevation">4dp</item>
+        <item name="cardCornerRadius">8dp</item>
+    </style>
+
+    <!-- دکمه‌ها -->
+    <style name="Widget.App.PrimaryButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="backgroundTint">@color/colorPrimary</item> <!-- آبی -->
+        <item name="cornerRadius">8dp</item>
+    </style>
+
+    <!-- تکست‌باکس‌ها (ورودی‌ها) -->
+    <style name="Widget.App.TextBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxBackgroundMode">underline</item>
+        <item name="boxStrokeColor">@color/colorPrimary</item> <!-- آبی در حالت انتخاب -->
+        <item name="android:textColor">@color/colorTextPrimary</item>
+        <item name="android:textColorHint">@color/colorTextHint</item> <!-- خاکستری در حالت عادی -->
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxStrokeWidthFocused">2dp</item>
+    </style>
+
+    <style name="Widget.App.TextBox.EditText" parent="Widget.MaterialComponents.TextInputEditText.FilledBox">
+        <item name="android:textColor">@color/colorTextPrimary</item>
+        <item name="android:textColorHint">@color/colorTextHint</item>
+        <item name="android:padding">8dp</item>
     </style>
 
 </resources>
