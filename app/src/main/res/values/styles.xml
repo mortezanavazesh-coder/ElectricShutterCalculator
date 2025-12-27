@@ -8,7 +8,7 @@
     </style>
 
     <style name="CardTitleText" parent="TextAppearance.MaterialComponents.Headline6">
-        <item name="android:textColor">@color/colorTextPrimary</item>
+        <item name="android:textColor">@color/colorCardTitle</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">16sp</item>
     </style>
@@ -29,16 +29,17 @@
     <style name="Widget.App.MaterialCard" parent="Widget.MaterialComponents.CardView">
         <item name="android:layout_marginTop">8dp</item>
         <item name="android:layout_marginBottom">8dp</item>
-        <item name="app:strokeColor">@color/colorPrimary</item>
-        <item name="app:cardCornerRadius">8dp</item>
-        <item name="app:cardElevation">4dp</item>
+        <item name="strokeColor">@color/colorCardStroke</item>
+        <item name="cardCornerRadius">8dp</item>
+        <item name="cardElevation">4dp</item>
+        <item name="android:background">@color/colorCardBackground</item>
     </style>
 
     <!-- تکست‌باکس -->
     <style name="Widget.App.TextBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="app:boxStrokeColor">@color/colorPrimary</item>
-        <item name="app:boxStrokeWidth">2dp</item>
-        <item name="app:hintTextColor">@color/colorTextSecondary</item>
+        <item name="boxStrokeColor">@color/colorPrimary</item>
+        <item name="boxStrokeWidth">2dp</item>
+        <item name="hintTextColor">@color/colorTextSecondary</item>
     </style>
 
     <style name="Widget.App.TextBox.EditText" parent="Widget.MaterialComponents.TextInputEditText.OutlinedBox">
@@ -53,7 +54,7 @@
     </style>
 
     <!-- Spinner -->
-    <style name="Widget.App.Spinner" parent="Widget.MaterialComponents.Spinner">
+    <style name="Widget.App.Spinner" parent="Widget.App.EditText">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/colorTextPrimary</item>
