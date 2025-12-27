@@ -135,9 +135,8 @@
         <item name="backgroundInsetTop">0dp</item>
         <item name="backgroundInsetBottom">0dp</item>
 
-        <!-- گوشه‌های گرد -->
-        <item name="shapeAppearanceMediumComponent">@style/Shape.Round8</item>
-        <item name="shapeAppearanceLargeComponent">@style/Shape.Round8</item>
+        <!-- گوشه‌های گرد (اصلاح: استفاده از Overlay) -->
+        <item name="shapeAppearanceOverlay">@style/Shape.Round8</item>
 
         <!-- متن‌ها -->
         <item name="materialAlertDialogBodyTextStyle">@style/BodyText</item>
