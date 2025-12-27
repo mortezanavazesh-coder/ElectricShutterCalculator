@@ -86,10 +86,17 @@
         <item name="android:textSize">18sp</item>
     </style>
 
-    <!-- شماره مشتری (اصلاح: رنگ آبی) -->
+    <!-- شماره مشتری (برگشت به سفید) -->
     <style name="CustomerNumberText" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textColor">@color/colorTextPrimary</item> <!-- سفید -->
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!-- شماره موبایل فقط در صفحه ریز گزارش (آبی) -->
+    <style name="CustomerPhoneReportText" parent="TextAppearance.MaterialComponents.Body1">
         <item name="android:textColor">@color/colorPrimary</item> <!-- آبی -->
         <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <!-- تاریخ گزارش -->
