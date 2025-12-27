@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:padding="8dp"
     android:orientation="vertical"
-    android:layout_width="wrap_content"
+    android:padding="16dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:background="@color/colorCardBackground">
 
     <!-- عنوان شفت -->
     <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.App.TextInput"
-        android:layout_width="250dp"
+        style="@style/Widget.App.TextBox"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="عنوان شفت">
+        android:hint="@string/dialog_shaft_title">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etShaftTitle"
-            style="@style/Widget.App.EditText"
+            style="@style/Widget.App.TextBox.EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textCapSentences"
@@ -26,15 +26,15 @@
 
     <!-- قیمت شفت -->
     <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.App.TextInput"
-        android:layout_width="250dp"
+        style="@style/Widget.App.TextBox"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="قیمت شفت (ت)"
-        android:layout_marginTop="8dp">
+        android:hint="@string/dialog_shaft_price"
+        android:layout_marginTop="12dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etShaftPrice"
-            style="@style/Widget.App.EditText"
+            style="@style/Widget.App.TextBox.EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
@@ -44,15 +44,15 @@
 
     <!-- قطر شفت -->
     <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.App.TextInput"
-        android:layout_width="250dp"
+        style="@style/Widget.App.TextBox"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="قطر شفت (سانتی‌متر)"
-        android:layout_marginTop="8dp">
+        android:hint="@string/dialog_shaft_diameter"
+        android:layout_marginTop="12dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etShaftDiameter"
-            style="@style/Widget.App.EditText"
+            style="@style/Widget.App.TextBox.EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
@@ -66,21 +66,21 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="end"
-        android:layout_marginTop="12dp">
+        android:layout_marginTop="20dp">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCancelShaft"
-            style="?attr/materialButtonOutlinedStyle"
-            android:text="لغو"
+            style="@style/Widget.App.PrimaryButton"
+            android:text="@string/btn_cancel"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSaveShaft"
             style="@style/Widget.App.PrimaryButton"
-            android:text="ذخیره"
+            android:text="@string/btn_save"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"/>
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 </LinearLayout>
