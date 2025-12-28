@@ -1,5 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- تم اصلی اپ -->
     <style name="Theme.ShutterCalculator" parent="Theme.Material3.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
@@ -19,6 +20,19 @@
         <item name="android:fontFamily">sans-serif</item>
     </style>
 
+    <!-- تم آبی تیره -->
+    <style name="AppTheme.DarkBlue" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#0D47A1</item> <!-- آبی خیلی تیره -->
+        <item name="colorPrimaryVariant">#1565C0</item>
+        <item name="colorSecondary">#FFC107</item>
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+        <item name="colorOnSecondary">@color/colorOnSecondary</item>
+        <item name="colorOnSurface">@color/colorOnSurface</item>
+        <item name="colorOnBackground">@color/colorOnBackground</item>
+    </style>
+
+    <!-- تم دیالوگ‌ها -->
     <style name="AppAlertDialogTheme" parent="ThemeOverlay.Material3.MaterialAlertDialog">
         <item name="colorSurface">@color/colorSurface</item>
         <item name="colorOnSurface">@color/colorOnSurface</item>
