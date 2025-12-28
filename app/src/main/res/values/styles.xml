@@ -135,7 +135,7 @@
         <item name="backgroundInsetTop">0dp</item>
         <item name="backgroundInsetBottom">0dp</item>
 
-        <!-- گوشه‌های گرد (اصلاح: استفاده از Overlay) -->
+        <!-- گوشه‌های گرد -->
         <item name="shapeAppearanceOverlay">@style/Shape.Round8</item>
 
         <!-- متن‌ها -->
