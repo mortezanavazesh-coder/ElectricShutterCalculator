@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <!-- دکمه اصلی -->
@@ -12,7 +13,7 @@
     </style>
 
     <!-- کارت‌ها -->
-    <style name="Widget.App.Card" parent="Widget.Material3.CardView">
+    <style name="Widget.App.Card" parent="Widget.Material3.MaterialCardView">
         <item name="android:background">@color/colorSurface</item>
         <item name="android:textColor">@color/colorOnSurface</item>
     </style>
@@ -20,6 +21,12 @@
     <!-- چک‌باکس -->
     <style name="Widget.App.CheckBox" parent="Widget.Material3.CompoundButton.CheckBox">
         <item name="android:textColor">@color/colorOnSurface</item>
+    </style>
+
+    <!-- دیالوگ‌ها -->
+    <style name="Widget.App.AlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="colorSurface">@color/colorSurface</item>
+        <item name="colorOnSurface">@color/colorOnSurface</item>
     </style>
 
 </resources>
