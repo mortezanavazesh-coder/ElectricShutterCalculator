@@ -28,6 +28,12 @@
         <item name="cornerSize">8dp</item>
     </style>
 
+    <!-- برای رفع ارجاع‌های قدیمی -->
+    <style name="Shape">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
     <!-- دیالوگ -->
     <style name="AppAlertDialogTheme" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
         <item name="android:background">@color/colorCardBackground</item>
