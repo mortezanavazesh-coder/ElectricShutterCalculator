@@ -1,13 +1,29 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="AppTheme.Dark" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+
+    <!-- تم اصلی اپ -->
+    <style name="Theme.ShutterCalculator" parent="Theme.Material3.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
         <item name="colorSecondary">@color/colorSecondary</item>
-        <item name="android:windowBackground">@color/colorBackground</item>
-        <item name="android:textColorPrimary">@color/colorTextPrimary</item>
-        <item name="android:textColorSecondary">@color/colorTextSecondary</item>
-        <item name="android:textColorHint">@color/colorTextHint</item>
-        <item name="materialButtonStyle">@style/Widget.App.PrimaryButton</item>
-        <item name="cardViewStyle">@style/Widget.App.MaterialCard</item>
-        <item name="textInputStyle">@style/Widget.App.TextBox</item>
+        <item name="colorSecondaryVariant">@color/colorSecondaryVariant</item>
+        <item name="colorSurface">@color/colorSurface</item>
+        <item name="colorBackground">@color/colorBackground</item>
+        <item name="colorError">@color/colorError</item>
+
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+        <item name="colorOnSecondary">@color/colorOnSecondary</item>
+        <item name="colorOnSurface">@color/colorOnSurface</item>
+        <item name="colorOnBackground">@color/colorOnBackground</item>
+        <item name="colorOnError">@color/colorOnError</item>
+
+        <!-- فونت پیش‌فرض -->
+        <item name="android:fontFamily">@font/iran_sans</item>
     </style>
+
+    <!-- تم دیالوگ‌ها -->
+    <style name="AppAlertDialogTheme" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="colorSurface">@color/colorSurface</item>
+        <item name="colorOnSurface">@color/colorOnSurface</item>
+    </style>
+
 </resources>
