@@ -38,7 +38,7 @@
     <!-- فیلد ورودی داخل باکس -->
     <style name="Widget.App.TextBox.EditText" parent="Widget.Material3.TextInputEditText.FilledBox">
         <item name="android:textColor">@color/colorOnSurface</item>
-        <item name="android:hintTextColor">@color/colorOnSurface</item>
+        <item name="android:textColorHint">@color/colorOnSurface</item>
     </style>
 
 </resources>
