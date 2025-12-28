@@ -1,61 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/Widget.App.MaterialCard"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="12dp"
+    android:layout_marginTop="@dimen/space_md"
     android:foreground="?attr/selectableItemBackground">
 
     <LinearLayout
+        style="@style/App.PageSection"
         android:orientation="vertical"
-        android:padding="12dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:padding="@dimen/space_md">
 
         <!-- عنوان گزارش (نام مشتری) -->
         <TextView
             android:id="@+id/textReportTitle"
-            style="@style/BodyText"
-            android:text="@string/dialog_report_customer_name"
-            android:textSize="18sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            style="@style/CardTitleText"
+            android:text="@string/dialog_report_customer_name"/>
 
         <!-- تاریخ گزارش -->
         <TextView
             android:id="@+id/textReportDate"
             style="@style/DateText"
             android:text="تاریخ"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"/>
+            android:layout_marginTop="@dimen/space_md"/>
 
         <!-- جمع کل -->
         <TextView
             android:id="@+id/textReportPrice"
             style="@style/FinalPriceText"
             android:text="@string/report_total"
-            android:textSize="16sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"/>
+            android:layout_marginTop="@dimen/space_md"/>
 
         <!-- دکمه حذف -->
         <LinearLayout
+            style="@style/App.PageSection"
             android:orientation="horizontal"
             android:gravity="end"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp">
+            android:layout_marginTop="@dimen/space_lg">
 
             <ImageButton
                 android:id="@+id/buttonDeleteReport"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                style="@style/Widget.App.IconButton"
                 android:src="@drawable/ic_delete"
-                android:tint="@color/colorIconDelete"
-                android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="@string/btn_delete"/>
         </LinearLayout>
     </LinearLayout>
