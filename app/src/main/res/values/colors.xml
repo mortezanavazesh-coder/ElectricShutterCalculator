@@ -1,26 +1,10 @@
 <resources>
     <!-- رنگ‌های اصلی -->
-    <color name="colorPrimary">#2196F3</color>          <!-- آبی متریال -->
-    <color name="colorSecondary">#FFE0B2</color>        <!-- کرم متریال -->
-    <color name="colorOnPrimary">#FFFFFF</color>
-    <color name="colorOnSecondary">#000000</color>
-
-    <!-- پس‌زمینه و سطح -->
-    <color name="colorBackground">#121212</color>       <!-- پس‌زمینه دارک -->
-    <color name="colorSurface">#1E1E1E</color>          <!-- سطح کارت و دیالوگ -->
-    <color name="colorCardBackground">#1E1E1E</color>
-    <color name="colorCardStroke">#333333</color>
-
-    <!-- متن‌ها -->
+    <color name="colorPrimary">#2196F3</color>
+    <color name="colorSecondary">#FFE0B2</color>
+    <color name="colorBackground">#121212</color>
+    <color name="colorSurface">#1E1E1E</color>
     <color name="colorTextPrimary">#FFFFFF</color>
     <color name="colorTextSecondary">#B0B0B0</color>
     <color name="colorTextHint">#808080</color>
-
-    <!-- رنگ‌های خاص -->
-    <color name="colorFinalPrice">#4CAF50</color>
-    <color name="colorRollDiameter">@color/colorFinalPrice</color>
-
-    <!-- رنگ‌های پایه -->
-    <color name="white">#FFFFFF</color>
-    <color name="black">#000000</color>
 </resources>
