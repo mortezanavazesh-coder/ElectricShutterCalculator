@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- نام اپلیکیشن -->
     <string name="app_name">محاسبه‌گر کرکره برقی</string>
@@ -14,16 +13,13 @@
     <!-- دیالوگ‌ها -->
     <string name="dialog_item_title">عنوان آیتم</string>
     <string name="dialog_item_price">قیمت آیتم (تومان)</string>
-
     <string name="dialog_shaft_title">عنوان شفت</string>
     <string name="dialog_shaft_price">قیمت شفت (تومان)</string>
     <string name="dialog_shaft_diameter">قطر شفت (سانتی‌متر)</string>
-
     <string name="dialog_slat_title">عنوان تیغه</string>
     <string name="dialog_slat_price">قیمت تیغه (تومان)</string>
     <string name="dialog_slat_width">عرض تیغه (سانتی‌متر)</string>
     <string name="dialog_slat_thickness">ضخامت تیغه (سانتی‌متر)</string>
-
     <string name="dialog_report_customer_name">نام مشتری</string>
     <string name="dialog_report_customer_phone">شماره موبایل (اختیاری)</string>
 
@@ -33,13 +29,6 @@
     <string name="base_price_title">قیمت پایه</string>
     <string name="report_title">گزارش‌ها</string>
     <string name="report_detail_title">جزئیات گزارش</string>
-
-    <!-- متن‌های عمومی -->
-    <string name="option_name">گزینه</string>
-    <string name="option_price">0 تومان</string>
-    <string name="report_total">جمع کل: 0 تومان</string>
-    <string name="unit_price">قیمت واحد</string>
-    <string name="total_price">جمع</string>
 
     <!-- پیام‌های خطا -->
     <string name="error_define_blade_shaft">ابتدا تیغه و شفت را تعریف کنید</string>
@@ -59,7 +48,4 @@
     <string name="result_partial_round">دور ناقص: %.2f</string>
     <string name="result_remaining_blades">تیغه‌های ناقص دور آخر: %.2f</string>
     <string name="result_roll_diameter">قطر رول نهایی: %.2f cm</string>
-
-    <!-- راهنما پیش‌فرض -->
-    <string name="hint_default"></string>
 </resources>
