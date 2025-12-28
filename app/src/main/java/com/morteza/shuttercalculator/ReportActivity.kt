@@ -25,28 +25,13 @@ class ReportActivity : AppCompatActivity() {
         textEmptyReports = findViewById(R.id.textEmptyReports)
 
         reports = ReportStorage.loadReports(this).toMutableList()
-
-        if (reports.isEmpty()) {
-            textEmptyReports.visibility = View.VISIBLE
-            recyclerReports.visibility = View.GONE
-        } else {
-            textEmptyReports.visibility = View.GONE
-            recyclerReports.visibility = View.VISIBLE
-        }
-
         adapter = ReportAdapter(
             reports,
             onDeleteClick = { report ->
                 ReportStorage.deleteReport(this, report)
                 reports.remove(report)
-                adapter.updateReports(reports)
-
-                // مدیریت حالت خالی بعد از حذف
-                if (reports.isEmpty()) {
-                    textEmptyReports.visibility = View.VISIBLE
-                    recyclerReports.visibility = View.GONE
-                }
-
+                updateAdapter()
+                updateEmptyState()
                 Toast.makeText(this, "گزارش حذف شد", Toast.LENGTH_SHORT).show()
             },
             onItemClick = { report ->
@@ -59,9 +44,28 @@ class ReportActivity : AppCompatActivity() {
         recyclerReports.layoutManager = LinearLayoutManager(this)
         recyclerReports.adapter = adapter
 
-        // دکمه بازگشت به صفحه اصلی
+        updateEmptyState()
+
         findViewById<View>(R.id.buttonBackToMain).setOnClickListener {
             finish()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // بارگذاری مجدد برای اطمینان از تازه بودن لیست پس از بازگشت از صفحات دیگر
+        reports = ReportStorage.loadReports(this).toMutableList()
+        updateAdapter()
+        updateEmptyState()
+    }
+
+    private fun updateAdapter() {
+        adapter.updateReports(reports)
+    }
+
+    private fun updateEmptyState() {
+        val isEmpty = reports.isEmpty()
+        textEmptyReports.visibility = if (isEmpty) View.VISIBLE else View.GONE
+        recyclerReports.visibility = if (isEmpty) View.GONE else View.VISIBLE
     }
 }
