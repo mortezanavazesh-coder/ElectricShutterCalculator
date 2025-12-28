@@ -1,24 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/App.PageSection"
+    android:padding="@dimen/space_md"
     android:layout_gravity="center"
-    android:background="@color/colorCardBackground">
+    android:background="?attr/colorSurface"
+    android:orientation="vertical">
 
     <!-- عنوان شفت -->
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.App.TextBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:hint="@string/dialog_shaft_title">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etShaftTitle"
             style="@style/Widget.App.TextBox.EditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:inputType="textCapSentences"
             android:maxLines="1"
             android:ellipsize="end"/>
@@ -27,16 +23,12 @@
     <!-- قیمت شفت -->
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.App.TextBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:hint="@string/dialog_shaft_price"
-        android:layout_marginTop="12dp">
+        android:layout_marginTop="@dimen/space_md">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etShaftPrice"
             style="@style/Widget.App.TextBox.EditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:maxLines="1"
             android:ellipsize="end"/>
@@ -45,16 +37,12 @@
     <!-- قطر شفت -->
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.App.TextBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:hint="@string/dialog_shaft_diameter"
-        android:layout_marginTop="12dp">
+        android:layout_marginTop="@dimen/space_md">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etShaftDiameter"
             style="@style/Widget.App.TextBox.EditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:maxLines="1"
             android:ellipsize="end"/>
@@ -62,25 +50,20 @@
 
     <!-- دکمه‌ها -->
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/App.PageSection"
         android:orientation="horizontal"
         android:gravity="end"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="@dimen/space_lg">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCancelShaft"
             style="@style/Widget.App.PrimaryButton"
             android:text="@string/btn_cancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"/>
+            android:layout_marginEnd="@dimen/space_sm"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSaveShaft"
             style="@style/Widget.App.PrimaryButton"
-            android:text="@string/btn_save"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:text="@string/btn_save"/>
     </LinearLayout>
 </LinearLayout>
