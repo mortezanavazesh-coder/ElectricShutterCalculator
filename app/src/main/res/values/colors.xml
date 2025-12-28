@@ -5,7 +5,7 @@
     <color name="colorSecondary">#FFC107</color>
     <color name="colorSecondaryVariant">#FFA000</color>
 
-    <!-- رنگ‌های سطح و متن -->
+    <!-- رنگ‌های سطح و پس‌زمینه -->
     <color name="colorSurface">#FFFFFF</color>
     <color name="colorBackground">#F5F5F5</color>
     <color name="colorError">#D32F2F</color>
