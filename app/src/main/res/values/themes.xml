@@ -1,18 +1,27 @@
-<style name="Theme.ShutterCalculator" parent="Theme.Material3.Light.NoActionBar">
-    <item name="colorPrimary">@color/colorPrimary</item>
-    <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
-    <item name="colorSecondary">@color/colorSecondary</item>
-    <item name="colorSecondaryVariant">@color/colorSecondaryVariant</item>
-    <item name="colorSurface">@color/colorSurface</item>
-    <item name="android:colorBackground">@color/colorBackground</item>
-    <item name="colorError">@color/colorError</item>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
-    <item name="colorOnPrimary">@color/colorOnPrimary</item>
-    <item name="colorOnSecondary">@color/colorOnSecondary</item>
-    <item name="colorOnSurface">@color/colorOnSurface</item>
-    <item name="colorOnBackground">@color/colorOnBackground</item>
-    <item name="colorOnError">@color/colorOnError</item>
+    <style name="Theme.ShutterCalculator" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="colorSecondaryVariant">@color/colorSecondaryVariant</item>
+        <item name="colorSurface">@color/colorSurface</item>
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="colorError">@color/colorError</item>
 
-    <!-- اگر فونت iran_sans نداری این خط رو حذف کن -->
-    <!-- <item name="android:fontFamily">@font/iran_sans</item> -->
-</style>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+        <item name="colorOnSecondary">@color/colorOnSecondary</item>
+        <item name="colorOnSurface">@color/colorOnSurface</item>
+        <item name="colorOnBackground">@color/colorOnBackground</item>
+        <item name="colorOnError">@color/colorOnError</item>
+
+        <!-- فونت عمومی -->
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="AppAlertDialogTheme" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="colorSurface">@color/colorSurface</item>
+        <item name="colorOnSurface">@color/colorOnSurface</item>
+    </style>
+
+</resources>
