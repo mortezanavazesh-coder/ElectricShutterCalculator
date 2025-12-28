@@ -11,16 +11,15 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.color.MaterialColors
 import com.morteza.shuttercalculator.utils.FormatUtils
 import com.morteza.shuttercalculator.utils.PrefsHelper
 import com.morteza.shuttercalculator.utils.ReportStorage
 import com.morteza.shuttercalculator.utils.ThousandSeparatorTextWatcher
 import kotlin.math.max
 import saman.zamani.persiandate.PersianDate
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 
 class MainActivity : AppCompatActivity() {
 
@@ -73,10 +72,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var textTotal: TextView
 
     // دکمه‌ها
-    private lateinit var buttonSaveReport: Button
-    private lateinit var buttonBasePrice: Button
-    private lateinit var buttonRollDiameter: Button
-    private lateinit var buttonReports: Button
+    private lateinit var buttonSaveReport: MaterialButton
+    private lateinit var buttonBasePrice: MaterialButton
+    private lateinit var buttonRollDiameter: MaterialButton
+    private lateinit var buttonReports: MaterialButton
 
     private var previousInstallBase: Long = 0L
 
@@ -92,10 +91,10 @@ class MainActivity : AppCompatActivity() {
         setupButtons()
 
         vm.basePrices.observe(this) { bp ->
-            spinnerBlade.adapter = makeWhiteAdapter(bp.blades)
-            spinnerMotor.adapter = makeWhiteAdapter(bp.motors)
-            spinnerShaft.adapter = makeWhiteAdapter(bp.shafts)
-            spinnerBox.adapter = makeWhiteAdapter(bp.boxes)
+            spinnerBlade.adapter = makeThemedAdapter(bp.blades)
+            spinnerMotor.adapter = makeThemedAdapter(bp.motors)
+            spinnerShaft.adapter = makeThemedAdapter(bp.shafts)
+            spinnerBox.adapter = makeThemedAdapter(bp.boxes)
 
             inputInstallPrice.setText(FormatUtils.formatTomanPlain(bp.installBase))
             inputWeldingPrice.setText(FormatUtils.formatTomanPlain(bp.weldingBase))
@@ -223,6 +222,31 @@ class MainActivity : AppCompatActivity() {
         checkboxBoxEnabled.setOnCheckedChangeListener { _, _ -> recalcAllAndDisplay() }
     }
 
+    private fun makeThemedAdapter(items: List<String>): ArrayAdapter<String> {
+        return object : ArrayAdapter<String>(
+            this,
+            android.R.layout.simple_spinner_item,
+            items
+        ) {
+            override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+                val tv = super.getView(position, convertView, parent) as TextView
+                tv.setTextColor(MaterialColors.getColor(tv, com.google.android.material.R.attr.colorOnPrimary))
+                tv.ellipsize = TextUtils.TruncateAt.END
+                tv.maxLines = 1
+                return tv
+            }
+
+            override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
+                val tv = super.getDropDownView(position, convertView, parent) as TextView
+                tv.setTextColor(MaterialColors.getColor(tv, com.google.android.material.R.attr.colorOnSurface))
+                tv.ellipsize = TextUtils.TruncateAt.END
+                tv.maxLines = 1
+                return tv
+            }
+        }.apply {
+            setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        }
+    }
     // ساخت چک‌باکس‌های گزینه‌های اضافی بر اساس Prefs
     private fun buildExtrasCheckboxes() {
         extrasContainer.removeAllViews()
@@ -235,8 +259,7 @@ class MainActivity : AppCompatActivity() {
             val cb = CheckBox(this)
             cb.text = "$name  (${FormatUtils.formatToman(price.toLong())})"
             cb.isChecked = enabled
-            // هماهنگ با تم: متن چک‌باکس‌ها از رنگ متن اصلی استفاده کند
-            cb.setTextColor(ContextCompat.getColor(this, R.color.colorTextPrimary))
+            cb.setTextColor(MaterialColors.getColor(cb, com.google.android.material.R.attr.colorOnSurface))
             cb.maxLines = 1
             cb.ellipsize = TextUtils.TruncateAt.END
             cb.setOnCheckedChangeListener { _, isChecked ->
@@ -246,6 +269,8 @@ class MainActivity : AppCompatActivity() {
             extrasContainer.addView(cb)
         }
     }
+
+    // محاسبات و نمایش نتایج
     private fun recalcAllAndDisplay() {
         val heightCm = max(0.0, inputHeightCm.text.toString().toDoubleOrNull() ?: 0.0)
         val widthCm = max(0.0, inputWidthCm.text.toString().toDoubleOrNull() ?: 0.0)
@@ -316,7 +341,6 @@ class MainActivity : AppCompatActivity() {
         // گزینه‌های اضافی
         val extrasMap = PrefsHelper.getAllExtraOptionsWithEnabled(this)
         val enabledExtras = extrasMap.filter { it.value.second }
-
         var extrasTotal = 0L
         for ((_, pair) in enabledExtras) {
             extrasTotal += pair.first.toLong()
@@ -342,14 +366,12 @@ class MainActivity : AppCompatActivity() {
         val view = LayoutInflater.from(this).inflate(R.layout.dialog_save_report, null)
         val etName = view.findViewById<EditText>(R.id.etCustomerName)
         val etPhone = view.findViewById<EditText>(R.id.etCustomerPhone)
-        val btnSave = view.findViewById<Button>(R.id.btnSave)
-        val btnCancel = view.findViewById<Button>(R.id.btnCancel)
+        val btnSave = view.findViewById<MaterialButton>(R.id.btnSave)
+        val btnCancel = view.findViewById<MaterialButton>(R.id.btnCancel)
 
-        val dialog = AlertDialog.Builder(this)
+        val dialog = AlertDialog.Builder(this, R.style.AppAlertDialogTheme)
             .setView(view)
             .create()
-
-        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
 
         btnSave.setOnClickListener {
             val name = etName.text.toString().trim()
@@ -446,35 +468,12 @@ class MainActivity : AppCompatActivity() {
             )
 
             ReportStorage.saveReport(this, report)
-            Toast.makeText(this, "گزارش ذخیره شد", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "گزارش ذخیره شد ✅", Toast.LENGTH_SHORT).show()
             dialog.dismiss()
         }
 
         btnCancel.setOnClickListener { dialog.dismiss() }
 
         dialog.show()
-    }
-
-    // آداپتر عمومی اسپینر با رنگ متن سفید
-    private fun makeWhiteAdapter(items: List<String>): ArrayAdapter<String> {
-        return object : ArrayAdapter<String>(
-            this,
-            android.R.layout.simple_spinner_item,
-            items
-        ) {
-            override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-                val view = super.getView(position, convertView, parent) as TextView
-                view.setTextColor(ContextCompat.getColor(context, R.color.white))
-                return view
-            }
-
-            override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
-                val view = super.getDropDownView(position, convertView, parent) as TextView
-                view.setTextColor(ContextCompat.getColor(context, R.color.white))
-                return view
-            }
-        }.apply {
-            setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        }
     }
 }
