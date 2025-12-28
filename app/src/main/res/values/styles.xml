@@ -1,34 +1,25 @@
 <resources>
-    <!-- متن‌ها -->
-    <style name="BodyText" parent="TextAppearance.MaterialComponents.Body1">
-        <item name="android:textColor">?attr/colorTextPrimary</item>
+
+    <!-- دکمه اصلی -->
+    <style name="Widget.App.PrimaryButton" parent="Widget.Material3.Button">
+        <item name="android:textColor">@color/colorOnPrimary</item>
+        <item name="backgroundTint">@color/colorPrimary</item>
     </style>
 
-    <style name="CardTitleText" parent="TextAppearance.MaterialComponents.Headline6">
-        <item name="android:textColor">?attr/colorTextPrimary</item>
-        <item name="android:textStyle">bold</item>
+    <!-- دکمه ثانویه -->
+    <style name="Widget.App.SecondaryButton" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
-    <!-- کارت -->
-    <style name="Widget.App.MaterialCard" parent="Widget.MaterialComponents.CardView">
-        <item name="cardBackgroundColor">?attr/colorSurface</item>
-        <item name="cardCornerRadius">8dp</item>
-        <item name="strokeColor">?attr/colorSecondary</item>
+    <!-- کارت‌ها -->
+    <style name="Widget.App.Card" parent="Widget.Material3.CardView">
+        <item name="android:background">@color/colorSurface</item>
+        <item name="android:textColor">@color/colorOnSurface</item>
     </style>
 
-    <!-- دکمه -->
-    <style name="Widget.App.PrimaryButton" parent="Widget.MaterialComponents.Button">
-        <item name="backgroundTint">?attr/colorPrimary</item>
-        <item name="android:textColor">?attr/colorTextPrimary</item>
+    <!-- چک‌باکس -->
+    <style name="Widget.App.CheckBox" parent="Widget.Material3.CompoundButton.CheckBox">
+        <item name="android:textColor">@color/colorOnSurface</item>
     </style>
 
-    <!-- TextBox -->
-    <style name="Widget.App.TextBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="boxStrokeColor">?attr/colorPrimary</item>
-        <item name="hintTextColor">?attr/colorTextHint</item>
-    </style>
-
-    <style name="Widget.App.TextBox.EditText" parent="Widget.MaterialComponents.TextInputEditText.OutlinedBox">
-        <item name="android:textColor">?attr/colorTextPrimary</item>
-    </style>
 </resources>
