@@ -5,7 +5,7 @@
     android:fillViewport="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground"
+    android:background="?attr/colorBackground"
     android:padding="4dp">
 
     <LinearLayout
@@ -17,9 +17,7 @@
         <com.google.android.material.card.MaterialCardView
             style="@style/Widget.App.MaterialCard"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardPreventCornerOverlap="true"
-            app:cardUseCompatPadding="true">
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:orientation="vertical"
@@ -27,7 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <!-- هدر: آیکن چپ + عنوان راست -->
+                <!-- هدر -->
                 <LinearLayout
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
@@ -40,13 +38,11 @@
                         android:contentDescription="افزودن تیغه"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:tint="@color/colorIconAdd"/>
+                        android:tint="?attr/colorPrimary"/>
 
                     <TextView
                         style="@style/CardTitleText"
                         android:text="افزودن تیغه"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"/>
                 </LinearLayout>
 
@@ -57,9 +53,9 @@
                     android:text="هیچ تیغه‌ای موجود نیست"
                     android:gravity="center"
                     android:visibility="gone"
+                    android:layout_marginTop="12dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"/>
+                    android:layout_height="wrap_content"/>
 
                 <!-- لیست -->
                 <androidx.recyclerview.widget.RecyclerView
@@ -76,9 +72,7 @@
             style="@style/Widget.App.MaterialCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            app:cardPreventCornerOverlap="true"
-            app:cardUseCompatPadding="true">
+            android:layout_marginTop="12dp">
 
             <LinearLayout
                 android:orientation="vertical"
@@ -99,13 +93,11 @@
                         android:contentDescription="افزودن موتور"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:tint="@color/colorIconAdd"/>
+                        android:tint="?attr/colorPrimary"/>
 
                     <TextView
                         style="@style/CardTitleText"
                         android:text="افزودن موتور"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"/>
                 </LinearLayout>
 
@@ -116,9 +108,9 @@
                     android:text="هیچ موتوری موجود نیست"
                     android:gravity="center"
                     android:visibility="gone"
+                    android:layout_marginTop="12dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"/>
+                    android:layout_height="wrap_content"/>
 
                 <!-- لیست -->
                 <androidx.recyclerview.widget.RecyclerView
@@ -135,9 +127,7 @@
             style="@style/Widget.App.MaterialCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            app:cardPreventCornerOverlap="true"
-            app:cardUseCompatPadding="true">
+            android:layout_marginTop="12dp">
 
             <LinearLayout
                 android:orientation="vertical"
@@ -158,13 +148,11 @@
                         android:contentDescription="افزودن شفت"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:tint="@color/colorIconAdd"/>
+                        android:tint="?attr/colorPrimary"/>
 
                     <TextView
                         style="@style/CardTitleText"
                         android:text="افزودن شفت"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"/>
                 </LinearLayout>
 
@@ -175,9 +163,9 @@
                     android:text="هیچ شفتی موجود نیست"
                     android:gravity="center"
                     android:visibility="gone"
+                    android:layout_marginTop="12dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"/>
+                    android:layout_height="wrap_content"/>
 
                 <!-- لیست -->
                 <androidx.recyclerview.widget.RecyclerView
@@ -194,9 +182,7 @@
             style="@style/Widget.App.MaterialCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            app:cardPreventCornerOverlap="true"
-            app:cardUseCompatPadding="true">
+            android:layout_marginTop="12dp">
 
             <LinearLayout
                 android:orientation="vertical"
@@ -217,13 +203,11 @@
                         android:contentDescription="افزودن قوطی"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:tint="@color/colorIconAdd"/>
+                        android:tint="?attr/colorPrimary"/>
 
                     <TextView
                         style="@style/CardTitleText"
                         android:text="افزودن قوطی"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"/>
                 </LinearLayout>
 
@@ -234,9 +218,9 @@
                     android:text="هیچ قوطی‌ای موجود نیست"
                     android:gravity="center"
                     android:visibility="gone"
+                    android:layout_marginTop="12dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"/>
+                    android:layout_height="wrap_content"/>
 
                 <!-- لیست -->
                 <androidx.recyclerview.widget.RecyclerView
@@ -253,9 +237,7 @@
             style="@style/Widget.App.MaterialCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            app:cardPreventCornerOverlap="true"
-            app:cardUseCompatPadding="true">
+            android:layout_marginTop="12dp">
 
             <LinearLayout
                 android:orientation="vertical"
@@ -276,13 +258,11 @@
                         android:contentDescription="افزودن گزینه اضافی"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:tint="@color/colorIconAdd"/>
+                        android:tint="?attr/colorPrimary"/>
 
                     <TextView
                         style="@style/CardTitleText"
                         android:text="افزودن گزینه اضافی"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"/>
                 </LinearLayout>
 
@@ -293,9 +273,9 @@
                     android:text="هیچ گزینه‌ای موجود نیست"
                     android:gravity="center"
                     android:visibility="gone"
+                    android:layout_marginTop="12dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"/>
+                    android:layout_height="wrap_content"/>
 
                 <!-- لیست -->
                 <androidx.recyclerview.widget.RecyclerView
@@ -312,9 +292,7 @@
             style="@style/Widget.App.MaterialCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            app:cardPreventCornerOverlap="true"
-            app:cardUseCompatPadding="true">
+            android:layout_marginTop="12dp">
 
             <LinearLayout
                 android:orientation="vertical"
@@ -325,54 +303,42 @@
                 <!-- نصب -->
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.App.TextBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:hint="هزینه نصب (تومان به ازای هر متر مربع)"
                     android:layout_marginTop="12dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/inputInstallBase"
                         style="@style/Widget.App.TextBox.EditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
                         android:inputType="numberDecimal"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <!-- جوشکاری -->
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.App.TextBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:hint="جوشکاری (تومان)"
                     android:layout_marginTop="12dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/inputWeldingBase"
                         style="@style/Widget.App.TextBox.EditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
                         android:inputType="numberDecimal"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <!-- کرایه حمل -->
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.App.TextBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:hint="کرایه حمل (تومان)"
                     android:layout_marginTop="12dp">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/inputTransportBase"
                         style="@style/Widget.App.TextBox.EditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
                         android:inputType="numberDecimal"/>
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- دکمه‌ها خارج از کارت‌ها -->
+        <!-- دکمه‌ها -->
         <LinearLayout
             android:id="@+id/bottomButtons"
             android:orientation="horizontal"
@@ -385,16 +351,12 @@
             <com.google.android.material.button.MaterialButton
                 style="@style/Widget.App.PrimaryButton"
                 android:id="@+id/buttonSaveAll"
-                android:text="ذخیرهٔ همه"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:text="ذخیرهٔ همه"/>
 
             <com.google.android.material.button.MaterialButton
                 style="@style/Widget.App.PrimaryButton"
                 android:id="@+id/buttonBack"
                 android:text="بازگشت"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"/>
         </LinearLayout>
 
