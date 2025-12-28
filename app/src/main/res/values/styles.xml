@@ -13,7 +13,8 @@
     </style>
 
     <!-- کارت‌ها -->
-    <style name="Widget.App.Card" parent="Widget.Material3.MaterialCardView">
+    <!-- استفاده از MaterialComponents برای رفع خطا -->
+    <style name="Widget.App.Card" parent="Widget.MaterialComponents.CardView">
         <item name="android:background">@color/colorSurface</item>
         <item name="android:textColor">@color/colorOnSurface</item>
     </style>
