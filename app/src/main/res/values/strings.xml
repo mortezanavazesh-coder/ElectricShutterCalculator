@@ -8,6 +8,8 @@
     <string name="btn_cancel">لغو</string>
     <string name="btn_edit">ویرایش</string>
     <string name="btn_delete">حذف</string>
+    <string name="btn_back">بازگشت</string>
+    <string name="btn_calculate">محاسبه</string>
 
     <!-- دیالوگ‌ها -->
     <string name="dialog_item_title">عنوان آیتم</string>
@@ -39,7 +41,25 @@
     <string name="unit_price">قیمت واحد</string>
     <string name="total_price">جمع</string>
 
+    <!-- پیام‌های خطا -->
+    <string name="error_define_blade_shaft">ابتدا تیغه و شفت را تعریف کنید</string>
+    <string name="error_invalid_input">اطلاعات معتبر وارد کنید</string>
+    <string name="error_customer_name_required">نام مشتری الزامی است</string>
+    <string name="error_total_invalid">جمع کل نامعتبر است، لطفاً ابتدا محاسبه را انجام دهید</string>
+
+    <!-- پیام‌های موفقیت -->
+    <string name="success_report_saved">گزارش ذخیره شد ✅</string>
+    <string name="success_item_added">آیتم اضافه شد ✅</string>
+    <string name="success_item_deleted">آیتم حذف شد ✅</string>
+    <string name="success_base_cost_saved">هزینه‌های پایه ذخیره شد ✅</string>
+
+    <!-- نتایج محاسبات رول -->
+    <string name="result_total_blades">تعداد تیغه: %.0f</string>
+    <string name="result_full_rounds">تعداد دور کامل: %d</string>
+    <string name="result_partial_round">دور ناقص: %.2f</string>
+    <string name="result_remaining_blades">تیغه‌های ناقص دور آخر: %.2f</string>
+    <string name="result_roll_diameter">قطر رول نهایی: %.2f cm</string>
+
     <!-- راهنما پیش‌فرض -->
     <string name="hint_default"></string>
 </resources>
-
