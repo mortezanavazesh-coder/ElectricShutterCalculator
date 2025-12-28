@@ -1,8 +1,12 @@
 package com.morteza.shuttercalculator
 
 import android.os.Bundle
+import android.text.TextUtils
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.color.MaterialColors
 import com.morteza.shuttercalculator.utils.PrefsHelper
 import kotlin.math.PI
 import kotlin.math.max
@@ -17,8 +21,8 @@ class RollCalculatorActivity : AppCompatActivity() {
         val inputHeight = findViewById<EditText>(R.id.inputHeight)
         val spinnerBlade = findViewById<Spinner>(R.id.spinnerBlade)
         val spinnerShaft = findViewById<Spinner>(R.id.spinnerShaft)
-        val buttonBack = findViewById<Button>(R.id.buttonBackToMain)
-        val buttonCalculate = findViewById<Button>(R.id.buttonCalculateRoll)
+        val buttonBack = findViewById<MaterialButton>(R.id.buttonBackToMain)
+        val buttonCalculate = findViewById<MaterialButton>(R.id.buttonCalculateRoll)
 
         val textTotalBlades = findViewById<TextView>(R.id.textTotalBlades)
         val textFullRounds = findViewById<TextView>(R.id.textFullRounds)
@@ -30,8 +34,8 @@ class RollCalculatorActivity : AppCompatActivity() {
         val blades = PrefsHelper.getSortedOptionList(this, "تیغه") ?: emptyList()
         val shafts = PrefsHelper.getSortedOptionList(this, "شفت") ?: emptyList()
 
-        spinnerBlade.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, blades)
-        spinnerShaft.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, shafts)
+        spinnerBlade.adapter = makeThemedAdapter(blades)
+        spinnerShaft.adapter = makeThemedAdapter(shafts)
 
         // دکمه بازگشت
         buttonBack.setOnClickListener { finish() }
@@ -42,7 +46,7 @@ class RollCalculatorActivity : AppCompatActivity() {
 
             if (spinnerBlade.adapter == null || spinnerBlade.adapter.count == 0 ||
                 spinnerShaft.adapter == null || spinnerShaft.adapter.count == 0) {
-                Toast.makeText(this, "ابتدا تیغه و شفت را تعریف کنید", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.error_define_blade_shaft), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -56,36 +60,28 @@ class RollCalculatorActivity : AppCompatActivity() {
 
             // اعتبارسنجی ورودی‌ها
             if (bladeWidthCm <= 0 || bladeThicknessCm <= 0 || shaftDiameterCm <= 0 || heightCm <= 0) {
-                Toast.makeText(this, "اطلاعات معتبر وارد کنید", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.error_invalid_input), Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             // محاسبات
-            // تعداد تیغه‌ها (بدون اعشار در نمایش)
             val totalBlades = heightCm / bladeWidthCm
             var remainingBlades = totalBlades
-
-            // شروع قطر رول از قطر شفت
             var rollDiameterCm = shaftDiameterCm
-
             var fullRounds = 0
             var partialRoundRatio = 0.0
             var lastRemainingBlades = 0.0
 
-            // حلقه دورها: در هر دور کامل، قطر رول به اندازه 2 * ضخامت تیغه افزایش می‌یابد
             while (remainingBlades > 0) {
                 val currentCircumference = rollDiameterCm * PI
                 val bladesPerRound = currentCircumference / bladeWidthCm
 
                 if (remainingBlades >= bladesPerRound) {
-                    // دور کامل
                     remainingBlades -= bladesPerRound
-                    rollDiameterCm += (2.0 * bladeThicknessCm) // افزایش قطر: ۲ × ضخامت
+                    rollDiameterCm += (2.0 * bladeThicknessCm)
                     fullRounds++
                 } else {
-                    // دور ناقص
                     partialRoundRatio = max(0.0, remainingBlades / bladesPerRound)
-                    // افزایش قطر متناسب با نسبت دور ناقص
                     rollDiameterCm += (2.0 * bladeThicknessCm * partialRoundRatio)
                     lastRemainingBlades = remainingBlades
                     remainingBlades = 0.0
@@ -93,11 +89,38 @@ class RollCalculatorActivity : AppCompatActivity() {
             }
 
             // نمایش خروجی‌ها
-            textTotalBlades.text = "تعداد تیغه: %.0f".format(totalBlades)
-            textFullRounds.text = "تعداد دور کامل: $fullRounds"
-            textPartialRound.text = "دور ناقص: %.2f".format(partialRoundRatio)
-            textRemainingBlades.text = "تیغه‌های ناقص دور آخر: %.2f".format(lastRemainingBlades)
-            textRollDiameter.text = "قطر رول نهایی: %.2f cm".format(rollDiameterCm)
+            textTotalBlades.text = getString(R.string.result_total_blades, totalBlades)
+            textFullRounds.text = getString(R.string.result_full_rounds, fullRounds)
+            textPartialRound.text = getString(R.string.result_partial_round, partialRoundRatio)
+            textRemainingBlades.text = getString(R.string.result_remaining_blades, lastRemainingBlades)
+            textRollDiameter.text = getString(R.string.result_roll_diameter, rollDiameterCm)
+        }
+    }
+
+    // آداپتر اسپینر Theme-driven
+    private fun makeThemedAdapter(items: List<String>): ArrayAdapter<String> {
+        return object : ArrayAdapter<String>(
+            this,
+            android.R.layout.simple_spinner_item,
+            items
+        ) {
+            override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+                val tv = super.getView(position, convertView, parent) as TextView
+                tv.setTextColor(MaterialColors.getColor(tv, com.google.android.material.R.attr.colorOnPrimary))
+                tv.ellipsize = TextUtils.TruncateAt.END
+                tv.maxLines = 1
+                return tv
+            }
+
+            override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
+                val tv = super.getDropDownView(position, convertView, parent) as TextView
+                tv.setTextColor(MaterialColors.getColor(tv, com.google.android.material.R.attr.colorOnSurface))
+                tv.ellipsize = TextUtils.TruncateAt.END
+                tv.maxLines = 1
+                return tv
+            }
+        }.apply {
+            setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         }
     }
 }
