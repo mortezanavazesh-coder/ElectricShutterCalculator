@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <!-- دکمه اصلی -->
@@ -13,21 +12,33 @@
     </style>
 
     <!-- کارت‌ها -->
-    <!-- استفاده از MaterialComponents برای رفع خطا -->
-    <style name="Widget.App.Card" parent="Widget.MaterialComponents.CardView">
+    <style name="Widget.App.MaterialCard" parent="Widget.MaterialComponents.CardView">
+        <item name="cardElevation">4dp</item>
+        <item name="cardCornerRadius">8dp</item>
         <item name="android:background">@color/colorSurface</item>
+    </style>
+
+    <!-- عنوان کارت -->
+    <style name="CardTitleText" parent="TextAppearance.Material3.TitleMedium">
+        <item name="android:textColor">@color/colorOnSurface</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- متن بدنه کارت -->
+    <style name="BodyText" parent="TextAppearance.Material3.BodyMedium">
         <item name="android:textColor">@color/colorOnSurface</item>
     </style>
 
-    <!-- چک‌باکس -->
-    <style name="Widget.App.CheckBox" parent="Widget.Material3.CompoundButton.CheckBox">
+    <!-- باکس ورودی -->
+    <style name="Widget.App.TextBox" parent="Widget.Material3.TextInputLayout.FilledBox">
+        <item name="boxBackgroundColor">@color/colorSurface</item>
         <item name="android:textColor">@color/colorOnSurface</item>
     </style>
 
-    <!-- دیالوگ‌ها -->
-    <style name="Widget.App.AlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
-        <item name="colorSurface">@color/colorSurface</item>
-        <item name="colorOnSurface">@color/colorOnSurface</item>
+    <!-- فیلد ورودی داخل باکس -->
+    <style name="Widget.App.TextBox.EditText" parent="Widget.Material3.TextInputEditText.FilledBox">
+        <item name="android:textColor">@color/colorOnSurface</item>
+        <item name="android:hintTextColor">@color/colorOnSurface</item>
     </style>
 
 </resources>
