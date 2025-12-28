@@ -124,21 +124,20 @@
         <item name="cornerSize">8dp</item>
     </style>
 
-    <!-- تم اختصاصی دیالوگ متریال (Material 2) -->
-    <style name="AppAlertDialogTheme" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
-        <!-- بک‌گراند دیالوگ -->
-        <item name="android:background">@color/colorCardBackground</item>
+    <!-- تعریف جایگزین برای رفع ارجاع اشتباه -->
+    <style name="Shape">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
 
-        <!-- حذف حاشیه‌های پیش‌فرض -->
+    <!-- تم اختصاصی دیالوگ متریال -->
+    <style name="AppAlertDialogTheme" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="android:background">@color/colorCardBackground</item>
         <item name="backgroundInsetStart">0dp</item>
         <item name="backgroundInsetEnd">0dp</item>
         <item name="backgroundInsetTop">0dp</item>
         <item name="backgroundInsetBottom">0dp</item>
-
-        <!-- گوشه‌های گرد -->
         <item name="shapeAppearanceOverlay">@style/Shape.Round8</item>
-
-        <!-- متن‌ها -->
         <item name="materialAlertDialogBodyTextStyle">@style/BodyText</item>
         <item name="materialAlertDialogTitleTextStyle">@style/TitleText</item>
     </style>
