@@ -1,10 +1,19 @@
 <resources>
     <!-- رنگ‌های اصلی -->
-    <color name="colorPrimary">#2196F3</color>
-    <color name="colorSecondary">#FFE0B2</color>
-    <color name="colorBackground">#121212</color>
-    <color name="colorSurface">#1E1E1E</color>
-    <color name="colorTextPrimary">#FFFFFF</color>
-    <color name="colorTextSecondary">#B0B0B0</color>
-    <color name="colorTextHint">#808080</color>
+    <color name="colorPrimary">#1976D2</color>
+    <color name="colorPrimaryVariant">#1565C0</color>
+    <color name="colorSecondary">#FFC107</color>
+    <color name="colorSecondaryVariant">#FFA000</color>
+
+    <!-- رنگ‌های سطح و متن -->
+    <color name="colorSurface">#FFFFFF</color>
+    <color name="colorBackground">#F5F5F5</color>
+    <color name="colorError">#D32F2F</color>
+
+    <!-- رنگ متن -->
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorOnSecondary">#000000</color>
+    <color name="colorOnSurface">#212121</color>
+    <color name="colorOnBackground">#212121</color>
+    <color name="colorOnError">#FFFFFF</color>
 </resources>
