@@ -1,12 +1,9 @@
 package com.morteza.shuttercalculator
 
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -16,6 +13,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.button.MaterialButton
 import com.morteza.shuttercalculator.utils.FormatUtils
 import com.morteza.shuttercalculator.utils.PrefsHelper
 import com.morteza.shuttercalculator.utils.ThousandSeparatorTextWatcher
@@ -40,7 +38,6 @@ class BasePriceActivity : AppCompatActivity() {
     private lateinit var emptyBoxes: TextView
     private lateinit var emptyExtras: TextView
 
-    // آیکن‌های افزودن (ImageView)
     private lateinit var buttonAddSlat: ImageView
     private lateinit var buttonAddMotor: ImageView
     private lateinit var buttonAddShaft: ImageView
@@ -219,11 +216,12 @@ class BasePriceActivity : AppCompatActivity() {
 
         etPrice.addTextChangedListener(ThousandSeparatorTextWatcher(etPrice))
 
-        val dialog = AlertDialog.Builder(this).setView(view).create()
-        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        val dialog = AlertDialog.Builder(this, R.style.AppAlertDialogTheme)
+            .setView(view)
+            .create()
 
-        val btnSave = view.findViewById<Button>(R.id.btnSaveSlat)
-        val btnCancel = view.findViewById<Button>(R.id.btnCancelSlat)
+        val btnSave = view.findViewById<MaterialButton>(R.id.btnSaveSlat)
+        val btnCancel = view.findViewById<MaterialButton>(R.id.btnCancelSlat)
 
         btnSave.setOnClickListener {
             val title = etTitle.text.toString().trim()
@@ -259,11 +257,12 @@ class BasePriceActivity : AppCompatActivity() {
 
         etPrice.addTextChangedListener(ThousandSeparatorTextWatcher(etPrice))
 
-        val dialog = AlertDialog.Builder(this).setView(view).create()
-        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        val dialog = AlertDialog.Builder(this, R.style.AppAlertDialogTheme)
+            .setView(view)
+            .create()
 
-        val btnSave = view.findViewById<Button>(R.id.btnSaveShaft)
-        val btnCancel = view.findViewById<Button>(R.id.btnCancelShaft)
+        val btnSave = view.findViewById<MaterialButton>(R.id.btnSaveShaft)
+        val btnCancel = view.findViewById<MaterialButton>(R.id.btnCancelShaft)
 
         btnSave.setOnClickListener {
             val title = etTitle.text.toString().trim()
@@ -297,11 +296,12 @@ class BasePriceActivity : AppCompatActivity() {
 
         etPrice.addTextChangedListener(ThousandSeparatorTextWatcher(etPrice))
 
-        val dialog = AlertDialog.Builder(this).setView(view).create()
-        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        val dialog = AlertDialog.Builder(this, R.style.AppAlertDialogTheme)
+            .setView(view)
+            .create()
 
-        val btnSave = view.findViewById<Button>(R.id.btnSaveItem)
-        val btnCancel = view.findViewById<Button>(R.id.btnCancelItem)
+        val btnSave = view.findViewById<MaterialButton>(R.id.btnSaveItem)
+        val btnCancel = view.findViewById<MaterialButton>(R.id.btnCancelItem)
 
         btnSave.setOnClickListener {
             val title = etTitle.text.toString().trim()
@@ -341,34 +341,42 @@ class BasePriceActivity : AppCompatActivity() {
         Toast.makeText(this, "هزینه‌های پایه ذخیره شد ✅", Toast.LENGTH_SHORT).show()
     }
 
-    // ------------------ تغییر نام آیتم (کارت سفارشی با دکمه‌های داخلی) ------------------
+    // ------------------ تغییر نام آیتم (Theme-driven) ------------------
     private fun showRenameDialog(category: String, oldTitle: String) {
-        // ساخت کارت سفارشی به صورت برنامه‌نویسی
+        val padding = getDimenPx(R.dimen.space_md)
+        val gap = getDimenPx(R.dimen.space_lg)
+        val btnGap = getDimenPx(R.dimen.space_sm)
+
         val container = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
-            setPadding(dp(16), dp(16), dp(16), dp(16))
-            setBackgroundResource(R.drawable.bg_dialog_dark)
+            setPadding(padding, padding, padding, padding)
+            // پس‌زمینه را به تم بسپار؛ شفاف برای نمایش کارت دیالوگ
+            setBackgroundResource(android.R.color.transparent)
         }
         val input = EditText(this).apply {
             setText(oldTitle)
+            hint = "نام جدید"
         }
         val buttons = LinearLayout(this).apply {
             orientation = LinearLayout.HORIZONTAL
             gravity = Gravity.END
-            setPadding(0, dp(16), 0, 0)
+            setPadding(0, gap, 0, 0)
         }
-        val btnCancel = Button(this).apply { text = "لغو" }
-        val btnSave = Button(this).apply {
+        val btnCancel = MaterialButton(this, null, com.google.android.material.R.attr.materialButtonOutlinedStyle).apply {
+            text = "لغو"
+        }
+        val btnSave = MaterialButton(this).apply {
             text = "ذخیره"
-            setPadding(dp(12), 0, 0, 0)
+            setPadding(btnGap, 0, 0, 0)
         }
         buttons.addView(btnCancel)
         buttons.addView(btnSave)
         container.addView(input)
         container.addView(buttons)
 
-        val dialog = AlertDialog.Builder(this).setView(container).create()
-        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        val dialog = AlertDialog.Builder(this, R.style.AppAlertDialogTheme)
+            .setView(container)
+            .create()
 
         btnSave.setOnClickListener {
             val newTitle = input.text.toString().trim()
@@ -378,10 +386,8 @@ class BasePriceActivity : AppCompatActivity() {
             }
             uiScope.launch {
                 withContext(Dispatchers.IO) {
-                    // تغییر نام در لیست اصلی
                     PrefsHelper.renameOption(this@BasePriceActivity, category, oldTitle, newTitle)
 
-                    // انتقال قیمت بدون صفر شدن
                     val oldKey = "${category}_price_$oldTitle"
                     val newKey = "${category}_price_$newTitle"
                     val price = PrefsHelper.getLong(this@BasePriceActivity, oldKey, -1L)
@@ -390,7 +396,6 @@ class BasePriceActivity : AppCompatActivity() {
                         PrefsHelper.removeKey(this@BasePriceActivity, oldKey)
                     }
 
-                    // انتقال وضعیت گزینه‌های اضافی
                     if (category == "اضافات") {
                         val oldEnabledKey = "extra_enabled_$oldTitle"
                         val newEnabledKey = "extra_enabled_$newTitle"
@@ -409,12 +414,16 @@ class BasePriceActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    // ------------------ ویرایش قیمت آیتم (کارت سفارشی با دکمه‌های داخلی) ------------------
+    // ------------------ ویرایش قیمت آیتم (Theme-driven) ------------------
     private fun showEditPriceDialog(category: String, title: String) {
+        val padding = getDimenPx(R.dimen.space_md)
+        val gap = getDimenPx(R.dimen.space_lg)
+        val btnGap = getDimenPx(R.dimen.space_sm)
+
         val container = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
-            setPadding(dp(16), dp(16), dp(16), dp(16))
-            setBackgroundResource(R.drawable.bg_dialog_dark)
+            setPadding(padding, padding, padding, padding)
+            setBackgroundResource(android.R.color.transparent)
         }
         val input = EditText(this).apply {
             val key = "${category}_price_$title"
@@ -426,20 +435,23 @@ class BasePriceActivity : AppCompatActivity() {
         val buttons = LinearLayout(this).apply {
             orientation = LinearLayout.HORIZONTAL
             gravity = Gravity.END
-            setPadding(0, dp(16), 0, 0)
+            setPadding(0, gap, 0, 0)
         }
-        val btnCancel = Button(this).apply { text = "لغو" }
-        val btnSave = Button(this).apply {
+        val btnCancel = MaterialButton(this, null, com.google.android.material.R.attr.materialButtonOutlinedStyle).apply {
+            text = "لغو"
+        }
+        val btnSave = MaterialButton(this).apply {
             text = "ذخیره"
-            setPadding(dp(12), 0, 0, 0)
+            setPadding(btnGap, 0, 0, 0)
         }
         buttons.addView(btnCancel)
         buttons.addView(btnSave)
         container.addView(input)
         container.addView(buttons)
 
-        val dialog = AlertDialog.Builder(this).setView(container).create()
-        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        val dialog = AlertDialog.Builder(this, R.style.AppAlertDialogTheme)
+            .setView(container)
+            .create()
 
         btnSave.setOnClickListener {
             val value = FormatUtils.parseTomanInput(input.text.toString())
@@ -458,10 +470,7 @@ class BasePriceActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    private fun dp(value: Int): Int {
-        val density = resources.displayMetrics.density
-        return (value * density).toInt()
-    }
+    private fun getDimenPx(resId: Int): Int = resources.getDimensionPixelSize(resId)
 
     override fun onDestroy() {
         super.onDestroy()
