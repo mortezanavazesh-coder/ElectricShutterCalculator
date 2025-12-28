@@ -1,38 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- رنگ‌های اصلی -->
-    <color name="colorPrimary">#2196F3</color>          <!-- آبی -->
-    <color name="colorSecondary">#FFE0B2</color>        <!-- کرم -->
-    <color name="colorOnPrimary">#FFFFFF</color>        <!-- متن روی آبی -->
-    <color name="colorOnSecondary">#000000</color>      <!-- متن روی کرم -->
+    <color name="colorPrimary">#2196F3</color>          <!-- آبی متریال -->
+    <color name="colorSecondary">#FFE0B2</color>        <!-- کرم متریال -->
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorOnSecondary">#000000</color>
 
-    <!-- رنگ‌های پس‌زمینه -->
-    <color name="colorBackground">#121212</color>       <!-- پس‌زمینه کلی اپ -->
-    <color name="colorCardBackground">#121212</color>   <!-- پس‌زمینه کارت و دیالوگ -->
-    <color name="colorCardStroke">#1E1E1E</color>       <!-- خط دور کارت -->
-    <color name="colorSurface">#1E1E1E</color>          <!-- سطح کارت/دیالوگ -->
-    <color name="colorSurfaceStroke">#333333</color>    <!-- خط دور سطح -->
+    <!-- پس‌زمینه و سطح -->
+    <color name="colorBackground">#121212</color>       <!-- پس‌زمینه دارک -->
+    <color name="colorSurface">#1E1E1E</color>          <!-- سطح کارت و دیالوگ -->
+    <color name="colorCardBackground">#1E1E1E</color>
+    <color name="colorCardStroke">#333333</color>
 
-    <!-- رنگ‌های متن -->
-    <color name="colorTextPrimary">#FFFFFF</color>      <!-- متن اصلی سفید -->
-    <color name="colorTextHint">#B0B0B0</color>         <!-- متن راهنما خاکستری -->
-    <color name="colorTextSecondary">#808080</color>    <!-- متن فرعی خاکستری -->
-    <color name="colorCardTitle">@color/colorSecondary</color> <!-- عنوان کارت کرم -->
+    <!-- متن‌ها -->
+    <color name="colorTextPrimary">#FFFFFF</color>
+    <color name="colorTextSecondary">#B0B0B0</color>
+    <color name="colorTextHint">#808080</color>
 
     <!-- رنگ‌های خاص -->
-    <color name="colorFinalPrice">#4CAF50</color>       <!-- قیمت نهایی سبز -->
-    <color name="colorRollDiameter">@color/colorFinalPrice</color> <!-- قطر رول سبز (ارجاع) -->
-
-    <!-- رنگ‌های عمومی -->
-    <color name="white">#FFFFFF</color>
-    <color name="black">#000000</color>
-    <color name="blue">@color/colorPrimary</color>
-    <color name="cream">@color/colorSecondary</color>
-    <color name="green">@color/colorFinalPrice</color>
-    <color name="red">#F44336</color>
-
-    <!-- رنگ‌های آیکن‌ها -->
-    <color name="colorIconAdd">@color/colorPrimary</color>           <!-- آیکن افزودن آبی -->
-    <color name="colorIconEdit">@color/colorSecondary</color>        <!-- آیکن ویرایش کرم -->
-    <color name="colorIconDelete">@color/colorSecondary</color>      <!-- آیکن حذف کرم -->
+    <color name="colorFinalPrice">#4CAF50</color>
+    <color name="colorRollDiameter">@color/colorFinalPrice</color>
 </resources>
