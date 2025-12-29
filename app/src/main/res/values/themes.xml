@@ -11,7 +11,9 @@
         <!-- رنگ‌های سطح و پس‌زمینه -->
         <item name="colorSurface">@color/colorSurface</item>
         <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="colorBackground">@color/colorBackground</item>
         <item name="colorError">@color/colorError</item>
+        <item name="colorOutline">@color/colorOutline</item>
 
         <!-- رنگ‌های متن -->
         <item name="colorOnPrimary">@color/colorOnPrimary</item>
@@ -35,7 +37,9 @@
         <!-- رنگ‌های سطح و پس‌زمینه -->
         <item name="colorSurface">#1E1E1E</item>
         <item name="android:colorBackground">#121212</item>
+        <item name="colorBackground">#121212</item>
         <item name="colorError">#CF6679</item>
+        <item name="colorOutline">#333333</item>
 
         <!-- رنگ‌های متن -->
         <item name="colorOnPrimary">#FFFFFF</item>
