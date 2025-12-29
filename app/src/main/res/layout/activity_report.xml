@@ -3,20 +3,28 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/App.PageContainer"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <!-- کارت پیام خالی -->
     <com.google.android.material.card.MaterialCardView
         style="@style/Widget.App.MaterialCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:visibility="gone">
 
         <LinearLayout
             style="@style/App.PageSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:padding="@dimen/space_sm">
 
             <TextView
                 style="@style/BodyText"
                 android:id="@+id/textEmptyReports"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:text="هیچ گزارشی موجود نیست"
                 android:gravity="center"/>
         </LinearLayout>
@@ -25,14 +33,16 @@
     <!-- کارت لیست گزارش‌ها -->
     <com.google.android.material.card.MaterialCardView
         style="@style/Widget.App.MaterialCard"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:layout_marginTop="@dimen/space_md">
 
         <LinearLayout
             style="@style/App.PageSection"
-            android:padding="@dimen/space_sm"
-            android:layout_height="match_parent">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/space_sm">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerReports"
@@ -46,8 +56,8 @@
     <com.google.android.material.button.MaterialButton
         style="@style/Widget.App.PrimaryButton"
         android:id="@+id/buttonBackToMain"
-        android:text="بازگشت به صفحه اصلی"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="بازگشت به صفحه اصلی"
         android:layout_marginTop="@dimen/space_md"/>
 </LinearLayout>
