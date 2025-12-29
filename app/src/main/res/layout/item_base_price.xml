@@ -10,6 +10,8 @@
 
     <LinearLayout
         style="@style/App.PageSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:padding="@dimen/space_md">
@@ -40,24 +42,32 @@
         <!-- دکمه‌ها -->
         <LinearLayout
             style="@style/App.PageSection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="end">
 
             <ImageButton
                 android:id="@+id/btnRenameItem"
                 style="@style/Widget.App.IconButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:src="@drawable/ic_edit"
                 android:contentDescription="@string/btn_edit"/>
 
             <ImageButton
                 android:id="@+id/btnEditItem"
                 style="@style/Widget.App.IconButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:src="@drawable/ic_price"
                 android:contentDescription="@string/btn_save"/>
 
             <ImageButton
                 android:id="@+id/btnDeleteItem"
                 style="@style/Widget.App.IconButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:src="@drawable/ic_delete"
                 android:contentDescription="@string/btn_delete"/>
         </LinearLayout>
