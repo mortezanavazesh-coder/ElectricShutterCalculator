@@ -62,11 +62,11 @@
     </style>
 
     <!-- دکمه آیکون -->
-    <style name="Widget.App.IconButton" parent="Widget.MaterialComponents.ImageButton">
+    <style name="Widget.App.IconButton" parent="Widget.AppCompat.ImageButton">
         <item name="android:layout_width">40dp</item>
         <item name="android:layout_height">40dp</item>
         <item name="android:backgroundTint">?attr/colorSurface</item>
-        <item name="tint">?attr/colorOnSurface</item>
+        <item name="android:tint">?attr/colorOnSurface</item>
     </style>
 
     <!-- متن شماره مشتری -->
