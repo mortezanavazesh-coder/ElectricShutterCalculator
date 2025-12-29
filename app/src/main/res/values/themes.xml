@@ -2,12 +2,18 @@
 
     <!-- تم اصلی اپ -->
     <style name="Theme.ShutterCalculator" parent="Theme.Material3.Light.NoActionBar">
+        <!-- رنگ‌های اصلی -->
         <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
         <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="colorSecondaryVariant">@color/colorSecondaryVariant</item>
+
+        <!-- رنگ‌های سطح و پس‌زمینه -->
         <item name="colorSurface">@color/colorSurface</item>
         <item name="android:colorBackground">@color/colorBackground</item>
         <item name="colorError">@color/colorError</item>
 
+        <!-- رنگ‌های متن -->
         <item name="colorOnPrimary">@color/colorOnPrimary</item>
         <item name="colorOnSecondary">@color/colorOnSecondary</item>
         <item name="colorOnSurface">@color/colorOnSurface</item>
@@ -20,12 +26,18 @@
 
     <!-- تم آبی تیره (Dark Mode) -->
     <style name="AppTheme.DarkBlue" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="colorPrimary">#0D47A1</item> <!-- آبی خیلی تیره -->
+        <!-- رنگ‌های اصلی -->
+        <item name="colorPrimary">#0D47A1</item>
+        <item name="colorPrimaryVariant">#1565C0</item>
         <item name="colorSecondary">#FFC107</item>
+        <item name="colorSecondaryVariant">#FFA000</item>
+
+        <!-- رنگ‌های سطح و پس‌زمینه -->
         <item name="colorSurface">#1E1E1E</item>
         <item name="android:colorBackground">#121212</item>
         <item name="colorError">#CF6679</item>
 
+        <!-- رنگ‌های متن -->
         <item name="colorOnPrimary">#FFFFFF</item>
         <item name="colorOnSecondary">#000000</item>
         <item name="colorOnSurface">#FFFFFF</item>
