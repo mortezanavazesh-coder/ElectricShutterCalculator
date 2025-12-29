@@ -2,31 +2,24 @@
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/scrollRoot"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="@dimen/space_sm"
-    android:clipToPadding="false"
-    android:background="?attr/colorBackground">
+    style="@style/App.PageContainer"
+    android:id="@+id/scrollRoot">
 
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        style="@style/App.PageSection">
 
         <!-- کارت ابعاد -->
         <com.google.android.material.card.MaterialCardView
             style="@style/Widget.App.MaterialCard">
 
             <LinearLayout
-                android:orientation="vertical"
+                style="@style/App.PageSection"
                 android:padding="@dimen/space_sm">
 
                 <TextView
                     style="@style/CardTitleText"
                     android:text="ابعاد کرکره"/>
 
-                <!-- ارتفاع -->
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.App.TextBox"
                     android:hint="ارتفاع (cm)"
@@ -37,7 +30,6 @@
                         android:inputType="numberDecimal"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <!-- عرض -->
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.App.TextBox"
                     android:hint="عرض (cm)"
@@ -62,7 +54,7 @@
             android:layout_marginTop="@dimen/space_md">
 
             <LinearLayout
-                android:orientation="vertical"
+                style="@style/App.PageSection"
                 android:padding="@dimen/space_sm">
 
                 <TextView
@@ -88,7 +80,7 @@
             android:layout_marginTop="@dimen/space_md">
 
             <LinearLayout
-                android:orientation="vertical"
+                style="@style/App.PageSection"
                 android:padding="@dimen/space_sm">
 
                 <TextView
@@ -114,7 +106,7 @@
             android:layout_marginTop="@dimen/space_md">
 
             <LinearLayout
-                android:orientation="vertical"
+                style="@style/App.PageSection"
                 android:padding="@dimen/space_sm">
 
                 <TextView
@@ -140,7 +132,7 @@
             android:layout_marginTop="@dimen/space_md">
 
             <LinearLayout
-                android:orientation="vertical"
+                style="@style/App.PageSection"
                 android:padding="@dimen/space_sm">
 
                 <TextView
@@ -166,20 +158,19 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- کارت هزینه‌های اجرایی -->
+        <!-- هزینه‌های اجرایی -->
         <com.google.android.material.card.MaterialCardView
             style="@style/Widget.App.MaterialCard"
             android:layout_marginTop="@dimen/space_md">
 
             <LinearLayout
-                android:orientation="vertical"
+                style="@style/App.PageSection"
                 android:padding="@dimen/space_sm">
 
                 <TextView
                     style="@style/CardTitleText"
                     android:text="هزینه‌های اجرایی"/>
 
-                <!-- هزینه نصب -->
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.App.TextBox"
                     android:hint="هزینه نصب (تومان)"
@@ -190,7 +181,6 @@
                         android:inputType="numberDecimal"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <!-- هزینه نصب محاسبه شده -->
                 <TextView
                     style="@style/BodyText"
                     android:text="هزینه نصب محاسبه شده"
@@ -201,7 +191,6 @@
                     style="@style/BodyText"
                     android:text="0 تومان"/>
 
-                <!-- قیمت جوشکاری -->
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.App.TextBox"
                     android:hint="قیمت جوشکاری (تومان)"
@@ -212,7 +201,6 @@
                         android:inputType="numberDecimal"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <!-- کرایه حمل -->
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.App.TextBox"
                     android:hint="کرایه حمل (تومان)"
@@ -225,13 +213,13 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- کارت گزینه‌های اضافی -->
+        <!-- گزینه‌های اضافی -->
         <com.google.android.material.card.MaterialCardView
             style="@style/Widget.App.MaterialCard"
             android:layout_marginTop="@dimen/space_md">
 
             <LinearLayout
-                android:orientation="vertical"
+                style="@style/App.PageSection"
                 android:padding="@dimen/space_sm">
 
                 <TextView
@@ -240,18 +228,18 @@
 
                 <LinearLayout
                     android:id="@+id/extrasContainer"
-                    android:orientation="vertical"
+                    style="@style/App.PageSection"
                     android:layout_marginTop="@dimen/space_md"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- کارت ریز محاسبات -->
+        <!-- ریز محاسبات -->
         <com.google.android.material.card.MaterialCardView
             style="@style/Widget.App.MaterialCard"
             android:layout_marginTop="@dimen/space_md">
 
             <LinearLayout
-                android:orientation="vertical"
+                style="@style/App.PageSection"
                 android:padding="@dimen/space_sm">
 
                 <TextView
@@ -300,15 +288,19 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- کارت قیمت نهایی -->
+        <!-- قیمت نهایی -->
         <com.google.android.material.card.MaterialCardView
             style="@style/Widget.App.MaterialCard"
             android:layout_marginTop="@dimen/space_md">
 
             <LinearLayout
-                android:orientation="vertical"
+                style="@style/App.PageSection"
                 android:padding="@dimen/space_sm">
-                
+
+                <TextView
+                    style="@style/FinalPriceText"
+                    android:text="قیمت نهایی"/>
+
                 <TextView
                     android:id="@+id/textTotal"
                     style="@style/FinalPriceText"
@@ -317,45 +309,36 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- دکمه‌های صفحه اصلی -->
+        <!-- دکمه‌ها -->
         <LinearLayout
             android:id="@+id/bottomBar"
+            style="@style/App.PageSection"
             android:orientation="vertical"
             android:padding="@dimen/space_md"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/space_md">
 
             <com.google.android.material.button.MaterialButton
                 style="@style/Widget.App.PrimaryButton"
                 android:id="@+id/buttonSaveReport"
                 android:text="ذخیره گزارش"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/space_sm"/>
 
             <com.google.android.material.button.MaterialButton
                 style="@style/Widget.App.PrimaryButton"
                 android:id="@+id/buttonBasePrice"
                 android:text="صفحه قیمت پایه"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/space_sm"/>
 
             <com.google.android.material.button.MaterialButton
                 style="@style/Widget.App.PrimaryButton"
                 android:id="@+id/buttonReports"
                 android:text="صفحه گزارشات"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/space_sm"/>
 
             <com.google.android.material.button.MaterialButton
                 style="@style/Widget.App.PrimaryButton"
                 android:id="@+id/buttonRollDiameter"
-                android:text="صفحه قطر رول"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:text="صفحه قطر رول"/>
         </LinearLayout>
 
     </LinearLayout>
