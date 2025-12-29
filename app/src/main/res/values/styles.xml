@@ -1,7 +1,7 @@
 <resources>
 
     <!-- کانتینر صفحه -->
-    <style name="App.PageContainer" parent="android:Widget.LinearLayout">
+    <style name="App.PageContainer">
         <item name="android:orientation">vertical</item>
         <item name="android:padding">@dimen/space_md</item>
         <item name="android:background">@color/colorBackground</item>
@@ -15,11 +15,24 @@
         <item name="android:background">@color/colorSurface</item>
     </style>
 
+    <!-- کارت‌ها -->
+    <style name="Widget.App.MaterialCard" parent="Widget.MaterialComponents.CardView">
+        <item name="cardElevation">4dp</item>
+        <item name="cardCornerRadius">8dp</item>
+        <item name="android:background">@color/colorSurface</item>
+    </style>
+
     <!-- اسپینر سفارشی -->
     <style name="Widget.App.Spinner" parent="android:Widget.Spinner">
         <item name="android:padding">@dimen/space_sm</item>
         <item name="android:textColor">@color/colorOnSurface</item>
         <item name="android:popupBackground">@color/colorSurface</item>
+    </style>
+
+    <!-- چک‌باکس -->
+    <style name="Widget.App.CheckBox" parent="android:Widget.CompoundButton.CheckBox">
+        <item name="android:textColor">@color/colorOnSurface</item>
+        <item name="android:buttonTint">@color/colorPrimary</item>
     </style>
 
     <!-- دکمه اصلی -->
@@ -33,13 +46,6 @@
         <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
-    <!-- کارت‌ها -->
-    <style name="Widget.App.MaterialCard" parent="Widget.MaterialComponents.CardView">
-        <item name="cardElevation">4dp</item>
-        <item name="cardCornerRadius">8dp</item>
-        <item name="android:background">@color/colorSurface</item>
-    </style>
-
     <!-- عنوان کارت -->
     <style name="CardTitleText" parent="TextAppearance.Material3.TitleMedium">
         <item name="android:textColor">@color/colorOnSurface</item>
@@ -49,6 +55,12 @@
     <!-- متن بدنه کارت -->
     <style name="BodyText" parent="TextAppearance.Material3.BodyMedium">
         <item name="android:textColor">@color/colorOnSurface</item>
+    </style>
+
+    <!-- متن قیمت نهایی -->
+    <style name="FinalPriceText" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <!-- باکس ورودی -->
