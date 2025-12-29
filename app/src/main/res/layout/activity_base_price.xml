@@ -43,6 +43,8 @@
                     <TextView
                         style="@style/CardTitleText"
                         android:text="افزودن تیغه"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/space_md"/>
                 </LinearLayout>
 
@@ -98,6 +100,8 @@
                     <TextView
                         style="@style/CardTitleText"
                         android:text="افزودن موتور"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/space_md"/>
                 </LinearLayout>
 
@@ -153,6 +157,8 @@
                     <TextView
                         style="@style/CardTitleText"
                         android:text="افزودن شفت"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/space_md"/>
                 </LinearLayout>
 
@@ -208,6 +214,8 @@
                     <TextView
                         style="@style/CardTitleText"
                         android:text="افزودن قوطی"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/space_md"/>
                 </LinearLayout>
 
@@ -263,6 +271,8 @@
                     <TextView
                         style="@style/CardTitleText"
                         android:text="افزودن گزینه اضافی"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/space_md"/>
                 </LinearLayout>
 
@@ -303,36 +313,48 @@
                 <!-- نصب -->
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.App.TextBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:hint="هزینه نصب (تومان به ازای هر متر مربع)"
                     android:layout_marginTop="@dimen/space_md">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/inputInstallBase"
                         style="@style/Widget.App.TextBox.EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:inputType="numberDecimal"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <!-- جوشکاری -->
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.App.TextBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:hint="جوشکاری (تومان)"
                     android:layout_marginTop="@dimen/space_md">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/inputWeldingBase"
                         style="@style/Widget.App.TextBox.EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:inputType="numberDecimal"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <!-- کرایه حمل -->
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.App.TextBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:hint="کرایه حمل (تومان)"
                     android:layout_marginTop="@dimen/space_md">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/inputTransportBase"
                         style="@style/Widget.App.TextBox.EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:inputType="numberDecimal"/>
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
@@ -351,11 +373,15 @@
             <com.google.android.material.button.MaterialButton
                 style="@style/Widget.App.PrimaryButton"
                 android:id="@+id/buttonSaveAll"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/btn_height"
                 android:text="ذخیرهٔ همه"/>
 
             <com.google.android.material.button.MaterialButton
                 style="@style/Widget.App.PrimaryButton"
                 android:id="@+id/buttonBack"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/btn_height"
                 android:text="بازگشت"
                 android:layout_marginStart="@dimen/space_md"/>
         </LinearLayout>
