@@ -1,6 +1,6 @@
 <resources>
 
-    <!-- کانتینر صفحه و سکشن‌ها -->
+    <!-- کانتینر صفحه -->
     <style name="App.PageContainer">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
@@ -9,6 +9,7 @@
         <item name="android:background">?attr/colorBackground</item>
     </style>
 
+    <!-- سکشن صفحه -->
     <style name="App.PageSection">
         <item name="android:orientation">vertical</item>
         <item name="android:layout_width">match_parent</item>
@@ -17,17 +18,9 @@
 
     <!-- کارت متریال -->
     <style name="Widget.App.MaterialCard" parent="Widget.Material3.CardView">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
         <item name="cardBackgroundColor">?attr/colorSurface</item>
         <item name="strokeColor">?attr/colorOutline</item>
         <item name="strokeWidth">1dp</item>
-        <item name="shapeAppearance">@style/Shape.App.Card</item>
-    </style>
-
-    <style name="Shape.App.Card" parent="">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">8dp</item>
     </style>
 
     <!-- تیتر کارت -->
@@ -46,28 +39,16 @@
     </style>
 
     <!-- ورودی‌ها -->
-    <style name="Widget.App.TextBox" parent="Widget.Material3.TextInputLayout.FilledBox.Dense">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-    </style>
+    <style name="Widget.App.TextBox" parent="Widget.Material3.TextInputLayout.FilledBox.Dense"/>
+    <style name="Widget.App.TextBox.EditText" parent="Widget.Material3.TextInputEditText.FilledBox.Dense"/>
 
-    <style name="Widget.App.TextBox.EditText" parent="Widget.Material3.TextInputEditText.FilledBox.Dense">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">?attr/colorOnSurface</item>
-    </style>
+    <!-- اسپینر -->
+    <style name="Widget.App.Spinner" parent="Widget.Material3.Spinner"/>
 
-    <!-- اسپینر و چک‌باکس -->
-    <style name="Widget.App.Spinner" parent="Widget.Material3.Spinner">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-    </style>
+    <!-- چک‌باکس -->
+    <style name="Widget.App.CheckBox" parent="Widget.Material3.CompoundButton.CheckBox"/>
 
-    <style name="Widget.App.CheckBox" parent="Widget.Material3.CompoundButton.CheckBox">
-        <item name="android:textColor">?attr/colorOnSurface</item>
-    </style>
-
-    <!-- دکمه‌ها -->
+    <!-- دکمه اصلی -->
     <style name="Widget.App.PrimaryButton" parent="Widget.Material3.Button">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/btn_height</item>
