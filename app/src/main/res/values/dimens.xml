@@ -1,5 +1,5 @@
 <resources>
-    <!-- فاصله‌های استاندارد -->
     <dimen name="space_sm">8dp</dimen>
     <dimen name="space_md">16dp</dimen>
+    <dimen name="space_lg">24dp</dimen>
 </resources>
