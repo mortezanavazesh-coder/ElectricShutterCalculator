@@ -48,4 +48,9 @@
     <string name="result_partial_round">دور ناقص: %.2f</string>
     <string name="result_remaining_blades">تیغه‌های ناقص دور آخر: %.2f</string>
     <string name="result_roll_diameter">قطر رول نهایی: %.2f cm</string>
+
+    <!-- رشته‌های گمشده برای آیتم‌ها و گزارش -->
+    <string name="option_name">نام گزینه</string>
+    <string name="option_price">قیمت گزینه</string>
+    <string name="report_total">جمع کل گزارش</string>
 </resources>
