@@ -10,6 +10,8 @@ import com.google.android.material.color.MaterialColors
 import com.morteza.shuttercalculator.utils.PrefsHelper
 import kotlin.math.PI
 import kotlin.math.max
+import android.view.ViewGroup
+
 
 class RollCalculatorActivity : AppCompatActivity() {
 
@@ -124,3 +126,4 @@ class RollCalculatorActivity : AppCompatActivity() {
         }
     }
 }
+
