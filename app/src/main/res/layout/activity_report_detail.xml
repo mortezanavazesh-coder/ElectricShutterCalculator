@@ -3,65 +3,243 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/App.PageContainer"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <LinearLayout style="@style/App.PageSection">
+    <LinearLayout
+        style="@style/App.PageSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <!-- کارت اطلاعات مشتری -->
-        <com.google.android.material.card.MaterialCardView style="@style/Widget.App.MaterialCard">
-            <LinearLayout style="@style/App.PageSection" android:padding="@dimen/space_sm">
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.App.MaterialCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-                <TextView style="@style/CardTitleText" android:id="@+id/tvCustomerName"/>
-                <TextView style="@style/CustomerNumberText" android:id="@+id/tvCustomerPhone" android:layout_marginTop="@dimen/space_md"/>
-                <TextView style="@style/DateText" android:id="@+id/tvDate" android:layout_marginTop="@dimen/space_md"/>
+            <LinearLayout
+                style="@style/App.PageSection"
+                android:padding="@dimen/space_sm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/CardTitleText"
+                    android:id="@+id/tvCustomerName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    style="@style/CustomerNumberText"
+                    android:id="@+id/tvCustomerPhone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_md"/>
+
+                <TextView
+                    style="@style/DateText"
+                    android:id="@+id/tvDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_md"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <!-- کارت ابعاد -->
-        <com.google.android.material.card.MaterialCardView style="@style/Widget.App.MaterialCard" android:layout_marginTop="@dimen/space_md">
-            <LinearLayout style="@style/App.PageSection" android:padding="@dimen/space_sm">
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.App.MaterialCard"
+            android:layout_marginTop="@dimen/space_md"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-                <TextView style="@style/BodyText" android:id="@+id/tvHeight"/>
-                <TextView style="@style/BodyText" android:id="@+id/tvWidth" android:layout_marginTop="@dimen/space_md"/>
-                <TextView style="@style/BodyText" android:id="@+id/tvArea" android:layout_marginTop="@dimen/space_md"/>
+            <LinearLayout
+                style="@style/App.PageSection"
+                android:padding="@dimen/space_sm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/BodyText"
+                    android:id="@+id/tvHeight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    style="@style/BodyText"
+                    android:id="@+id/tvWidth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_md"/>
+
+                <TextView
+                    style="@style/BodyText"
+                    android:id="@+id/tvArea"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_md"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <!-- کارت قطعات و هزینه‌ها -->
-        <com.google.android.material.card.MaterialCardView style="@style/Widget.App.MaterialCard" android:layout_marginTop="@dimen/space_md">
-            <LinearLayout style="@style/App.PageSection" android:padding="@dimen/space_sm">
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.App.MaterialCard"
+            android:layout_marginTop="@dimen/space_md"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-                <TextView style="@style/CardTitleText" android:id="@+id/tvBlade"/>
-                <TextView style="@style/CardTitleText" android:id="@+id/tvMotor" android:layout_marginTop="@dimen/space_md"/>
-                <TextView style="@style/CardTitleText" android:id="@+id/tvShaft" android:layout_marginTop="@dimen/space_md"/>
-                <TextView style="@style/CardTitleText" android:id="@+id/tvBox" android:layout_marginTop="@dimen/space_md"/>
-                <TextView style="@style/CardTitleText" android:id="@+id/tvInstall" android:layout_marginTop="@dimen/space_md"/>
-                <TextView style="@style/CardTitleText" android:id="@+id/tvWelding" android:layout_marginTop="@dimen/space_md"/>
-                <TextView style="@style/CardTitleText" android:id="@+id/tvTransport" android:layout_marginTop="@dimen/space_md"/>
-                <TextView style="@style/CardTitleText" android:id="@+id/tvExtras" android:layout_marginTop="@dimen/space_md"/>
+            <LinearLayout
+                style="@style/App.PageSection"
+                android:padding="@dimen/space_sm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/CardTitleText"
+                    android:id="@+id/tvBlade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    style="@style/CardTitleText"
+                    android:id="@+id/tvMotor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_md"/>
+
+                <TextView
+                    style="@style/CardTitleText"
+                    android:id="@+id/tvShaft"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_md"/>
+
+                <TextView
+                    style="@style/CardTitleText"
+                    android:id="@+id/tvBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_md"/>
+
+                <TextView
+                    style="@style/CardTitleText"
+                    android:id="@+id/tvInstall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_md"/>
+
+                <TextView
+                    style="@style/CardTitleText"
+                    android:id="@+id/tvWelding"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_md"/>
+
+                <TextView
+                    style="@style/CardTitleText"
+                    android:id="@+id/tvTransport"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_md"/>
+
+                <TextView
+                    style="@style/CardTitleText"
+                    android:id="@+id/tvExtras"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_md"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <!-- کارت ریز محاسبات -->
-        <com.google.android.material.card.MaterialCardView style="@style/Widget.App.MaterialCard" android:layout_marginTop="@dimen/space_md">
-            <LinearLayout style="@style/App.PageSection" android:padding="@dimen/space_sm">
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.App.MaterialCard"
+            android:layout_marginTop="@dimen/space_md"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-                <TextView style="@style/BodyText" android:id="@+id/tvBreakBlade"/>
-                <TextView style="@style/BodyText" android:id="@+id/tvBreakMotor" android:layout_marginTop="@dimen/space_md"/>
-                <TextView style="@style/BodyText" android:id="@+id/tvBreakShaft" android:layout_marginTop="@dimen/space_md"/>
-                <TextView style="@style/BodyText" android:id="@+id/tvBreakBox" android:layout_marginTop="@dimen/space_md"/>
-                <TextView style="@style/BodyText" android:id="@+id/tvBreakInstall" android:layout_marginTop="@dimen/space_md"/>
-                <TextView style="@style/BodyText" android:id="@+id/tvBreakWelding" android:layout_marginTop="@dimen/space_md"/>
-                <TextView style="@style/BodyText" android:id="@+id/tvBreakTransport" android:layout_marginTop="@dimen/space_md"/>
-                <TextView style="@style/BodyText" android:id="@+id/tvBreakExtras" android:layout_marginTop="@dimen/space_md"/>
+            <LinearLayout
+                style="@style/App.PageSection"
+                android:padding="@dimen/space_sm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/BodyText"
+                    android:id="@+id/tvBreakBlade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    style="@style/BodyText"
+                    android:id="@+id/tvBreakMotor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_md"/>
+
+                <TextView
+                    style="@style/BodyText"
+                    android:id="@+id/tvBreakShaft"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_md"/>
+
+                <TextView
+                    style="@style/BodyText"
+                    android:id="@+id/tvBreakBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_md"/>
+
+                <TextView
+                    style="@style/BodyText"
+                    android:id="@+id/tvBreakInstall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_md"/>
+
+                <TextView
+                    style="@style/BodyText"
+                    android:id="@+id/tvBreakWelding"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_md"/>
+
+                <TextView
+                    style="@style/BodyText"
+                    android:id="@+id/tvBreakTransport"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_md"/>
+
+                <TextView
+                    style="@style/BodyText"
+                    android:id="@+id/tvBreakExtras"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_md"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
         <!-- کارت قیمت نهایی -->
-        <com.google.android.material.card.MaterialCardView style="@style/Widget.App.MaterialCard" android:layout_marginTop="@dimen/space_md">
-            <LinearLayout style="@style/App.PageSection" android:padding="@dimen/space_sm">
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.App.MaterialCard"
+            android:layout_marginTop="@dimen/space_md"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-                <TextView style="@style/FinalPriceText" android:id="@+id/tvTotal" android:text="قیمت نهایی: -"/>
+            <LinearLayout
+                style="@style/App.PageSection"
+                android:padding="@dimen/space_sm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/FinalPriceText"
+                    android:id="@+id/tvTotal"
+                    android:text="قیمت نهایی: -"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
