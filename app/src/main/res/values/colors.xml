@@ -16,4 +16,7 @@
     <color name="colorOnSurface">#212121</color>
     <color name="colorOnBackground">#212121</color>
     <color name="colorOnError">#FFFFFF</color>
+
+    <!-- رنگ outline (برای کارت‌ها و borderها) -->
+    <color name="colorOutline">#1F000000</color>
 </resources>
