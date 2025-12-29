@@ -2,6 +2,8 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/App.PageSection"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:padding="@dimen/space_md"
     android:layout_gravity="center"
     android:background="?attr/colorSurface"
@@ -10,11 +12,15 @@
     <!-- عنوان تیغه -->
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.App.TextBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:hint="@string/dialog_slat_title">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etSlatTitle"
             style="@style/Widget.App.TextBox.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:inputType="textCapSentences"
             android:maxLines="1"
             android:ellipsize="end"/>
@@ -23,12 +29,16 @@
     <!-- قیمت تیغه -->
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.App.TextBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:hint="@string/dialog_slat_price"
         android:layout_marginTop="@dimen/space_md">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etSlatPrice"
             style="@style/Widget.App.TextBox.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:maxLines="1"
             android:ellipsize="end"/>
@@ -37,12 +47,16 @@
     <!-- عرض تیغه -->
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.App.TextBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:hint="@string/dialog_slat_width"
         android:layout_marginTop="@dimen/space_md">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etSlatWidth"
             style="@style/Widget.App.TextBox.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:maxLines="1"
             android:ellipsize="end"/>
@@ -51,12 +65,16 @@
     <!-- ضخامت تیغه -->
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.App.TextBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:hint="@string/dialog_slat_thickness"
         android:layout_marginTop="@dimen/space_md">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etSlatThickness"
             style="@style/Widget.App.TextBox.EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:inputType="numberDecimal"
             android:maxLines="1"
             android:ellipsize="end"/>
@@ -65,6 +83,8 @@
     <!-- دکمه‌ها -->
     <LinearLayout
         style="@style/App.PageSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="end"
         android:layout_marginTop="@dimen/space_lg">
@@ -72,12 +92,16 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCancelSlat"
             style="@style/Widget.App.PrimaryButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/btn_cancel"
             android:layout_marginEnd="@dimen/space_sm"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSaveSlat"
             style="@style/Widget.App.PrimaryButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/btn_save"/>
     </LinearLayout>
 </LinearLayout>
