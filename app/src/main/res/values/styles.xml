@@ -1,5 +1,26 @@
 <resources>
 
+    <!-- کانتینر صفحه -->
+    <style name="App.PageContainer" parent="Widget.Material3.LinearLayout">
+        <item name="android:orientation">vertical</item>
+        <item name="android:padding">@dimen/space_md</item>
+        <item name="android:background">@color/colorBackground</item>
+    </style>
+
+    <!-- بخش‌های صفحه -->
+    <style name="App.PageSection" parent="Widget.MaterialComponents.CardView">
+        <item name="cardElevation">2dp</item>
+        <item name="cardCornerRadius">8dp</item>
+        <item name="android:layout_marginBottom">@dimen/space_sm</item>
+        <item name="android:background">@color/colorSurface</item>
+    </style>
+
+    <!-- اسپینر -->
+    <style name="Widget.App.Spinner" parent="Widget.Material3.Spinner">
+        <item name="android:padding">@dimen/space_sm</item>
+        <item name="android:textColor">@color/colorOnSurface</item>
+    </style>
+
     <!-- دکمه اصلی -->
     <style name="Widget.App.PrimaryButton" parent="Widget.Material3.Button">
         <item name="android:textColor">@color/colorOnPrimary</item>
