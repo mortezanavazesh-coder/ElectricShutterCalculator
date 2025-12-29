@@ -1,3 +1,9 @@
 <resources>
+    <!-- رنگ‌های Theme-driven -->
     <attr name="colorBackground" format="color"/>
+    <attr name="colorPrimary" format="color"/>
+    <attr name="colorOnPrimary" format="color"/>
+    <attr name="colorSurface" format="color"/>
+    <attr name="colorOnSurface" format="color"/>
+    <attr name="colorOutline" format="color"/>
 </resources>
