@@ -1,78 +1,78 @@
 <resources>
 
-    <!-- کانتینر صفحه -->
+    <!-- کانتینر صفحه و سکشن‌ها -->
     <style name="App.PageContainer">
-        <item name="android:orientation">vertical</item>
-        <item name="android:padding">@dimen/space_md</item>
-        <item name="android:background">@color/colorBackground</item>
-    </style>
-
-    <!-- بخش‌های صفحه -->
-    <style name="App.PageSection" parent="Widget.MaterialComponents.CardView">
-        <item name="cardElevation">2dp</item>
-        <item name="cardCornerRadius">8dp</item>
-        <item name="android:layout_marginBottom">@dimen/space_sm</item>
-        <item name="android:background">@color/colorSurface</item>
-    </style>
-
-    <!-- کارت‌ها -->
-    <style name="Widget.App.MaterialCard" parent="Widget.MaterialComponents.CardView">
-        <item name="cardElevation">4dp</item>
-        <item name="cardCornerRadius">8dp</item>
-        <item name="android:background">@color/colorSurface</item>
-    </style>
-
-    <!-- اسپینر سفارشی -->
-    <style name="Widget.App.Spinner" parent="android:Widget.Spinner">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:clipToPadding">false</item>
         <item name="android:padding">@dimen/space_sm</item>
-        <item name="android:textColor">@color/colorOnSurface</item>
-        <item name="android:popupBackground">@color/colorSurface</item>
+        <item name="android:background">?attr/colorBackground</item>
     </style>
 
-    <!-- چک‌باکس -->
-    <style name="Widget.App.CheckBox" parent="android:Widget.CompoundButton.CheckBox">
-        <item name="android:textColor">@color/colorOnSurface</item>
-        <item name="android:buttonTint">@color/colorPrimary</item>
+    <style name="App.PageSection">
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
     </style>
 
-    <!-- دکمه اصلی -->
-    <style name="Widget.App.PrimaryButton" parent="Widget.Material3.Button">
-        <item name="android:textColor">@color/colorOnPrimary</item>
-        <item name="backgroundTint">@color/colorPrimary</item>
+    <!-- کارت متریال -->
+    <style name="Widget.App.MaterialCard" parent="Widget.Material3.CardView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="cardBackgroundColor">?attr/colorSurface</item>
+        <item name="strokeColor">?attr/colorOutline</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="shapeAppearance">@style/Shape.App.Card</item>
     </style>
 
-    <!-- دکمه ثانویه -->
-    <style name="Widget.App.SecondaryButton" parent="Widget.Material3.Button.OutlinedButton">
-        <item name="android:textColor">@color/colorPrimary</item>
+    <style name="Shape.App.Card" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
     </style>
 
-    <!-- عنوان کارت -->
+    <!-- تیتر کارت -->
     <style name="CardTitleText" parent="TextAppearance.Material3.TitleMedium">
-        <item name="android:textColor">@color/colorOnSurface</item>
-        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
     </style>
 
-    <!-- متن بدنه کارت -->
+    <!-- متن بدنه -->
     <style name="BodyText" parent="TextAppearance.Material3.BodyMedium">
-        <item name="android:textColor">@color/colorOnSurface</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
     </style>
 
     <!-- متن قیمت نهایی -->
     <style name="FinalPriceText" parent="TextAppearance.Material3.TitleLarge">
-        <item name="android:textColor">@color/colorPrimary</item>
-        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
     </style>
 
-    <!-- باکس ورودی -->
-    <style name="Widget.App.TextBox" parent="Widget.Material3.TextInputLayout.FilledBox">
-        <item name="boxBackgroundColor">@color/colorSurface</item>
-        <item name="android:textColor">@color/colorOnSurface</item>
+    <!-- ورودی‌ها -->
+    <style name="Widget.App.TextBox" parent="Widget.Material3.TextInputLayout.FilledBox.Dense">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
     </style>
 
-    <!-- فیلد ورودی داخل باکس -->
-    <style name="Widget.App.TextBox.EditText" parent="Widget.Material3.TextInputEditText.FilledBox">
-        <item name="android:textColor">@color/colorOnSurface</item>
-        <item name="android:textColorHint">@color/colorOnSurface</item>
+    <style name="Widget.App.TextBox.EditText" parent="Widget.Material3.TextInputEditText.FilledBox.Dense">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+    <!-- اسپینر و چک‌باکس -->
+    <style name="Widget.App.Spinner" parent="Widget.Material3.Spinner">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="Widget.App.CheckBox" parent="Widget.Material3.CompoundButton.CheckBox">
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
+
+    <!-- دکمه‌ها -->
+    <style name="Widget.App.PrimaryButton" parent="Widget.Material3.Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/btn_height</item>
+        <item name="backgroundTint">?attr/colorPrimary</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
     </style>
 
 </resources>
