@@ -1,5 +1,8 @@
 <resources>
 
+    <!-- پایه -->
+    <style name="App" parent="Theme.ShutterCalculator"/>
+
     <!-- کانتینر صفحه -->
     <style name="App.PageContainer">
         <item name="android:layout_width">match_parent</item>
@@ -43,10 +46,12 @@
     <style name="Widget.App.TextBox.EditText" parent="Widget.MaterialComponents.TextInputEditText.FilledBox.Dense"/>
 
     <!-- اسپینر -->
-    <style name="Widget.App.Spinner" parent="Widget.MaterialComponents.Spinner"/>
+    <style name="Widget.App.Spinner" parent="Widget.AppCompat.Spinner"/>
 
     <!-- چک‌باکس -->
-    <style name="Widget.App.CheckBox" parent="Widget.MaterialComponents.CompoundButton.CheckBox"/>
+    <style name="Widget.App.CheckBox" parent="Widget.MaterialComponents.CompoundButton.CheckBox">
+        <item name="android:textColor">?attr/colorOnSurface</item>
+    </style>
 
     <!-- دکمه اصلی -->
     <style name="Widget.App.PrimaryButton" parent="Widget.MaterialComponents.Button">
