@@ -1,7 +1,7 @@
 <resources>
 
     <!-- کانتینر صفحه -->
-    <style name="App.PageContainer" parent="Widget.Material3.LinearLayout">
+    <style name="App.PageContainer" parent="android:Widget.LinearLayout">
         <item name="android:orientation">vertical</item>
         <item name="android:padding">@dimen/space_md</item>
         <item name="android:background">@color/colorBackground</item>
@@ -15,10 +15,11 @@
         <item name="android:background">@color/colorSurface</item>
     </style>
 
-    <!-- اسپینر -->
-    <style name="Widget.App.Spinner" parent="Widget.Material3.Spinner">
+    <!-- اسپینر سفارشی -->
+    <style name="Widget.App.Spinner" parent="android:Widget.Spinner">
         <item name="android:padding">@dimen/space_sm</item>
         <item name="android:textColor">@color/colorOnSurface</item>
+        <item name="android:popupBackground">@color/colorSurface</item>
     </style>
 
     <!-- دکمه اصلی -->
