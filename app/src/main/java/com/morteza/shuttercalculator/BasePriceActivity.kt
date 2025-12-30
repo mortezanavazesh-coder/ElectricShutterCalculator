@@ -439,8 +439,8 @@ class BasePriceActivity : AppCompatActivity() {
         etDiameter.setText(specs.diameter.toString())
 
         val dialog = MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_App_MaterialAlertDialog)
-        .setView(view)
-        .create()
+            .setView(view)
+            .create()
 
         val btnSave = view.findViewById<MaterialButton>(R.id.btnSaveShaft)
         val btnCancel = view.findViewById<MaterialButton>(R.id.btnCancelShaft)
