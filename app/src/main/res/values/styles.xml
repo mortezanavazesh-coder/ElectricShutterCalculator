@@ -1,7 +1,7 @@
 <resources>
 
     <!-- پایه -->
-    <style name="App" parent="Theme.ShutterCalculator"/>
+    <style name="App" parent="AppTheme.DarkBlue"/>
 
     <!-- کانتینر صفحه -->
     <style name="App.PageContainer">
