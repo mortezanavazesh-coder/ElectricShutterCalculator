@@ -9,6 +9,8 @@
     <string name="btn_delete">حذف</string>
     <string name="btn_back">بازگشت</string>
     <string name="btn_calculate">محاسبه</string>
+    <string name="btn_save_all_base_prices">ذخیره همه قیمت‌های پایه</string>
+    <string name="btn_back_to_main">بازگشت به صفحه اصلی</string>
 
     <!-- دیالوگ‌ها -->
     <string name="dialog_item_title">عنوان آیتم</string>
