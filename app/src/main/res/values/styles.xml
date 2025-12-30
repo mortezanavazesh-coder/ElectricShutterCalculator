@@ -99,12 +99,11 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <!-- استایل دیالوگ متریال: نسخه سازگار با همه -->
+    <!-- استایل دیالوگ متریال -->
     <style name="ThemeOverlay.App.MaterialAlertDialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
         <item name="colorSurface">?attr/colorSurface</item>
         <item name="colorOnSurface">?attr/colorOnSurface</item>
         <item name="colorPrimary">?attr/colorPrimary</item>
-        <!-- برای سازگاری کامل، آیتم‌های شکل‌نمایی را حذف کردیم -->
     </style>
 
     <!-- alias برای هماهنگی با ارجاع‌های کد -->
