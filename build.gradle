@@ -1,3 +1,4 @@
+// build.gradle (project root)
 buildscript {
     repositories {
         google()
@@ -16,5 +17,3 @@ allprojects {
         mavenCentral()
     }
 }
-
-
