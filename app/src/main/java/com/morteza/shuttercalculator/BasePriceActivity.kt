@@ -221,7 +221,7 @@ class BasePriceActivity : AppCompatActivity() {
 
         etPrice.addTextChangedListener(ThousandSeparatorTextWatcher(etPrice))
 
-        val dialog = MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_App_MaterialAlertDialog)
+        val dialog = MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_Material3_MaterialAlertDialog)
             .setView(view)
             .create()
 
@@ -262,7 +262,7 @@ class BasePriceActivity : AppCompatActivity() {
 
         etPrice.addTextChangedListener(ThousandSeparatorTextWatcher(etPrice))
 
-        val dialog = MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_App_MaterialAlertDialog)
+        val dialog = MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_Material3_MaterialAlertDialog)
             .setView(view)
             .create()
 
@@ -301,7 +301,7 @@ class BasePriceActivity : AppCompatActivity() {
 
         etPrice.addTextChangedListener(ThousandSeparatorTextWatcher(etPrice))
 
-        val dialog = MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_App_MaterialAlertDialog)
+        val dialog = MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_Material3_MaterialAlertDialog)
             .setView(view)
             .create()
 
@@ -347,11 +347,11 @@ class BasePriceActivity : AppCompatActivity() {
         if (oldPrice > 0L) etPrice.setText(FormatUtils.formatTomanPlain(oldPrice))
         etPrice.addTextChangedListener(ThousandSeparatorTextWatcher(etPrice))
 
-        val specs = PrefsHelper.getSlatSpecs(this, title)
+        val specs = getSlatSpecs(title)
         etWidth.setText(specs.width.toString())
         etThickness.setText(specs.thickness.toString())
 
-        val dialog = MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_App_MaterialAlertDialog)
+        val dialog = MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_Material3_MaterialAlertDialog)
             .setView(view)
             .create()
 
@@ -369,7 +369,6 @@ class BasePriceActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // rename option + move price/spec keys
             PrefsHelper.renameOption(this, "تیغه", title, newTitle)
             PrefsHelper.putLong(this, "تیغه_price_$newTitle", newPrice)
             PrefsHelper.removeKey(this, "تیغه_price_$title")
@@ -395,7 +394,7 @@ class BasePriceActivity : AppCompatActivity() {
         if (price > 0L) etPrice.setText(FormatUtils.formatTomanPlain(price))
         etPrice.addTextChangedListener(ThousandSeparatorTextWatcher(etPrice))
 
-        val dialog = MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_App_MaterialAlertDialog)
+        val dialog = MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_Material3_MaterialAlertDialog)
             .setView(view)
             .create()
 
@@ -436,10 +435,10 @@ class BasePriceActivity : AppCompatActivity() {
         if (oldPrice > 0L) etPrice.setText(FormatUtils.formatTomanPlain(oldPrice))
         etPrice.addTextChangedListener(ThousandSeparatorTextWatcher(etPrice))
 
-        val specs = PrefsHelper.getShaftSpecs(this, title)
+        val specs = getShaftSpecs(title)
         etDiameter.setText(specs.diameter.toString())
 
-        val dialog = MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_App_MaterialAlertDialog)
+        val dialog = MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_Material3_MaterialAlertDialog)
             .setView(view)
             .create()
 
@@ -481,7 +480,7 @@ class BasePriceActivity : AppCompatActivity() {
         if (price > 0L) etPrice.setText(FormatUtils.formatTomanPlain(price))
         etPrice.addTextChangedListener(ThousandSeparatorTextWatcher(etPrice))
 
-        val dialog = MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_App_MaterialAlertDialog)
+        val dialog = MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_Material3_MaterialAlertDialog)
             .setView(view)
             .create()
 
@@ -521,7 +520,7 @@ class BasePriceActivity : AppCompatActivity() {
         if (price > 0L) etPrice.setText(FormatUtils.formatTomanPlain(price))
         etPrice.addTextChangedListener(ThousandSeparatorTextWatcher(etPrice))
 
-        val dialog = MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_App_MaterialAlertDialog)
+        val dialog = MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_Material3_MaterialAlertDialog)
             .setView(view)
             .create()
 
@@ -537,7 +536,6 @@ class BasePriceActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // حفظ وضعیت enabled
             val oldEnabledKey = "extra_enabled_$title"
             val newEnabledKey = "extra_enabled_$newTitle"
             val enabled = PrefsHelper.getBool(this, oldEnabledKey)
@@ -575,4 +573,19 @@ class BasePriceActivity : AppCompatActivity() {
         super.onDestroy()
         uiScope.cancel()
     }
+
+    // ------------------ متدهای مشخصات برای دیالوگ ویرایش ------------------
+    private fun getSlatSpecs(title: String): SlatSpecs {
+        // تلاش برای خواندن مشخصات ذخیره‌شده؛ اگر نبود مقدار پیش‌فرض برگردانده می‌شود
+        val s = PrefsHelper.getSlatSpecs(this, title)
+        return if (s != null) SlatSpecs(s.width, s.thickness) else SlatSpecs(0f, 0f)
+    }
+
+    private fun getShaftSpecs(title: String): ShaftSpecs {
+        val s = PrefsHelper.getShaftSpecs(this, title)
+        return if (s != null) ShaftSpecs(s.diameter) else ShaftSpecs(0f)
+    }
+
+    data class SlatSpecs(val width: Float, val thickness: Float)
+    data class ShaftSpecs(val diameter: Float)
 }
