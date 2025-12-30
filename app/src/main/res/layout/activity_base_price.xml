@@ -363,8 +363,8 @@
         <!-- دکمه‌ها -->
         <LinearLayout
             android:id="@+id/bottomButtons"
-            android:orientation="horizontal"
-            android:gravity="end"
+            android:orientation="vertical"
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/space_lg"
@@ -373,17 +373,17 @@
             <com.google.android.material.button.MaterialButton
                 style="@style/Widget.App.PrimaryButton"
                 android:id="@+id/buttonSaveAll"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="@dimen/btn_height"
-                android:text="ذخیرهٔ همه"/>
+                android:text="ذخیره همه قیمت‌های پایه"/>
 
             <com.google.android.material.button.MaterialButton
                 style="@style/Widget.App.PrimaryButton"
                 android:id="@+id/buttonBack"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="@dimen/btn_height"
-                android:text="بازگشت"
-                android:layout_marginStart="@dimen/space_md"/>
+                android:text="بازگشت به صفحه اصلی"
+                android:layout_marginTop="@dimen/space_md"/>
         </LinearLayout>
 
     </LinearLayout>
