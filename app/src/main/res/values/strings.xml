@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- نام اپلیکیشن -->
     <string name="app_name">محاسبه‌گر کرکره برقی</string>
@@ -9,8 +10,8 @@
     <string name="btn_delete">حذف</string>
     <string name="btn_back">بازگشت</string>
     <string name="btn_calculate">محاسبه</string>
-    <string name="btn_save_all_base_prices">ذخیره همه قیمت‌های پایه</string>
-    <string name="btn_back_to_main">بازگشت به صفحه اصلی</string>
+    <string name="save_all_base_prices">ذخیره همه قیمت‌های پایه</string>
+    <string name="back_to_home">بازگشت به صفحه اصلی</string>
 
     <!-- دیالوگ‌ها -->
     <string name="dialog_item_title">عنوان آیتم</string>
@@ -55,34 +56,23 @@
     <string name="option_name">نام گزینه</string>
     <string name="option_price">قیمت گزینه</string>
     <string name="report_total">جمع کل گزارش</string>
-
-    <!-- رشته‌های جدید برای item_selected -->
     <string name="unit_price">قیمت واحد</string>
     <string name="total_price">قیمت کل</string>
 
-
+    <!-- رشته‌های کارت‌ها -->
     <string name="add_slat">افزودن تیغه</string>
     <string name="no_slats">هیچ تیغه‌ای موجود نیست</string>
-
     <string name="add_motor">افزودن موتور</string>
     <string name="no_motors">هیچ موتوری موجود نیست</string>
-
     <string name="add_shaft">افزودن شفت</string>
     <string name="no_shafts">هیچ شفتی موجود نیست</string>
-
     <string name="add_box">افزودن قوطی</string>
     <string name="no_boxes">هیچ قوطی‌ای موجود نیست</string>
-
     <string name="add_extra">افزودن گزینه اضافی</string>
     <string name="no_extras">هیچ گزینه‌ای موجود نیست</string>
 
+    <!-- هزینه‌های پایه -->
     <string name="install_cost">هزینه نصب (تومان به ازای هر متر مربع)</string>
     <string name="welding_cost">جوشکاری (تومان)</string>
     <string name="transport_cost">کرایه حمل (تومان)</string>
-
-    <string name="save_all_base_prices">ذخیره همه قیمت‌های پایه</string>
-    <string name="back_to_home">بازگشت به صفحه اصلی</string>
-
-
 </resources>
-
