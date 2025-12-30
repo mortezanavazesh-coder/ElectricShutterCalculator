@@ -10,8 +10,6 @@
 
     <LinearLayout
         style="@style/App.PageSection"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:padding="@dimen/space_md">
@@ -39,34 +37,30 @@
             android:ellipsize="end"
             android:singleLine="true"/>
 
-        <!-- دکمه‌ها: فقط ویرایش و حذف -->
+        <!-- دکمه‌ها: ویرایش و حذف -->
         <LinearLayout
             style="@style/App.PageSection"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="end">
+            android:gravity="end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-            <!-- ویرایش کلی آیتم -->
+            <!-- ویرایش آیتم -->
             <ImageButton
                 android:id="@+id/btnEditItem"
                 style="@style/Widget.App.IconButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:src="@drawable/ic_edit"
                 android:contentDescription="@string/btn_edit"
-                android:tint="?attr/colorPrimary"
+                app:tint="?attr/colorPrimary"
                 android:layout_marginEnd="@dimen/space_sm"/>
 
             <!-- حذف آیتم -->
             <ImageButton
                 android:id="@+id/btnDeleteItem"
                 style="@style/Widget.App.IconButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:src="@drawable/ic_delete"
                 android:contentDescription="@string/btn_delete"
-                android:tint="?attr/colorError"/>
+                app:tint="?attr/colorError"/>
         </LinearLayout>
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>
