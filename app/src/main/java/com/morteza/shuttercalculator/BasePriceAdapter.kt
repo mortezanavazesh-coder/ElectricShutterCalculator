@@ -11,14 +11,12 @@ import com.morteza.shuttercalculator.utils.FormatUtils
 class BasePriceAdapter(
     private var items: List<Pair<String, Long>>,
     private val onDelete: (title: String) -> Unit,
-    private val onRename: (title: String) -> Unit,
-    private val onEdit: (title: String) -> Unit
+    private val onEditFull: (title: String, price: Long) -> Unit
 ) : RecyclerView.Adapter<BasePriceAdapter.VH>() {
 
     class VH(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tvTitle: TextView = itemView.findViewById(R.id.tvItemTitle)
         val tvPrice: TextView = itemView.findViewById(R.id.tvItemPrice)
-        val btnRename: ImageButton = itemView.findViewById(R.id.btnRenameItem)
         val btnEdit: ImageButton = itemView.findViewById(R.id.btnEditItem)
         val btnDelete: ImageButton = itemView.findViewById(R.id.btnDeleteItem)
     }
@@ -35,12 +33,11 @@ class BasePriceAdapter(
         // نمایش نام گزینه
         holder.tvTitle.text = title
 
-        // ✅ نمایش قیمت با فرمت تومان و جداکننده هزارگان (Long)
+        // نمایش قیمت با فرمت تومان و جداکننده هزارگان
         holder.tvPrice.text = FormatUtils.formatToman(price)
 
         // رویدادها
-        holder.btnRename.setOnClickListener { onRename(title) }
-        holder.btnEdit.setOnClickListener { onEdit(title) }
+        holder.btnEdit.setOnClickListener { onEditFull(title, price) }
         holder.btnDelete.setOnClickListener { onDelete(title) }
     }
 
