@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/Widget.App.MaterialCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/space_md"
+    android:foreground="?attr/selectableItemBackground">
+
+    <LinearLayout
+        style="@style/App.PageSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="@dimen/space_md">
+
+        <!-- نام کالا -->
+        <TextView
+            android:id="@+id/tvItemTitle"
+            style="@style/TitleText"
+            android:text="@string/option_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:ellipsize="end"
+            android:singleLine="true"/>
+
+        <!-- قیمت کالا -->
+        <TextView
+            android:id="@+id/tvItemPrice"
+            style="@style/SpecialText.Blue"
+            android:text="@string/option_price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:ellipsize="end"
+            android:singleLine="true"/>
+
+        <!-- دکمه‌ها -->
+        <LinearLayout
+            style="@style/App.PageSection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="end">
+
+            <ImageButton
+                android:id="@+id/btnRenameItem"
+                style="@style/Widget.App.IconButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_edit"
+                android:contentDescription="@string/btn_edit"/>
+
+            <ImageButton
+                android:id="@+id/btnEditItem"
+                style="@style/Widget.App.IconButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_price"
+                android:contentDescription="@string/btn_save"/>
+
+            <ImageButton
+                android:id="@+id/btnDeleteItem"
+                style="@style/Widget.App.IconButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_delete"
+                android:contentDescription="@string/btn_delete"/>
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/Widget.App.MaterialCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/space_md"
+    android:foreground="?attr/selectableItemBackground">
+
+    <LinearLayout
+        style="@style/App.PageSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/space_md">
+
+        <!-- عنوان گزارش (نام مشتری) -->
+        <TextView
+            android:id="@+id/textReportTitle"
+            style="@style/CardTitleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dialog_report_customer_name"/>
+
+        <!-- تاریخ گزارش -->
+        <TextView
+            android:id="@+id/textReportDate"
+            style="@style/DateText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="تاریخ"
+            android:layout_marginTop="@dimen/space_md"/>
+
+        <!-- جمع کل -->
+        <TextView
+            android:id="@+id/textReportPrice"
+            style="@style/FinalPriceText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/report_total"
+            android:layout_marginTop="@dimen/space_md"/>
+
+        <!-- دکمه حذف -->
+        <LinearLayout
+            style="@style/App.PageSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="end"
+            android:layout_marginTop="@dimen/space_lg">
+
+            <ImageButton
+                android:id="@+id/buttonDeleteReport"
+                style="@style/Widget.App.IconButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_delete"
+                android:contentDescription="@string/btn_delete"/>
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -1,0 +1,22 @@
+<resources>
+    <!-- رنگ‌های اصلی -->
+    <color name="colorPrimary">#1976D2</color>
+    <color name="colorPrimaryVariant">#1565C0</color>
+    <color name="colorSecondary">#FFC107</color>
+    <color name="colorSecondaryVariant">#FFA000</color>
+
+    <!-- رنگ‌های سطح و پس‌زمینه -->
+    <color name="colorSurface">#FFFFFF</color>
+    <color name="colorBackground">#F5F5F5</color>
+    <color name="colorError">#D32F2F</color>
+
+    <!-- رنگ متن -->
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorOnSecondary">#000000</color>
+    <color name="colorOnSurface">#212121</color>
+    <color name="colorOnBackground">#212121</color>
+    <color name="colorOnError">#FFFFFF</color>
+
+    <!-- رنگ outline (برای کارت‌ها و borderها) -->
+    <color name="colorOutline">#1F000000</color>
+</resources>

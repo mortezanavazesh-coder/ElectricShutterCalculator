@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/App.PageContainer"
+    android:fillViewport="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        style="@style/App.PageSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- کارت ورودی -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.App.MaterialCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                style="@style/App.PageSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/space_sm">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.App.TextBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="ارتفاع (cm)"
+                    android:layout_marginTop="@dimen/space_sm">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputHeight"
+                        style="@style/Widget.App.TextBox.EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal"/>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    style="@style/BodyText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="انتخاب تیغه"
+                    android:layout_marginTop="@dimen/space_md"/>
+
+                <Spinner
+                    android:id="@+id/spinnerBlade"
+                    style="@style/Widget.App.Spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_sm"/>
+
+                <TextView
+                    style="@style/BodyText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="انتخاب شفت"
+                    android:layout_marginTop="@dimen/space_md"/>
+
+                <Spinner
+                    android:id="@+id/spinnerShaft"
+                    style="@style/Widget.App.Spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_sm"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- کارت خروجی‌های میانی -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.App.MaterialCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_md">
+
+            <LinearLayout
+                style="@style/App.PageSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/space_sm">
+
+                <TextView
+                    style="@style/BodyText"
+                    android:id="@+id/textTotalBlades"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="تعداد تیغه: -"/>
+
+                <TextView
+                    style="@style/BodyText"
+                    android:id="@+id/textFullRounds"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="تعداد دور کامل: -"
+                    android:layout_marginTop="@dimen/space_md"/>
+
+                <TextView
+                    style="@style/BodyText"
+                    android:id="@+id/textPartialRound"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="دور ناقص: -"
+                    android:layout_marginTop="@dimen/space_md"/>
+
+                <TextView
+                    style="@style/BodyText"
+                    android:id="@+id/textRemainingBlades"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="تیغه‌های باقی‌مانده: -"
+                    android:layout_marginTop="@dimen/space_md"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- کارت خروجی نهایی -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Widget.App.MaterialCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_md">
+
+            <LinearLayout
+                style="@style/App.PageSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/space_sm">
+
+                <TextView
+                    style="@style/TextRollDiameter"
+                    android:id="@+id/textRollDiameter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="قطر رول: - cm"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- دکمه‌ها خارج از کارت -->
+        <LinearLayout
+            style="@style/App.PageSection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/space_md">
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.App.PrimaryButton"
+                android:id="@+id/buttonCalculateRoll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="محاسبه قطر رول"/>
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.App.PrimaryButton"
+                android:id="@+id/buttonBackToMain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="بازگشت به صفحه اصلی"
+                android:layout_marginTop="@dimen/space_md"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
