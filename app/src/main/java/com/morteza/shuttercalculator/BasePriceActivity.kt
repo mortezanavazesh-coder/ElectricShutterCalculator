@@ -221,7 +221,7 @@ class BasePriceActivity : AppCompatActivity() {
 
         etPrice.addTextChangedListener(ThousandSeparatorTextWatcher(etPrice))
 
-        val dialog = MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_Material3_MaterialAlertDialog)
+        val dialog = MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_App_MaterialAlertDialog)
             .setView(view)
             .create()
 
@@ -262,7 +262,7 @@ class BasePriceActivity : AppCompatActivity() {
 
         etPrice.addTextChangedListener(ThousandSeparatorTextWatcher(etPrice))
 
-        val dialog = MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_Material3_MaterialAlertDialog)
+        val dialog = MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_App_MaterialAlertDialog)
             .setView(view)
             .create()
 
@@ -301,7 +301,7 @@ class BasePriceActivity : AppCompatActivity() {
 
         etPrice.addTextChangedListener(ThousandSeparatorTextWatcher(etPrice))
 
-        val dialog = MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_Material3_MaterialAlertDialog)
+        val dialog = MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_App_MaterialAlertDialog)
             .setView(view)
             .create()
 
@@ -351,7 +351,7 @@ class BasePriceActivity : AppCompatActivity() {
         etWidth.setText(specs.width.toString())
         etThickness.setText(specs.thickness.toString())
 
-        val dialog = MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_Material3_MaterialAlertDialog)
+        val dialog = MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_App_MaterialAlertDialog)
             .setView(view)
             .create()
 
@@ -394,7 +394,7 @@ class BasePriceActivity : AppCompatActivity() {
         if (price > 0L) etPrice.setText(FormatUtils.formatTomanPlain(price))
         etPrice.addTextChangedListener(ThousandSeparatorTextWatcher(etPrice))
 
-        val dialog = MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_Material3_MaterialAlertDialog)
+        val dialog = MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_App_MaterialAlertDialog)
             .setView(view)
             .create()
 
@@ -438,9 +438,9 @@ class BasePriceActivity : AppCompatActivity() {
         val specs = getShaftSpecs(title)
         etDiameter.setText(specs.diameter.toString())
 
-        val dialog = MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_Material3_MaterialAlertDialog)
-            .setView(view)
-            .create()
+        val dialog = MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_App_MaterialAlertDialog)
+        .setView(view)
+        .create()
 
         val btnSave = view.findViewById<MaterialButton>(R.id.btnSaveShaft)
         val btnCancel = view.findViewById<MaterialButton>(R.id.btnCancelShaft)
@@ -480,7 +480,7 @@ class BasePriceActivity : AppCompatActivity() {
         if (price > 0L) etPrice.setText(FormatUtils.formatTomanPlain(price))
         etPrice.addTextChangedListener(ThousandSeparatorTextWatcher(etPrice))
 
-        val dialog = MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_Material3_MaterialAlertDialog)
+        val dialog = MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_App_MaterialAlertDialog)
             .setView(view)
             .create()
 
@@ -520,7 +520,7 @@ class BasePriceActivity : AppCompatActivity() {
         if (price > 0L) etPrice.setText(FormatUtils.formatTomanPlain(price))
         etPrice.addTextChangedListener(ThousandSeparatorTextWatcher(etPrice))
 
-        val dialog = MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_Material3_MaterialAlertDialog)
+        val dialog = MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_App_MaterialAlertDialog)
             .setView(view)
             .create()
 
@@ -576,7 +576,6 @@ class BasePriceActivity : AppCompatActivity() {
 
     // ------------------ متدهای مشخصات برای دیالوگ ویرایش ------------------
     private fun getSlatSpecs(title: String): SlatSpecs {
-        // تلاش برای خواندن مشخصات ذخیره‌شده؛ اگر نبود مقدار پیش‌فرض برگردانده می‌شود
         val s = PrefsHelper.getSlatSpecs(this, title)
         return if (s != null) SlatSpecs(s.width, s.thickness) else SlatSpecs(0f, 0f)
     }
