@@ -35,14 +35,14 @@
                     <ImageView
                         android:id="@+id/buttonAddSlat"
                         android:src="@drawable/ic_add"
-                        android:contentDescription="افزودن تیغه"
+                        android:contentDescription="@string/add_slat"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:tint="?attr/colorPrimary"/>
+                        app:tint="?attr/colorPrimary"/>
 
                     <TextView
                         style="@style/CardTitleText"
-                        android:text="افزودن تیغه"
+                        android:text="@string/add_slat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/space_md"/>
@@ -52,7 +52,7 @@
                 <TextView
                     android:id="@+id/emptySlats"
                     style="@style/BodyText"
-                    android:text="هیچ تیغه‌ای موجود نیست"
+                    android:text="@string/no_slats"
                     android:gravity="center"
                     android:visibility="gone"
                     android:layout_marginTop="@dimen/space_md"
@@ -92,14 +92,14 @@
                     <ImageView
                         android:id="@+id/buttonAddMotor"
                         android:src="@drawable/ic_add"
-                        android:contentDescription="افزودن موتور"
+                        android:contentDescription="@string/add_motor"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:tint="?attr/colorPrimary"/>
+                        app:tint="?attr/colorPrimary"/>
 
                     <TextView
                         style="@style/CardTitleText"
-                        android:text="افزودن موتور"
+                        android:text="@string/add_motor"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/space_md"/>
@@ -109,7 +109,7 @@
                 <TextView
                     android:id="@+id/emptyMotors"
                     style="@style/BodyText"
-                    android:text="هیچ موتوری موجود نیست"
+                    android:text="@string/no_motors"
                     android:gravity="center"
                     android:visibility="gone"
                     android:layout_marginTop="@dimen/space_md"
@@ -149,14 +149,14 @@
                     <ImageView
                         android:id="@+id/buttonAddShaft"
                         android:src="@drawable/ic_add"
-                        android:contentDescription="افزودن شفت"
+                        android:contentDescription="@string/add_shaft"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:tint="?attr/colorPrimary"/>
+                        app:tint="?attr/colorPrimary"/>
 
                     <TextView
                         style="@style/CardTitleText"
-                        android:text="افزودن شفت"
+                        android:text="@string/add_shaft"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/space_md"/>
@@ -166,7 +166,7 @@
                 <TextView
                     android:id="@+id/emptyShafts"
                     style="@style/BodyText"
-                    android:text="هیچ شفتی موجود نیست"
+                    android:text="@string/no_shafts"
                     android:gravity="center"
                     android:visibility="gone"
                     android:layout_marginTop="@dimen/space_md"
@@ -206,14 +206,14 @@
                     <ImageView
                         android:id="@+id/buttonAddBox"
                         android:src="@drawable/ic_add"
-                        android:contentDescription="افزودن قوطی"
+                        android:contentDescription="@string/add_box"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:tint="?attr/colorPrimary"/>
+                        app:tint="?attr/colorPrimary"/>
 
                     <TextView
                         style="@style/CardTitleText"
-                        android:text="افزودن قوطی"
+                        android:text="@string/add_box"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/space_md"/>
@@ -223,7 +223,7 @@
                 <TextView
                     android:id="@+id/emptyBoxes"
                     style="@style/BodyText"
-                    android:text="هیچ قوطی‌ای موجود نیست"
+                    android:text="@string/no_boxes"
                     android:gravity="center"
                     android:visibility="gone"
                     android:layout_marginTop="@dimen/space_md"
@@ -263,14 +263,14 @@
                     <ImageView
                         android:id="@+id/buttonAddExtra"
                         android:src="@drawable/ic_add"
-                        android:contentDescription="افزودن گزینه اضافی"
+                        android:contentDescription="@string/add_extra"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:tint="?attr/colorPrimary"/>
+                        app:tint="?attr/colorPrimary"/>
 
                     <TextView
                         style="@style/CardTitleText"
-                        android:text="افزودن گزینه اضافی"
+                        android:text="@string/add_extra"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/space_md"/>
@@ -280,7 +280,7 @@
                 <TextView
                     android:id="@+id/emptyExtras"
                     style="@style/BodyText"
-                    android:text="هیچ گزینه‌ای موجود نیست"
+                    android:text="@string/no_extras"
                     android:gravity="center"
                     android:visibility="gone"
                     android:layout_marginTop="@dimen/space_md"
@@ -315,7 +315,7 @@
                     style="@style/Widget.App.TextBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="هزینه نصب (تومان به ازای هر متر مربع)"
+                    android:hint="@string/install_cost"
                     android:layout_marginTop="@dimen/space_md">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -331,7 +331,7 @@
                     style="@style/Widget.App.TextBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="جوشکاری (تومان)"
+                    android:hint="@string/welding_cost"
                     android:layout_marginTop="@dimen/space_md">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -347,7 +347,7 @@
                     style="@style/Widget.App.TextBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="کرایه حمل (تومان)"
+                    android:hint="@string/transport_cost"
                     android:layout_marginTop="@dimen/space_md">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -373,16 +373,12 @@
             <com.google.android.material.button.MaterialButton
                 style="@style/Widget.App.PrimaryButton"
                 android:id="@+id/buttonSaveAll"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/btn_height"
-                android:text="ذخیره همه قیمت‌های پایه"/>
+                android:text="@string/save_all_base_prices"/>
 
             <com.google.android.material.button.MaterialButton
                 style="@style/Widget.App.PrimaryButton"
                 android:id="@+id/buttonBack"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/btn_height"
-                android:text="بازگشت به صفحه اصلی"
+                android:text="@string/back_to_home"
                 android:layout_marginTop="@dimen/space_md"/>
         </LinearLayout>
 
