@@ -99,4 +99,15 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <!-- استایل دیالوگ متریال -->
+    <style name="ThemeOverlay.App.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="colorSurface">?attr/colorSurface</item>
+        <item name="colorOnSurface">?attr/colorOnSurface</item>
+        <item name="colorPrimary">?attr/colorPrimary</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Material3.Corner.Medium</item>
+    </style>
+
+    <!-- alias برای هماهنگی با ارجاع‌های کد -->
+    <style name="ThemeOverlay_App_MaterialAlertDialog" parent="@style/ThemeOverlay.App.MaterialAlertDialog"/>
+
 </resources>
