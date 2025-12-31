@@ -1,98 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/App.PageSection"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:fillViewport="true">
+    android:orientation="vertical"
+    android:padding="@dimen/space_md"
+    android:background="?attr/colorSurface">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:padding="16dp"
+    <!-- نام آیتم -->
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.App.TextBox"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:hint="نام آیتم"
+        app:boxBackgroundMode="filled"
+        app:boxBackgroundColor="?attr/colorSurface">
 
-        <!-- نام آیتم -->
-        <com.google.android.material.textfield.TextInputLayout
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etTitle"
+            style="@style/Widget.App.TextBox.EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="نام آیتم"
-            app:boxBackgroundMode="none">
+            android:inputType="textCapWords"
+            android:maxLines="1"
+            android:ellipsize="end"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textCapWords"/>
-        </com.google.android.material.textfield.TextInputLayout>
+    <!-- قیمت (تومان) -->
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.App.TextBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="قیمت (تومان)"
+        android:layout_marginTop="@dimen/space_md"
+        app:boxBackgroundMode="filled"
+        app:boxBackgroundColor="?attr/colorSurface">
 
-        <!-- قیمت (تومان) -->
-        <com.google.android.material.textfield.TextInputLayout
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etPrice"
+            style="@style/Widget.App.TextBox.EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="قیمت (تومان)"
-            android:layout_marginTop="8dp"
-            app:boxBackgroundMode="none">
+            android:inputType="number"
+            android:maxLines="1"
+            android:ellipsize="end"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etPrice"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="number"/>
-        </com.google.android.material.textfield.TextInputLayout>
+    <!-- پهنا (فقط برای تیغه) -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutWidth"
+        style="@style/Widget.App.TextBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="پهنای تیغه (cm)"
+        android:layout_marginTop="@dimen/space_md"
+        android:visibility="gone"
+        app:boxBackgroundMode="filled"
+        app:boxBackgroundColor="?attr/colorSurface">
 
-        <!-- پهنا (فقط برای تیغه) -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/layoutWidth"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etWidth"
+            style="@style/Widget.App.TextBox.EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="پهنای تیغه (cm)"
-            android:layout_marginTop="8dp"
-            android:visibility="gone"
-            app:boxBackgroundMode="none">
+            android:inputType="numberDecimal"
+            android:maxLines="1"
+            android:ellipsize="end"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etWidth"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"/>
-        </com.google.android.material.textfield.TextInputLayout>
+    <!-- ضخامت (فقط برای تیغه) -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutThickness"
+        style="@style/Widget.App.TextBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="ضخامت (mm یا cm)"
+        android:layout_marginTop="@dimen/space_md"
+        android:visibility="gone"
+        app:boxBackgroundMode="filled"
+        app:boxBackgroundColor="?attr/colorSurface">
 
-        <!-- ضخامت (فقط برای تیغه) -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/layoutThickness"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etThickness"
+            style="@style/Widget.App.TextBox.EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="ضخامت (mm یا cm)"
-            android:layout_marginTop="8dp"
-            android:visibility="gone"
-            app:boxBackgroundMode="none">
+            android:inputType="numberDecimal"
+            android:maxLines="1"
+            android:ellipsize="end"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etThickness"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"/>
-        </com.google.android.material.textfield.TextInputLayout>
+    <!-- قطر (فقط برای شفت) -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layoutDiameter"
+        style="@style/Widget.App.TextBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="قطر شفت (cm)"
+        android:layout_marginTop="@dimen/space_md"
+        android:visibility="gone"
+        app:boxBackgroundMode="filled"
+        app:boxBackgroundColor="?attr/colorSurface">
 
-        <!-- قطر (فقط برای شفت) -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/layoutDiameter"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etDiameter"
+            style="@style/Widget.App.TextBox.EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="قطر شفت (cm)"
-            android:layout_marginTop="8dp"
-            android:visibility="gone"
-            app:boxBackgroundMode="none">
+            android:inputType="numberDecimal"
+            android:maxLines="1"
+            android:ellipsize="end"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etDiameter"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="numberDecimal"/>
-        </com.google.android.material.textfield.TextInputLayout>
+    <!-- فاصله انتهایی -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="8dp"/>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="8dp"/>
+    <!-- دکمه‌ها داخل layout تا دقیقاً مثل دیالوگ‌های دیگر تم‌محور باشند -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end"
+        android:layout_marginTop="@dimen/space_lg">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCancelEdit"
+            style="@style/Widget.App.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="لغو"
+            android:layout_marginEnd="@dimen/space_sm"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSaveEdit"
+            style="@style/Widget.App.PrimaryButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ذخیره"/>
     </LinearLayout>
-</ScrollView>
+</LinearLayout>
