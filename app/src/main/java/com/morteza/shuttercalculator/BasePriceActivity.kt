@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.morteza.shuttercalculator.utils.FormatUtils
 import com.morteza.shuttercalculator.utils.PrefsHelper
 import com.morteza.shuttercalculator.utils.ThousandSeparatorTextWatcher
@@ -489,6 +490,10 @@ class BasePriceActivity : AppCompatActivity() {
         val layoutDiameter = dialogView.findViewById<View>(R.id.layoutDiameter)
         val etDiameter = dialogView.findViewById<EditText>(R.id.etDiameter)
 
+        // دکمه‌های داخل layout
+        val btnSave = dialogView.findViewById<MaterialButton>(R.id.btnSaveEdit)
+        val btnCancel = dialogView.findViewById<MaterialButton>(R.id.btnCancelEdit)
+
         // نمایش/مخفی کردن فیلدها بر اساس دسته
         layoutWidth.visibility = if (category == "تیغه") View.VISIBLE else View.GONE
         layoutThickness.visibility = if (category == "تیغه") View.VISIBLE else View.GONE
@@ -498,6 +503,9 @@ class BasePriceActivity : AppCompatActivity() {
         etTitle.setText(title)
         val price = PrefsHelper.getLong(this, "${category}_price_$title", 0L)
         etPrice.setText(FormatUtils.formatTomanPlain(price))
+
+        // اضافه کردن ThousandSeparator به فیلد قیمت
+        etPrice.addTextChangedListener(ThousandSeparatorTextWatcher(etPrice))
 
         if (category == "تیغه") {
             PrefsHelper.getSlatSpecs(this, title)?.let {
@@ -510,44 +518,43 @@ class BasePriceActivity : AppCompatActivity() {
             }
         }
 
-        val dialog = AlertDialog.Builder(this, R.style.AppAlertDialogTheme)
+        // ساخت دیالوگ بدون setPositiveButton/setNegativeButton تا دکمه‌ها تکراری نشوند
+        val dialog = MaterialAlertDialogBuilder(this, R.style.AppAlertDialogTheme)
             .setView(dialogView)
-            .setPositiveButton("ذخیره", null)
-            .setNegativeButton("لغو", null)
             .create()
 
-        dialog.setOnShowListener {
-            val btnSave = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
-            btnSave.setOnClickListener {
-                val newTitle = etTitle.text.toString().trim()
-                val newPrice = FormatUtils.parseTomanInput(etPrice.text.toString())
-                val newWidth = etWidth.text.toString().toFloatOrNull() ?: 0f
-                val newThickness = etThickness.text.toString().toFloatOrNull() ?: 0f
-                val newDiameter = etDiameter.text.toString().toFloatOrNull() ?: 0f
+        // رفتار دکمه‌ها
+        btnCancel.setOnClickListener { dialog.dismiss() }
 
-                if (newTitle.isEmpty() || newPrice < 0L) {
-                    Toast.makeText(this, "نام و قیمت معتبر وارد کنید", Toast.LENGTH_SHORT).show()
-                    return@setOnClickListener
-                }
+        btnSave.setOnClickListener {
+            val newTitle = etTitle.text.toString().trim()
+            val newPrice = FormatUtils.parseTomanInput(etPrice.text.toString())
+            val newWidth = etWidth.text.toString().toFloatOrNull() ?: 0f
+            val newThickness = etThickness.text.toString().toFloatOrNull() ?: 0f
+            val newDiameter = etDiameter.text.toString().toFloatOrNull() ?: 0f
 
-                uiScope.launch(Dispatchers.IO) {
-                    // اگر نام تغییر کرد، کلیدهای قدیمی را پاک کن
-                    if (newTitle != title) {
-                        PrefsHelper.removeOption(this@BasePriceActivity, category, title)
-                        PrefsHelper.removeKey(this@BasePriceActivity, "${category}_price_$title")
-                        if (category == "تیغه") PrefsHelper.removeSlatSpecs(this@BasePriceActivity, title)
-                        if (category == "شفت") PrefsHelper.removeShaftSpecs(this@BasePriceActivity, title)
-                    }
-                    // ذخیرهٔ جدید: صریحاً مقدار را با putLong ذخیره می‌کنیم
-                    PrefsHelper.putLong(this@BasePriceActivity, "${category}_price_$newTitle", newPrice)
-                    if (category == "تیغه") PrefsHelper.saveSlatSpecs(this@BasePriceActivity, newTitle, newWidth, newThickness)
-                    if (category == "شفت") PrefsHelper.saveShaftSpecs(this@BasePriceActivity, newTitle, newDiameter)
-                }
-
-                refreshCategory(category)
-                Toast.makeText(this, "تغییرات ذخیره شد", Toast.LENGTH_SHORT).show()
-                dialog.dismiss()
+            if (newTitle.isEmpty() || newPrice < 0L) {
+                Toast.makeText(this, "نام و قیمت معتبر وارد کنید", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
+
+            uiScope.launch(Dispatchers.IO) {
+                // اگر نام تغییر کرد، کلیدهای قدیمی را پاک کن
+                if (newTitle != title) {
+                    PrefsHelper.removeOption(this@BasePriceActivity, category, title)
+                    PrefsHelper.removeKey(this@BasePriceActivity, "${category}_price_$title")
+                    if (category == "تیغه") PrefsHelper.removeSlatSpecs(this@BasePriceActivity, title)
+                    if (category == "شفت") PrefsHelper.removeShaftSpecs(this@BasePriceActivity, title)
+                }
+                // ذخیرهٔ جدید: صریحاً مقدار را با putLong ذخیره می‌کنیم
+                PrefsHelper.putLong(this@BasePriceActivity, "${category}_price_$newTitle", newPrice)
+                if (category == "تیغه") PrefsHelper.saveSlatSpecs(this@BasePriceActivity, newTitle, newWidth, newThickness)
+                if (category == "شفت") PrefsHelper.saveShaftSpecs(this@BasePriceActivity, newTitle, newDiameter)
+            }
+
+            refreshCategory(category)
+            Toast.makeText(this, "تغییرات ذخیره شد", Toast.LENGTH_SHORT).show()
+            dialog.dismiss()
         }
 
         dialog.show()
