@@ -7,6 +7,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="@dimen/space_md"
+    android:layout_gravity="center"
     android:background="?attr/colorSurface">
 
     <!-- نام آیتم -->
@@ -14,8 +15,7 @@
         style="@style/Widget.App.TextBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="نام آیتم"
-        app:boxBackgroundMode="filled">
+        android:hint="نام آیتم">
 
         <com.google.android.material.textfield.TextInputEditText
             style="@style/Widget.App.TextBox.EditText"
@@ -33,8 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="قیمت (تومان)"
-        android:layout_marginTop="@dimen/space_md"
-        app:boxBackgroundMode="filled">
+        android:layout_marginTop="@dimen/space_md">
 
         <com.google.android.material.textfield.TextInputEditText
             style="@style/Widget.App.TextBox.EditText"
@@ -54,8 +53,7 @@
         android:layout_height="wrap_content"
         android:hint="پهنای تیغه (cm)"
         android:layout_marginTop="@dimen/space_md"
-        android:visibility="gone"
-        app:boxBackgroundMode="filled">
+        android:visibility="gone">
 
         <com.google.android.material.textfield.TextInputEditText
             style="@style/Widget.App.TextBox.EditText"
@@ -73,10 +71,9 @@
         android:id="@+id/layoutThickness"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="ضخامت (cm)"
+        android:hint="ضخامت (mm یا cm)"
         android:layout_marginTop="@dimen/space_md"
-        android:visibility="gone"
-        app:boxBackgroundMode="filled">
+        android:visibility="gone">
 
         <com.google.android.material.textfield.TextInputEditText
             style="@style/Widget.App.TextBox.EditText"
@@ -96,8 +93,7 @@
         android:layout_height="wrap_content"
         android:hint="قطر شفت (cm)"
         android:layout_marginTop="@dimen/space_md"
-        android:visibility="gone"
-        app:boxBackgroundMode="filled">
+        android:visibility="gone">
 
         <com.google.android.material.textfield.TextInputEditText
             style="@style/Widget.App.TextBox.EditText"
@@ -113,8 +109,9 @@
         android:layout_width="match_parent"
         android:layout_height="8dp"/>
 
-    <!-- دکمه‌ها داخل layout (یک جفت) -->
+    <!-- دکمه‌ها -->
     <LinearLayout
+        style="@style/App.PageSection"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -123,7 +120,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCancelEdit"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            style="@style/Widget.App.PrimaryButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="لغو"
@@ -131,7 +128,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSaveEdit"
-            style="@style/Widget.MaterialComponents.Button"
+            style="@style/Widget.App.PrimaryButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="ذخیره"/>
