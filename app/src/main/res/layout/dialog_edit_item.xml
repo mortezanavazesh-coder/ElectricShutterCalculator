@@ -11,15 +11,14 @@
 
     <!-- نام آیتم -->
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.App.TextBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="نام آیتم"
-        app:boxBackgroundMode="filled"
-        app:boxBackgroundColor="?attr/colorSurface"
-        app:boxStrokeColor="?attr/colorPrimary"
-        app:hintTextColor="?attr/colorOnSurface">
+        app:boxBackgroundMode="filled">
 
         <com.google.android.material.textfield.TextInputEditText
+            style="@style/Widget.App.TextBox.EditText"
             android:id="@+id/etTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -30,16 +29,15 @@
 
     <!-- قیمت (تومان) -->
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.App.TextBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="قیمت (تومان)"
         android:layout_marginTop="@dimen/space_md"
-        app:boxBackgroundMode="filled"
-        app:boxBackgroundColor="?attr/colorSurface"
-        app:boxStrokeColor="?attr/colorPrimary"
-        app:hintTextColor="?attr/colorOnSurface">
+        app:boxBackgroundMode="filled">
 
         <com.google.android.material.textfield.TextInputEditText
+            style="@style/Widget.App.TextBox.EditText"
             android:id="@+id/etPrice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -50,18 +48,17 @@
 
     <!-- پهنا (فقط برای تیغه) -->
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.App.TextBox"
         android:id="@+id/layoutWidth"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="پهنای تیغه (cm)"
         android:layout_marginTop="@dimen/space_md"
         android:visibility="gone"
-        app:boxBackgroundMode="filled"
-        app:boxBackgroundColor="?attr/colorSurface"
-        app:boxStrokeColor="?attr/colorPrimary"
-        app:hintTextColor="?attr/colorOnSurface">
+        app:boxBackgroundMode="filled">
 
         <com.google.android.material.textfield.TextInputEditText
+            style="@style/Widget.App.TextBox.EditText"
             android:id="@+id/etWidth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -72,18 +69,17 @@
 
     <!-- ضخامت (فقط برای تیغه) -->
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.App.TextBox"
         android:id="@+id/layoutThickness"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="ضخامت (mm یا cm)"
         android:layout_marginTop="@dimen/space_md"
         android:visibility="gone"
-        app:boxBackgroundMode="filled"
-        app:boxBackgroundColor="?attr/colorSurface"
-        app:boxStrokeColor="?attr/colorPrimary"
-        app:hintTextColor="?attr/colorOnSurface">
+        app:boxBackgroundMode="filled">
 
         <com.google.android.material.textfield.TextInputEditText
+            style="@style/Widget.App.TextBox.EditText"
             android:id="@+id/etThickness"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -94,18 +90,17 @@
 
     <!-- قطر (فقط برای شفت) -->
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.App.TextBox"
         android:id="@+id/layoutDiameter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="قطر شفت (cm)"
         android:layout_marginTop="@dimen/space_md"
         android:visibility="gone"
-        app:boxBackgroundMode="filled"
-        app:boxBackgroundColor="?attr/colorSurface"
-        app:boxStrokeColor="?attr/colorPrimary"
-        app:hintTextColor="?attr/colorOnSurface">
+        app:boxBackgroundMode="filled">
 
         <com.google.android.material.textfield.TextInputEditText
+            style="@style/Widget.App.TextBox.EditText"
             android:id="@+id/etDiameter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
