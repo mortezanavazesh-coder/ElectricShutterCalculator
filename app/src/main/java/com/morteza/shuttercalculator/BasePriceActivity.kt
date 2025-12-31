@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ContextThemeWrapper
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -14,7 +15,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.morteza.shuttercalculator.utils.FormatUtils
 import com.morteza.shuttercalculator.utils.PrefsHelper
 import com.morteza.shuttercalculator.utils.ThousandSeparatorTextWatcher
@@ -333,6 +333,7 @@ class BasePriceActivity : AppCompatActivity() {
 
         dialog.show()
     }
+
     // ------------------ ذخیره هزینه‌های پایه ------------------
     private fun saveCosts() {
         val install = FormatUtils.parseTomanInput(inputInstallBase.text.toString())
@@ -480,7 +481,11 @@ class BasePriceActivity : AppCompatActivity() {
      * این متد را adapter هنگام کلیک روی آیکن ویرایش فراخوانی می‌کند.
      */
     private fun showEditItemDialog(category: String, title: String) {
-        val dialogView = layoutInflater.inflate(R.layout.dialog_edit_item, null)
+        // Inflate با ContextThemeWrapper تا TextInput ها تم دیالوگ را بگیرند
+        val themedContext = ContextThemeWrapper(this, R.style.AppAlertDialogTheme)
+        val inflater = LayoutInflater.from(themedContext)
+        val dialogView = inflater.inflate(R.layout.dialog_edit_item, null)
+
         val etTitle = dialogView.findViewById<EditText>(R.id.etTitle)
         val etPrice = dialogView.findViewById<EditText>(R.id.etPrice)
         val layoutWidth = dialogView.findViewById<View>(R.id.layoutWidth)
@@ -518,8 +523,8 @@ class BasePriceActivity : AppCompatActivity() {
             }
         }
 
-        // ساخت دیالوگ مثل دیالوگ‌های افزودن (بدون setPositiveButton/setNegativeButton)
-        val dialog = AlertDialog.Builder(this, R.style.AppAlertDialogTheme)
+        // ساخت دیالوگ با themedContext تا TextInput ها و overlay تم را بگیرند
+        val dialog = AlertDialog.Builder(themedContext, R.style.AppAlertDialogTheme)
             .setView(dialogView)
             .create()
 
