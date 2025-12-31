@@ -39,7 +39,7 @@
             android:ellipsize="end"
             android:singleLine="true"/>
 
-        <!-- دکمه‌ها -->
+        <!-- دکمه‌ها: فقط یک آیکن ویرایش کلی و یک آیکن حذف -->
         <LinearLayout
             style="@style/App.PageSection"
             android:layout_width="wrap_content"
@@ -48,28 +48,26 @@
             android:gravity="end">
 
             <ImageButton
-                android:id="@+id/btnRenameItem"
-                style="@style/Widget.App.IconButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_edit"
-                android:contentDescription="@string/btn_edit"/>
-
-            <ImageButton
                 android:id="@+id/btnEditItem"
                 style="@style/Widget.App.IconButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_price"
-                android:contentDescription="@string/btn_save"/>
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/ic_edit"
+                android:contentDescription="ویرایش آیتم"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:tint="?attr/colorPrimary"
+                android:layout_marginStart="@dimen/space_sm"/>
 
             <ImageButton
                 android:id="@+id/btnDeleteItem"
                 style="@style/Widget.App.IconButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
                 android:src="@drawable/ic_delete"
-                android:contentDescription="@string/btn_delete"/>
+                android:contentDescription="@string/btn_delete"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:tint="?attr/colorError"
+                android:layout_marginStart="@dimen/space_sm"/>
         </LinearLayout>
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>
