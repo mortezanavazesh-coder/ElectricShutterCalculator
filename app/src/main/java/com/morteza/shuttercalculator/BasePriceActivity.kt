@@ -1,28 +1,26 @@
 package com.morteza.shuttercalculator
 
 import android.os.Bundle
-import android.text.InputType
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ContextThemeWrapper
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
 import com.morteza.shuttercalculator.utils.FormatUtils
 import com.morteza.shuttercalculator.utils.PrefsHelper
 import com.morteza.shuttercalculator.utils.ThousandSeparatorTextWatcher
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -57,6 +55,8 @@ class BasePriceActivity : AppCompatActivity() {
     private lateinit var adapterShafts: BasePriceAdapter
     private lateinit var adapterBoxes: BasePriceAdapter
     private lateinit var adapterExtras: BasePriceAdapter
+
+    private val uiScope = CoroutineScope(Dispatchers.Main + SupervisorJob())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -97,10 +97,6 @@ class BasePriceActivity : AppCompatActivity() {
         inputInstallBase.addTextChangedListener(ThousandSeparatorTextWatcher(inputInstallBase))
         inputWeldingBase.addTextChangedListener(ThousandSeparatorTextWatcher(inputWeldingBase))
         inputTransportBase.addTextChangedListener(ThousandSeparatorTextWatcher(inputTransportBase))
-
-        inputInstallBase.inputType = InputType.TYPE_CLASS_NUMBER
-        inputWeldingBase.inputType = InputType.TYPE_CLASS_NUMBER
-        inputTransportBase.inputType = InputType.TYPE_CLASS_NUMBER
     }
 
     private fun setupListsAndAdapters() {
@@ -150,7 +146,7 @@ class BasePriceActivity : AppCompatActivity() {
         return BasePriceAdapter(
             items = emptyList(),
             onDelete = { title ->
-                lifecycleScope.launch {
+                uiScope.launch {
                     withContext(Dispatchers.IO) {
                         PrefsHelper.removeOption(this@BasePriceActivity, category, title)
                         PrefsHelper.removeKey(this@BasePriceActivity, "${category}_price_$title")
@@ -159,7 +155,7 @@ class BasePriceActivity : AppCompatActivity() {
                         }
                     }
                     refreshCategory(category)
-                    toast("$category حذف شد ✅")
+                    Toast.makeText(this@BasePriceActivity, "$category حذف شد ✅", Toast.LENGTH_SHORT).show()
                 }
             },
             onEdit = { title ->
@@ -177,7 +173,7 @@ class BasePriceActivity : AppCompatActivity() {
     }
 
     private fun refreshCategory(category: String) {
-        lifecycleScope.launch {
+        uiScope.launch {
             val items = withContext(Dispatchers.IO) {
                 val list = PrefsHelper.getSortedOptionList(this@BasePriceActivity, category) ?: emptyList()
                 list.map { title ->
@@ -213,31 +209,29 @@ class BasePriceActivity : AppCompatActivity() {
 
     // ------------------ افزودن تیغه ------------------
     private fun showAddSlatDialog() {
-        val themed = themedContext()
-        val view = LayoutInflater.from(themed).inflate(R.layout.dialog_add_slat, null)
+        val view = LayoutInflater.from(this).inflate(R.layout.dialog_add_slat, null)
+        val etTitle = view.findViewById<EditText>(R.id.etSlatTitle)
+        val etPrice = view.findViewById<EditText>(R.id.etSlatPrice)
+        val etWidth = view.findViewById<EditText>(R.id.etSlatWidth)
+        val etThickness = view.findViewById<EditText>(R.id.etSlatThickness)
 
-        val etTitle = view.findViewById<TextInputEditText>(R.id.etSlatTitle)
-        val etPrice = view.findViewById<TextInputEditText>(R.id.etSlatPrice)
-        val etWidth = view.findViewById<TextInputEditText>(R.id.etSlatWidth)
-        val etThickness = view.findViewById<TextInputEditText>(R.id.etSlatThickness)
+        etPrice.addTextChangedListener(ThousandSeparatorTextWatcher(etPrice))
 
-        applyPriceWatcher(etPrice)
-        applyNumericInput(etWidth, etThickness)
-
-        val dialog = buildThemedDialog(themed, view)
+        val dialog = AlertDialog.Builder(this, R.style.AppAlertDialogTheme)
+            .setView(view)
+            .create()
 
         val btnSave = view.findViewById<MaterialButton>(R.id.btnSaveSlat)
         val btnCancel = view.findViewById<MaterialButton>(R.id.btnCancelSlat)
-        styleDialogButtons(btnSave, btnCancel)
 
         btnSave.setOnClickListener {
-            val title = etTitle.text?.toString()?.trim().orEmpty()
-            val priceLong = FormatUtils.parseTomanInput(etPrice.text?.toString().orEmpty())
-            val widthCm = etWidth.text?.toString()?.toFloatOrNull() ?: 0f
-            val thicknessCm = etThickness.text?.toString()?.toFloatOrNull() ?: 0f
+            val title = etTitle.text.toString().trim()
+            val priceLong = FormatUtils.parseTomanInput(etPrice.text.toString())
+            val widthCm = etWidth.text.toString().toFloatOrNull() ?: 0f
+            val thicknessCm = etThickness.text.toString().toFloatOrNull() ?: 0f
 
             if (title.isEmpty() || priceLong < 0L || widthCm <= 0f || thicknessCm <= 0f) {
-                toast("اطلاعات معتبر وارد کنید")
+                Toast.makeText(this, "اطلاعات معتبر وارد کنید", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -245,9 +239,10 @@ class BasePriceActivity : AppCompatActivity() {
             PrefsHelper.saveSlatSpecs(this, title, widthCm, thicknessCm)
 
             refreshCategory("تیغه")
-            toast("تیغه اضافه شد ✅")
+            Toast.makeText(this, "تیغه اضافه شد ✅", Toast.LENGTH_SHORT).show()
             dialog.dismiss()
         }
+
         btnCancel.setOnClickListener { dialog.dismiss() }
 
         dialog.show()
@@ -255,29 +250,27 @@ class BasePriceActivity : AppCompatActivity() {
 
     // ------------------ افزودن شفت ------------------
     private fun showAddShaftDialog() {
-        val themed = themedContext()
-        val view = LayoutInflater.from(themed).inflate(R.layout.dialog_add_shaft, null)
+        val view = LayoutInflater.from(this).inflate(R.layout.dialog_add_shaft, null)
+        val etTitle = view.findViewById<EditText>(R.id.etShaftTitle)
+        val etPrice = view.findViewById<EditText>(R.id.etShaftPrice)
+        val etDiameter = view.findViewById<EditText>(R.id.etShaftDiameter)
 
-        val etTitle = view.findViewById<TextInputEditText>(R.id.etShaftTitle)
-        val etPrice = view.findViewById<TextInputEditText>(R.id.etShaftPrice)
-        val etDiameter = view.findViewById<TextInputEditText>(R.id.etShaftDiameter)
+        etPrice.addTextChangedListener(ThousandSeparatorTextWatcher(etPrice))
 
-        applyPriceWatcher(etPrice)
-        applyNumericInput(etDiameter)
-
-        val dialog = buildThemedDialog(themed, view)
+        val dialog = AlertDialog.Builder(this, R.style.AppAlertDialogTheme)
+            .setView(view)
+            .create()
 
         val btnSave = view.findViewById<MaterialButton>(R.id.btnSaveShaft)
         val btnCancel = view.findViewById<MaterialButton>(R.id.btnCancelShaft)
-        styleDialogButtons(btnSave, btnCancel)
 
         btnSave.setOnClickListener {
-            val title = etTitle.text?.toString()?.trim().orEmpty()
-            val priceLong = FormatUtils.parseTomanInput(etPrice.text?.toString().orEmpty())
-            val diameterCm = etDiameter.text?.toString()?.toFloatOrNull() ?: 0f
+            val title = etTitle.text.toString().trim()
+            val priceLong = FormatUtils.parseTomanInput(etPrice.text.toString())
+            val diameterCm = etDiameter.text.toString().toFloatOrNull() ?: 0f
 
             if (title.isEmpty() || priceLong < 0L || diameterCm <= 0f) {
-                toast("اطلاعات معتبر وارد کنید")
+                Toast.makeText(this, "اطلاعات معتبر وارد کنید", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -285,9 +278,10 @@ class BasePriceActivity : AppCompatActivity() {
             PrefsHelper.saveShaftSpecs(this, title, diameterCm)
 
             refreshCategory("شفت")
-            toast("شفت اضافه شد ✅")
+            Toast.makeText(this, "شفت اضافه شد ✅", Toast.LENGTH_SHORT).show()
             dialog.dismiss()
         }
+
         btnCancel.setOnClickListener { dialog.dismiss() }
 
         dialog.show()
@@ -295,26 +289,25 @@ class BasePriceActivity : AppCompatActivity() {
 
     // ------------------ افزودن آیتم‌های عمومی (موتور، قوطی، اضافات) ------------------
     private fun showAddItemDialog(category: String) {
-        val themed = themedContext()
-        val view = LayoutInflater.from(themed).inflate(R.layout.dialog_add_item, null)
+        val view = LayoutInflater.from(this).inflate(R.layout.dialog_add_item, null)
+        val etTitle = view.findViewById<EditText>(R.id.etItemTitle)
+        val etPrice = view.findViewById<EditText>(R.id.etItemPrice)
 
-        val etTitle = view.findViewById<TextInputEditText>(R.id.etItemTitle)
-        val etPrice = view.findViewById<TextInputEditText>(R.id.etItemPrice)
+        etPrice.addTextChangedListener(ThousandSeparatorTextWatcher(etPrice))
 
-        applyPriceWatcher(etPrice)
-
-        val dialog = buildThemedDialog(themed, view)
+        val dialog = AlertDialog.Builder(this, R.style.AppAlertDialogTheme)
+            .setView(view)
+            .create()
 
         val btnSave = view.findViewById<MaterialButton>(R.id.btnSaveItem)
         val btnCancel = view.findViewById<MaterialButton>(R.id.btnCancelItem)
-        styleDialogButtons(btnSave, btnCancel)
 
         btnSave.setOnClickListener {
-            val title = etTitle.text?.toString()?.trim().orEmpty()
-            val priceLong = FormatUtils.parseTomanInput(etPrice.text?.toString().orEmpty())
+            val title = etTitle.text.toString().trim()
+            val priceLong = FormatUtils.parseTomanInput(etPrice.text.toString())
 
             if (title.isEmpty() || priceLong < 0L) {
-                toast("عنوان و قیمت معتبر وارد کنید")
+                Toast.makeText(this, "عنوان و قیمت معتبر وارد کنید", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
@@ -325,7 +318,7 @@ class BasePriceActivity : AppCompatActivity() {
             }
 
             refreshCategory(category)
-            toast("$category اضافه شد ✅")
+            Toast.makeText(this, "$category اضافه شد ✅", Toast.LENGTH_SHORT).show()
             dialog.dismiss()
         }
 
@@ -344,41 +337,52 @@ class BasePriceActivity : AppCompatActivity() {
         PrefsHelper.putLong(this, "welding_base", welding)
         PrefsHelper.putLong(this, "transport_base", transport)
 
-        toast("هزینه‌های پایه ذخیره شد ✅")
+        Toast.makeText(this, "هزینه‌های پایه ذخیره شد ✅", Toast.LENGTH_SHORT).show()
     }
 
-    // ------------------ تغییر نام آیتم (Theme-driven) ------------------
+    // ------------------ تغییر نام آیتم ------------------
     private fun showRenameDialog(category: String, oldTitle: String) {
-        val themed = themedContext()
+        val padding = getDimenPx(R.dimen.space_md)
+        val gap = getDimenPx(R.dimen.space_lg)
+        val btnGap = getDimenPx(R.dimen.space_sm)
 
-        val container = LinearLayout(themed).apply {
+        val container = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
-            val padding = getDimenPx(R.dimen.space_md)
             setPadding(padding, padding, padding, padding)
+            setBackgroundResource(android.R.color.transparent)
         }
-
-        val inputLayout = TextInputLayout(themed).apply {
+        val input = EditText(this).apply {
+            setText(oldTitle)
             hint = "نام جدید"
         }
-        val input = TextInputEditText(themed).apply {
-            setText(oldTitle)
+        val buttons = LinearLayout(this).apply {
+            orientation = LinearLayout.HORIZONTAL
+            gravity = Gravity.END
+            setPadding(0, gap, 0, 0)
         }
-        inputLayout.addView(input)
+        val btnCancel = MaterialButton(this, null, com.google.android.material.R.attr.materialButtonOutlinedStyle).apply {
+            text = "لغو"
+        }
+        val btnSave = MaterialButton(this).apply {
+            text = "ذخیره"
+            setPadding(btnGap, 0, 0, 0)
+        }
+        buttons.addView(btnCancel)
+        buttons.addView(btnSave)
+        container.addView(input)
+        container.addView(buttons)
 
-        val buttons = buildEndAlignedButtons(themed)
+        val dialog = AlertDialog.Builder(this, R.style.AppAlertDialogTheme)
+            .setView(container)
+            .create()
 
-        container.addView(inputLayout)
-        container.addView(buttons.container)
-
-        val dialog = buildThemedDialog(themed, container)
-
-        buttons.btnSave.setOnClickListener {
-            val newTitle = input.text?.toString()?.trim().orEmpty()
+        btnSave.setOnClickListener {
+            val newTitle = input.text.toString().trim()
             if (newTitle.isEmpty()) {
-                toast("نام معتبر وارد کنید")
+                Toast.makeText(this, "نام معتبر وارد کنید", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            lifecycleScope.launch {
+            uiScope.launch {
                 withContext(Dispatchers.IO) {
                     PrefsHelper.renameOption(this@BasePriceActivity, category, oldTitle, newTitle)
 
@@ -399,76 +403,83 @@ class BasePriceActivity : AppCompatActivity() {
                     }
                 }
                 refreshCategory(category)
-                toast("نام $category تغییر کرد ✅")
+                Toast.makeText(this@BasePriceActivity, "نام $category تغییر کرد ✅", Toast.LENGTH_SHORT).show()
                 dialog.dismiss()
             }
         }
-        buttons.btnCancel.setOnClickListener { dialog.dismiss() }
+        btnCancel.setOnClickListener { dialog.dismiss() }
 
         dialog.show()
     }
 
-    // ------------------ ویرایش قیمت آیتم (Theme-driven) ------------------
+    // ------------------ ویرایش قیمت آیتم ------------------
     private fun showEditPriceDialog(category: String, title: String) {
-        val themed = themedContext()
+        val padding = getDimenPx(R.dimen.space_md)
+        val gap = getDimenPx(R.dimen.space_lg)
+        val btnGap = getDimenPx(R.dimen.space_sm)
 
-        val container = LinearLayout(themed).apply {
+        val container = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
-            val padding = getDimenPx(R.dimen.space_md)
             setPadding(padding, padding, padding, padding)
+            setBackgroundResource(android.R.color.transparent)
         }
-
-        val inputLayout = TextInputLayout(themed).apply { hint = "قیمت" }
-        val input = TextInputEditText(themed).apply {
+        val input = EditText(this).apply {
             val key = "${category}_price_$title"
             val current = PrefsHelper.getLong(this@BasePriceActivity, key, 0L)
             if (current > 0L) setText(FormatUtils.formatTomanPlain(current))
             addTextChangedListener(ThousandSeparatorTextWatcher(this))
-            inputType = InputType.TYPE_CLASS_NUMBER
+            hint = "قیمت"
         }
-        inputLayout.addView(input)
+        val buttons = LinearLayout(this).apply {
+            orientation = LinearLayout.HORIZONTAL
+            gravity = Gravity.END
+            setPadding(0, gap, 0, 0)
+        }
+        val btnCancel = MaterialButton(this, null, com.google.android.material.R.attr.materialButtonOutlinedStyle).apply {
+            text = "لغو"
+        }
+        val btnSave = MaterialButton(this).apply {
+            text = "ذخیره"
+            setPadding(btnGap, 0, 0, 0)
+        }
+        buttons.addView(btnCancel)
+        buttons.addView(btnSave)
+        container.addView(input)
+        container.addView(buttons)
 
-        val buttons = buildEndAlignedButtons(themed)
+        val dialog = AlertDialog.Builder(this, R.style.AppAlertDialogTheme)
+            .setView(container)
+            .create()
 
-        container.addView(inputLayout)
-        container.addView(buttons.container)
-
-        val dialog = buildThemedDialog(themed, container)
-
-        buttons.btnSave.setOnClickListener {
-            val value = FormatUtils.parseTomanInput(input.text?.toString().orEmpty())
+        btnSave.setOnClickListener {
+            val value = FormatUtils.parseTomanInput(input.text.toString())
             if (value < 0L) {
-                toast("قیمت معتبر وارد کنید")
+                Toast.makeText(this, "قیمت معتبر وارد کنید", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             val key = "${category}_price_$title"
             PrefsHelper.putLong(this, key, value)
             refreshCategory(category)
-            toast("قیمت $category بروزرسانی شد ✅")
+            Toast.makeText(this, "قیمت $category بروزرسانی شد ✅", Toast.LENGTH_SHORT).show()
             dialog.dismiss()
         }
-        buttons.btnCancel.setOnClickListener { dialog.dismiss() }
+        btnCancel.setOnClickListener { dialog.dismiss() }
 
         dialog.show()
     }
 
-    // ------------------ ویرایش کلی آیتم ------------------
+    // ------------------ ویرایش کلی آیتم (هماهنگ با تم) ------------------
     private fun showEditItemDialog(category: String, title: String) {
-        val themed = themedContext()
-        val view = LayoutInflater.from(themed).inflate(R.layout.dialog_edit_item, null)
+        val view = LayoutInflater.from(this).inflate(R.layout.dialog_edit_item, null)
 
-        val etTitle = view.findViewById<TextInputEditText>(R.id.etTitle)
-        val etPrice = view.findViewById<TextInputEditText>(R.id.etPrice)
+        val etTitle = view.findViewById<EditText>(R.id.etTitle)
+        val etPrice = view.findViewById<EditText>(R.id.etPrice)
         val layoutWidth = view.findViewById<View>(R.id.layoutWidth)
-        val etWidth = view.findViewById<TextInputEditText>(R.id.etWidth)
+        val etWidth = view.findViewById<EditText>(R.id.etWidth)
         val layoutThickness = view.findViewById<View>(R.id.layoutThickness)
-        val etThickness = view.findViewById<TextInputEditText>(R.id.etThickness)
+        val etThickness = view.findViewById<EditText>(R.id.etThickness)
         val layoutDiameter = view.findViewById<View>(R.id.layoutDiameter)
-        val etDiameter = view.findViewById<TextInputEditText>(R.id.etDiameter)
-
-        val btnSave = view.findViewById<MaterialButton>(R.id.btnSaveEdit)
-        val btnCancel = view.findViewById<MaterialButton>(R.id.btnCancelEdit)
-        styleDialogButtons(btnSave, btnCancel)
+        val etDiameter = view.findViewById<EditText>(R.id.etDiameter)
 
         layoutWidth.visibility = if (category == "تیغه") View.VISIBLE else View.GONE
         layoutThickness.visibility = if (category == "تیغه") View.VISIBLE else View.GONE
@@ -477,8 +488,7 @@ class BasePriceActivity : AppCompatActivity() {
         etTitle.setText(title)
         val price = PrefsHelper.getLong(this, "${category}_price_$title", 0L)
         etPrice.setText(FormatUtils.formatTomanPlain(price))
-        applyPriceWatcher(etPrice)
-        applyNumericInput(etWidth, etThickness, etDiameter)
+        etPrice.addTextChangedListener(ThousandSeparatorTextWatcher(etPrice))
 
         if (category == "تیغه") {
             PrefsHelper.getSlatSpecs(this, title)?.let {
@@ -491,23 +501,28 @@ class BasePriceActivity : AppCompatActivity() {
             }
         }
 
-        val dialog = buildThemedDialog(themed, view)
+        val dialog = AlertDialog.Builder(this, R.style.AppAlertDialogTheme)
+            .setView(view)
+            .create()
+
+        val btnSave = view.findViewById<MaterialButton>(R.id.btnSaveEdit)
+        val btnCancel = view.findViewById<MaterialButton>(R.id.btnCancelEdit)
 
         btnCancel.setOnClickListener { dialog.dismiss() }
 
         btnSave.setOnClickListener {
-            val newTitle = etTitle.text?.toString()?.trim().orEmpty()
-            val newPrice = FormatUtils.parseTomanInput(etPrice.text?.toString().orEmpty())
-            val newWidth = etWidth.text?.toString()?.toFloatOrNull() ?: 0f
-            val newThickness = etThickness.text?.toString()?.toFloatOrNull() ?: 0f
-            val newDiameter = etDiameter.text?.toString()?.toFloatOrNull() ?: 0f
+            val newTitle = etTitle.text.toString().trim()
+            val newPrice = FormatUtils.parseTomanInput(etPrice.text.toString())
+            val newWidth = etWidth.text.toString().toFloatOrNull() ?: 0f
+            val newThickness = etThickness.text.toString().toFloatOrNull() ?: 0f
+            val newDiameter = etDiameter.text.toString().toFloatOrNull() ?: 0f
 
             if (newTitle.isEmpty() || newPrice < 0L) {
-                toast("نام و قیمت معتبر وارد کنید")
+                Toast.makeText(this, "نام و قیمت معتبر وارد کنید", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
-            lifecycleScope.launch(Dispatchers.IO) {
+            uiScope.launch(Dispatchers.IO) {
                 if (newTitle != title) {
                     PrefsHelper.removeOption(this@BasePriceActivity, category, title)
                     PrefsHelper.removeKey(this@BasePriceActivity, "${category}_price_$title")
@@ -517,89 +532,20 @@ class BasePriceActivity : AppCompatActivity() {
                 PrefsHelper.putLong(this@BasePriceActivity, "${category}_price_$newTitle", newPrice)
                 if (category == "تیغه") PrefsHelper.saveSlatSpecs(this@BasePriceActivity, newTitle, newWidth, newThickness)
                 if (category == "شفت") PrefsHelper.saveShaftSpecs(this@BasePriceActivity, newTitle, newDiameter)
-
-                withContext(Dispatchers.Main) {
-                    refreshCategory(category)
-                    toast("تغییرات ذخیره شد ✅")
-                    dialog.dismiss()
-                }
             }
+
+            refreshCategory(category)
+            Toast.makeText(this, "تغییرات ذخیره شد ✅", Toast.LENGTH_SHORT).show()
+            dialog.dismiss()
         }
 
         dialog.show()
     }
 
-    // ------------------ Helpers ------------------
-
-    private fun themedContext(): ContextThemeWrapper =
-        ContextThemeWrapper(this, R.style.AppAlertDialogTheme)
-
-    private fun buildThemedDialog(themed: ContextThemeWrapper, contentView: View) =
-        MaterialAlertDialogBuilder(themed, R.style.AppAlertDialogTheme)
-            .setView(contentView)
-            .setCancelable(true)
-            .create().apply {
-                setOnShowListener {
-                    window?.setLayout(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.WRAP_CONTENT
-                    )
-                }
-            }
-
-    private data class ButtonRow(
-        val container: LinearLayout,
-        val btnCancel: MaterialButton,
-        val btnSave: MaterialButton
-    )
-
-    private fun buildEndAlignedButtons(themed: ContextThemeWrapper): ButtonRow {
-        val gap = getDimenPx(R.dimen.space_lg)
-        val btnGap = getDimenPx(R.dimen.space_sm)
-
-        val container = LinearLayout(themed).apply {
-            orientation = LinearLayout.HORIZONTAL
-            gravity = Gravity.END
-            setPadding(0, gap, 0, 0)
-        }
-        val btnCancel = MaterialButton(
-            themed, null,
-            com.google.android.material.R.attr.materialButtonOutlinedStyle
-        ).apply { text = "لغو" }
-
-        val btnSave = MaterialButton(themed).apply {
-            text = "ذخیره"
-            setPadding(btnGap, 0, 0, 0)
-        }
-
-        container.addView(btnCancel)
-        container.addView(btnSave)
-        return ButtonRow(container, btnCancel, btnSave)
-    }
-
-    // استفاده از رنگ‌های تعریف‌شده در پروژه (themes.xml → colorPrimary, colorOnPrimary)
-    private fun styleDialogButtons(btnSave: MaterialButton, btnCancel: MaterialButton) {
-        btnCancel.setTextColor(getColorCompat(R.color.colorPrimary))
-        btnSave.setTextColor(getColorCompat(R.color.colorOnPrimary))
-        btnSave.setBackgroundColor(getColorCompat(R.color.colorPrimary))
-    }
-
-    private fun applyPriceWatcher(editText: TextInputEditText?) {
-        editText ?: return
-        editText.addTextChangedListener(ThousandSeparatorTextWatcher(editText))
-        editText.inputType = InputType.TYPE_CLASS_NUMBER
-    }
-
-    private fun applyNumericInput(vararg editTexts: TextInputEditText?) {
-        editTexts.forEach { et ->
-            et ?: return@forEach
-            et.inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL
-        }
-    }
-
     private fun getDimenPx(resId: Int): Int = resources.getDimensionPixelSize(resId)
 
-    private fun getColorCompat(resId: Int): Int = resources.getColor(resId, theme)
-
-    private fun toast(msg: String) = Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+    override fun onDestroy() {
+        super.onDestroy()
+        uiScope.cancel()
+    }
 }
