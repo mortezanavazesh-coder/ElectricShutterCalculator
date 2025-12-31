@@ -73,7 +73,7 @@
         android:id="@+id/layoutThickness"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="ضخامت (mm یا cm)"
+        android:hint="ضخامت (cm)"
         android:layout_marginTop="@dimen/space_md"
         android:visibility="gone"
         app:boxBackgroundMode="filled">
