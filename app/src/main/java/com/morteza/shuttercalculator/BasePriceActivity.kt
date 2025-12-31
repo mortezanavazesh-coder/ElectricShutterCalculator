@@ -518,8 +518,8 @@ class BasePriceActivity : AppCompatActivity() {
             }
         }
 
-        // ساخت دیالوگ بدون setPositiveButton/setNegativeButton تا دکمه‌ها تکراری نشوند
-        val dialog = MaterialAlertDialogBuilder(this, R.style.AppAlertDialogTheme)
+        // ساخت دیالوگ مثل دیالوگ‌های افزودن (بدون setPositiveButton/setNegativeButton)
+        val dialog = AlertDialog.Builder(this, R.style.AppAlertDialogTheme)
             .setView(dialogView)
             .create()
 
