@@ -10,11 +10,11 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.morteza.shuttercalculator.utils.FormatUtils
 import com.morteza.shuttercalculator.utils.PrefsHelper
 import com.morteza.shuttercalculator.utils.ThousandSeparatorTextWatcher
@@ -143,10 +143,6 @@ class BasePriceActivity : AppCompatActivity() {
         )
     }
 
-    /**
-     * ایجاد Adapter هماهنگ با امضای جدید:
-     * BasePriceAdapter(items, onDelete, onEdit)
-     */
     private fun createAdapter(category: String): BasePriceAdapter {
         return BasePriceAdapter(
             items = emptyList(),
@@ -164,7 +160,6 @@ class BasePriceActivity : AppCompatActivity() {
                 }
             },
             onEdit = { title ->
-                // ویرایش کلی آیتم: باز کردن دیالوگ ویرایش تمام فیلدهای مرتبط
                 showEditItemDialog(category, title)
             }
         )
@@ -215,7 +210,10 @@ class BasePriceActivity : AppCompatActivity() {
 
     // ------------------ افزودن تیغه ------------------
     private fun showAddSlatDialog() {
-        val view = LayoutInflater.from(this).inflate(R.layout.dialog_add_slat, null)
+        val themedContext = ContextThemeWrapper(this, R.style.AppAlertDialogTheme)
+        val inflater = LayoutInflater.from(themedContext)
+        val view = inflater.inflate(R.layout.dialog_add_slat, null)
+
         val etTitle = view.findViewById<EditText>(R.id.etSlatTitle)
         val etPrice = view.findViewById<EditText>(R.id.etSlatPrice)
         val etWidth = view.findViewById<EditText>(R.id.etSlatWidth)
@@ -223,7 +221,7 @@ class BasePriceActivity : AppCompatActivity() {
 
         etPrice.addTextChangedListener(ThousandSeparatorTextWatcher(etPrice))
 
-        val dialog = AlertDialog.Builder(this, R.style.AppAlertDialogTheme)
+        val dialog = MaterialAlertDialogBuilder(themedContext, R.style.AppAlertDialogTheme)
             .setView(view)
             .create()
 
@@ -241,7 +239,6 @@ class BasePriceActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // ذخیرهٔ قیمت و مشخصات تیغه
             PrefsHelper.putLong(this, "تیغه_price_$title", priceLong)
             PrefsHelper.saveSlatSpecs(this, title, widthCm, thicknessCm)
 
@@ -257,14 +254,17 @@ class BasePriceActivity : AppCompatActivity() {
 
     // ------------------ افزودن شفت ------------------
     private fun showAddShaftDialog() {
-        val view = LayoutInflater.from(this).inflate(R.layout.dialog_add_shaft, null)
+        val themedContext = ContextThemeWrapper(this, R.style.AppAlertDialogTheme)
+        val inflater = LayoutInflater.from(themedContext)
+        val view = inflater.inflate(R.layout.dialog_add_shaft, null)
+
         val etTitle = view.findViewById<EditText>(R.id.etShaftTitle)
         val etPrice = view.findViewById<EditText>(R.id.etShaftPrice)
         val etDiameter = view.findViewById<EditText>(R.id.etShaftDiameter)
 
         etPrice.addTextChangedListener(ThousandSeparatorTextWatcher(etPrice))
 
-        val dialog = AlertDialog.Builder(this, R.style.AppAlertDialogTheme)
+        val dialog = MaterialAlertDialogBuilder(themedContext, R.style.AppAlertDialogTheme)
             .setView(view)
             .create()
 
@@ -296,13 +296,16 @@ class BasePriceActivity : AppCompatActivity() {
 
     // ------------------ افزودن آیتم‌های عمومی (موتور، قوطی، اضافات) ------------------
     private fun showAddItemDialog(category: String) {
-        val view = LayoutInflater.from(this).inflate(R.layout.dialog_add_item, null)
+        val themedContext = ContextThemeWrapper(this, R.style.AppAlertDialogTheme)
+        val inflater = LayoutInflater.from(themedContext)
+        val view = inflater.inflate(R.layout.dialog_add_item, null)
+
         val etTitle = view.findViewById<EditText>(R.id.etItemTitle)
         val etPrice = view.findViewById<EditText>(R.id.etItemPrice)
 
         etPrice.addTextChangedListener(ThousandSeparatorTextWatcher(etPrice))
 
-        val dialog = AlertDialog.Builder(this, R.style.AppAlertDialogTheme)
+        val dialog = MaterialAlertDialogBuilder(themedContext, R.style.AppAlertDialogTheme)
             .setView(view)
             .create()
 
@@ -349,29 +352,29 @@ class BasePriceActivity : AppCompatActivity() {
 
     // ------------------ تغییر نام آیتم (Theme-driven) ------------------
     private fun showRenameDialog(category: String, oldTitle: String) {
-        val padding = getDimenPx(R.dimen.space_md)
-        val gap = getDimenPx(R.dimen.space_lg)
-        val btnGap = getDimenPx(R.dimen.space_sm)
-
-        val container = LinearLayout(this).apply {
+        val themedContext = ContextThemeWrapper(this, R.style.AppAlertDialogTheme)
+        val inflater = LayoutInflater.from(themedContext)
+        val container = LinearLayout(themedContext).apply {
             orientation = LinearLayout.VERTICAL
+            val padding = getDimenPx(R.dimen.space_md)
             setPadding(padding, padding, padding, padding)
-            // پس‌زمینه را به تم بسپار؛ شفاف برای نمایش کارت دیالوگ
             setBackgroundResource(android.R.color.transparent)
         }
-        val input = EditText(this).apply {
+        val input = EditText(themedContext).apply {
             setText(oldTitle)
             hint = "نام جدید"
         }
-        val buttons = LinearLayout(this).apply {
+        val gap = getDimenPx(R.dimen.space_lg)
+        val btnGap = getDimenPx(R.dimen.space_sm)
+        val buttons = LinearLayout(themedContext).apply {
             orientation = LinearLayout.HORIZONTAL
             gravity = Gravity.END
             setPadding(0, gap, 0, 0)
         }
-        val btnCancel = MaterialButton(this, null, com.google.android.material.R.attr.materialButtonOutlinedStyle).apply {
+        val btnCancel = MaterialButton(themedContext, null, com.google.android.material.R.attr.materialButtonOutlinedStyle).apply {
             text = "لغو"
         }
-        val btnSave = MaterialButton(this).apply {
+        val btnSave = MaterialButton(themedContext).apply {
             text = "ذخیره"
             setPadding(btnGap, 0, 0, 0)
         }
@@ -380,7 +383,7 @@ class BasePriceActivity : AppCompatActivity() {
         container.addView(input)
         container.addView(buttons)
 
-        val dialog = AlertDialog.Builder(this, R.style.AppAlertDialogTheme)
+        val dialog = MaterialAlertDialogBuilder(themedContext, R.style.AppAlertDialogTheme)
             .setView(container)
             .create()
 
@@ -422,31 +425,32 @@ class BasePriceActivity : AppCompatActivity() {
 
     // ------------------ ویرایش قیمت آیتم (Theme-driven) ------------------
     private fun showEditPriceDialog(category: String, title: String) {
-        val padding = getDimenPx(R.dimen.space_md)
-        val gap = getDimenPx(R.dimen.space_lg)
-        val btnGap = getDimenPx(R.dimen.space_sm)
-
-        val container = LinearLayout(this).apply {
+        val themedContext = ContextThemeWrapper(this, R.style.AppAlertDialogTheme)
+        val inflater = LayoutInflater.from(themedContext)
+        val container = LinearLayout(themedContext).apply {
             orientation = LinearLayout.VERTICAL
+            val padding = getDimenPx(R.dimen.space_md)
             setPadding(padding, padding, padding, padding)
             setBackgroundResource(android.R.color.transparent)
         }
-        val input = EditText(this).apply {
+        val input = EditText(themedContext).apply {
             val key = "${category}_price_$title"
             val current = PrefsHelper.getLong(this@BasePriceActivity, key, 0L)
             if (current > 0L) setText(FormatUtils.formatTomanPlain(current))
             addTextChangedListener(ThousandSeparatorTextWatcher(this))
             hint = "قیمت"
         }
-        val buttons = LinearLayout(this).apply {
+        val gap = getDimenPx(R.dimen.space_lg)
+        val btnGap = getDimenPx(R.dimen.space_sm)
+        val buttons = LinearLayout(themedContext).apply {
             orientation = LinearLayout.HORIZONTAL
             gravity = Gravity.END
             setPadding(0, gap, 0, 0)
         }
-        val btnCancel = MaterialButton(this, null, com.google.android.material.R.attr.materialButtonOutlinedStyle).apply {
+        val btnCancel = MaterialButton(themedContext, null, com.google.android.material.R.attr.materialButtonOutlinedStyle).apply {
             text = "لغو"
         }
-        val btnSave = MaterialButton(this).apply {
+        val btnSave = MaterialButton(themedContext).apply {
             text = "ذخیره"
             setPadding(btnGap, 0, 0, 0)
         }
@@ -455,7 +459,7 @@ class BasePriceActivity : AppCompatActivity() {
         container.addView(input)
         container.addView(buttons)
 
-        val dialog = AlertDialog.Builder(this, R.style.AppAlertDialogTheme)
+        val dialog = MaterialAlertDialogBuilder(themedContext, R.style.AppAlertDialogTheme)
             .setView(container)
             .create()
 
@@ -476,12 +480,8 @@ class BasePriceActivity : AppCompatActivity() {
         dialog.show()
     }
 
-    /**
-     * دیالوگ ویرایش کلی آیتم: نام، قیمت و فیلدهای اختصاصی (پهنا/ضخامت/قطر)
-     * این متد را adapter هنگام کلیک روی آیکن ویرایش فراخوانی می‌کند.
-     */
+    // ------------------ ویرایش کلی آیتم ------------------
     private fun showEditItemDialog(category: String, title: String) {
-        // Inflate با ContextThemeWrapper تا TextInput ها تم دیالوگ را بگیرند
         val themedContext = ContextThemeWrapper(this, R.style.AppAlertDialogTheme)
         val inflater = LayoutInflater.from(themedContext)
         val dialogView = inflater.inflate(R.layout.dialog_edit_item, null)
@@ -495,21 +495,16 @@ class BasePriceActivity : AppCompatActivity() {
         val layoutDiameter = dialogView.findViewById<View>(R.id.layoutDiameter)
         val etDiameter = dialogView.findViewById<EditText>(R.id.etDiameter)
 
-        // دکمه‌های داخل layout
         val btnSave = dialogView.findViewById<MaterialButton>(R.id.btnSaveEdit)
         val btnCancel = dialogView.findViewById<MaterialButton>(R.id.btnCancelEdit)
 
-        // نمایش/مخفی کردن فیلدها بر اساس دسته
         layoutWidth.visibility = if (category == "تیغه") View.VISIBLE else View.GONE
         layoutThickness.visibility = if (category == "تیغه") View.VISIBLE else View.GONE
         layoutDiameter.visibility = if (category == "شفت") View.VISIBLE else View.GONE
 
-        // بارگذاری مقادیر فعلی
         etTitle.setText(title)
         val price = PrefsHelper.getLong(this, "${category}_price_$title", 0L)
         etPrice.setText(FormatUtils.formatTomanPlain(price))
-
-        // اضافه کردن ThousandSeparator به فیلد قیمت
         etPrice.addTextChangedListener(ThousandSeparatorTextWatcher(etPrice))
 
         if (category == "تیغه") {
@@ -523,12 +518,10 @@ class BasePriceActivity : AppCompatActivity() {
             }
         }
 
-        // ساخت دیالوگ با themedContext تا TextInput ها و overlay تم را بگیرند
-        val dialog = AlertDialog.Builder(themedContext, R.style.AppAlertDialogTheme)
+        val dialog = MaterialAlertDialogBuilder(themedContext, R.style.AppAlertDialogTheme)
             .setView(dialogView)
             .create()
 
-        // رفتار دکمه‌ها
         btnCancel.setOnClickListener { dialog.dismiss() }
 
         btnSave.setOnClickListener {
@@ -544,14 +537,12 @@ class BasePriceActivity : AppCompatActivity() {
             }
 
             uiScope.launch(Dispatchers.IO) {
-                // اگر نام تغییر کرد، کلیدهای قدیمی را پاک کن
                 if (newTitle != title) {
                     PrefsHelper.removeOption(this@BasePriceActivity, category, title)
                     PrefsHelper.removeKey(this@BasePriceActivity, "${category}_price_$title")
                     if (category == "تیغه") PrefsHelper.removeSlatSpecs(this@BasePriceActivity, title)
                     if (category == "شفت") PrefsHelper.removeShaftSpecs(this@BasePriceActivity, title)
                 }
-                // ذخیرهٔ جدید: صریحاً مقدار را با putLong ذخیره می‌کنیم
                 PrefsHelper.putLong(this@BasePriceActivity, "${category}_price_$newTitle", newPrice)
                 if (category == "تیغه") PrefsHelper.saveSlatSpecs(this@BasePriceActivity, newTitle, newWidth, newThickness)
                 if (category == "شفت") PrefsHelper.saveShaftSpecs(this@BasePriceActivity, newTitle, newDiameter)
