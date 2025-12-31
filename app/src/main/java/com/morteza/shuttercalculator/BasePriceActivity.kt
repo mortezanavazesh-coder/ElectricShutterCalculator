@@ -142,6 +142,10 @@ class BasePriceActivity : AppCompatActivity() {
         )
     }
 
+    /**
+     * ایجاد Adapter هماهنگ با امضای جدید:
+     * BasePriceAdapter(items, onDelete, onEdit)
+     */
     private fun createAdapter(category: String): BasePriceAdapter {
         return BasePriceAdapter(
             items = emptyList(),
@@ -158,8 +162,10 @@ class BasePriceActivity : AppCompatActivity() {
                     Toast.makeText(this@BasePriceActivity, "$category حذف شد ✅", Toast.LENGTH_SHORT).show()
                 }
             },
-            onRename = { title -> showRenameDialog(category, title) },
-            onEdit = { title -> showEditPriceDialog(category, title) }
+            onEdit = { title ->
+                // ویرایش کلی آیتم: باز کردن دیالوگ ویرایش تمام فیلدهای مرتبط
+                showEditItemDialog(category, title)
+            }
         )
     }
 
@@ -466,6 +472,86 @@ class BasePriceActivity : AppCompatActivity() {
             dialog.dismiss()
         }
         btnCancel.setOnClickListener { dialog.dismiss() }
+
+        dialog.show()
+    }
+
+    /**
+     * دیالوگ ویرایش کلی آیتم: نام، قیمت و فیلدهای اختصاصی (پهنا/ضخامت/قطر)
+     * این متد را adapter هنگام کلیک روی آیکن ویرایش فراخوانی می‌کند.
+     */
+    private fun showEditItemDialog(category: String, title: String) {
+        val dialogView = layoutInflater.inflate(R.layout.dialog_edit_item, null)
+        val etTitle = dialogView.findViewById<EditText>(R.id.etTitle)
+        val etPrice = dialogView.findViewById<EditText>(R.id.etPrice)
+        val layoutWidth = dialogView.findViewById<View>(R.id.layoutWidth)
+        val etWidth = dialogView.findViewById<EditText>(R.id.etWidth)
+        val layoutThickness = dialogView.findViewById<View>(R.id.layoutThickness)
+        val etThickness = dialogView.findViewById<EditText>(R.id.etThickness)
+        val layoutDiameter = dialogView.findViewById<View>(R.id.layoutDiameter)
+        val etDiameter = dialogView.findViewById<EditText>(R.id.etDiameter)
+
+        // نمایش/مخفی کردن فیلدها بر اساس دسته
+        layoutWidth.visibility = if (category == "تیغه") View.VISIBLE else View.GONE
+        layoutThickness.visibility = if (category == "تیغه") View.VISIBLE else View.GONE
+        layoutDiameter.visibility = if (category == "شفت") View.VISIBLE else View.GONE
+
+        // بارگذاری مقادیر فعلی
+        etTitle.setText(title)
+        val price = PrefsHelper.getLong(this, "${category}_price_$title", 0L)
+        etPrice.setText(FormatUtils.formatTomanPlain(price))
+
+        if (category == "تیغه") {
+            PrefsHelper.getSlatSpecs(this, title)?.let {
+                etWidth.setText(it.width.toString())
+                etThickness.setText(it.thickness.toString())
+            }
+        } else if (category == "شفت") {
+            PrefsHelper.getShaftSpecs(this, title)?.let {
+                etDiameter.setText(it.diameter.toString())
+            }
+        }
+
+        val dialog = AlertDialog.Builder(this, R.style.AppAlertDialogTheme)
+            .setView(dialogView)
+            .setPositiveButton("ذخیره", null)
+            .setNegativeButton("لغو", null)
+            .create()
+
+        dialog.setOnShowListener {
+            val btnSave = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+            btnSave.setOnClickListener {
+                val newTitle = etTitle.text.toString().trim()
+                val newPrice = FormatUtils.parseTomanInput(etPrice.text.toString())
+                val newWidth = etWidth.text.toString().toFloatOrNull() ?: 0f
+                val newThickness = etThickness.text.toString().toFloatOrNull() ?: 0f
+                val newDiameter = etDiameter.text.toString().toFloatOrNull() ?: 0f
+
+                if (newTitle.isEmpty() || newPrice < 0L) {
+                    Toast.makeText(this, "نام و قیمت معتبر وارد کنید", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
+                }
+
+                uiScope.launch(Dispatchers.IO) {
+                    // اگر نام تغییر کرد، کلیدهای قدیمی را پاک کن
+                    if (newTitle != title) {
+                        PrefsHelper.removeOption(this@BasePriceActivity, category, title)
+                        PrefsHelper.removeKey(this@BasePriceActivity, "${category}_price_$title")
+                        if (category == "تیغه") PrefsHelper.removeSlatSpecs(this@BasePriceActivity, title)
+                        if (category == "شفت") PrefsHelper.removeShaftSpecs(this@BasePriceActivity, title)
+                    }
+                    // ذخیرهٔ جدید
+                    PrefsHelper.addOption(this@BasePriceActivity, category, newTitle)
+                    PrefsHelper.putLong(this@BasePriceActivity, "${category}_price_$newTitle", newPrice)
+                    if (category == "تیغه") PrefsHelper.saveSlatSpecs(this@BasePriceActivity, newTitle, newWidth, newThickness)
+                    if (category == "شفت") PrefsHelper.saveShaftSpecs(this@BasePriceActivity, newTitle, newDiameter)
+                }
+
+                refreshCategory(category)
+                Toast.makeText(this, "تغییرات ذخیره شد", Toast.LENGTH_SHORT).show()
+                dialog.dismiss()
+            }
+        }
 
         dialog.show()
     }
