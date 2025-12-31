@@ -240,7 +240,7 @@ class BasePriceActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            PrefsHelper.addOption(this, "تیغه", title, priceLong)
+            // ذخیرهٔ قیمت و مشخصات تیغه
             PrefsHelper.putLong(this, "تیغه_price_$title", priceLong)
             PrefsHelper.saveSlatSpecs(this, title, widthCm, thicknessCm)
 
@@ -280,7 +280,6 @@ class BasePriceActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            PrefsHelper.addOption(this, "شفت", title, priceLong)
             PrefsHelper.putLong(this, "شفت_price_$title", priceLong)
             PrefsHelper.saveShaftSpecs(this, title, diameterCm)
 
@@ -318,7 +317,6 @@ class BasePriceActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            PrefsHelper.addOption(this, category, title, priceLong)
             PrefsHelper.putLong(this, "${category}_price_$title", priceLong)
 
             if (category == "اضافات") {
@@ -540,8 +538,7 @@ class BasePriceActivity : AppCompatActivity() {
                         if (category == "تیغه") PrefsHelper.removeSlatSpecs(this@BasePriceActivity, title)
                         if (category == "شفت") PrefsHelper.removeShaftSpecs(this@BasePriceActivity, title)
                     }
-                    // ذخیرهٔ جدید
-                    PrefsHelper.addOption(this@BasePriceActivity, category, newTitle)
+                    // ذخیرهٔ جدید: صریحاً مقدار را با putLong ذخیره می‌کنیم
                     PrefsHelper.putLong(this@BasePriceActivity, "${category}_price_$newTitle", newPrice)
                     if (category == "تیغه") PrefsHelper.saveSlatSpecs(this@BasePriceActivity, newTitle, newWidth, newThickness)
                     if (category == "شفت") PrefsHelper.saveShaftSpecs(this@BasePriceActivity, newTitle, newDiameter)
