@@ -185,4 +185,51 @@ object PrefsHelper {
 
     fun getShaftDiameter(context: Context, name: String): Float =
         getPrefs(context).getFloat("شفت_${name}_diameter", 0f)
+
+    // ------------------ Compatibility / Convenience helpers ------------------
+
+    data class SlatSpecs(val width: Float, val thickness: Float)
+    data class ShaftSpecs(val diameter: Float)
+
+    fun getSlatSpecs(context: Context, name: String): SlatSpecs? {
+        val prefs = getPrefs(context)
+        val keyWidth = "تیغه_${name}_width"
+        val keyThickness = "تیغه_${name}_thickness"
+        if (!prefs.contains(keyWidth) && !prefs.contains(keyThickness)) return null
+        val width = try { prefs.getFloat(keyWidth, 0f) } catch (e: Exception) { Log.e(TAG, "getSlatSpecs width failed for $name", e); 0f }
+        val thickness = try { prefs.getFloat(keyThickness, 0f) } catch (e: Exception) { Log.e(TAG, "getSlatSpecs thickness failed for $name", e); 0f }
+        return SlatSpecs(width, thickness)
+    }
+
+    fun removeSlatSpecs(context: Context, name: String) {
+        try {
+            getPrefs(context).edit()
+                .remove("تیغه_${name}_width")
+                .remove("تیغه_${name}_thickness")
+                .apply()
+        } catch (e: Exception) { Log.e(TAG, "removeSlatSpecs failed for $name", e) }
+    }
+
+    fun getShaftSpecs(context: Context, name: String): ShaftSpecs? {
+        val prefs = getPrefs(context)
+        val key = "شفت_${name}_diameter"
+        if (!prefs.contains(key)) return null
+        val diameter = try { prefs.getFloat(key, 0f) } catch (e: Exception) { Log.e(TAG, "getShaftSpecs failed for $name", e); 0f }
+        return ShaftSpecs(diameter)
+    }
+
+    fun removeShaftSpecs(context: Context, name: String) {
+        try {
+            getPrefs(context).edit()
+                .remove("شفت_${name}_diameter")
+                .apply()
+        } catch (e: Exception) { Log.e(TAG, "removeShaftSpecs failed for $name", e) }
+    }
+
+    // Aliases to match other code expectations
+    fun putSlatSpecs(context: Context, name: String, width: Float, thickness: Float) =
+        saveSlatSpecs(context, name, width, thickness)
+
+    fun putShaftSpecs(context: Context, name: String, diameter: Float) =
+        saveShaftSpecs(context, name, diameter)
 }
