@@ -1,6 +1,6 @@
 <resources>
     <!-- نام اپلیکیشن -->
-    <string name="app_name">محاسبه‌گر کرکره برقی</string>
+    <string name="app_name">کرکره برقی</string>
 
     <!-- دکمه‌ها -->
     <string name="btn_save">ذخیره</string>
@@ -58,3 +58,4 @@
     <string name="unit_price">قیمت واحد</string>
     <string name="total_price">قیمت کل</string>
 </resources>
+
