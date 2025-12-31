@@ -11,14 +11,12 @@ import com.morteza.shuttercalculator.utils.FormatUtils
 class BasePriceAdapter(
     private var items: List<Pair<String, Long>>,
     private val onDelete: (title: String) -> Unit,
-    private val onRename: (title: String) -> Unit,
     private val onEdit: (title: String) -> Unit
 ) : RecyclerView.Adapter<BasePriceAdapter.VH>() {
 
     class VH(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tvTitle: TextView = itemView.findViewById(R.id.tvItemTitle)
         val tvPrice: TextView = itemView.findViewById(R.id.tvItemPrice)
-        val btnRename: ImageButton = itemView.findViewById(R.id.btnRenameItem)
         val btnEdit: ImageButton = itemView.findViewById(R.id.btnEditItem)
         val btnDelete: ImageButton = itemView.findViewById(R.id.btnDeleteItem)
     }
@@ -32,16 +30,21 @@ class BasePriceAdapter(
     override fun onBindViewHolder(holder: VH, position: Int) {
         val (title, price) = items[position]
 
-        // نمایش نام گزینه
+        // نمایش نام و قیمت
         holder.tvTitle.text = title
-
-        // ✅ نمایش قیمت با فرمت تومان و جداکننده هزارگان (Long)
         holder.tvPrice.text = FormatUtils.formatToman(price)
 
-        // رویدادها
-        holder.btnRename.setOnClickListener { onRename(title) }
-        holder.btnEdit.setOnClickListener { onEdit(title) }
-        holder.btnDelete.setOnClickListener { onDelete(title) }
+        // رویدادها: ویرایش و حذف
+        holder.btnEdit.setOnClickListener {
+            it.isEnabled = false
+            onEdit(title)
+            it.postDelayed({ it.isEnabled = true }, 300)
+        }
+        holder.btnDelete.setOnClickListener {
+            it.isEnabled = false
+            onDelete(title)
+            it.postDelayed({ it.isEnabled = true }, 300)
+        }
     }
 
     override fun getItemCount(): Int = items.size
