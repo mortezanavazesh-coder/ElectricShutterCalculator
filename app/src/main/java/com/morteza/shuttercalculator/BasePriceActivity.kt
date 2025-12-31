@@ -539,7 +539,6 @@ class BasePriceActivity : AppCompatActivity() {
             .setView(contentView)
             .setCancelable(true)
             .create().apply {
-                // اطمینان از عرض مناسب و پس‌زمینه‌ی تم
                 setOnShowListener {
                     window?.setLayout(
                         LinearLayout.LayoutParams.MATCH_PARENT,
@@ -578,11 +577,11 @@ class BasePriceActivity : AppCompatActivity() {
         return ButtonRow(container, btnCancel, btnSave)
     }
 
+    // استفاده از رنگ‌های تعریف‌شده در پروژه (themes.xml → colorPrimary, colorOnPrimary)
     private fun styleDialogButtons(btnSave: MaterialButton, btnCancel: MaterialButton) {
-        // هماهنگ با تم: یکی outlined و دیگری filled
-        btnCancel.setTextColor(getColorCompat(R.color.md_theme_primary))
-        btnSave.setTextColor(getColorCompat(R.color.md_theme_onPrimary))
-        btnSave.setBackgroundColor(getColorCompat(R.color.md_theme_primary))
+        btnCancel.setTextColor(getColorCompat(R.color.colorPrimary))
+        btnSave.setTextColor(getColorCompat(R.color.colorOnPrimary))
+        btnSave.setBackgroundColor(getColorCompat(R.color.colorPrimary))
     }
 
     private fun applyPriceWatcher(editText: TextInputEditText?) {
