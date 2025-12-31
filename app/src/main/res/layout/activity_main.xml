@@ -431,15 +431,11 @@
                 android:orientation="vertical"
                 android:padding="@dimen/space_sm">
 
-                <TextView
-                    style="@style/FinalPriceText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="قیمت نهایی"/>
+                <!-- عنوان حذف شد -->
 
                 <TextView
                     android:id="@+id/textTotal"
-                    style="@style/FinalPriceText"
+                    style="@style/TextRollDiameter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="قیمت نهایی: -"
