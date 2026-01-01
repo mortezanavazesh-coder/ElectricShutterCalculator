@@ -1,0 +1,35 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- پس‌زمینه آبی -->
+    <path
+        android:fillColor="#1E88E5"
+        android:pathData="M0,0h108v108h-108z"/>
+
+    <!-- رول بالایی -->
+    <rect
+        android:x="24"
+        android:y="20"
+        android:width="60"
+        android:height="12"
+        android:fillColor="#FFFFFF"
+        android:rx="6"/>
+
+    <!-- تیغه‌ها -->
+    <rect android:x="24" android:y="36" android:width="60" android:height="6" android:fillColor="#FFFFFF" android:rx="3"/>
+    <rect android:x="24" android:y="45" android:width="60" android:height="6" android:fillColor="#FFFFFF" android:rx="3"/>
+    <rect android:x="24" android:y="54" android:width="60" android:height="6" android:fillColor="#FFFFFF" android:rx="3"/>
+    <rect android:x="24" android:y="63" android:width="60" android:height="6" android:fillColor="#FFFFFF" android:rx="3"/>
+    <rect android:x="24" android:y="72" android:width="60" android:height="6" android:fillColor="#FFFFFF" android:rx="3"/>
+    <rect android:x="24" android:y="81" android:width="60" android:height="6" android:fillColor="#FFFFFF" android:rx="3"/>
+
+    <!-- قاب کناری -->
+    <path android:fillColor="#1565C0" android:pathData="M24,20v68h4v-68z"/>
+    <path android:fillColor="#1565C0" android:pathData="M80,20v68h4v-68z"/>
+
+    <!-- پایه پایین -->
+    <rect android:x="24" android:y="89" android:width="60" android:height="6" android:fillColor="#1565C0"/>
+</vector>
