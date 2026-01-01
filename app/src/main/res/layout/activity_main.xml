@@ -228,7 +228,7 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- هزینه‌های اجرایی -->
+        <!-- کارت هزینه‌های اجرایی -->
         <com.google.android.material.card.MaterialCardView
             style="@style/Widget.App.MaterialCard"
             android:layout_width="match_parent"
@@ -412,28 +412,21 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- قیمت نهایی -->
+        <!-- قیمت نهایی (جمع‌وجور و راست‌چین) -->
         <com.google.android.material.card.MaterialCardView
             style="@style/Widget.App.MaterialCard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/space_md">
 
-            <LinearLayout
-                style="@style/App.PageSection"
+            <TextView
+                android:id="@+id/textTotal"
+                style="@style/TextRollDiameter"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="@dimen/space_sm">
-
-                <TextView
-                    android:id="@+id/textTotal"
-                    style="@style/TextRollDiameter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="قیمت نهایی: -"/>
-            </LinearLayout>
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:padding="8dp"
+                android:text="قیمت نهایی: -"/>
         </com.google.android.material.card.MaterialCardView>
 
         <!-- دکمه‌ها -->
