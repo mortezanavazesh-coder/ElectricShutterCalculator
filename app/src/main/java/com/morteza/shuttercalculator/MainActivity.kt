@@ -333,7 +333,8 @@ class MainActivity : AppCompatActivity() {
             areaM2 > 10.0 -> (installRate * areaM2).toLong()
             else -> installRate * 10L
         }
-        textInstallComputed.text = FormatUtils.formatToman(installComputed)
+        // نمایش کامل متن هزینه نصب محاسبه شده
+        textInstallComputed.text = "هزینه نصب محاسبه شده : ${FormatUtils.formatToman(installComputed)}"
 
         val weldingComputed = FormatUtils.parseTomanInput(inputWeldingPrice.text?.toString())
         val transportComputed = FormatUtils.parseTomanInput(inputTransportPrice.text?.toString())
