@@ -412,22 +412,22 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- قیمت نهایی (جمع‌وجور و راست‌چین) -->
-        <com.google.android.material.card.MaterialCardView
-            style="@style/Widget.App.MaterialCard"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/space_md">
+        <!-- قیمت نهایی (سمت چپ کارت) -->
+<com.google.android.material.card.MaterialCardView
+    style="@style/Widget.App.MaterialCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/space_md">
 
-            <TextView
-                android:id="@+id/textTotal"
-                style="@style/TextRollDiameter"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="end"
-                android:padding="8dp"
-                android:text="قیمت نهایی: -"/>
-        </com.google.android.material.card.MaterialCardView>
+    <TextView
+        android:id="@+id/textTotal"
+        style="@style/TextRollDiameter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:padding="8dp"
+        android:text="قیمت نهایی: -"/>
+</com.google.android.material.card.MaterialCardView>
 
         <!-- دکمه‌ها -->
         <LinearLayout
@@ -473,3 +473,4 @@
 
     </LinearLayout>
 </ScrollView>
+
