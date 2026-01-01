@@ -263,19 +263,14 @@
                         android:inputType="numberDecimal"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <TextView
-                    style="@style/BodyText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="هزینه نصب محاسبه شده"
-                    android:layout_marginTop="@dimen/space_md"/>
-
+                <!-- متن و قیمت در یک خط -->
                 <TextView
                     android:id="@+id/textInstallComputed"
                     style="@style/BodyText"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="0 تومان"/>
+                    android:text="هزینه نصب محاسبه شده : 0 تومان"
+                    android:layout_marginTop="@dimen/space_md"/>
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/Widget.App.TextBox"
@@ -427,19 +422,17 @@
             <LinearLayout
                 style="@style/App.PageSection"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="80dp"
                 android:orientation="vertical"
+                android:gravity="center"
                 android:padding="@dimen/space_sm">
-
-                <!-- عنوان حذف شد -->
 
                 <TextView
                     android:id="@+id/textTotal"
                     style="@style/TextRollDiameter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="قیمت نهایی: -"
-                    android:layout_marginTop="@dimen/space_md"/>
+                    android:text="قیمت نهایی: -"/>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
