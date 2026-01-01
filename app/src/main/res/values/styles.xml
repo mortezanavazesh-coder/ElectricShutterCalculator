@@ -36,8 +36,20 @@
         <item name="android:textColor">?attr/colorOnSurface</item>
     </style>
 
-    <!-- متن قیمت نهایی (یکسان در همه صفحات) -->
+    <!-- متن قیمت نهایی (صفحه اصلی) -->
     <style name="FinalPriceText" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textColor">?attr/colorSecondary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- قیمت نهایی در صفحه جزئیات پروژه -->
+    <style name="DetailFinalPriceText" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textColor">?attr/colorSecondary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- قیمت نهایی در صفحه گزارش‌ها -->
+    <style name="ReportFinalPriceText" parent="TextAppearance.Material3.TitleLarge">
         <item name="android:textColor">?attr/colorSecondary</item>
         <item name="android:textStyle">bold</item>
     </style>
@@ -47,8 +59,8 @@
     <style name="Widget.App.TextBox.EditText" parent="Widget.MaterialComponents.TextInputEditText.FilledBox.Dense">
         <!-- رنگ متن اصلی -->
         <item name="android:textColor">#FFFFFF</item>
-        <!-- رنگ hint -->
-        <item name="android:hintTextColor">#80FFFFFF</item>
+        <!-- رنگ hint (بدون android:) -->
+        <item name="hintTextColor">#80FFFFFF</item>
     </style>
 
     <!-- اسپینر -->
