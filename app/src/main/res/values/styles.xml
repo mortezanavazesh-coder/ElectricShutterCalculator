@@ -93,10 +93,10 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <!-- متن تاریخ -->
+    <!-- متن تاریخ (بدون italic) -->
     <style name="DateText" parent="TextAppearance.Material3.BodyMedium">
         <item name="android:textColor">?attr/colorOnSurface</item>
-        <item name="android:textStyle">italic</item>
+        <item name="android:textStyle">normal</item>
     </style>
 
     <!-- متن قطر رول -->
